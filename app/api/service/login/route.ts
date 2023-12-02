@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/utils/database/db";
+const { NextRequest, NextResponse } = require("next/server");
+const { db } = require("@/utils/database/db");
 
 export const POST = async (request: Request) => {
   const key = request.headers.get("authorization") as string;
@@ -12,4 +12,4 @@ export const POST = async (request: Request) => {
   return NextResponse.json({ message: "Success" }, { status: 200 });
 };
 
-module.exports = POST
+
