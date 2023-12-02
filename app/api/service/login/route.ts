@@ -11,3 +11,5 @@ export const POST = async (request: Request) => {
 
   return NextResponse.json({ message: "Success" }, { status: 200 });
 };
+
+module.exports = POST
