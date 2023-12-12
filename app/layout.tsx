@@ -5,8 +5,8 @@ import './globals.css'
 
 
 export const metadata: Metadata = {
-  title: 'xauth',
-  description: 'authentication library',
+  title: 'Red Shield',
+  description: 'Redis authentication library',
 }
 
 export default function RootLayout({
