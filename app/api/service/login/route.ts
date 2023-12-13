@@ -12,17 +12,19 @@ export const POST = async (request: Request) => {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   } else {
     try {
-      const user = await db.get(data.username);
+      const searchKey = res.project_id + ":=>" + data.username;
+      const user = await db.get(searchKey);
       if (user) {
         const isAuth = await bcrypt.compare(data.password, user.password);
         if (isAuth) {
           return NextResponse.json(
-            { message: "Login Success" },
+            { message: "Login Success" , user : user.id},
             { status: 200 }
           );
         }
       }
     } catch (error) {
+      console.log(error)
       return NextResponse.json(
         { message: "something went wrong" },
         { status: 404 }
