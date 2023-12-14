@@ -1,6 +1,9 @@
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
+const { checkValue } = require("@/utils/validation/val");
+
 const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require('uuid');
 
 export const POST = async (request: Request) => {
   const data = await request.json();
@@ -10,28 +13,37 @@ export const POST = async (request: Request) => {
   if (!res) {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   } else {
+    //check the passed data for registration
+    const isDataValid = checkValue(data);
+    
+    //condition for the validated data passed
+    if(!isDataValid.success) {
+      return NextResponse.json(isDataValid , { status: 400 });
+    }
+  
     const searchKey = res.project_id + ":=>" + data.username;
     const checkKeyExists = await db.get(searchKey);
+    //if user with passed username does not exist
     if (!checkKeyExists) {
       const hashed_password = await bcrypt.hash(data.password, 10);
+      //create new user
       const user = await db.set(searchKey, {
         username: data.username,
+        uid: uuidv4(),
         password: hashed_password, 
         email: data.email,
+        isVerified: false,
         profile_picture: data.profile_picture,
         creation_date: new Date(),
       });
 
       return NextResponse.json({ message: "user profile created" }, { status:200 });
     } else {
+      //username already exists
       return NextResponse.json(
         { message: "Username alredy exists" },
         { status: 409 }
       );
     }
   }
-
-  return NextResponse.json({
-    data: data,
-  });
 };
