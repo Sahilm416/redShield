@@ -2,9 +2,15 @@ const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const bcrypt = require("bcrypt");
 
+
+
+interface reqBody {
+   username: string;
+   password: string;
+}
 export const POST = async (request: Request) => {
 
-  const data = await request.json();
+  const data: reqBody = await request.json();
   const key = request.headers.get("authorization") as string;
   const res = await db.get(key);
 
@@ -18,7 +24,7 @@ export const POST = async (request: Request) => {
         const isAuth = await bcrypt.compare(data.password, user.password);
         if (isAuth) {
           return NextResponse.json(
-            { message: "Login Success" , user : user.id},
+            { message: "Login Success"},
             { status: 200 }
           );
         }

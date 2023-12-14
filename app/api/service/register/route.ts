@@ -5,8 +5,15 @@ const { checkValue } = require("@/utils/validation/val");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require('uuid');
 
+interface reqBody{
+  username: string;
+  password: string;
+  email: string;
+  profile_picture?: string;
+}
+
 export const POST = async (request: Request) => {
-  const data = await request.json();
+  const data : reqBody = await request.json();
   const key = request.headers.get("authorization") as string;
   const res = await db.get(key);
 
@@ -36,7 +43,7 @@ export const POST = async (request: Request) => {
         profile_picture: data.profile_picture,
         creation_date: new Date(),
       });
-
+      const quickKey = await db.set(`${res.project_id +"->"+data.email}`,data.username)
       return NextResponse.json({ message: "user profile created" }, { status:200 });
     } else {
       //username already exists
