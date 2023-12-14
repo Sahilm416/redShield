@@ -1,5 +1,3 @@
-import { link } from "fs";
-
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const { Resend } = require("resend")
