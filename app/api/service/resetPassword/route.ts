@@ -7,7 +7,7 @@ interface reqBody {
 export const POST = async (request : Request)=>{
     
     const key = request.headers.get("authorization") as string;
-    const res = await db.get(key);
+    const res = await db.get("API_KEY:"+key);
    
 
     if (!res) {

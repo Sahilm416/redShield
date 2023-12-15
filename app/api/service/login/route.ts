@@ -12,7 +12,7 @@ export const POST = async (request: Request) => {
 
   const data: reqBody = await request.json();
   const key = request.headers.get("authorization") as string;
-  const res = await db.get(key);
+  const res = await db.get("API_KEY:"+key);
 
   if (!res) {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });

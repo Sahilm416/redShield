@@ -11,7 +11,7 @@ interface reqBody {
 export const POST = async (request : Request)=>{
     
     const key = request.headers.get("authorization") as string;
-    const res: {project_id : string , project_name : string} = await db.get(key);
+    const res = await db.get("API_KEY:"+key);
     if (!res) {
         return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
       } else {
