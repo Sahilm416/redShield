@@ -42,10 +42,8 @@ export default function LoginForm() {
     
     try {
       setLoading(true);
-      const checkMode = process.env.NODE_ENV === "development";
-      const apiURL = checkMode
-        ? "http://localhost:3000/api/service/login"
-        : "https://redshield.vercel.app/api/service/login";
+      //const checkMode = process.env.NODE_ENV === "development";
+      const apiURL = "https://redshield.vercel.app/api/service/login"
       const res = await LoginUser({
         username: user,
         password: pass,
