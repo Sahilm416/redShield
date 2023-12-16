@@ -16,14 +16,14 @@ const Hero = () => {
         </p>
         <div>
           <Link href={"/Auth"}>
-            <Button className="mx-4 w-[200px] h-[45px] bg-slate-900 my-5 rounded-lg">
+            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] bg-slate-900 my-5 rounded-lg">
               Start now
             </Button>{" "}
           </Link>
           <a target="blank" href="https://github.com/Sahilm416/redShield">
             <Button
               variant={"outline"}
-              className="mx-4 w-[200px] shadow-lg h-[45px] border-[1px] border-slate-300 my-5 rounded-lg"
+              className="mx-4 md:w-[200px] w-[160px] shadow-lg h-[45px] border-[1px] border-slate-300 my-5 rounded-lg"
             >
               <p className=" text-slate-700"> github </p>
               <div className="">
