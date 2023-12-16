@@ -14,7 +14,7 @@ export function AuthPage() {
   return (
     <Tabs
       defaultValue="login"
-      className="w-[350px] h-[400px] flex justify-center items-center flex-col"
+      className="sm:w-[350px] w-[400px] h-[400px] flex justify-center items-center flex-col"
     >
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="login">Login</TabsTrigger>

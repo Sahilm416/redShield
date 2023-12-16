@@ -159,7 +159,7 @@ export default function RegisterCard() {
       {isRegistered ? (
         <NewUser username={user.value} />
       ) : (
-        <Card className="w-[350px] h-[370px] box-border shadow-2xl">
+        <Card className="sm:w-[350px] w-[400px] h-[370px] box-border shadow-2xl">
           <CardHeader>
             <CardTitle>
               Register to <span className="text-red-500">Red</span>Shield
