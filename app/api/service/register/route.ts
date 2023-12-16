@@ -1,6 +1,6 @@
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
-const { checkValue } = require("@/utils/validation/val");
+const {checkAllValues} = require("../../../actions/checkAll")
 
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require('uuid');
@@ -21,13 +21,15 @@ export const POST = async (request: Request) => {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   } else {
     //check the passed data for registration
-    const isDataValid = checkValue(data);
+    const isDataValid = await checkAllValues(data);
+
     
     //condition for the validated data passed
-    if(!isDataValid.success) {
+  
+    if(!isDataValid.status) {
       return NextResponse.json(isDataValid , { status: 400 });
     }
-  
+   
     const searchKey = res.project_id + ":=>" + data.username;
     const checkKeyExists = await db.get(searchKey);
     //if user with passed username does not exist
@@ -44,13 +46,17 @@ export const POST = async (request: Request) => {
         creation_date: new Date(),
       });
       const quickKey = await db.set(`${res.project_id +":->"+data.email}`,data.username)
-      return NextResponse.json({ message: "user profile created" }, { status:200 });
+      return NextResponse.json({
+        'status': true,
+        'message': "profile created successfully"
+      })
     } else {
       //username already exists
-      return NextResponse.json(
-        { message: "Username alredy exists" },
-        { status: 409 }
-      );
+      return NextResponse.json({
+        'status': false,
+        'message': "User profile already exists"
+      })
+       
     }
   }
 };
