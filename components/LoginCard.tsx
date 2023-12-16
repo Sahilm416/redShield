@@ -118,7 +118,7 @@ export default function LoginForm() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col items-center justify-between">
-            <Button disabled={isDisabled} onClick={Login} className="w-full">
+            <Button disabled={isDisabled || loading} onClick={Login} className="w-full">
               {loading ? <Loader /> : "Log in"}
             </Button>
           </CardFooter>
