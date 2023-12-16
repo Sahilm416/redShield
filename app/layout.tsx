@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className='bg-slate-200'>
         <Navbar/>
         {children}
         <Toaster richColors position="bottom-right" />
