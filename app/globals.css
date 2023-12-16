@@ -2,11 +2,19 @@
 @tailwind components;
 @tailwind utilities;
  
+
 body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+.boxpatternTop {
+  border-radius: 5px 5px 0px 0px;
+}
+.boxpatternBottom {
+  border-radius: 0px 0px 5px 5px;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
