@@ -2,7 +2,9 @@
 import { db } from "@/utils/database/db";
 
 export const checkUsername = async (data: { username: string }) => {
-  const usernameRegex = /^(?=.*[a-z])[a-z0-9]{3,19}$/;
+   const usernameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{3,19}$/;
+
+
 
   if (!usernameRegex.test(data.username)) {
     return { status: false, message: "Username is not valid." };
@@ -15,7 +17,7 @@ export const checkUsername = async (data: { username: string }) => {
   if (!res) {
     return { status: false, message: "something went wrong" };
   } else {
-    const check = await db.get(res.project_id + ":=>" + data.username);
+    const check = await db.get(res.project_id + ":=>" + data.username.toLowerCase());
 
     if (check === null) {
       return { status: true, message: "username is available" };
