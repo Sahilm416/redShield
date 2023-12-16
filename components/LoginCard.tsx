@@ -16,7 +16,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Success from "./Success";
 import Loader from "./Loader";
-import {toast} from 'sonner';
+import { toast } from "sonner";
 
 export default function LoginForm() {
   const [inputUsernameErr, setInputUsernameErr] = useState<boolean>(true);
@@ -26,7 +26,7 @@ export default function LoginForm() {
 
   const [user, setUser] = useState<string>("");
   const [pass, setPass] = useState<string>("");
-  const [loading , setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -38,7 +38,6 @@ export default function LoginForm() {
   }, [inputPasswordErr, inputUsernameErr]);
 
   const Login = async () => {
-    
     try {
       setLoading(true);
       //const checkMode = process.env.NODE_ENV === "development";
@@ -49,80 +48,82 @@ export default function LoginForm() {
 
       if (res?.success) {
         setSuccess(true);
-        
+
         setTimeout(() => {
-            return router.push("/");
+          return router.push("/");
         }, 2500);
-      }
-      else {
+      } else {
         toast.error(res?.message);
       }
-      
-   
     } catch (error) {
       console.log(error);
-    }
-    finally{
+    } finally {
       setLoading(false);
     }
   };
 
   return (
     <>
-      {success ? <Success/> :  <Card className="w-[350px] h-[350px] box-border shadow-2xl">
-        <CardHeader>
-          <CardTitle>
-            Login to <span className="text-red-500">Red</span>Shield
-          </CardTitle>
-          <CardDescription>redis based authentication</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="user">Username</Label>
-              <Input
-                autoFocus
-                onChange={(e) => {
-                  setUser(e.target.value.trim());
-                  if (e.target.value.trim().length > 3) {
-                    setInputUsernameErr(false);
-                  } else {
-                    setInputUsernameErr(true);
-                  }
-                }}
-                name="username"
-                required
-                type="text"
-                id="user"
-                placeholder="enter username"
-              />
+      {success ? (
+        <Success />
+      ) : (
+        <Card className="w-[350px] h-[370px] box-border shadow-2xl">
+          <CardHeader>
+            <CardTitle>
+              Login to <span className="text-red-500">Red</span>Shield
+            </CardTitle>
+            <CardDescription>redis based authentication</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid w-full items-center gap-5">
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="user">Username</Label>
+                <Input
+                  autoFocus
+                  onChange={(e) => {
+                    setUser(e.target.value.trim());
+                    if (e.target.value.trim().length > 3) {
+                      setInputUsernameErr(false);
+                    } else {
+                      setInputUsernameErr(true);
+                    }
+                  }}
+                  name="username"
+                  required
+                  type="text"
+                  id="user"
+                  placeholder="enter username"
+                />
+                <div className="h-[5px]"></div>
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="passwordlogin">Password</Label>
+                <Input
+                  onChange={(e) => {
+                    setPass(e.target.value.trim());
+                    if (e.target.value.trim().length > 7) {
+                      setInputPasswordErr(false);
+                    } else {
+                      setInputPasswordErr(true);
+                    }
+                  }}
+                  name="password"
+                  required
+                  type="password"
+                  id="passwordlogin"
+                  placeholder="enter password"
+                />
+                <div className="h-[5px] mt-[-25px]"></div>
+              </div>
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="passwordlogin">Password</Label>
-              <Input
-                onChange={(e) => {
-                  setPass(e.target.value.trim());
-                  if (e.target.value.trim().length > 7) {
-                    setInputPasswordErr(false);
-                  } else {
-                    setInputPasswordErr(true);
-                  }
-                }}
-                name="password"
-                required
-                type="password"
-                id="passwordlogin"
-                placeholder="enter password"
-              />
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter className="flex flex-col items-center justify-between">
-          <Button disabled={isDisabled} onClick={Login} className="w-full">
-           {loading ? <Loader/> : "Log in"}
-          </Button>
-        </CardFooter>
-      </Card>}
-      </>
+          </CardContent>
+          <CardFooter className="flex flex-col items-center justify-between">
+            <Button disabled={isDisabled} onClick={Login} className="w-full">
+              {loading ? <Loader /> : "Log in"}
+            </Button>
+          </CardFooter>
+        </Card>
+      )}
+    </>
   );
 }

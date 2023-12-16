@@ -43,7 +43,7 @@ export const POST = async (request: Request) => {
         profile_picture: data.profile_picture,
         creation_date: new Date(),
       });
-      const quickKey = await db.set(`${res.project_id +"->"+data.email}`,data.username)
+      const quickKey = await db.set(`${res.project_id +":->"+data.email}`,data.username)
       return NextResponse.json({ message: "user profile created" }, { status:200 });
     } else {
       //username already exists

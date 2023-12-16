@@ -11,10 +11,12 @@ export const checkValue = (data: Param) => {
   if (!data.username || !data.password || !data.email || !data.profile_picture) {
     errors.push("All fields are required");
   } else {
-    const usernameRegex = /^[a-z0-9]+$/;
+    const usernameRegex = /^[a-z0-9]{3,11}$/;
+
     if (!usernameRegex.test(data.username)) {
-      errors.push("Username should only contain smallcase letters and numbers");
+      errors.push("Username should contain at least 3 letters, any numbers, and the total length should be less than 12");
     }
+    
 
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     if (!passwordRegex.test(data.password)) {
