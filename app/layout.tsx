@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import './globals.css'
-
+import { Toaster } from 'sonner';
 
 
 export const metadata: Metadata = {
@@ -19,6 +19,7 @@ export default function RootLayout({
       <body>
         <Navbar/>
         {children}
+        <Toaster richColors position="bottom-right" />
       </body>
     </html>
   )

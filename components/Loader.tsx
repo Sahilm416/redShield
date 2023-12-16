@@ -1,7 +1,18 @@
-export default function Loader (){
-    return(
-        <div>
-            <span className="loader"></span>
-        </div>
-    )
+export default function Loader() {
+  return (
+    <div className="lds-default">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
 }

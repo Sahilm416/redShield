@@ -16,13 +16,12 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Success from "./Success";
 import Loader from "./Loader";
-import Link from "next/link";
+import {toast} from 'sonner';
 
 export default function LoginForm() {
   const [inputUsernameErr, setInputUsernameErr] = useState<boolean>(true);
   const [inputPasswordErr, setInputPasswordErr] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
-  const [loginErr, setLoginErr] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
 
   const [user, setUser] = useState<string>("");
@@ -43,22 +42,23 @@ export default function LoginForm() {
     try {
       setLoading(true);
       //const checkMode = process.env.NODE_ENV === "development";
-      const apiURL = "https://redshield.vercel.app/api/service/login"
       const res = await LoginUser({
         username: user,
         password: pass,
-        url: apiURL,
       });
 
       if (res?.success) {
         setSuccess(true);
-        console.log(success)
+        
         setTimeout(() => {
             return router.push("/");
-        }, 2000);
+        }, 2500);
       }
-
-      setLoginErr(res?.message);
+      else {
+        toast.error(res?.message);
+      }
+      
+   
     } catch (error) {
       console.log(error);
     }
