@@ -113,10 +113,3 @@ export const ValidateAuthToken = async (token: string | undefined)=>{
  }
 
 
-
- export const getJWT = ()=>{
-     const key = process.env.JWT_SECRET_KEY!;
-     return key;
- }
-
-
