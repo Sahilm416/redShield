@@ -16,7 +16,7 @@ export function AuthPage() {
       defaultValue="login"
       className="sm:w-[350px] w-[400px] h-[400px] flex justify-center items-center flex-col"
     >
-      <TabsList className="grid w-full grid-cols-2">
+      <TabsList className="grid dark:bg-slate-900 w-full grid-cols-2">
         <TabsTrigger value="login">Login</TabsTrigger>
         <TabsTrigger value="register">Register</TabsTrigger>
       </TabsList>

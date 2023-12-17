@@ -11,24 +11,24 @@ const Hero = () => {
       <div className="boxpatternTop sm:w-[420px] w-[320px] h-[20px] border-l border-r border-t"></div>
       <div className="boxpatternTop sm:w-[460px] w-[360px] h-[20px] border-l border-r border-t"></div>
       <div className=" sm:w-[500px] w-[400px] border-t border-b flex border-[1px 1px 1px 1px] flex-col items-center justify-center">
-        <p className=" selection:bg-pink-500 selection:text-slate-200 sm:text-6xl text-5xl text-center font-roboto font-bold text-slate-700 p-3 ">
+        <p className=" selection:bg-pink-500 selection:text-slate-200 sm:text-6xl text-5xl text-center font-roboto font-bold dark:text-slate-200 text-slate-700 p-3 ">
           Redis based <br /> authentication
         </p>
         <div>
           <Link href={"/Auth"}>
-            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] bg-slate-900 my-5 rounded-lg">
+            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px my-5 rounded-lg">
               Start now
             </Button>{" "}
           </Link>
           <a target="blank" href="https://github.com/Sahilm416/redShield">
             <Button
               variant={"outline"}
-              className="mx-4 md:w-[200px] w-[160px] shadow-lg h-[45px] border-[1px] border-slate-300 my-5 rounded-lg"
+              className="mx-4 bg-transparent md:w-[200px] w-[160px] shadow-lg h-[45px] border-[1px] border-slate-300 my-5 rounded-lg"
             >
-              <p className=" text-slate-700"> github </p>
+              <p className="dark:text-slate-300 text-slate-700"> github </p>
               <div className="">
                 <svg
-                  className=" w-[40px]"
+                  className=" w-[40px] dark:fill-slate-100"
                   xmlns="http://www.w3.org/2000/svg"
                   x="0px"
                   y="0px"

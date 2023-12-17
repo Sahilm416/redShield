@@ -67,7 +67,7 @@ export default function LoginForm() {
       {success ? (
         <Success />
       ) : (
-        <Card className="sm:w-[350px] w-[400px] h-[370px] box-border shadow-2xl">
+        <Card className="sm:w-[350px] w-[400px] h-[370px] box-border dark:shadow-slate-200 dark:shadow-sm shadow-2xl">
           <CardHeader>
             <CardTitle>
               Login to <span className="text-red-500">Red</span>Shield

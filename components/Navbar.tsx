@@ -1,16 +1,19 @@
 import Link from "next/link";
-
+import { ThemeBtn } from "./ThemeBtn";
 const Navbar = () => {
   return (
-    <div className="w-full h-[60px] m-0 p-2 backdrop:blur-xl border-b border-slate-300 bg-[rgba(255,255,255,0.85)] fixed top-0 right-0 z-50">
+    <div className="w-full h-[60px] dark:border-slate-900  m-0 p-2 backdrop:blur-xl border-b border-slate-300 fixed top-0 right-0 z-50">
       <nav className="flex justify-between items-center">
         <Link
           href={"/"}
-          className="text-xl select-none cursor-pointer text-slate-900 font-sans font-bold ml-5 p-1"
+          className="text-xl select-none cursor-pointer dark:text-slate-200 text-slate-900 font-sans font-bold ml-5 p-1"
         >
           <span className="text-red-500">Red</span>Shield
         </Link>
-        <ul className="text-slate-800 flex gap-4 mr-6 justify-center items-center">
+        <ul className="text-slate-800 dark:text-slate-300 flex gap-4 mr-6 justify-center items-center">
+          <li>
+            <ThemeBtn/>
+          </li>
           <li>
             <Link href={"/"}>About</Link>
           </li>

@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import './globals.css'
 import { Lato } from 'next/font/google'
 import { Toaster } from 'sonner';
+import { ThemeProvider } from "@/components/theme-provider"
 
 const lato = Lato({
   subsets: ["latin"],
@@ -21,9 +22,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar/>
-        {children}
-        <Toaster richColors position="bottom-right" />
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar/>
+            {children}
+            <Toaster richColors position='bottom-right'/>
+          </ThemeProvider>
       </body>
     </html>
   )
