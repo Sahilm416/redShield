@@ -34,5 +34,5 @@ export default async function middleWare(request: NextRequest) {
 }
 
 export const config = {
-  match: ["/Auth", "/Dashboard"],
-};
+    matcher: ["/Auth", "/Dashboard"],
+  }
