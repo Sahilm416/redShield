@@ -82,6 +82,10 @@ export const LoginSuccess = async (data: {username: string , password: string })
     };
   } catch (error) {
     console.log("Error setting token: " + error);
+    return {
+      status: false,
+      message: "token not set during login " + error,
+    }
   }
 };
 
