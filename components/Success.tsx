@@ -1,7 +1,7 @@
 
 export default function Success() {
   return (
-    <div className=" absolute top-0 right-0 z-20 w-full h-screen flex flex-col justify-center items-center dark:bg-[rgb(18,18,18)]">
+    <div className=" absolute top-0 right-0 z-20 w-full h-screen flex flex-col justify-center items-center bg-white dark:bg-[rgb(18,18,18)]">
       <div className="success-animation">
         <svg
           className="checkmark"
