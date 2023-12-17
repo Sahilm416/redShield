@@ -1,4 +1,4 @@
-# 🚀 Auth<span style="color: red;">Redis</span>: Elevate Your Authentication Experience!
+# 🚀 Red<span style="color: red;">Shield</span>: Elevate Your Authentication Experience!
 
 ## ⚡ Turbocharged Authentication - Unleash the Speed!
 
