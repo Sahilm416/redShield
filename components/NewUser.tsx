@@ -17,14 +17,14 @@ export function NewUser({username} : {username: string}) {
       }
   return (
     <Card className="sm:w-[350px] w-[400px] h-[370px] flex flex-col justify-center items-center shadow-2xl">
-      <CardHeader>
-        <CardTitle>Accout Created <span className="text-green-700">Successfully</span></CardTitle>
+      <CardHeader className=" w-full">
+        <CardTitle>Account Created <span className="text-green-700">Successfully</span></CardTitle>
         <CardDescription>try logging in to your created account</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className=" w-full">
         <form>
           <div className="grid w-full items-center gap-4">
-            <p className=" text-xl text-slate-800">Hey, <span className="text-red-700">{username}</span></p>
+            <p className=" text-xl dark:text-slate-300 text-slate-800">Hey, <span className="text-red-700">{username}</span></p>
             <p className=" text-sm text-slate-500">You have successfully created the redshield account <br /> try login with your credentials</p>
           </div>
         </form>
