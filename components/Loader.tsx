@@ -1,18 +1,18 @@
 export default function Loader() {
   return (
     <div className="lds-default">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
+      <div className=" dark:bg-black bg-white"></div>
     </div>
   );
 }

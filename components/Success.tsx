@@ -1,7 +1,7 @@
 
 export default function Success() {
   return (
-    <div className=" absolute top-0 right-0 z-20 w-full h-screen flex flex-col justify-center items-center bg-white">
+    <div className=" absolute top-0 right-0 z-20 w-full h-screen flex flex-col justify-center items-center dark:bg-[rgb(18,18,18)]">
       <div className="success-animation">
         <svg
           className="checkmark"
@@ -9,7 +9,7 @@ export default function Success() {
           viewBox="0 0 52 52"
         >
           <circle
-            className="checkmark__circle"
+            className="checkmark__circle dark:fill-[rgb(18,18,18)] fill-white"
             cx="26"
             cy="26"
             r="25"

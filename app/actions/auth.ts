@@ -1,5 +1,7 @@
 "use server";
-import { cookies } from "next/headers";
+import { setCookie,getCookie } from 'cookies-next';
+import { cookies } from 'next/headers';
+const { sign, verify } = require("jsonwebtoken");
 
 export const LoginUser = async (data: {
   username: string;
@@ -65,14 +67,56 @@ export const registerUser = async (data: {
   }
 };
 
-export const LoginSuccess = async () => {
-  const cookiStore = cookies();
-  const cookie = cookiStore.set("auth_token", "12345" , {
-    httpOnly: true
-  });
+export const LoginSuccess = async (data: {username: string , password: string }) => {
 
-  return {
-    status: true,
-    message: "cookies set successfully",
-  };
+  try {
+    const token = sign(
+      { username: data.username , password: data.password },
+      process.env.JWT_SECRET_KEY!
+    );
+
+    setCookie('_auth_token',token , {cookies});
+    return {
+      status: true,
+      message: "cookies set successfully",
+    };
+  } catch (error) {
+    console.log("Error setting token: " + error);
+  }
 };
+
+
+export const ValidateAuthToken = async (token: string | undefined)=>{
+     
+    if(!token){
+     return {
+       status: false,
+       message: "session token not found"
+     }
+    }
+ 
+    try {
+     //const verifyToken = verify(token.key, process.env.JWT_SECRET_KEY!);
+     return {
+       status: true,
+       message: "token is valid"
+     }
+ 
+    } catch (error) {
+     console.log("error verifying token: " + error);
+ 
+     return {
+       status: false,
+       message: "token signature invalid"
+     }
+    }
+ }
+
+
+
+ export const getJWT = ()=>{
+     const key = process.env.JWT_SECRET_KEY!;
+     return key;
+ }
+
+

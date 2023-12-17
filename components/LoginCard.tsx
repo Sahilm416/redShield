@@ -11,14 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { LoginUser } from "@/app/actions/auth";
+import { LoginSuccess, LoginUser } from "@/app/actions/auth";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Success from "./Success";
 import Loader from "./Loader";
 import { toast } from "sonner";
-import { LoginSuccess } from "@/app/actions/auth";
-import { json } from "stream/consumers";
 export default function LoginForm() {
   const [inputUsernameErr, setInputUsernameErr] = useState<boolean>(true);
   const [inputPasswordErr, setInputPasswordErr] = useState<boolean>(true);
@@ -49,25 +47,13 @@ export default function LoginForm() {
 
       if (res?.success) {
         setSuccess(true);
-         try {
-          const data = await LoginSuccess();
-          const res = await fetch("/AuthSuccess",{
-            next:{revalidate: 0},
-            method:'POST',
-            headers:{
-              'Content-Type': 'application/json',
-               
-            },
-            body: JSON.stringify({
-              'name': "cool"
-            })
-          })
-         } catch (error) {
-          
-         }
+        const res = await LoginSuccess({username: user , password: pass});
+        if(!res?.status) {
+             window.location.reload();
+        }
         setTimeout(() => {
-          return router.push("/");
-        }, 2500);
+          return router.push("/Dashboard");
+        }, 1200); 
       } else {
         toast.error(res?.message);
       }

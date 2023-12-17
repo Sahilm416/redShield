@@ -1,19 +1,38 @@
-import React from 'react'
 import { NextRequest, NextResponse } from "next/server";
-import { cookies , headers } from 'next/headers'
-import Footer from "./components/Footer";
+import { getCookie } from "cookies-next";
+import { cookies } from "next/headers";
+import { ValidateAuthToken } from "./app/actions/auth";
+//for some reason importing this causes error so instead of import we use require
+const { sign, verify } = require("jsonwebtoken");
+export const revalidate = 0;
+export default async function middleWare(request: NextRequest) {
+  const cookie = getCookie("_auth_token", { cookies });
+  const res = await ValidateAuthToken(cookie);
+  
+  const url = request.nextUrl.clone();
+  
 
-
-export default async function middkeWare(request: NextRequest) {
-
-    const cookieStore = cookies()
-    const cookie = cookieStore.get('auth_token')
-    console.log(cookie);
-    const url = request.nextUrl.clone()
-    url.pathname = '/Test'
-    return NextResponse.redirect(url)
+   if(url.pathname === "/Auth"){
+    if(res.status){
+        
+        url.pathname = "/Dashboard";
+        return NextResponse.redirect(url);
+    }else{
+        return NextResponse.next();
+    }
+   }
+   if(url.pathname === "/Dashboard"){
+    if(res.status){
+        console.log("request granted");
+        return NextResponse.next();
+    }else{
+        url.pathname = "/Auth";
+        return NextResponse.redirect(url);
+    }
+   }
+   return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/AuthSuccess'],
-  }
+  match: ["/Auth", "/Dashboard"],
+};
