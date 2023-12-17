@@ -48,9 +48,8 @@ export default function LoginForm() {
       if (res?.success) {
         setSuccess(true);
         const res = await LoginSuccess({username: user , password: pass});
-        console.log(res);
         if(!res?.status) {
-            // window.location.reload();
+           return window.location.reload();
         }
         setTimeout(() => {
           return router.push("/Dashboard");
