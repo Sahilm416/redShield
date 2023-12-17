@@ -17,7 +17,8 @@ import { useRouter } from "next/navigation";
 import Success from "./Success";
 import Loader from "./Loader";
 import { toast } from "sonner";
-
+import { LoginSuccess } from "@/app/actions/auth";
+import { json } from "stream/consumers";
 export default function LoginForm() {
   const [inputUsernameErr, setInputUsernameErr] = useState<boolean>(true);
   const [inputPasswordErr, setInputPasswordErr] = useState<boolean>(true);
@@ -48,7 +49,22 @@ export default function LoginForm() {
 
       if (res?.success) {
         setSuccess(true);
-
+         try {
+          const data = await LoginSuccess();
+          const res = await fetch("/AuthSuccess",{
+            next:{revalidate: 0},
+            method:'POST',
+            headers:{
+              'Content-Type': 'application/json',
+               
+            },
+            body: JSON.stringify({
+              'name': "cool"
+            })
+          })
+         } catch (error) {
+          
+         }
         setTimeout(() => {
           return router.push("/");
         }, 2500);
