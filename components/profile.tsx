@@ -50,7 +50,7 @@ export function Profile() {
             <span>Profile</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-       
+
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={async()=>{
               await LogUserOut();
