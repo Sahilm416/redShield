@@ -6,14 +6,11 @@ export default async function middleWare(request: NextRequest) {
   const cookie = getCookie("_auth_token", { cookies }) as string;
 
  
-  try {
-    const response = await valToken(cookie);
- 
+  const response = await valToken(cookie);
+  console.log("api response: ", response);
   if (request.url.includes("/Auth")) {
     if (response.status) {
-      const redUrl = request.nextUrl.clone();
-      redUrl.pathname = "/Dashboard"
-      return NextResponse.redirect(redUrl);
+      return NextResponse.redirect("https://redshield.vercel.app/Dashboard");
     } else {
       return NextResponse.next();
     }
@@ -22,14 +19,9 @@ export default async function middleWare(request: NextRequest) {
     if (response.status) {
       return NextResponse.next();
     } else {
-        const redUrl = request.nextUrl.clone();
-      redUrl.pathname = "/Auth"
-      return NextResponse.redirect(redUrl);
+        
+      return NextResponse.redirect("https://redshield.vercel.app/Auth");
     }
-  }
-  } catch (error) {
-    console.log(error);
-    return NextResponse.next();
   }
   return NextResponse.next();
 }
