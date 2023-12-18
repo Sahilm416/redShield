@@ -6,7 +6,8 @@ export default async function middleWare(request: NextRequest) {
   const cookie = getCookie("_auth_token", { cookies }) as string;
 
  
-  const response = await valToken(cookie);
+  try {
+    const response = await valToken(cookie);
  
   if (request.url.includes("/Auth")) {
     if (response.status) {
@@ -25,6 +26,10 @@ export default async function middleWare(request: NextRequest) {
       redUrl.pathname = "/Auth"
       return NextResponse.redirect(redUrl);
     }
+  }
+  } catch (error) {
+    console.log(error);
+    return NextResponse.next();
   }
   return NextResponse.next();
 }
