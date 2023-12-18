@@ -1,10 +1,11 @@
-"use client";
 import Link from "next/link";
 import { ThemeBtn } from "./ThemeBtn";
 import { Profile } from "./profile";
+import { LoggedUser } from "@/app/actions/auth";
+const Navbar = async () => {
+  const res = await LoggedUser();
 
-const Navbar = () => {
-
+  
   return (
     <div className="w-full flex justify-center items-center h-[60px] dark:border-slate-900  m-0 p-2 backdrop:blur-xl border-b border-slate-300 fixed top-0 right-0 z-50">
       <nav className="flex justify-between items-center w-[800px] min-w-[350px]">
@@ -16,7 +17,7 @@ const Navbar = () => {
         </Link>
         <div className=" flex gap-10 pr-5">
           <ThemeBtn/>
-          <Profile/>
+          <Profile logged={!res.status} />
         </div>
       </nav>
     </div>
