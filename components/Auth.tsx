@@ -4,6 +4,8 @@ import LoginCard from "./LoginCard";
 import RegisterCard from "./RegisterCard";
 import { useEffect } from "react";
 import { toast } from "sonner";
+
+export const dynamic = 'force-dynamic'
 export function AuthPage() {
   useEffect(() => {
     toast.message("Login with your redshield account", {

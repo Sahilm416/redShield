@@ -100,7 +100,7 @@ export const ValidateAuthToken = async (token: string | undefined)=>{
     }
  
     try {
-     //const verifyToken = verify(token.key, process.env.JWT_SECRET_KEY!);
+     const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
      return {
        status: true,
        message: "token is valid"

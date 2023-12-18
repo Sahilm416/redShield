@@ -15,11 +15,11 @@ const Hero = () => {
           Redis based <br /> authentication
         </p>
         <div>
-          <Link href={"/Auth"}>
+          <a href={"/Auth"}>
             <Button className="mx-4 md:w-[200px] w-[160px] h-[45px my-5 rounded-lg">
               Start now
             </Button>{" "}
-          </Link>
+          </a>
           <a target="blank" href="https://github.com/Sahilm416/redShield">
             <Button
               variant={"outline"}
