@@ -123,3 +123,35 @@ export const LogOut = async ()=>{
       message: "logged out successfully"
     }
 }
+
+//return the details of logged in user
+
+export const LoggedUser = async ()=>{
+    
+  const token = getCookie("_auth_token" ,{cookies})
+  if(!token){
+   return {
+     status: false,
+     message: "session token not found",
+     data: null
+   }
+  }
+
+  try {
+   const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+   return {
+     status: true,
+     message: "token is valid",
+     data : verifyToken
+   }
+
+  } catch (error) {
+   console.log("error verifying token: " + error);
+
+   return {
+     status: false,
+     message: "token signature invalid",
+     data: null
+   }
+  }
+}

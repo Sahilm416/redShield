@@ -2,7 +2,7 @@
 import {
   LogOut,
   User,
-  
+  Menu
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -23,16 +23,16 @@ export function Profile() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant={'outline'} size={'icon'}>
-           <User />
+           <Menu/>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-56 mr-7">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
+            <span>email</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
 
