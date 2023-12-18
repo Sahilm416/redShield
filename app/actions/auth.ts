@@ -1,5 +1,5 @@
 "use server";
-import { setCookie,getCookie } from 'cookies-next';
+import { setCookie,getCookie, deleteCookie } from 'cookies-next';
 import { cookies } from 'next/headers';
 const { sign, verify } = require("jsonwebtoken");
 
@@ -116,4 +116,10 @@ export const ValidateAuthToken = async (token: string | undefined)=>{
     }
  }
 
-
+export const LogOut = async ()=>{
+    const res = deleteCookie("_auth_token" , { cookies })
+    return {
+      status: true,
+      message: "logged out successfully"
+    }
+}
