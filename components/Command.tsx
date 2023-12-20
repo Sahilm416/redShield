@@ -1,11 +1,24 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/m9CHVzTW4Ja
- */
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+"use client"
+import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export default function Component() {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyToClipboard = () => {
+    const commandToCopy = 'npm install redshield'; 
+  
+    navigator.clipboard.writeText(commandToCopy)
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 3000);
+      })
+      .catch((error) => {
+        console.error('Unable to copy to clipboard', error);
+      });
+  };
+  
   return (
     <div className="w-full flex justify-center">
       <Card className="rounded shadow-lg sm:min-w-[550px] min-w-[350px] dark:bg-[rgb(18,18,18)] dark:border-slate-300 bg-[#f8f9fa] p-4">
@@ -14,16 +27,17 @@ export default function Component() {
             <TerminalIcon className="w-6 h-6 dark:text-slate-300 text-gray-700" />
             <p className="text-sm dark:text-slate-300 text-gray-700 font-mono">npm install redshield</p>
           </div>
-          <Button className="p-2" variant="ghost">
+          <Button className="p-2" variant="ghost" onClick={handleCopyToClipboard}>
             <CopyIcon className="w-4 h-4 dark:text-slate-300 text-gray-700" />
           </Button>
         </div>
-        <p className="text-xs text-gray-500 dark:text-slate-300 mt-2">Command copied</p>
+        <p className={`text-xs h-[5px] text-gray-500 dark:text-slate-300 transition-opacity duration-500 ${isCopied ? 'opacity-100' : 'opacity-0'}`}>
+          Command copied
+        </p>
       </Card>
     </div>
   );
 }
-
 function CopyIcon(props : any) {
   return (
     <svg

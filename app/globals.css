@@ -12,6 +12,10 @@ body {
 body::-webkit-scrollbar{
   width: 0px;
 }
+.nav {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
 .boxpatternTop {
   border-radius: 5px 5px 0px 0px;
 }

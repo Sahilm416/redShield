@@ -1,10 +1,5 @@
-"use client"
-import {
-  LogOut,
-  User,
-  Menu,
-  ScrollText
-} from "lucide-react";
+"use client";
+import { LogOut, User, Menu, ScrollText } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,40 +11,49 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 import { LogOut as LogUserOut } from "@/app/actions/auth";
-
-export function Profile({logged}:{logged: boolean}) {
+import { useRouter } from "next/navigation";
+export function Profile({ logged }: { logged: boolean }) {
+  const router = useRouter();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={'outline'} size={'icon'}>
-           <Menu/>
+        <Button variant={"outline"} size={"icon"}>
+          <Menu />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 sm:mr-0 mr-7">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem disabled={logged}>
-            <User className="mr-2 h-4 w-4" />
-            <span>dashboard</span>
-          </DropdownMenuItem>
+          <Link href={"/Dashboard"} passHref>
+            <DropdownMenuItem disabled={logged}>
+              <span className=" flex justify-center items-center">
+                <User className="mr-2 h-4 w-4" />
+                <span>dashboard</span>
+              </span>
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
-        <DropdownMenuItem disabled={logged} onClick={async()=>{
-              await LogUserOut();
-              return window.location.reload();
-          }}>
+        <DropdownMenuItem
+          disabled={logged}
+          onClick={async () => {
+            await LogUserOut();
+            return window.location.reload();
+          }}
+        >
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
         </DropdownMenuItem>
-        <DropdownMenuSeparator/>
+        <DropdownMenuSeparator />
         <DropdownMenuLabel>Resources</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <ScrollText className="mr-2 h-4 w-4"/>
+            <ScrollText className="mr-2 h-4 w-4" />
             <span>docs</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
