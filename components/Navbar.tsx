@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ThemeBtn } from "./ThemeBtn";
-import { Profile } from "./Profile";
+import { MenuBar } from "./Menu";
 import { LoggedUser } from "@/app/actions/auth";
 import { Shield } from "lucide-react";
 const Navbar = async () => {
@@ -21,7 +21,7 @@ const Navbar = async () => {
         </Link>
         <div className=" flex gap-10 pr-5">
           <ThemeBtn />
-          <Profile logged={!res.status} />
+          <MenuBar logged={!res.status} />
         </div>
       </nav>
     </div>

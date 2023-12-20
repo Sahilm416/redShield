@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { LogOut as LogUserOut } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
-export function Profile({ logged }: { logged: boolean }) {
+export function MenuBar({ logged }: { logged: boolean }) {
   const router = useRouter();
   return (
     <DropdownMenu>
