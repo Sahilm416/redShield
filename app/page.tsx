@@ -1,9 +1,9 @@
-import Hero from "@/components/Hero";
+import HomeComponent from "@/components/Home";
 
 const Home = () => {
   return (
       <div className="">
-          <Hero/>
+          <HomeComponent/>
       </div>
     )
 }

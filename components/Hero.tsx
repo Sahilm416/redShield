@@ -1,12 +1,11 @@
 "use client";
 import { Button } from "./ui/button";
-import Link from "next/link";
+
 
 const Hero = () => {
-  const token = "rgcr464647xrgrgcvrc";
 
   return (
-    <div className="w-full h-[100vh] flex flex-col justify-center items-center p-5">
+    <div className="w-full flex flex-col justify-center items-center sm:p-5 sm:mb-0 px-1 pb-5 mb-5">
       <div className="boxpatternTop sm:w-[400px] w-[300px] h-[20px] border-l border-r border-t"></div>
       <div className="boxpatternTop sm:w-[420px] w-[320px] h-[20px] border-l border-r border-t"></div>
       <div className="boxpatternTop sm:w-[460px] w-[360px] h-[20px] border-l border-r border-t"></div>
