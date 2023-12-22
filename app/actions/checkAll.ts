@@ -15,7 +15,7 @@ export const checkAllValues = async (data: {
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
-    if (!emailRegex.test(data.email) || data.email.length >= 25) {
+    if (!emailRegex.test(data.email) || data.email.length >= 40) {
       return { status: false, message: "invalid email" };
     }
   
