@@ -3,7 +3,7 @@ import ProjectList from "@/components/ProjectList";
 import { LoggedUser } from "../actions/auth";
 export const dynamic = 'force-dynamic'
 export default async function DashboardPage() {
-  const user = await LoggedUser();
+  const user = await LoggedUser() as { data: { username : string , isVerified : boolean}};
   /*interface resData {
     status: boolean,
     message: string,
