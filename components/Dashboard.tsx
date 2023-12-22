@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -38,11 +38,18 @@ export default async function Component({
                     <AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col">
-                    <h2 className="text-lg font-semibold pl-1">{username}</h2>  
+                    <h2 className="text-lg font-semibold pl-1">{username}</h2>
                     <div className="flex items-center space-x-1">
                       {isVerified ? (
-                        <Badge className="bg-green-700 text-white hover:bg-green-800" variant={"default"}>verified</Badge>
-                      ): (<Badge variant={"destructive"}>not verified</Badge>)}
+                        <Badge
+                          className="bg-green-700 text-white hover:bg-green-800"
+                          variant={"default"}
+                        >
+                          verified
+                        </Badge>
+                      ) : (
+                        <Badge variant={"destructive"}>not verified</Badge>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -52,9 +59,14 @@ export default async function Component({
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>Edit profile</DropdownMenuItem>
-                  <DropdownMenuItem onClick={async () => {
-            await LogOut();
-            return window.location.reload();}}>Logout</DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      await LogOut();
+                      return window.location.reload();
+                    }}
+                  >
+                    Logout
+                  </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>

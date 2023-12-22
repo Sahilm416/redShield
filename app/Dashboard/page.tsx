@@ -11,18 +11,20 @@ export default async function DashboardPage() {
       username: string , email: string , isVerified: boolean
     }
   }
-  const user : resData = await LoggedUser() as resData;
+  const user = await LoggedUser() as resData;
 
   if(!user.status){
+    
     return(
-      <div>
+      <div className="h-screen w-full flex justify-center items-center">
         <h1>Session Expired Login again</h1>
+        <p>{user.message}</p>
       </div>
     )
   }
   return (
     <div className="w-full flex flex-col justify-start items-center mt-[100px]">
-        <DashboardComponent username={user.data.username} isVerified={user.data?.isVerified} />
+        <DashboardComponent username={user.data.username} isVerified={user.data.isVerified} />
         <ProjectList/>
     </div>
   );
