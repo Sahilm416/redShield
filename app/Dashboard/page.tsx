@@ -3,16 +3,9 @@ import ProjectList from "@/components/ProjectList";
 import { LoggedUser } from "../actions/auth";
 
 
-interface resData {
-  status: boolean,
-  message: string,
-  data : {
-    username: string , email: string , isVerified: boolean
-  }
-}
 export default async function DashboardPage() {
 
-  const user = await LoggedUser() as resData;
+  const user = await LoggedUser();
 
 
   if(!user.status){
