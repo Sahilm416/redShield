@@ -13,7 +13,7 @@ import {
 import { CardHeader, Card } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { LogOut } from "@/app/actions/auth";
-export default async function Component({
+export default function Component({
   username,
   isVerified,
   profile_picture,

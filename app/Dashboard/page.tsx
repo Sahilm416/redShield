@@ -1,7 +1,7 @@
 import DashboardComponent from "@/components/Dashboard";
 import ProjectList from "@/components/ProjectList";
 import { LoggedUser } from "../actions/auth";
-export const dynamic = 'force-dynamic'
+
 
 interface resData {
   status: boolean,
