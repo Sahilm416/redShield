@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ThemeBtn } from "./ThemeBtn";
 import { MenuBar } from "./Menu";
 import { LoggedUser } from "@/app/actions/auth";
-import { Shield } from "lucide-react";
 const Navbar = async () => {
   const res = await LoggedUser();
 

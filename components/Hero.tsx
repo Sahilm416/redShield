@@ -9,11 +9,11 @@ const Hero = () => {
       <div className="boxpatternTop sm:w-[400px] w-[300px] h-[20px] border-l border-r border-t"></div>
       <div className="boxpatternTop sm:w-[420px] w-[320px] h-[20px] border-l border-r border-t"></div>
       <div className="boxpatternTop sm:w-[460px] w-[360px] h-[20px] border-l border-r border-t"></div>
-      <div className=" sm:w-[500px] w-[400px] border-t border-b flex border-[1px 1px 1px 1px] flex-col items-center justify-center">
+      <div className=" sm:w-[500px] w-[350px] border-t border-b flex border-[1px 1px 1px 1px] flex-col items-center justify-center">
         <p className=" selection:bg-pink-500 selection:text-slate-200 sm:text-6xl text-5xl text-center font-roboto font-bold dark:text-slate-200 text-slate-700 p-3 ">
           Redis based <br /> authentication
         </p>
-        <div>
+        <div className="max-w-[460px] min-w[300px] flex">
           <a href={"/Auth"}>
             <Button className="mx-4 md:w-[200px] w-[160px] h-[45px my-5 rounded-lg">
               Start now
