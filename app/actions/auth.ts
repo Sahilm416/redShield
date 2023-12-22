@@ -127,7 +127,6 @@ export const LogOut = async ()=>{
 //return the details of logged in user
 
 export const LoggedUser = async ()=>{
-    
   const token = getCookie("_auth_token" ,{cookies})
   if(!token){
    return {
@@ -139,8 +138,9 @@ export const LoggedUser = async ()=>{
 
   try {
    const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
-   const key = await db.get("API_KEY:"+process.env.RED_KEY!) as { project_id: string , project_name: string};
-   const user = await db.get(key.project_id+":=>"+verifyToken.username) as {username: string , email: string , isVerified: boolean};
+   const key = await db.get("API_KEY:" + process.env.RED_KEY!) as { project_id: string , project_name: string};
+   const user = await db.get(key.project_id+":=>" + verifyToken.username) as {username: string , email: string , isVerified: boolean};
+
    return {
      status: true,
      message: "token is valid",
