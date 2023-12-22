@@ -84,7 +84,7 @@ export default function LoginForm() {
                   autoFocus
                   onChange={(e) => {
                     setUser(e.target.value.trim());
-                    if (e.target.value.trim().length > 3) {
+                    if (e.target.value.trim().length > 2) {
                       setInputUsernameErr(false);
                     } else {
                       setInputUsernameErr(true);

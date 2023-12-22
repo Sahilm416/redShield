@@ -1,13 +1,11 @@
 "use client"
-import { NewUser } from "@/components/NewUser"
-import Footer from "@/components/Footer"
-
+import { EmailTemplate } from "@/components/emailTemplates/verifyMail";
 const Page = () => {
 
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
-       
+       <EmailTemplate firstName="sahil" project_name="auth" link="abc"/>
     </div>
   )
 }
