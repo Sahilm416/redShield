@@ -5,7 +5,7 @@ import { getUser } from "../actions/auth";
 
 export default async function DashboardPage() {
 
-  const user = await getUser() as {status:boolean,username : string, email : string, isVerified : boolean};
+  const user = {status:true ,username : "sahil", email : "sahil@vercel.com", isVerified : true};
   
 
   if(!user.status){
