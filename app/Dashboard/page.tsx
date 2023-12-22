@@ -3,8 +3,8 @@ import ProjectList from "@/components/ProjectList";
 import { LoggedUser } from "../actions/auth";
 export const dynamic = 'force-dynamic'
 export default async function DashboardPage() {
-
-  interface resData {
+  const user = await LoggedUser();
+  /*interface resData {
     status: boolean,
     message: string,
     data : {
@@ -16,12 +16,12 @@ export default async function DashboardPage() {
   if(!user.status){
     
     return(
-      <div className="h-screen w-full flex justify-center items-center">
+      <div className="h-screen w-full flex flex-col justify-center items-center">
         <h1>Session Expired Login again</h1>
         <p>{user.message}</p>
       </div>
     )
-  }
+  }*/
   return (
     <div className="w-full flex flex-col justify-start items-center mt-[100px]">
         <DashboardComponent username={user.data.username} isVerified={user.data.isVerified} />
