@@ -1,6 +1,7 @@
 "use server";
-import { setCookie,getCookie, deleteCookie } from 'cookies-next';
-import { cookies } from 'next/headers';
+import { db } from "@/utils/database/db";
+import { setCookie, getCookie, deleteCookie } from "cookies-next";
+import { cookies } from "next/headers";
 const { sign, verify } = require("jsonwebtoken");
 
 export const LoginUser = async (data: {
@@ -67,15 +68,17 @@ export const registerUser = async (data: {
   }
 };
 
-export const LoginSuccess = async (data: {username: string , password: string }) => {
-
+export const LoginSuccess = async (data: {
+  username: string;
+  password: string;
+}) => {
   try {
     const token = sign(
-      { username: data.username , password: data.password },
+      { username: data.username, password: data.password },
       process.env.JWT_SECRET_KEY!
     );
 
-    setCookie('_auth_token',token , {cookies});
+    setCookie("_auth_token", token, { cookies });
     return {
       status: true,
       message: "cookies set successfully",
@@ -85,73 +88,96 @@ export const LoginSuccess = async (data: {username: string , password: string })
     return {
       status: false,
       message: "token not set during login " + error,
-    }
+    };
   }
 };
 
-
-export const ValidateAuthToken = async (token: string | undefined)=>{
-     
-    if(!token){
-     return {
-       status: false,
-       message: "session token not found"
-     }
-    }
- 
-    try {
-     const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
-     return {
-       status: true,
-       message: "token is valid"
-     }
- 
-    } catch (error) {
-     console.log("error verifying token: " + error);
- 
-     return {
-       status: false,
-       message: "token signature invalid"
-     }
-    }
- }
-
-export const LogOut = async ()=>{
-    const res = deleteCookie("_auth_token" , { cookies })
+export const ValidateAuthToken = async (token: string | undefined) => {
+  if (!token) {
     return {
-      status: true,
-      message: "logged out successfully"
-    }
-}
-
-//return the details of logged in user
-
-export const LoggedUser = async ()=>{
-    
-  const token = getCookie("_auth_token" ,{cookies})
-  if(!token){
-   return {
-     status: false,
-     message: "session token not found",
-     data: null
-   }
+      status: false,
+      message: "session token not found",
+    };
   }
 
   try {
-   const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
-   return {
-     status: true,
-     message: "token is valid",
-     data : verifyToken
-   }
-
+    const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+    return {
+      status: true,
+      message: "token is valid",
+    };
   } catch (error) {
-   console.log("error verifying token: " + error);
+    console.log("error verifying token: " + error);
 
-   return {
-     status: false,
-     message: "token signature invalid",
-     data: null
-   }
+    return {
+      status: false,
+      message: "token signature invalid",
+    };
   }
-}
+};
+
+export const LogOut = async () => {
+  const res = deleteCookie("_auth_token", { cookies });
+  return {
+    status: true,
+    message: "logged out successfully",
+  };
+};
+
+//return the details of logged in user
+
+export const LoggedUser = async () => {
+  const token = getCookie("_auth_token", { cookies });
+  if (!token) {
+    return {
+      status: false,
+      message: "session token not found",
+    };
+  }
+
+  try {
+    const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+    return {
+      status: true,
+      message: "token is valid",
+      data: verifyToken.username,
+    };
+  } catch (error) {
+    console.log("error verifying token: " + error);
+
+    return {
+      status: false,
+      message: "token signature invalid",
+    };
+  }
+};
+
+//get info
+
+export const getUser = async () => {
+  const isValid = await LoggedUser();
+
+  if (isValid.status) {
+    const key = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
+      project_id: string;
+      project_name: string;
+    };
+
+    const user = await db.get(key.project_id + ":=>" + isValid.data) as {username: string , email: string, isVerified: boolean};
+
+    return (
+      {
+        status: true,
+        username : user.username,
+        email: user.email,
+        isVerified : user.isVerified
+      }
+    )
+  } else {
+    return (
+      {
+        status: false,
+      }
+    )
+  }
+};
