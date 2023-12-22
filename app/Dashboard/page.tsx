@@ -3,7 +3,7 @@ import ProjectList from "@/components/ProjectList";
 import { LoggedUser } from "../actions/auth";
 export const dynamic = 'force-dynamic'
 export default async function DashboardPage() {
-  const user = await LoggedUser() as { data: { username : string , isVerified : boolean}};
+  //const user = await LoggedUser() as { data: { username : string , isVerified : boolean}};
   /*interface resData {
     status: boolean,
     message: string,
@@ -24,7 +24,7 @@ export default async function DashboardPage() {
   }*/
   return (
     <div className="w-full flex flex-col justify-start items-center mt-[100px]">
-        <DashboardComponent username={user.data.username} isVerified={user.data.isVerified} />
+        <DashboardComponent username={"sahil"} isVerified={true} />
         <ProjectList/>
     </div>
   );
