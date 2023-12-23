@@ -1,6 +1,5 @@
-"use client";
 import { Button } from "./ui/button";
-
+import Link from "next/link";
 
 const Hero = () => {
 
@@ -14,11 +13,11 @@ const Hero = () => {
           Redis based <br /> authentication
         </p>
         <div className="max-w-[460px] min-w[300px] flex">
-          <a href={"/Auth"}>
+          <Link href={"/Auth"}>
             <Button className="mx-4 md:w-[200px] w-[160px] h-[45px my-5 rounded-lg">
               Start now
             </Button>{" "}
-          </a>
+          </Link>
           <a target="blank" href="https://github.com/Sahilm416/redShield">
             <Button
               variant={"outline"}
