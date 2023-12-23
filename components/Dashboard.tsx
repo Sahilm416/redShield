@@ -13,6 +13,8 @@ import {
 import { CardHeader, Card } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { LogOut } from "@/app/actions/auth";
+import { useRouter } from "next/navigation";
+
 export default function Component({
   username,
   isVerified,
@@ -22,6 +24,7 @@ export default function Component({
   isVerified: boolean;
   profile_picture?: string;
 }) {
+  const router = useRouter();
   return (
     <>
       <div className="w-full flex justify-between max-w-[750px] px-2 space-y-5 select-none">
@@ -62,7 +65,7 @@ export default function Component({
                   <DropdownMenuItem
                     onClick={async () => {
                       await LogOut();
-                      return window.location.reload();
+                      router.push('/Auth');
                     }}
                   >
                     Logout
