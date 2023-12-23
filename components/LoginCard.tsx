@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import Success from "./Success";
 import Loader from "./Loader";
 import { toast } from "sonner";
+
 export default function LoginForm() {
   const [inputUsernameErr, setInputUsernameErr] = useState<boolean>(true);
   const [inputPasswordErr, setInputPasswordErr] = useState<boolean>(true);
@@ -27,7 +28,6 @@ export default function LoginForm() {
   const [pass, setPass] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
-
   useEffect(() => {
     if (!inputPasswordErr && !inputUsernameErr) {
       setIsDisabled(false);
@@ -39,7 +39,6 @@ export default function LoginForm() {
   const Login = async () => {
     try {
       setLoading(true);
-      //const checkMode = process.env.NODE_ENV === "development";
       const res = await LoginUser({
         username: user,
         password: pass,
@@ -47,13 +46,14 @@ export default function LoginForm() {
 
       if (res?.success) {
         setSuccess(true);
-        const res = await LoginSuccess({username: user , password: pass});
-        if(!res?.status) {
-           return window.location.reload();
+        const res = await LoginSuccess({ username: user, password: pass });
+        if (!res.status) {
+          return window.location.reload();
         }
+
         setTimeout(() => {
           return router.push("/Dashboard");
-        }, 1200); 
+        }, 1200);
       } else {
         toast.error(res?.message);
       }
@@ -120,7 +120,11 @@ export default function LoginForm() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col items-center justify-between">
-            <Button disabled={isDisabled || loading} onClick={Login} className="w-full">
+            <Button
+              disabled={isDisabled || loading}
+              onClick={Login}
+              className="w-full"
+            >
               {loading ? <Loader /> : "Log in"}
             </Button>
           </CardFooter>

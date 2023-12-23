@@ -42,6 +42,7 @@ export function MenuBar({ logged }: { logged: boolean }) {
           disabled={logged}
           onClick={async () => {
             await LogUserOut();
+            
             return window.location.reload();
           }}
         >

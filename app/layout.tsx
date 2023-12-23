@@ -4,7 +4,7 @@ import './globals.css'
 import { Lato } from 'next/font/google'
 import { Toaster } from 'sonner';
 import { ThemeProvider } from "@/components/theme-provider"
-
+import ReduxProvider from '@/redux/provider';
 const lato = Lato({
   subsets: ["latin"],
   weight: '700'
@@ -22,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <ThemeProvider
+         <ReduxProvider>
+         <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
@@ -32,6 +33,7 @@ export default function RootLayout({
             {children}
             <Toaster richColors position='bottom-right'/>
           </ThemeProvider>
+         </ReduxProvider>
       </body>
     </html>
   )

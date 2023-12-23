@@ -4,6 +4,9 @@ import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import { cookies } from "next/headers";
 const { sign, verify } = require("jsonwebtoken");
 
+
+let username : string ;
+
 export const LoginUser = async (data: {
   username: string;
   password: string;
@@ -23,6 +26,7 @@ export const LoginUser = async (data: {
     });
     const response = await res.json();
     if (response.message === "Login Success") {
+      username = data.username.toLowerCase();
       return {
         success: true,
         message: response.message,
@@ -155,29 +159,19 @@ export const LoggedUser = async () => {
 //get info
 
 export const getUser = async () => {
-  const isValid = await LoggedUser();
 
-  if (isValid.status) {
+
     const key = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
       project_id: string;
       project_name: string;
-    };
+    }
 
-    const user = await db.get(key.project_id + ":=>" + isValid.data) as {username: string , email: string, isVerified: boolean};
+    const user = await db.get(key.project_id + ":=>" + username) as {username: string , email: string, isVerified: boolean};
 
     return (
       {
         status: true,
-        username : user.username,
-        email: user.email,
-        isVerified : user.isVerified
+       data: user
       }
     )
-  } else {
-    return (
-      {
-        status: false,
-      }
-    )
-  }
 };
