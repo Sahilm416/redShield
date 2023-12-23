@@ -27,22 +27,23 @@ export function MenuBar({ logged }: { logged: boolean }) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href={"/Dashboard"} passHref>
-            <DropdownMenuItem disabled={logged}>
+          <DropdownMenuItem disabled={logged}>
+            <Link href={"/Dashboard"} passHref>
               <span className=" flex justify-center items-center">
                 <User className="mr-2 h-4 w-4" />
                 <span>dashboard</span>
               </span>
-            </DropdownMenuItem>
-          </Link>
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
         <DropdownMenuItem
+          className=" cursor-pointer"
           disabled={logged}
           onClick={async () => {
             await LogUserOut();
-            
+
             return window.location.reload();
           }}
         >

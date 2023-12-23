@@ -4,8 +4,7 @@ import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import { cookies } from "next/headers";
 const { sign, verify } = require("jsonwebtoken");
 
-
-let username : string ;
+let username: string;
 
 export const LoginUser = async (data: {
   username: string;
@@ -160,18 +159,24 @@ export const LoggedUser = async () => {
 
 export const getUser = async () => {
 
+  const decodedUser = await LoggedUser();
+  
+  try {
+    const res = await fetch("https://redshield.vercel.app/api/service/getUser", {
+      method: "POST",
+      headers: {
+        append: "application/json",
+        Authorization: process.env.RED_KEY!,
+      },
+      body: JSON.stringify({
+        username: "redkey",
+      }),
+    });
+    const response = await res.json();
 
-    const key = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
-      project_id: string;
-      project_name: string;
-    }
+    return response;
 
-    const user = await db.get(key.project_id + ":=>" + username) as {username: string , email: string, isVerified: boolean};
-
-    return (
-      {
-        status: true,
-       data: user
-      }
-    )
+  } catch (error) {
+    console.log("something went wrong", error);
+  }
 };
