@@ -158,10 +158,9 @@ export const LoggedUser = async () => {
 //get info
 
 export const getUser = async () => {
-
-  const decodedUser = await LoggedUser();
-  
   try {
+    const decodedUser = await LoggedUser();
+    console.log(decodedUser.data)
     const res = await fetch("https://redshield.vercel.app/api/service/getUser", {
       method: "POST",
       headers: {
@@ -169,12 +168,16 @@ export const getUser = async () => {
         Authorization: process.env.RED_KEY!,
       },
       body: JSON.stringify({
-        username: "redkey",
+        username: decodedUser.data,
       }),
     });
     const response = await res.json();
 
-    return response;
+    return ({
+      username: response.username,
+      email: response.email,
+      isVerified: response.isVerified,
+    });
 
   } catch (error) {
     console.log("something went wrong", error);
