@@ -27,7 +27,7 @@ export default function Component({
   const router = useRouter();
   return (
     <>
-      <div className="w-full flex justify-between max-w-[750px] px-2 space-y-5 select-none">
+      <div className="w-full flex justify-between max-w-[750px] sm:px-2 px-7  space-y-5 select-none">
         <Card className="w-full h-[70px] p-0 flex justify-start border-none shadow-none items-center">
           <CardHeader className="flex items-center p-0 justify-between">
             <DropdownMenu>

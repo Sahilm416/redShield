@@ -6,7 +6,7 @@ export default async function DashboardPage() {
   const res = await LoggedUser();
  
   return (
-    <div className="w-full flex flex-col justify-start items-center mt-[100px]">
+    <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
         <DashboardComponent username={res.data} isVerified={res.status} />
         <ProjectList/>
     </div>
