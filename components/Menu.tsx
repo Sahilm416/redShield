@@ -43,8 +43,7 @@ export function MenuBar({ logged }: { logged: boolean }) {
           disabled={logged}
           onClick={async () => {
             await LogUserOut();
-
-            return window.location.reload();
+            router.push('/Auth');
           }}
         >
           <LogOut className="mr-2 h-4 w-4" />

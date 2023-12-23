@@ -8,7 +8,6 @@ export default async function DashboardPage() {
   return (
     <div className="w-full flex flex-col justify-start items-center mt-[100px]">
         <DashboardComponent username={res.data} isVerified={res.status} />
-        
         <ProjectList/>
     </div>
   );
