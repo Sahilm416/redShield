@@ -184,6 +184,7 @@ export const getUserInfo = async ({username}: {username: string}) => {
 
 
     const res = await fetch("https://redshield.vercel.app/api/service/getUser", {
+      next:{revalidate:0},
       method: "POST",
       headers: {
         append: "application/json",
@@ -195,7 +196,7 @@ export const getUserInfo = async ({username}: {username: string}) => {
     });
     
     const response : userInfoStructure = await res.json();
-    console.log("response is ",response);
+    console.log("response projects  are : ",response.projects);
     return ({
       username: response.user.username,
       email: response.user.email,
