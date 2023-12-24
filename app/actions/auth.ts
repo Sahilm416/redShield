@@ -4,8 +4,6 @@ import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import { cookies } from "next/headers";
 const { sign, verify } = require("jsonwebtoken");
 
-
-
 export const LoginUser = async (data: {
   username: string;
   password: string;
@@ -25,7 +23,6 @@ export const LoginUser = async (data: {
     });
     const response = await res.json();
     if (response.message === "Login Success") {
-
       return {
         success: true,
         message: response.message,
@@ -71,9 +68,7 @@ export const registerUser = async (data: {
   }
 };
 
-export const LoginSuccess = async (data: {
-  username: string;
-}) => {
+export const LoginSuccess = async (data: { username: string }) => {
   try {
     const token = sign(
       { username: data.username },
@@ -154,17 +149,17 @@ export const LoggedUser = async () => {
   }
 };
 
-//get info
+//get user information and project information
 
 type Project = {
   name: string;
   description: string;
-  created_at: string; // You might want to use a Date type here based on your needs
+  created_at: string;
   key: string;
 };
 
 type User = {
-  creation_date: string; // You might want to use a Date type here based on your needs
+  creation_date: string;
   email: string;
   isVerified: boolean;
   password: string;
@@ -178,32 +173,32 @@ type userInfoStructure = {
   projects: Project[];
 };
 
-
-export const getUserInfo = async ({username}: {username: string}) => {
+export const getUserInfo = async ({ username }: { username: string }) => {
   try {
+    const res = await fetch(
+      "https://redshield.vercel.app/api/service/getUser",
+      {
+        next: { revalidate: 0 },
+        method: "POST",
+        headers: {
+          append: "application/json",
+          Authorization: process.env.RED_KEY!,
+        },
+        body: JSON.stringify({
+          username: username.toLowerCase(),
+        }),
+      }
+    );
 
-
-    const res = await fetch("https://redshield.vercel.app/api/service/getUser", {
-      next:{revalidate:20},
-      method: "POST",
-      headers: {
-        append: "application/json",
-        Authorization: process.env.RED_KEY!,
-      },
-      body: JSON.stringify({
-        username: username.toLowerCase(),
-      }),
-    });
-    
-    const response : userInfoStructure = await res.json();
-    return ({
+    const response: userInfoStructure = await res.json();
+    return {
       username: response.user.username,
       email: response.user.email,
       isVerified: response.user.isVerified,
-      profile_picture: response.user.profile_picture || 'https://github.com/sahilm416.png',
-      projects: response.projects
-    });
-
+      profile_picture:
+        response.user.profile_picture || "https://github.com/sahilm416.png",
+      projects: response.projects,
+    };
   } catch (error) {
     console.log("something went wrong", error);
   }
