@@ -28,8 +28,10 @@ export default function DashboardPage() {
   }, []);
 
   const loadData = async () => {
-    const res = await LoggedUser();
+   const res = await LoggedUser();
+   console.log("res is " + res);
     const user = await getUserInfo({ username: res.data });
+    console.log("user is " + user);
     setData(user);
   };
 
