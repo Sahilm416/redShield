@@ -46,7 +46,7 @@ export default function LoginForm() {
 
       if (res?.success) {
         setSuccess(true);
-        const res = await LoginSuccess({ username: user, password: pass });
+        const res = await LoginSuccess({ username: user});
         if (!res.status) {
           return window.location.reload();
         }
@@ -125,7 +125,7 @@ export default function LoginForm() {
               onClick={Login}
               className="w-full"
             >
-              {loading ? <Loader /> : "Log in"}
+              {loading ? <Loader darkOn="bg-black" darkOff="bg-white" /> : "Log in"}
             </Button>
           </CardFooter>
         </Card>

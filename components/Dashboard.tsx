@@ -14,36 +14,58 @@ import { CardHeader, Card } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { LogOut } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { getUser } from "@/app/actions/auth";
+import ProjectList from "./ProjectList";
+import NotVerified from "./NotVerifield";
+type userData = {
+  username: string;
+  email: string;
+  isVerified: boolean;
+  profile_picture?: string;
+};
 
 export default function Component({
   username,
-  isVerified,
   profile_picture,
 }: {
   username: string;
-  isVerified: boolean;
   profile_picture?: string;
 }) {
   const router = useRouter();
+  const [data, setData] = useState<userData>();
+  useEffect(() => {
+    loadData();
+    return () => {};
+  }, []);
+
+  const loadData = async () => {
+    const res = (await getUser({ username: username })) as userData;
+    setData(res);
+  };
+  if (!data) {
+    return (
+      <div className=" text-center text-md dark:text-slate-300 text-slate-800">
+        <p>Loading data...</p>
+      </div>
+    );
+  }
   return (
     <>
-      <div className="w-full flex justify-between max-w-[750px] sm:px-2 px-7  space-y-5 select-none">
+      <div className="w-full flex justify-between max-w-[750px] sm:px-2 px-7 mb-5  space-y-5 select-none">
         <Card className="w-full h-[70px] p-0 flex justify-start border-none shadow-none items-center">
           <CardHeader className="flex items-center p-0 justify-between">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <div className="flex items-center space-x-1 cursor-pointer">
                   <Avatar className="w-12 h-12">
-                    <AvatarImage
-                      alt="User Name"
-                      src="https://github.com/shadcn.png"
-                    />
-                    <AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>
+                    <AvatarImage alt="User Name" src={data.profile_picture} />
+                    <AvatarFallback>{data.username[0].toUpperCase()}</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col">
                     <h2 className="text-lg font-semibold pl-1">{username}</h2>
                     <div className="flex items-center space-x-1">
-                      {isVerified ? (
+                      {data.isVerified ? (
                         <Badge
                           className="bg-green-700 text-white hover:bg-green-800"
                           variant={"default"}
@@ -65,7 +87,7 @@ export default function Component({
                   <DropdownMenuItem
                     onClick={async () => {
                       await LogOut();
-                      router.push('/Auth');
+                      router.push("/Auth");
                     }}
                   >
                     Logout
@@ -76,9 +98,10 @@ export default function Component({
           </CardHeader>
         </Card>
         <div>
-          <Button variant={"outline"}>Add new project</Button>
+          <Button className=" disabled:cursor-not-allowed" disabled={!data.isVerified} variant={"outline"}>Add new project</Button>
         </div>
       </div>
+      {data.isVerified ? <ProjectList/> : <NotVerified/>}
     </>
   );
 }

@@ -73,11 +73,10 @@ export const registerUser = async (data: {
 
 export const LoginSuccess = async (data: {
   username: string;
-  password: string;
 }) => {
   try {
     const token = sign(
-      { username: data.username, password: data.password },
+      { username: data.username },
       process.env.JWT_SECRET_KEY!
     );
 
@@ -168,7 +167,7 @@ export const getUser = async ({username}: {username: string}) => {
         Authorization: process.env.RED_KEY!,
       },
       body: JSON.stringify({
-        username: username,
+        username: username.toLowerCase(),
       }),
     });
     const response = await res.json();
@@ -177,6 +176,7 @@ export const getUser = async ({username}: {username: string}) => {
       username: response.username,
       email: response.email,
       isVerified: response.isVerified,
+      profile_picture: response.profile_picture || 'https://github.com/sahilm416.png',
     });
 
   } catch (error) {
