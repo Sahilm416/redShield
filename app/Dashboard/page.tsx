@@ -33,7 +33,7 @@ export default function DashboardPage() {
 
 
     const user = await getUserInfo({ username: "redkey" });
-    console.log("user is " + user);
+    console.log("user is " + user?.projects);
   
   };
 
