@@ -22,23 +22,15 @@ type userData = {
 };
 
 export default function DashboardPage() {
-  const [data, setData] = useState<userData>();
-  const [res, setREs] = useState<
-    { status: boolean; message: string; data: string } | undefined
-  >();
+
   useEffect(() => {
     loadData();
   }, []);
 
   const loadData = async () => {
-    const res = (await LoggedUser()) as {
-      status: boolean;
-      message: string;
-      data: string;
-    };
+    const res = await LoggedUser();
     console.log("res is " + res.data);
 
-    setREs(res);
 
     const user = await getUserInfo({ username: "redkey" });
     console.log("user is " + user);
@@ -47,7 +39,7 @@ export default function DashboardPage() {
 
   return (
     <p className="mt-[200px]">
-      token data is {res?.data} and user email is {data?.email}
+        hiii
     </p>
 
     /* <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
