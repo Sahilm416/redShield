@@ -41,7 +41,8 @@ export default function DashboardPage() {
   };
 
   return (
-    <p className="mt-[200px]">token data is {res?.data}</p>
+    <p className="mt-[200px]">token data is {res?.data} and user email is {data?.email}</p>
+   
    /* <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
       {!data ? (
         "Loading..."
