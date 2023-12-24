@@ -23,6 +23,7 @@ type userData = {
 
 export default function DashboardPage() {
 
+  const [data , setData] = useState<userData>();
   useEffect(() => {
     loadData();
   }, []);
@@ -36,15 +37,14 @@ export default function DashboardPage() {
     console.log("user is " + user?.projects);
     console.log("user email is " + user.email);
     console.log("user name is " + user.username);
+    setData(user);
   
   };
 
   return (
-    <p className="mt-[200px]">
-        hiii
-    </p>
-
-    /* <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
+   
+ 
+    <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
       {!data ? (
         "Loading..."
       ) : (
@@ -58,6 +58,6 @@ export default function DashboardPage() {
           {data.isVerified ? (<ProjectList projects={data.projects}  />) : (<NotVerified />)}
         </>
       )}
-    </div> */
+    </div> 
   );
 }

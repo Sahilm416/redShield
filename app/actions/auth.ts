@@ -196,7 +196,6 @@ export const getUserInfo = async ({username}: {username: string}) => {
     });
     
     const response : userInfoStructure = await res.json();
-    console.log("response projects  are : ",response.projects);
     return ({
       username: response.user.username,
       email: response.user.email,
