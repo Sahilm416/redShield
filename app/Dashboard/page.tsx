@@ -4,7 +4,6 @@ import { LoggedUser, getUserInfo } from "../actions/auth";
 import { useEffect, useState } from "react";
 import ProjectList from "@/components/ProjectList";
 import NotVerified from "@/components/NotVerifield";
-import { P } from "@upstash/redis/zmscore-b6b93f14";
 
 type Project = {
   name: string;
@@ -22,28 +21,18 @@ type userData = {
 };
 
 export default function DashboardPage() {
-
-  const [data , setData] = useState<userData>();
+  const [data, setData] = useState<userData>();
   useEffect(() => {
     loadData();
   }, []);
 
   const loadData = async () => {
     const res = await LoggedUser();
-    console.log("res is " + res.data);
-
-
-    const user = await getUserInfo({ username: "redkey" }) as userData;
-    console.log("user is " + user?.projects);
-    console.log("user email is " + user.email);
-    console.log("user name is " + user.username);
+    const user = await getUserInfo({ username: res.data }) as userData;
     setData(user);
-  
   };
 
   return (
-   
- 
     <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
       {!data ? (
         "Loading..."
@@ -55,9 +44,13 @@ export default function DashboardPage() {
             isVerified={data?.isVerified}
             profile_picture={data?.profile_picture}
           />
-          {data.isVerified ? (<ProjectList projects={data.projects}  />) : (<NotVerified />)}
+          {data.isVerified ? (
+            <ProjectList projects={data.projects} />
+          ) : (
+            <NotVerified />
+          )}
         </>
       )}
-    </div> 
+    </div>
   );
 }
