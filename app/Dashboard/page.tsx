@@ -40,9 +40,9 @@ export default function DashboardPage() {
 
     setREs(res);
 
-    const user = await getUserInfo({ username: res?.data });
+    const user = await getUserInfo({ username: "redkey" });
     console.log("user is " + user);
-    setData(user);
+  
   };
 
   return (
