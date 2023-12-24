@@ -17,6 +17,7 @@ export const POST = async (request: Request) => {
       const projects = await db.get(
         res.project_id + ":" + data.username + ":projects"
       );
+
       return NextResponse.json({ user, projects }, { status: 200 });
     } catch (err) {
       console.log("something went wrong", err);

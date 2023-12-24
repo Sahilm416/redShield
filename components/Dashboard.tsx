@@ -1,4 +1,4 @@
-"use client";
+//"use client";
 import Profile from "@/components/Profile";
 import { getUserInfo } from "../app/actions/auth";
 import { useEffect, useState } from "react";
@@ -20,8 +20,8 @@ type userData = {
   projects: Project[];
 };
 
-export default function DashboardComponent({username}:{username:string}) {
-  const [data, setData] = useState<userData>();
+export default async function DashboardComponent({username}:{username:string}) {
+  /* const [data, setData] = useState<userData>();
   useEffect(() => {
     loadData();
   }, []);
@@ -29,12 +29,13 @@ export default function DashboardComponent({username}:{username:string}) {
   const loadData = async () => {
     const user = await getUserInfo({ username: username }) as userData;
     setData(user);
-  };
+  }; */
+  const data = await getUserInfo({ username: username});
 
   return (
     <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
       {!data ? (
-        "Loading..."
+        "Error loading data"
       ) : (
         <>
           <Profile

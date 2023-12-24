@@ -10,15 +10,15 @@ type Project = {
 export default function ProjectList({projects}:{projects: Project[]} ) {
   return (
     <main className="w-full max-w-[750px] grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2 sm:px-2 px-4">
-      {projects.map((project) => (
-        <>
-          <Card className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
+      {projects.map((project,i) => (
+        
+          <Card key={i} className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
             <CardHeader>
               <CardTitle>{project.name}</CardTitle>
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
           </Card>
-        </>
+    
       ))}
     </main>
   );
