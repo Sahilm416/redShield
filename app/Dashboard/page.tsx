@@ -32,9 +32,10 @@ export default function DashboardPage() {
     console.log("res is " + res.data);
 
 
-    const user = await getUserInfo({ username: "redkey" });
+    const user = await getUserInfo({ username: "redkey" }) as userData;
     console.log("user is " + user?.projects);
-    console.log("user is " + user);
+    console.log("user email is " + user.email);
+    console.log("user name is " + user.username);
   
   };
 

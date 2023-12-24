@@ -193,9 +193,9 @@ export const getUserInfo = async ({username}: {username: string}) => {
         username: username.toLowerCase(),
       }),
     });
-  
+    
     const response : userInfoStructure = await res.json();
-    return response;
+    console.log("response is ",response);
     return ({
       username: response.user.username,
       email: response.user.email,
