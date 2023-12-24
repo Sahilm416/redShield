@@ -1,10 +1,11 @@
 import { LoggedUser } from "../actions/auth";
 import DashboardComponent from "@/components/Dashboard";
-export default async function (){
+export default async function () {
   const res = await LoggedUser();
-  return(
+  console.log("logged in", res.data);
+  return (
     <>
-      <DashboardComponent username={res.data}/>
+      <p className="mt-[200px]">token username is {res.data}</p>
     </>
-  )
+  );
 }
