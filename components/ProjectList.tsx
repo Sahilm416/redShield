@@ -1,51 +1,25 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-  CardFooter,
-} from "./ui/card";
+import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
 
-export default function ProjectList() {
+type Project = {
+  name: string;
+  description: string;
+  created_at: string;
+  key: string;
+};
+
+export default function ProjectList({projects}:{projects: Project[]} ) {
   return (
     <main className="w-full max-w-[750px] grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2 sm:px-2 px-4">
-      <Card className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
-        <CardHeader>
-          <CardTitle>Project 1</CardTitle>
-          <CardDescription>info about projet</CardDescription>
-        </CardHeader>
-      </Card>
-      <Card className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
-        <CardHeader>
-          <CardTitle>Project 1</CardTitle>
-          <CardDescription>info about projet</CardDescription>
-        </CardHeader>
-      </Card>
-      <Card className="bg-slate-300  m-3 dark:bg-black dark:text-slate-300 text-slate-800">
-        <CardHeader>
-          <CardTitle>Project 1</CardTitle>
-          <CardDescription>info about projet</CardDescription>
-        </CardHeader>
-      </Card>
-      <Card className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
-        <CardHeader>
-          <CardTitle>Project 1</CardTitle>
-          <CardDescription>info about projet</CardDescription>
-        </CardHeader>
-      </Card>
-      <Card className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
-        <CardHeader>
-          <CardTitle>Project 1</CardTitle>
-          <CardDescription>info about projet</CardDescription>
-        </CardHeader>
-      </Card>
-      <Card className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
-        <CardHeader>
-          <CardTitle>Project 1</CardTitle>
-          <CardDescription>info about projet</CardDescription>
-        </CardHeader>
-      </Card>
+      {projects.map((project) => (
+        <>
+          <Card className="bg-slate-300 m-3 dark:bg-black dark:text-slate-300 text-slate-800">
+            <CardHeader>
+              <CardTitle>{project.name}</CardTitle>
+              <CardDescription>{project.description}</CardDescription>
+            </CardHeader>
+          </Card>
+        </>
+      ))}
     </main>
   );
 }

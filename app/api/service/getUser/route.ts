@@ -12,7 +12,18 @@ export const POST = async (request: Request) => {
   if (!res) {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   } else {
-    const user = await db.get(res.project_id + ":=>" + data.username);
-    return NextResponse.json(user);
+    try {
+      const user = await db.get(res.project_id + ":=>" + data.username);
+      const projects = await db.get(
+        res.project_id + ":" + data.username + ":projects"
+      );
+      return NextResponse.json({ user, projects }, { status: 200 });
+    } catch (err) {
+      console.log("something went wrong", err);
+      return NextResponse.json(
+        { message: "database call failed" },
+        { status: 404 }
+      );
+    }
   }
 };

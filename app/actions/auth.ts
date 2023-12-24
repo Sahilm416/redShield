@@ -156,7 +156,30 @@ export const LoggedUser = async () => {
 
 //get info
 
-export const getUser = async ({username}: {username: string}) => {
+type Project = {
+  name: string;
+  description: string;
+  created_at: string; // You might want to use a Date type here based on your needs
+  key: string;
+};
+
+type User = {
+  creation_date: string; // You might want to use a Date type here based on your needs
+  email: string;
+  isVerified: boolean;
+  password: string;
+  uid: string;
+  username: string;
+  profile_picture?: string;
+};
+
+type userInfoStructure = {
+  user: User;
+  projects: Project[];
+};
+
+
+export const getUserInfo = async ({username}: {username: string}) => {
   try {
 
 
@@ -170,13 +193,14 @@ export const getUser = async ({username}: {username: string}) => {
         username: username.toLowerCase(),
       }),
     });
-    const response = await res.json();
+    const response : userInfoStructure = await res.json();
 
     return ({
-      username: response.username,
-      email: response.email,
-      isVerified: response.isVerified,
-      profile_picture: response.profile_picture || 'https://github.com/sahilm416.png',
+      username: response.user.username,
+      email: response.user.email,
+      isVerified: response.user.isVerified,
+      profile_picture: response.user.profile_picture || 'https://github.com/sahilm416.png',
+      projects: response.projects
     });
 
   } catch (error) {

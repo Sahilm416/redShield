@@ -14,10 +14,7 @@ import { CardHeader, Card } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { LogOut } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { getUser } from "@/app/actions/auth";
-import ProjectList from "./ProjectList";
-import NotVerified from "./NotVerifield";
+
 type userData = {
   username: string;
   email: string;
@@ -27,29 +24,12 @@ type userData = {
 
 export default function Component({
   username,
+  isVerified,
+  email,
   profile_picture,
-}: {
-  username: string;
-  profile_picture?: string;
-}) {
+}: userData) {
   const router = useRouter();
-  const [data, setData] = useState<userData>();
-  useEffect(() => {
-    loadData();
-    return () => {};
-  }, []);
 
-  const loadData = async () => {
-    const res = (await getUser({ username: username })) as userData;
-    setData(res);
-  };
-  if (!data) {
-    return (
-      <div className=" text-center text-md dark:text-slate-300 text-slate-800">
-        <p>Loading data...</p>
-      </div>
-    );
-  }
   return (
     <>
       <div className="w-full flex justify-between max-w-[750px] sm:px-2 px-7 mb-5  space-y-5 select-none">
@@ -59,13 +39,13 @@ export default function Component({
               <DropdownMenuTrigger asChild>
                 <div className="flex items-center space-x-1 cursor-pointer">
                   <Avatar className="w-12 h-12">
-                    <AvatarImage alt="User Name" src={data.profile_picture} />
-                    <AvatarFallback>{data.username[0].toUpperCase()}</AvatarFallback>
+                    <AvatarImage alt="User Name" src={profile_picture} />
+                    <AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col">
                     <h2 className="text-lg font-semibold pl-1">{username}</h2>
                     <div className="flex items-center space-x-1">
-                      {data.isVerified ? (
+                      {isVerified ? (
                         <Badge
                           className="bg-green-700 text-white hover:bg-green-800"
                           variant={"default"}
@@ -98,10 +78,15 @@ export default function Component({
           </CardHeader>
         </Card>
         <div>
-          <Button className=" disabled:cursor-not-allowed" disabled={!data.isVerified} variant={"outline"}>Add new project</Button>
+          <Button
+            className=" disabled:cursor-not-allowed"
+            disabled={!isVerified}
+            variant={"outline"}
+          >
+            Add new project
+          </Button>
         </div>
       </div>
-      {data.isVerified ? <ProjectList/> : <NotVerified/>}
     </>
   );
 }
