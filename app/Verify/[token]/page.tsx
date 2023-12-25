@@ -43,19 +43,19 @@ export default function VerifyUserPage({
       ) : (
         <div className="flex flex-col justify-center items-center space-y-8 h-screen bg-gray-100 dark:bg-[rgb(18,18,18)] p-10">
           {res.status ? (
-            <Card className="p-8 w-full max-w-md mx-auto bg-white dark:bg-[rgb(18,18,18)] rounded-xl shadow-lg space-y-6">
+            <Card className="p-8 w-full max-w-md mx-auto bg-white dark:bg-black rounded-xl shadow-lg space-y-6">
               <CardHeader className="flex items-center justify-center">
                 <Avatar className="h-12 w-12">
-                  <AvatarImage alt="User Avatar" src={res.profile_picture} />
+                  <AvatarImage className=" object-cover" alt="User Avatar" src={res.profile_picture} />
                   <AvatarFallback>{res.username[0].toUpperCase()}</AvatarFallback>
                 </Avatar>
                 <CardDescription>{res.username}</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <h2 className="text-3xl font-semibold text-gray-800">
+                <h2 className="text-3xl font-semibold dark:text-slate-300 text-gray-800">
                   Email Verified
                 </h2>
-                <p className="text-gray-600 mt-2">
+                <p className="text-gray-600 dark:text-slate-500 mt-2">
                   Your email address has been successfully verified.
                 </p>
                 <Badge className="items-center mt-6" variant="outline">
