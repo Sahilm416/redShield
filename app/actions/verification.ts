@@ -16,6 +16,7 @@ export const sendVerification = async ({
     const res = await fetch(
       "https://redshield.vercel.app/api/service/sendVerification",
       {
+        next:{revalidate:0},
         method: "POST",
         headers: {
           "Content-Type": "application/json",
