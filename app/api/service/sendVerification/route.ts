@@ -35,7 +35,7 @@ export const POST = async (request: Request) => {
     }
     try {
 
-      const token = sign({username :data.username, email:data.email},process.env.JWT_SECRET_KEY!);
+      const token = sign({username :data.username },process.env.JWT_SECRET_KEY!);
       console.log(token);
       await db.set(res.project_id+":"+requestedUser.username+":"+"verify",token,{ex:600});
       const transporter = nodemailer.createTransport({

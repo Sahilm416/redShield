@@ -82,6 +82,7 @@ export const emailTemplate = async ({ name, verificationLink,project }: { name: 
           </header>
           <p>Hello <span class="name">${name}</span>,</p>
           <p>Welcome to <span class="name">${project}</span> ! To complete your registration, please click the following link:</p>
+          <p>(link is valid for 10 min only)</p>
           <a href="${verificationLink}" target="_blank">
               <button>Verify Email</button>
           </a>

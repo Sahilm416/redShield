@@ -102,6 +102,7 @@ export const ValidateAuthToken = async (token: string | undefined) => {
     return {
       status: true,
       message: "token is valid",
+      data: verifyToken.username
     };
   } catch (error) {
     console.log("error verifying token: " + error);
