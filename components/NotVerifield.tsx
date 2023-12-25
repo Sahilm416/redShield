@@ -1,10 +1,18 @@
-
+"use client"
 import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card"
-import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
+import { sendVerification } from "@/app/actions/verification"
 import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
 
-export default function NotVerified() {
+export default function NotVerified({username,email}:{username: string , email:string}) {
+  const verifyEmail = async ()=>{
+    const res = await sendVerification({username: username , email: email  });
+    console.log("res: " + res);
+    if(res){
+      toast.success("verification email sent successfully");
+    }
+  }
+
   return (
     <div className="w-full max-w-[740px] grid place-items-center sm:border border-slate-200 dark:border-slate-700 rounded-sm px-7 sm:px-2 py-10">
      <Card className="mx-auto sm:text-center max-w-[400px] sm:border-none ">
@@ -19,7 +27,7 @@ export default function NotVerified() {
             To access all features, please verify your email address. Click the button below to send the verification
             email.
           </p>
-          <Button className="w-full">Verify Email</Button>
+          <Button onClick={verifyEmail} className="w-full">Verify Email</Button>
         </div>
       </CardContent>
     </Card> 

@@ -41,7 +41,7 @@ export default async function DashboardComponent({
           {data.isVerified ? (
             <ProjectList projects={data.projects} />
           ) : (
-            <NotVerified />
+            <NotVerified username={data.username} email={data.email} />
           )}
         </>
       )}

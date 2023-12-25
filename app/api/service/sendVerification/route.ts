@@ -28,6 +28,7 @@ export const POST = async (request : Request)=>{
             subject: 'Verify email',
             react: EmailTemplate({ firstName: requestedUser.username,link: `${data.url_endpoint+"/"+requestedUser}`, project_name:res.project_name}),
           });
+          console.log(sentData)
           
           return NextResponse.json({sentData},{status:200})
         } catch (error) {
