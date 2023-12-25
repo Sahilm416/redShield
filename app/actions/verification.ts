@@ -9,7 +9,7 @@ export const sendVerification = async ({
 }) => {
   try {
     const res = await fetch(
-      "http://localhost:3000/api/service/sendVerification",
+      "https://redshield.vercel.app/api/service/sendVerification",
       {
         method: "POST",
         headers: {
@@ -19,16 +19,18 @@ export const sendVerification = async ({
         body: JSON.stringify({
           username: username,
           email: email,
-          endpoint: "http://localhost:3000/verify",
+          url_endpoint: "https://redshield.vercel.app/verify",
         }),
       }
     );
     const response = await res.json();
-    return {
-      status: true,
-      message: "verification sent successfully",
-    };
+    if (response)
+      return {
+        status: true,
+        message: "verification sent successfully",
+      };
   } catch (error) {
     console.log("error sending verification", error);
+    return null;
   }
 };

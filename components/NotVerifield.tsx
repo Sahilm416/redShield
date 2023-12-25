@@ -3,14 +3,22 @@ import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/com
 import { sendVerification } from "@/app/actions/verification"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
-
+import Loader from "./Loader"
+import { useState } from "react"
 export default function NotVerified({username,email}:{username: string , email:string}) {
+
+  const [loading , setLoading] = useState<boolean>();
+
   const verifyEmail = async ()=>{
-    const res = await sendVerification({username: username , email: email  });
+    setLoading(true);
+    const res = await sendVerification({username: username , email: email });
     console.log("res: " + res);
     if(res){
       toast.success("verification email sent successfully");
+    }else{
+      toast.error("something went wrong");
     }
+    setLoading(false);
   }
 
   return (
@@ -27,7 +35,11 @@ export default function NotVerified({username,email}:{username: string , email:s
             To access all features, please verify your email address. Click the button below to send the verification
             email.
           </p>
-          <Button onClick={verifyEmail} className="w-full">Verify Email</Button>
+          <Button disabled={loading} onClick={verifyEmail} className="w-full">
+            {
+              loading ? <Loader darkOn="bg-black" darkOff="bg-white"/> : "Send verification email"
+            }
+          </Button>
         </div>
       </CardContent>
     </Card> 
