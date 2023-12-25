@@ -45,7 +45,7 @@ export default function VerifyUserPage({
           {res.status ? (
             <Card className="p-8 w-full max-w-md mx-auto bg-white dark:bg-black rounded-xl shadow-lg space-y-6">
               <CardHeader className="flex items-center justify-center">
-                <Avatar className="h-12 w-12">
+                <Avatar className="h-[80px] w-[80px]">
                   <AvatarImage className=" object-cover" alt="User Avatar" src={res.profile_picture} />
                   <AvatarFallback>{res.username[0].toUpperCase()}</AvatarFallback>
                 </Avatar>

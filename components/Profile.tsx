@@ -38,8 +38,8 @@ export default function Component({
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <div className="flex items-center space-x-1 cursor-pointer">
-                  <Avatar className="w-12 h-12">
-                    <AvatarImage alt="User Name" src={profile_picture} />
+                  <Avatar className="w-[50px] h-[50px]">
+                    <AvatarImage className=" object-cover" alt="User Name" src={profile_picture} />
                     <AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col">
