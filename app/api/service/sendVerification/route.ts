@@ -12,13 +12,7 @@ interface reqBody {
   url_endpoint: string;
 }
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.MAIL_USER!,
-    pass: process.env.MAIL_PASS!,
-  },
-});
+
 
 export const POST = async (request: Request) => {
   const key = request.headers.get("authorization") as string;
@@ -44,6 +38,13 @@ export const POST = async (request: Request) => {
       const token = sign({username :data.username, email:data.email},process.env.JWT_SECRET_KEY!);
       console.log(token);
       await db.set(res.project_id+":"+requestedUser.username+":"+"verify",token,{ex:600});
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.MAIL_USER!,
+          pass: process.env.MAIL_PASS!,
+        },
+      });
       const mailOptions = {
         from: `${res.project_name} <redshield.vercel.app@gmail.com>`,
         to: data.email,
