@@ -9,7 +9,7 @@ export const LoginUser = async (data: {
   password: string;
 }) => {
   try {
-    const res = await fetch("http://localhost:3000/api/service/login", {
+    const res = await fetch("https://redshield.vercel.app/api/service/login", {
       next: { revalidate: 0 },
       method: "POST",
       headers: {
