@@ -45,7 +45,7 @@ export const registerUser = async (data: {
 }) => {
   try {
     const res = await fetch(
-      "http://redshield.vercel.app/api/service/register",
+      "https://redshield.vercel.app/api/service/register",
       {
         next: { revalidate: 0 },
         method: "POST",
