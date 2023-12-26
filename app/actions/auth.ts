@@ -1,5 +1,5 @@
 "use server";
-import { db } from "@/utils/database/db";
+
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import { cookies } from "next/headers";
 const { sign, verify } = require("jsonwebtoken");
@@ -45,7 +45,7 @@ export const registerUser = async (data: {
 }) => {
   try {
     const res = await fetch(
-      "https://redshield.vercel.app/api/service/register",
+      "http://redshield.vercel.app/api/service/register",
       {
         next: { revalidate: 0 },
         method: "POST",

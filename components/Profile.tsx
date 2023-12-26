@@ -79,6 +79,7 @@ export default function Component({
         </Card>
         <div>
           <Button
+            onClick={()=> router.push('/New')}
             className=" disabled:cursor-not-allowed"
             disabled={!isVerified}
             variant={"outline"}

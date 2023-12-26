@@ -45,7 +45,13 @@ export const POST = async (request: Request) => {
         profile_picture: data.profile_picture,
         creation_date: new Date(),
       });
-      const quickKey = await db.set(`${res.project_id +":->"+data.email}`,data.username)
+
+      //for quick search key
+      await db.set(`${res.project_id +":->"+data.email}`,data.username);
+      //initialize emoty project list
+      await db.set(res.project_id+":"+data.username+":projects" , []);
+
+
       return NextResponse.json({
         'status': true,
         'message': "profile created successfully"

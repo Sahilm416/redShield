@@ -3,7 +3,7 @@
 import { db } from "@/utils/database/db";
 import { ValidateAuthToken } from "./auth";
 
-const { sign, verify } = require("jsonwebtoken");
+const { verify } = require("jsonwebtoken");
 //action to send email verification using resend
 export const sendVerification = async ({
   username,
