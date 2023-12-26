@@ -127,7 +127,7 @@ export default function NewProject() {
           <Button
             onClick={createProject}
             disabled={loading}
-            className="w-[200px] ml-auto"
+            className="sm:w-[200px] sm:ml-auto w-full"
           >
             {loading ? (
               <Loader darkOn="bg-black" darkOff="bg-white" />
