@@ -84,7 +84,7 @@ export const LoginSuccess = async (data: { username: string }) => {
       secure: true,
       sameSite: true,
       httpOnly:true,
-      path:'/Auth',
+      path:'/',
     });
     return {
       status: true,
