@@ -1,7 +1,7 @@
 "use server";
 import { db } from "@/utils/database/db";
 import { getCookie } from "cookies-next";
-import { nanoid } from "nanoid";
+const { v4: uuidv4 } = require('uuid');
 import { cookies } from "next/headers";
 const { verify } = require("jsonwebtoken");
 
@@ -49,7 +49,7 @@ export const createNewProject = async ({
         {
           name: project_name,
           description: project_description,
-          key: nanoid(10),
+          key: uuidv4(),
         },
       ]
     );
