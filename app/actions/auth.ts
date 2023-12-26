@@ -74,8 +74,18 @@ export const LoginSuccess = async (data: { username: string }) => {
       { username: data.username },
       process.env.JWT_SECRET_KEY!
     );
-
-    setCookie("_auth_token", token, { cookies });
+    const date = new Date();
+    const time = Date.now() + 7 * 24 * 60 * 60 * 1000;
+    date.setTime(time);
+    console.log("time is " + time);
+    setCookie("_auth_token", token, {
+      cookies,
+      expires: date,
+      secure: true,
+      sameSite: true,
+      httpOnly:true,
+      path:'/Auth',
+    });
     return {
       status: true,
       message: "cookies set successfully",
@@ -102,7 +112,7 @@ export const ValidateAuthToken = async (token: string | undefined) => {
     return {
       status: true,
       message: "token is valid",
-      data: verifyToken.username
+      data: verifyToken.username,
     };
   } catch (error) {
     console.log("error verifying token: " + error);
