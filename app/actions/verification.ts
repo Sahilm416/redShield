@@ -2,8 +2,9 @@
 
 import { db } from "@/utils/database/db";
 import { ValidateAuthToken } from "./auth";
+import { setCookie } from "cookies-next";
 
-const { verify } = require("jsonwebtoken");
+const { sign,verify } = require("jsonwebtoken");
 //action to send email verification using resend
 export const sendVerification = async ({
   username,
@@ -79,7 +80,8 @@ export const verifyUser = async ({ token }: { token: string }) => {
         ...user,
         isVerified: true,
       });
-
+      const updatedToken = sign({username: user.username , isVerified: true }, process.env.JWT_SECRET_KEY!)
+      setCookie("_auth_token", updatedToken);
       return {
         status: true,
         message: "success",
