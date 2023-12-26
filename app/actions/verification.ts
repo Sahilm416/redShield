@@ -1,10 +1,9 @@
 "use server";
 
 import { db } from "@/utils/database/db";
-import { ValidateAuthToken } from "./auth";
 import { setCookie } from "cookies-next";
-
-const { sign,verify } = require("jsonwebtoken");
+import { cookies } from "next/headers";
+const { sign, verify } = require("jsonwebtoken");
 //action to send email verification using resend
 export const sendVerification = async ({
   username,
@@ -17,7 +16,7 @@ export const sendVerification = async ({
     const res = await fetch(
       "https://redshield.vercel.app/api/service/sendVerification",
       {
-        next:{revalidate:0},
+        next: { revalidate: 0 },
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,12 +65,12 @@ export const verifyUser = async ({ token }: { token: string }) => {
         key.project_id + ":" + data.username + ":verify"
       );
       if (!checkExpiry) {
-        console.log("invalid link")
+        console.log("invalid link");
         return {
           status: false,
           message: "invalid link",
           username: "",
-          profile_picture:""
+          profile_picture: "",
         };
       }
       const searchKey = key.project_id + ":=>" + data.username;
@@ -80,23 +79,34 @@ export const verifyUser = async ({ token }: { token: string }) => {
         ...user,
         isVerified: true,
       });
-      const updatedToken = sign({username: user.username , isVerified: true }, process.env.JWT_SECRET_KEY!)
-      setCookie("_auth_token", updatedToken);
+      const updatedToken = sign(
+        { username: user.username, isVerified: true },
+        process.env.JWT_SECRET_KEY!
+      );
+      const date = new Date();
+      const time = Date.now() + 7 * 24 * 60 * 60 * 1000;
+      date.setTime(time);
+      setCookie("_auth_token", updatedToken, {
+        cookies,
+        expires: date,
+        secure: true,
+        sameSite: true,
+        httpOnly: true,
+      });
       return {
         status: true,
         message: "success",
-        username : user.username,
-        profile_picture: user.profile_picture || ""
+        username: user.username,
+        profile_picture: user.profile_picture || "",
       };
-      
     }
   } catch (error) {
     console.log("error", error);
     return {
       status: false,
       message: "something went wrong",
-      username : "",
-      profile_picture:""
+      username: "",
+      profile_picture: "",
     };
   }
 };

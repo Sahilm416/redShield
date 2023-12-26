@@ -79,7 +79,7 @@ export const LoginSuccess = async (data: { username: string ,isVerified:boolean 
     const date = new Date();
     const time = Date.now() + 7 * 24 * 60 * 60 * 1000;
     date.setTime(time);
-    console.log("time is " + time);
+
     setCookie("_auth_token", token, {
       cookies,
       expires: date,
