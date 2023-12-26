@@ -60,9 +60,9 @@ export const createNewProject = async ({
 
       await db.set("API_KEY:"+projectTobeAdded.key, {
         project_name: projectTobeAdded.name,
-        project_id: projectTobeAdded.id
+        project_id: uuidv4()
       })  
-      
+
       return {
         status: true,
         message: "Project created successfully",
