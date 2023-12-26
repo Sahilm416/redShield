@@ -24,8 +24,7 @@ export const POST = async (request: Request) => {
         const isAuth = await bcrypt.compare(data.password, user.password);
         if (isAuth) {
           return NextResponse.json(
-            { message: "Login Success"},
-            { status: 200 }
+            { status:true ,message: "Login Success", data :{username: user.username, isVerified: user.isVerified}},
           );
         }
       }

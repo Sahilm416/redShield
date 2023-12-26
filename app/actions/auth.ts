@@ -9,7 +9,7 @@ export const LoginUser = async (data: {
   password: string;
 }) => {
   try {
-    const res = await fetch("https://redshield.vercel.app/api/service/login", {
+    const res = await fetch("http://localhost:3000/api/service/login", {
       next: { revalidate: 0 },
       method: "POST",
       headers: {
@@ -23,6 +23,8 @@ export const LoginUser = async (data: {
     });
     const response = await res.json();
     if (response.message === "Login Success") {
+       console.log(response)
+      await LoginSuccess({username:response.data.username ,isVerified:response.data.isVerified})
       return {
         success: true,
         message: response.message,
@@ -68,10 +70,10 @@ export const registerUser = async (data: {
   }
 };
 
-export const LoginSuccess = async (data: { username: string }) => {
+export const LoginSuccess = async (data: { username: string ,isVerified:boolean }) => {
   try {
     const token = sign(
-      { username: data.username },
+      { username: data.username , isVerified: data.isVerified},
       process.env.JWT_SECRET_KEY!
     );
     const date = new Date();
@@ -111,7 +113,7 @@ export const ValidateAuthToken = async (token: string | undefined) => {
     return {
       status: true,
       message: "token is valid",
-      data: verifyToken.username,
+      data: verifyToken,
     };
   } catch (error) {
     console.log("error verifying token: " + error);
@@ -213,3 +215,8 @@ export const getUserInfo = async ({ username }: { username: string }) => {
     console.log("something went wrong", error);
   }
 };
+
+
+export const getVerificationStatus = async ({username}:{username: string})=>{
+
+}

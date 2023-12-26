@@ -46,11 +46,6 @@ export default function LoginForm() {
 
       if (res?.success) {
         setSuccess(true);
-        const res = await LoginSuccess({ username: user});
-        if (!res.status) {
-          return window.location.reload();
-        }
-
         setTimeout(() => {
           return router.push("/Dashboard");
         }, 1200);

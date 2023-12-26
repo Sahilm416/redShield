@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
-//for some reason importing this causes error so instead of import we use require
-const { sign, verify } = require("jsonwebtoken");
+import { getVerificationStatus } from "./app/actions/auth";
+
 export const dynamic = 'force-dynamic'
 export default async function middleWare(request: NextRequest) {
   const cookie = getCookie("_auth_token", { cookies });
@@ -40,11 +40,11 @@ export default async function middleWare(request: NextRequest) {
     }
   }
   if (request.url.includes("/New")) {
-    if (response.status) {
+    if (response.status && response.data.isVerified) {
       return NextResponse.next();
     } else {
         const redUrl = request.nextUrl.clone();
-      redUrl.pathname = "/Auth"
+      redUrl.pathname = "/Dashboard"
       return NextResponse.redirect(redUrl);
     }
   }
