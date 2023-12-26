@@ -9,7 +9,7 @@ type Project = {
 export default function ProjectList({ projects }: { projects: Project[] }) {
   return (
     <>
-      {projects ? (
+      {(projects.length > 0) ? (
         <main className="w-full max-w-[750px] grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2 sm:px-2 px-4">
           {projects.map((project, i) => (
             <Card
