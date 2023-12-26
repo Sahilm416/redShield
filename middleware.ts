@@ -39,9 +39,18 @@ export default async function middleWare(request: NextRequest) {
       return NextResponse.redirect(redUrl);
     }
   }
+  if (request.url.includes("/New")) {
+    if (response.status) {
+      return NextResponse.next();
+    } else {
+        const redUrl = request.nextUrl.clone();
+      redUrl.pathname = "/Auth"
+      return NextResponse.redirect(redUrl);
+    }
+  }
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/Auth", "/Dashboard"],
+  matcher: ["/Auth", "/Dashboard","/New"],
 };
