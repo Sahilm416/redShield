@@ -5,6 +5,7 @@ import ProjectList from "@/components/ProjectList";
 import NotVerified from "@/components/NotVerifield";
 
 type Project = {
+  id:string;
   name: string;
   description: string;
   created_at: string;

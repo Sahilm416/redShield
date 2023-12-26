@@ -164,6 +164,7 @@ export const LoggedUser = async () => {
 //get user information and project information
 
 type Project = {
+  id: string;
   name: string;
   description: string;
   created_at: string;

@@ -1,11 +1,12 @@
 "use server";
 import { db } from "@/utils/database/db";
 import { getCookie } from "cookies-next";
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 import { cookies } from "next/headers";
 const { verify } = require("jsonwebtoken");
-
+import { nanoid } from "nanoid";
 type projectData = {
+  id: string;
   name: string;
   description: string;
   key: string;
@@ -41,20 +42,27 @@ export const createNewProject = async ({
         message: "Project already exists",
       };
     }
-
+    const projectTobeAdded =  {
+        id: nanoid(10),
+        name: project_name,
+        description: project_description,
+        key: uuidv4(),
+      }
     const newProjects = await db.set(
       res.project_id + ":" + data.username + ":projects",
       [
         ...projects,
-        {
-          name: project_name,
-          description: project_description,
-          key: uuidv4(),
-        },
+        projectTobeAdded
       ]
     );
 
     if (newProjects) {
+
+      await db.set("API_KEY:"+projectTobeAdded.key, {
+        project_name: projectTobeAdded.name,
+        project_id: projectTobeAdded.id
+      })  
+      
       return {
         status: true,
         message: "Project created successfully",
@@ -71,5 +79,32 @@ export const createNewProject = async ({
       status: false,
       message: "error creating project",
     };
+  }
+};
+
+//get specific project
+
+export const getProject = async (data: { id: string }) => {
+  try {
+    const token = getCookie("_auth_token", { cookies });
+
+  const user = verify(token, process.env.JWT_SECRET_KEY!) as {
+    username: string;
+  };
+  const res = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
+    project_name: string;
+    project_id: string;
+  };
+
+  const projects = (await db.get(
+    res.project_id + ":" + user.username + ":projects"
+  )) as projectData[];
+
+  const project = projects.find((obj) => (obj.id === data.id));
+
+  return project;
+  } catch (error) {
+    console.log("Failed to get project", error);
+    return null
   }
 };
