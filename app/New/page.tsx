@@ -23,7 +23,7 @@ export default function NewProject() {
     description: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
