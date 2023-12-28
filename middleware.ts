@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
-import { getVerificationStatus } from "./app/actions/auth";
+
 
 export const dynamic = 'force-dynamic'
 export default async function middleWare(request: NextRequest) {

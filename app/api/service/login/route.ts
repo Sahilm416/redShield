@@ -21,7 +21,7 @@ export const POST = async (request: Request) => {
     } else {
       const searchKey = res.project_id + ":" + data.email;
       const user = await db.get(searchKey);
-      console.log(typeof data.password);
+     
       if (user) {
         const isAuth = await bcrypt.compare(data.password, user.password);
 

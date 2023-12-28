@@ -23,7 +23,7 @@ export const LoginUser = async (data: {
       }),
     });
     const response = await res.json();
-    console.log(response)
+
     if (response.status) {
       return {
         success: true,

@@ -24,7 +24,6 @@ export const POST = async (request: Request) => {
 
     if (!existingUser) {
       const hashedPassword = await bcrypt.hash(data.password, 10);
-      console.log(hashedPassword,data.password)
       const newUser = {
         uid: uuidv4(),
         password: hashedPassword,
