@@ -26,16 +26,20 @@ export const LoginUser = async (data: {
 
     if (response.status) {
       return {
-        success: true,
+        status: true,
         message: response.message,
       };
     }
     return {
-      success: false,
+      status: false,
       message: response.message,
     };
   } catch (error) {
     console.log(error);
+    return {
+      status: false,
+      message: "something went wrong"
+    }
   }
 };
 

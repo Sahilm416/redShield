@@ -12,14 +12,29 @@ import {
 
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { useState } from "react";
+import Loader from "./Loader";
+import { toast } from "sonner";
 export default function LoginCard() {
+
+  const[loading,setLoading] = useState<boolean>(false);
+
+  const fakeLoad = async ()=> {
+    return
+  }
   const sendData = async (formData: FormData) => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
-    console.log("data is: ", email, password);
-    const res = await LoginUser({email:email ,password:password});
-    console.log("res is: ", res);
-  };  
+    await fakeLoad()
+    setLoading(true);
+    const res = await LoginUser({ email: email, password: password });
+    if(res.status){
+      toast.success(res.message);
+    }else{
+      toast.error(res.message);
+    }
+    setLoading(false);
+  };
   return (
     <>
       <Card className=" w-auto max-w-[550px] min-w-[350px] dark:bg-black ">
@@ -37,8 +52,8 @@ export default function LoginCard() {
             <Input type="password" name="password" id="password" required />
           </CardContent>
           <CardFooter>
-            <Button className="w-full" type="submit">
-              login
+            <Button disabled={loading} className="w-full" type="submit">
+              {loading ? <Loader darkOn="bg-black" darkOff="bg-white"/> : "login"}
             </Button>
           </CardFooter>
         </form>
