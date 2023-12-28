@@ -1,6 +1,8 @@
 "use server";
 
+import { db } from "@/utils/database/db";
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
+
 import { cookies } from "next/headers";
 const { sign, verify } = require("jsonwebtoken");
 
@@ -23,8 +25,11 @@ export const LoginUser = async (data: {
     });
     const response = await res.json();
     if (response.message === "Login Success") {
-       console.log(response)
-      await LoginSuccess({username:response.data.username ,isVerified:response.data.isVerified})
+      console.log(response);
+      await LoginSuccess({
+        username: response.data.username,
+        isVerified: response.data.isVerified,
+      });
       return {
         success: true,
         message: response.message,
@@ -39,41 +44,16 @@ export const LoginUser = async (data: {
   }
 };
 
-export const registerUser = async (data: {
+
+
+
+export const LoginSuccess = async (data: {
   username: string;
-  password: string;
-  email: string;
-  profile_picture?: string;
+  isVerified: boolean;
 }) => {
   try {
-    const res = await fetch(
-      "https://redshield.vercel.app/api/service/register",
-      {
-        next: { revalidate: 0 },
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: process.env.RED_KEY!,
-        },
-        body: JSON.stringify({
-          username: data.username.toLowerCase(),
-          password: data.password,
-          email: data.email.toLowerCase(),
-          profile_picture: data.profile_picture,
-        }),
-      }
-    );
-    const response = await res.json();
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const LoginSuccess = async (data: { username: string ,isVerified:boolean }) => {
-  try {
     const token = sign(
-      { username: data.username , isVerified: data.isVerified},
+      { username: data.username, isVerified: data.isVerified },
       process.env.JWT_SECRET_KEY!
     );
     const date = new Date();
@@ -85,7 +65,7 @@ export const LoginSuccess = async (data: { username: string ,isVerified:boolean 
       expires: date,
       secure: true,
       sameSite: true,
-      httpOnly:true,
+      httpOnly: true,
     });
     return {
       status: true,
@@ -217,7 +197,8 @@ export const getUserInfo = async ({ username }: { username: string }) => {
   }
 };
 
-
-export const getVerificationStatus = async ({username}:{username: string})=>{
-
-}
+export const getVerificationStatus = async ({
+  username,
+}: {
+  username: string;
+}) => {};

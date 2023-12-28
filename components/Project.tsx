@@ -27,7 +27,7 @@ export default function ProjectComponent({
 
         <div className="flex justify-center items-center mt-3">
           <Input
-            className=" border-r-0 rounded-none h-[40px]"
+            className=" border-r-0 rounded-none h-[40px] focus:outline-none"
             type={show ? "text" : "password"}
             value={res?.key}
           />

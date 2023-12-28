@@ -110,3 +110,14 @@ export const verifyUser = async ({ token }: { token: string }) => {
     };
   }
 };
+
+
+export const RegisterAction = async (formData:FormData)=>{
+  const email = formData.get('email');
+  if(email){
+  console.log("data is", email);
+  }else{
+  console.log("data is", formData.get('code'));
+    
+  }
+}
