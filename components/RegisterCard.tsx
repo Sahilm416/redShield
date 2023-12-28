@@ -25,7 +25,7 @@ export default function RegisterCard() {
   const [data, setData] = useState<userData>({ email: "", password: "" });
 
   return (
-    <div>
+    <>
       <Card className=" w-auto max-w-[550px] min-w-[350px] dark:bg-black ">
         <CardHeader>
           <CardTitle>
@@ -41,7 +41,7 @@ export default function RegisterCard() {
           <Form3 setData={setData} data={data}/>
         )}
       </Card>
-    </div>
+    </>
   );
 }
 
@@ -74,7 +74,7 @@ const Form1 = ({
   return (
     <>
       <Card className="mx-6 h-[40px] mb-2 bg-slate-50 hover:bg-white cursor-pointer flex justify-center items-center gap-2 p-2">
-        <GoogleIcon /> <p>continue with google</p>
+        <GoogleIcon /> <p className="dark:text-slate-900">continue with google</p>
       </Card>
       <Label className="grid place-items-center py-3">OR</Label>
       <form action={sendData}>
@@ -129,7 +129,8 @@ const Form2 = ({
   return (
     <>
       <form action={sendData}>
-        <CardContent>
+        <CardContent className="flex flex-col gap-3">
+        <p className="text-sm text-slate-400 dark:text-slate-500">enter the code sent to <br /><span className="text-slate-700 dark:text-slate-300">{data.email}</span> </p>
           <Input name="code" type="text" required placeholder="enter code" />
         </CardContent>
         <CardFooter className="flex gap-3">
@@ -175,7 +176,6 @@ const Form3 = ({
     const confirmPass = formData.get("confirm") as string;
     if (pass === confirmPass) {
       const validation = await checkPassword({ password: pass });
-      console.log("validation is ",validation)
       if (validation.status) {
         setLoading(true);
         setData((prev: userData) => ({ ...prev, password: pass }));
@@ -199,6 +199,7 @@ const Form3 = ({
     <>
       <form action={createUser}>
         <CardContent className="flex flex-col gap-3">
+          
           <Label htmlFor="pass">Password</Label>
           <Input name="pass" id="pass" type="password" />
           <Label htmlFor="confirm">Confirm Password</Label>

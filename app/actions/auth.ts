@@ -1,13 +1,12 @@
 "use server";
 
-import { db } from "@/utils/database/db";
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
 
 import { cookies } from "next/headers";
 const { sign, verify } = require("jsonwebtoken");
 
 export const LoginUser = async (data: {
-  username: string;
+  email: string;
   password: string;
 }) => {
   try {
@@ -16,20 +15,16 @@ export const LoginUser = async (data: {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: process.env.RED_KEY!,
+        "Authorization": process.env.RED_KEY!,
       },
       body: JSON.stringify({
-        username: data.username.toLowerCase(),
+        email: data.email.toLowerCase(),
         password: data.password,
       }),
     });
     const response = await res.json();
-    if (response.message === "Login Success") {
-      console.log(response);
-      await LoginSuccess({
-        username: response.data.username,
-        isVerified: response.data.isVerified,
-      });
+    console.log(response)
+    if (response.status) {
       return {
         success: true,
         message: response.message,
@@ -45,40 +40,6 @@ export const LoginUser = async (data: {
 };
 
 
-
-
-export const LoginSuccess = async (data: {
-  username: string;
-  isVerified: boolean;
-}) => {
-  try {
-    const token = sign(
-      { username: data.username, isVerified: data.isVerified },
-      process.env.JWT_SECRET_KEY!
-    );
-    const date = new Date();
-    const time = Date.now() + 7 * 24 * 60 * 60 * 1000;
-    date.setTime(time);
-
-    setCookie("_auth_token", token, {
-      cookies,
-      expires: date,
-      secure: true,
-      sameSite: true,
-      httpOnly: true,
-    });
-    return {
-      status: true,
-      message: "cookies set successfully",
-    };
-  } catch (error) {
-    console.log("Error setting token: " + error);
-    return {
-      status: false,
-      message: "token not set during login " + error,
-    };
-  }
-};
 
 export const ValidateAuthToken = async (token: string | undefined) => {
   if (!token) {
@@ -197,8 +158,3 @@ export const getUserInfo = async ({ username }: { username: string }) => {
   }
 };
 
-export const getVerificationStatus = async ({
-  username,
-}: {
-  username: string;
-}) => {};
