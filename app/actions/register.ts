@@ -1,5 +1,6 @@
 "use server";
 import { db } from "@/utils/database/db";
+import { LoginUser } from "./login";
 
 
 //send th code to email address
@@ -87,6 +88,10 @@ export const registerUser = async ({email,password,profile_picture}:{email: stri
         });
 
         const response = await res.json();
+
+        if(response.status){
+           await LoginUser({email: email, password: password})
+        }
         return response;
     } catch (error) {
         console.log("error registering", error);

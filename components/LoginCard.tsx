@@ -1,5 +1,5 @@
 "use client";
-import { LoginUser } from "@/app/actions/auth";
+import { LoginUser } from "@/app/actions/login";
 import { Button } from "./ui/button";
 import {
   Card,

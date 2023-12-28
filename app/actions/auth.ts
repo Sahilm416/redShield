@@ -1,51 +1,33 @@
 "use server";
 
-import { setCookie, getCookie, deleteCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
 
 import { cookies } from "next/headers";
-const { sign, verify } = require("jsonwebtoken");
+const { verify } = require("jsonwebtoken");
 
-export const LoginUser = async (data: {
-  email: string;
-  password: string;
-}) => {
+
+export const checkToken = async ({token}:{token: string})=>{
   try {
-    const res = await fetch("https://redshield.vercel.app/api/service/login", {
-      next: { revalidate: 0 },
+    const res = await fetch("https://redshield.vercel.app/api/service/verify", {
+      next: {revalidate:0},
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": process.env.RED_KEY!,
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': process.env.RED_KEY!,
       },
       body: JSON.stringify({
-        email: data.email.toLowerCase(),
-        password: data.password,
-      }),
+        token: token
+      })
     });
     const response = await res.json();
-
-    if (response.status) {
-      return {
-        status: true,
-        message: response.message,
-      };
-    }
-    return {
-      status: false,
-      message: response.message,
-    };
+    return response;
   } catch (error) {
-    console.log(error);
-    return {
-      status: false,
-      message: "something went wrong"
-    }
+    console.log("something went wrong",error)
   }
-};
+}
 
 
-
-export const ValidateAuthToken = async (token: string | undefined) => {
+export const ValidateAuthToken = async ({token}:{token:string}) => {
   if (!token) {
     return {
       status: false,
