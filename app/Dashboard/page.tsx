@@ -5,7 +5,7 @@ export default async function () {
   const res = await getUser();
   return (
     <>
-      <DashboardComponent email={res.data.email} />
+       {res.status && <DashboardComponent email={res?.data?.email} />}
     </>
   );
 }

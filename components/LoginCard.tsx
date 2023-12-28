@@ -15,10 +15,11 @@ import { Label } from "./ui/label";
 import { useState } from "react";
 import Loader from "./Loader";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 export default function LoginCard() {
 
   const[loading,setLoading] = useState<boolean>(false);
-
+  const router = useRouter();
   const fakeLoad = async ()=> {
     return
   }
@@ -30,6 +31,7 @@ export default function LoginCard() {
     const res = await LoginUser({ email: email, password: password });
     if(res.status){
       toast.success(res.message);
+      return router.push("/Dashboard");
     }else{
       toast.error(res.message);
     }

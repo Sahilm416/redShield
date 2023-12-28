@@ -16,7 +16,7 @@ import { toast } from "sonner";
 import { checkPassword } from "@/app/actions/RegCheck";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
 import Loader from "./Loader";
-
+import { useRouter } from "next/navigation";
 export default function RegisterCard() {
   const [formCount, setFormCount] = useState<1 | 2 | 3>(1);
   const [email, setEmail] = useState<string>("");
@@ -158,7 +158,7 @@ const Form3 = ({
   email: string
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  
+  const router = useRouter();
 
   useEffect(() => {
     toast.warning(
@@ -177,6 +177,7 @@ const Form3 = ({
         const res = await registerUser({email:email , password:pass});
         if(res.status){
           toast.success(res.message);
+          return router.push("/Dashboard");
         }else{
           toast.error(res.message);
         }
