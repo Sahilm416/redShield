@@ -23,7 +23,7 @@ export default function RegisterCard() {
 
   return (
     <>
-      <Card className=" w-auto max-w-[550px] min-w-[350px] dark:bg-black ">
+      <Card className=" dark:bg-black px-2 h-[330px] shadow-lg">
         <CardHeader>
           <CardTitle>
             Register to <span className="text-red-600">Red</span>shield

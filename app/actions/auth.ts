@@ -62,7 +62,7 @@ export const LogOut = async () => {
 
 //return the details of logged in user
 
-export const LoggedUser = async () => {
+export const getUser = async () => {
   const token = getCookie("_auth_token", { cookies });
   if (!token) {
     return {
@@ -76,7 +76,7 @@ export const LoggedUser = async () => {
     return {
       status: true,
       message: "token is valid",
-      data: verifyToken.username,
+      data: verifyToken,
     };
   } catch (error) {
     console.log("error verifying token: " + error);
@@ -101,10 +101,8 @@ type Project = {
 type User = {
   creation_date: string;
   email: string;
-  isVerified: boolean;
   password: string;
   uid: string;
-  username: string;
   profile_picture?: string;
 };
 
@@ -113,10 +111,10 @@ type userInfoStructure = {
   projects: Project[];
 };
 
-export const getUserInfo = async ({ username }: { username: string }) => {
+export const getUserInfo = async ({ email }: { email: string }) => {
   try {
     const res = await fetch(
-      "https://redshield.vercel.app/api/service/getUser",
+      "http://localhost:3000/api/service/getUser",
       {
         next: { revalidate: 0 },
         method: "POST",
@@ -125,18 +123,17 @@ export const getUserInfo = async ({ username }: { username: string }) => {
           Authorization: process.env.RED_KEY!,
         },
         body: JSON.stringify({
-          username: username.toLowerCase(),
+          email: email.toLowerCase(),
         }),
       }
     );
 
-    const response: userInfoStructure = await res.json();
+    const response = await res.json() as userInfoStructure;
     return {
-      username: response.user.username,
+
       email: response.user.email,
-      isVerified: response.user.isVerified,
       profile_picture:
-        response.user.profile_picture || "https://github.com/sahilm416.png",
+        response.user.profile_picture,
       projects: response.projects,
     };
   } catch (error) {

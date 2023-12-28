@@ -37,7 +37,7 @@ export default function LoginCard() {
   };
   return (
     <>
-      <Card className=" w-auto max-w-[550px] min-w-[350px] dark:bg-black ">
+      <Card className=" dark:bg-black p-2 h-[330px] shadow-lg">
         <form action={sendData}>
           <CardHeader>
             <CardTitle>

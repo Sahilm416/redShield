@@ -1,11 +1,11 @@
-import Profile from "@/components/Profile";
+
 import { getUserInfo } from "../app/actions/auth";
 import ErrorPage from "./Error";
 import ProjectList from "@/components/ProjectList";
 import NotVerified from "@/components/NotVerifield";
 
 type Project = {
-  id:string;
+  id: string;
   name: string;
   description: string;
   created_at: string;
@@ -20,30 +20,16 @@ type userData = {
   projects: Project[];
 };
 
-export default async function DashboardComponent({
-  username,
-}: {
-  username: string;
-}) {
-  const data = await getUserInfo({ username: username });
+export default async function DashboardComponent({ email }: { email: string }) {
+  const data = await getUserInfo({ email: email });
 
   return (
     <div className="w-full flex flex-col gap-5 justify-start items-center mt-[100px]">
       {!data ? (
-        (<ErrorPage/>)
+        <ErrorPage />
       ) : (
         <>
-          <Profile
-            username={data?.username}
-            email={data?.email}
-            isVerified={data?.isVerified}
-            profile_picture={data?.profile_picture}
-          />
-          {data.isVerified ? (
-            <ProjectList projects={data.projects} />
-          ) : (
-            <NotVerified username={data.username} email={data.email} />
-          )}
+          <ProjectList projects={data.projects} />
         </>
       )}
     </div>
