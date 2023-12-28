@@ -20,13 +20,11 @@ export const POST = async (request: Request) => {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   } else {
     //check the passed data for registration
-    const isDataValid = await checkAllValues(data);
+   // const isDataValid = await checkAllValues(data);
 
     //condition for the validated data passed
 
-    if (!isDataValid.status) {
-      return NextResponse.json(isDataValid, { status: 400 });
-    }
+  
 
     const searchKey = res.project_id + ":" + data.email;
     const checkKeyExists = await db.get(searchKey);

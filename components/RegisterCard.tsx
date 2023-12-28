@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardContent,
 } from "./ui/card";
-import { RegisterAction } from "@/app/actions/verification";
+
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
@@ -174,9 +174,10 @@ const Form3 = ({
     const pass = formData.get("pass") as string;
     const confirmPass = formData.get("confirm") as string;
     if (pass === confirmPass) {
-      const res = await checkPassword({ password: pass });
-      if (res.status) {
-        setLoading(true)
+      const validation = await checkPassword({ password: pass });
+      console.log("validation is ",validation)
+      if (validation.status) {
+        setLoading(true);
         setData((prev: userData) => ({ ...prev, password: pass }));
        
         const res = await registerUser({email:data.email , password:data.password});
@@ -188,7 +189,7 @@ const Form3 = ({
         setLoading(false);
 
       } else {
-        toast.error(res.message);
+        toast.error(validation.message);
       }
     } else {
       toast.error("password does not match");
@@ -216,6 +217,8 @@ const Form3 = ({
     </>
   );
 };
+
+
 
 //svg for google icon
 const GoogleIcon = () => {

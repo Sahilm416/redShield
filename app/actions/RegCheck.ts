@@ -1,6 +1,8 @@
 export const checkPassword = async (data: { password: string }) => {
   // Check for at least one special character
- 
+  if (!/(?=.*[!@#$%^&*])/.test(data.password)) {
+    return { status: false, message: "must contain one special character" };
+  }
 
   //check for special characters
   if (!/(?=.*[0-9])/.test(data.password)) {
