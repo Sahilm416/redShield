@@ -16,7 +16,7 @@ export const sendCode = async ({ email }: { email: string }) => {
   }
   try {
     await db.set(project_id + ":" + email + ":code", code,{ex:300});
-    const res = await fetch("http://localhost:3000/api/service/sendCode", {
+    const res = await fetch("https://redshield.vercel.app/api/service/sendCode", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export const verifyCode = async ({
 //register the new user to database
 export const registerUser = async ({email,password,profile_picture}:{email: string , password: string , profile_picture?: string})=>{
     try {
-        const res = await fetch("http://localhost:3000/api/service/register",{
+        const res = await fetch("https://redshield.vercel.app/api/service/register",{
             next:{revalidate:0},
             method: "POST",
             headers: {

@@ -69,6 +69,7 @@ const Form1 = ({
     } else {
       toast.error(res.message);
     }
+    setLoading(false);
   };
   return (
     <>
@@ -168,7 +169,7 @@ const Form3 = ({
       "password should be at least 8 characters and combination of letters and numbers"
     );
   }, []);
-const fakeLoade = async ()=> {return}
+
   const createUser = async (formData: FormData) => {
     const pass = formData.get("pass") as string;
     const confirmPass = formData.get("confirm") as string;
