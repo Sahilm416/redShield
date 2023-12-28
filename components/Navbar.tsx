@@ -46,7 +46,7 @@ const Navbar = async () => {
         </div>
         <div className="flex justify-center items-center gap-4 mx-5">
         <ThemeBtn />
-          <MenuBar logged={true} />
+          <MenuBar logged={res.status} />
         </div>
       </nav>
     </div>

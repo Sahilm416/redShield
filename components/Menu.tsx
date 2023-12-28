@@ -1,6 +1,6 @@
 "use client";
-import { LogOut, Settings, Menu } from "lucide-react";
-
+import { LogOut as LogOutIcon, Settings, Menu } from "lucide-react";
+import { LogOut } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -40,8 +40,14 @@ export function MenuBar({ logged }: { logged: boolean }) {
               <Settings className="text-slate-300 w-[20px] mx-2" />
               Account settings
             </DropdownMenuItem>
-            <DropdownMenuItem className="flex">
-              <LogOut className="text-slate-300 w-[20px] mx-2" />
+            <DropdownMenuItem
+              onClick={async () => {
+                await LogOut();
+                return window.location.reload();
+              }}
+              className="flex"
+            >
+              <LogOutIcon className="text-slate-300 w-[20px] mx-2" />
               Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -72,8 +78,13 @@ export function MenuBar({ logged }: { logged: boolean }) {
               <DropdownMenuItem>
                 <Link href="#">Account</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="#">Sign Out</Link>
+              <DropdownMenuItem
+                onClick={async () => {
+                  await LogOut();
+                  return window.location.reload();
+                }}
+              >
+                Sign Out
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>
