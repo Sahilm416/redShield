@@ -114,7 +114,7 @@ type userInfoStructure = {
 export const getUserInfo = async ({ email }: { email: string }) => {
   try {
     const res = await fetch(
-      "http://localhost:3000/api/service/getUser",
+      "https://redshield.vercel.app/api/service/getUser",
       {
         next: { revalidate: 0 },
         method: "POST",
