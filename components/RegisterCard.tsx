@@ -16,13 +16,10 @@ import { toast } from "sonner";
 import { checkPassword } from "@/app/actions/RegCheck";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
 import Loader from "./Loader";
-type userData = {
-  email: string;
-  password: string;
-};
+
 export default function RegisterCard() {
   const [formCount, setFormCount] = useState<1 | 2 | 3>(1);
-  const [data, setData] = useState<userData>({ email: "", password: "" });
+  const [email, setEmail] = useState<string>("");
 
   return (
     <>
@@ -34,11 +31,11 @@ export default function RegisterCard() {
           <CardDescription>redis based auth</CardDescription>
         </CardHeader>
         {formCount === 1 ? (
-          <Form1 setFormCount={setFormCount} setData={setData} />
+          <Form1 setFormCount={setFormCount} setEmail={setEmail} />
         ) : formCount === 2 ? (
-          <Form2 setFormCount={setFormCount} data={data} />
+          <Form2 setFormCount={setFormCount} email={email} />
         ) : (
-          <Form3 setData={setData} data={data}/>
+          <Form3 email={email}/>
         )}
       </Card>
     </>
@@ -47,10 +44,10 @@ export default function RegisterCard() {
 
 const Form1 = ({
   setFormCount,
-  setData,
+  setEmail,
 }: {
   setFormCount: Dispatch<SetStateAction<1 | 2 | 3>>;
-  setData: Dispatch<SetStateAction<userData>>;
+  setEmail: Dispatch<SetStateAction<string>>;
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -64,7 +61,7 @@ const Form1 = ({
     const res = await sendCode({ email: mail });
     if (res.status) {
       toast.success(res.message);
-      setData((prev) => ({ ...prev, email: mail }));
+      setEmail(mail);
       setFormCount(2);
     } else {
       toast.error(res.message);
@@ -104,10 +101,10 @@ const Form1 = ({
 
 const Form2 = ({
   setFormCount,
-  data,
+  email,
 }: {
   setFormCount: Dispatch<SetStateAction<1 | 2 | 3>>;
-  data: userData;
+  email: string;
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const fakeLoade = async ()=> {return}
@@ -115,7 +112,7 @@ const Form2 = ({
     const code = formData.get("code") as string;
     await fakeLoade();
     setLoading(true);
-    const res = await verifyCode({ code: code, email: data.email });
+    const res = await verifyCode({ code: code, email: email });
     if (res.status) {
       toast.success(res.message);
       setFormCount(3);
@@ -130,7 +127,7 @@ const Form2 = ({
     <>
       <form action={sendData}>
         <CardContent className="flex flex-col gap-3">
-        <p className="text-sm text-slate-400 dark:text-slate-500">enter the code sent to <br /><span className="text-slate-700 dark:text-slate-300">{data.email}</span> </p>
+        <p className="text-sm text-slate-400 dark:text-slate-500">enter the code sent to <br /><span className="text-slate-700 dark:text-slate-300">{email}</span> </p>
           <Input name="code" type="text" required placeholder="enter code" />
         </CardContent>
         <CardFooter className="flex gap-3">
@@ -156,11 +153,9 @@ const Form2 = ({
 };
 
 const Form3 = ({
-  setData,
-  data
+  email
 }: {
-  setData: Dispatch<SetStateAction<userData>>;
-  data :userData
+  email: string
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   
@@ -178,9 +173,8 @@ const Form3 = ({
       const validation = await checkPassword({ password: pass });
       if (validation.status) {
         setLoading(true);
-        setData((prev: userData) => ({ ...prev, password: pass }));
        
-        const res = await registerUser({email:data.email , password:data.password});
+        const res = await registerUser({email:email , password:pass});
         if(res.status){
           toast.success(res.message);
         }else{

@@ -21,7 +21,8 @@ export const POST = async (request: Request) => {
 
     const searchKey = res.project_id + ":" + data.email;
     const existingUser = await db.get(searchKey);
-
+   
+  
     if (!existingUser) {
       const hashedPassword = await bcrypt.hash(data.password, 10);
       const newUser = {
@@ -35,9 +36,9 @@ export const POST = async (request: Request) => {
       };
 
       // Set the new user data
-      await db.set(searchKey, newUser);
+        await db.set(searchKey, newUser);
 
-      // Initialize empty project list
+        //Initialize empty project list
       await db.set(res.project_id + ":" + data.email + ":projects", []);
 
       return NextResponse.json({

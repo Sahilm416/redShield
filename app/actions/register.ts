@@ -71,6 +71,7 @@ export const verifyCode = async ({
 //register the new user to database
 export const registerUser = async ({email,password,profile_picture}:{email: string , password: string , profile_picture?: string})=>{
     try {
+
         const res = await fetch("https://redshield.vercel.app/api/service/register",{
             next:{revalidate:0},
             method: "POST",
@@ -81,7 +82,7 @@ export const registerUser = async ({email,password,profile_picture}:{email: stri
             body: JSON.stringify({
                 email: email,
                 password: password,
-                profile_picture: profile_picture
+                profile_picture: profile_picture || undefined
             })
         });
 
