@@ -87,7 +87,7 @@ export default function NewProject() {
 
   return (
     <div className="w-full grid place-items-center mt-[100px] sm:px-2 px-7">
-      <Card className="w-full max-w-lg bg-slate-100 dark:bg-black">
+      <Card className="w-full max-w-lg dark:bg-gray-900/20 bg-white">
         <CardHeader className="flex flex-row items-start">
           <div className="space-y-1.5">
             <CardTitle>Add New Project</CardTitle>
