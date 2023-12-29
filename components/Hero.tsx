@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="boxpatternTop sm:w-[420px] w-[320px] h-[20px] border-l border-r border-t"></div>
       <div className="boxpatternTop sm:w-[460px] w-[360px] h-[20px] border-l border-r border-t"></div>
       <div className=" sm:w-[500px] w-[350px] border-t border-b flex border-[1px 1px 1px 1px] flex-col items-center justify-center">
-        <p className=" select-none selection:text-slate-200 sm:text-6xl text-5xl text-center font-roboto font-bold dark:text-slate-200 text-slate-700 p-3 ">
+        <p className=" selection:bg-violet-500 selection:text-slate-200 sm:text-6xl text-5xl text-center font-roboto font-bold dark:text-slate-200 text-slate-700 p-3 ">
           <span className="text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl none bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-600">
             Redis based
           </span>

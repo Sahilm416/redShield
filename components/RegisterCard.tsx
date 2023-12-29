@@ -23,10 +23,10 @@ export default function RegisterCard() {
 
   return (
     <>
-      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-[330px] shadow-lg">
+      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-[350px] shadow-lg">
         <CardHeader>
           <CardTitle>
-            Register to <span className="text-red-600">Red</span>shield
+            Register to Redshield
           </CardTitle>
           <CardDescription>redis based auth</CardDescription>
         </CardHeader>

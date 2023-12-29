@@ -39,11 +39,11 @@ export default function LoginCard() {
   };
   return (
     <>
-      <Card className=" dark:bg-gray-900/20 bg-white p-2 h-[330px] shadow-lg">
+      <Card className=" dark:bg-gray-900/20 bg-white p-2 h-[350px] shadow-lg">
         <form action={sendData}>
           <CardHeader>
-            <CardTitle>
-              Login to <span className="text-red-600">Red</span>shield
+            <CardTitle  >
+              Login to Redshield
             </CardTitle>
             <CardDescription>redis based auth</CardDescription>
           </CardHeader>
