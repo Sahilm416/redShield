@@ -7,7 +7,7 @@ export default async function middleWare(request: NextRequest) {
   const cookie = getCookie("_auth_token",{cookies}) as string ;
   const url = request.nextUrl.clone();
   const checkValidity = await checkToken({token:cookie});
-  console.log("path is",url.pathname)
+
   //if user is not authenticated then redirect to dashboard
   if(url.pathname === "/Auth"){
     if(checkValidity?.status) {

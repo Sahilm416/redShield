@@ -17,6 +17,7 @@ import { checkPassword } from "@/app/actions/RegCheck";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
 import Loader from "./Loader";
 import { useRouter } from "next/navigation";
+
 export default function RegisterCard() {
   const [formCount, setFormCount] = useState<1 | 2 | 3>(1);
   const [email, setEmail] = useState<string>("");
@@ -25,9 +26,7 @@ export default function RegisterCard() {
     <>
       <Card className=" dark:bg-gray-900/20 bg-white px-2 h-[350px] shadow-lg">
         <CardHeader>
-          <CardTitle>
-            Register to Redshield
-          </CardTitle>
+          <CardTitle>Register to Redshield</CardTitle>
           <CardDescription>redis based auth</CardDescription>
         </CardHeader>
         {formCount === 1 ? (
@@ -35,7 +34,7 @@ export default function RegisterCard() {
         ) : formCount === 2 ? (
           <Form2 setFormCount={setFormCount} email={email} />
         ) : (
-          <Form3 email={email}/>
+          <Form3 email={email} />
         )}
       </Card>
     </>
@@ -50,6 +49,10 @@ const Form1 = ({
   setEmail: Dispatch<SetStateAction<string>>;
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
+
+  const signInWithGoogle = async () => {
+    return;
+  };
 
   const fakeLoad = async () => {
     return;
@@ -70,8 +73,12 @@ const Form1 = ({
   };
   return (
     <>
-      <Card className="mx-6 h-[40px] mb-2 bg-slate-50 dark:border-slate-300 hover:bg-white cursor-pointer flex justify-center items-center gap-2 p-2">
-        <GoogleIcon /> <p className="dark:text-slate-900">continue with google</p>
+      <Card
+        onClick={signInWithGoogle}
+        className="mx-6 h-[40px] mb-2 bg-slate-50 dark:border-slate-300 hover:bg-white cursor-pointer flex justify-center items-center gap-2 p-2"
+      >
+        <GoogleIcon />{" "}
+        <p className="dark:text-slate-900">continue with google</p>
       </Card>
       <Label className="grid place-items-center py-3">OR</Label>
       <form action={sendData}>
@@ -107,7 +114,9 @@ const Form2 = ({
   email: string;
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const fakeLoade = async ()=> {return}
+  const fakeLoade = async () => {
+    return;
+  };
   const sendData = async (formData: FormData) => {
     const code = formData.get("code") as string;
     await fakeLoade();
@@ -116,18 +125,21 @@ const Form2 = ({
     if (res.status) {
       toast.success(res.message);
       setFormCount(3);
-
-    }else{
-       toast.error(res.message);
+    } else {
+      toast.error(res.message);
     }
-   setLoading(false);
- 
+    setLoading(false);
   };
   return (
     <>
       <form action={sendData}>
         <CardContent className="flex flex-col gap-3">
-        <p className="text-sm text-slate-400 dark:text-slate-500">enter the code sent to <br /><span className="text-slate-700 dark:text-slate-300">{email}</span> </p>
+          <p className="text-sm text-slate-400 dark:text-slate-500">
+            enter the code sent to <br />
+            <span className="text-slate-700 dark:text-slate-300">
+              {email}
+            </span>{" "}
+          </p>
           <Input name="code" type="text" required placeholder="enter code" />
         </CardContent>
         <CardFooter className="flex gap-3">
@@ -140,7 +152,7 @@ const Form2 = ({
             back
           </Button>
           <Button disabled={loading} type="submit" className="w-[50%]">
-          {loading ? (
+            {loading ? (
               <Loader darkOn="bg-black" darkOff="bg-white" />
             ) : (
               "submit"
@@ -152,11 +164,7 @@ const Form2 = ({
   );
 };
 
-const Form3 = ({
-  email
-}: {
-  email: string
-}) => {
+const Form3 = ({ email }: { email: string }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -173,16 +181,15 @@ const Form3 = ({
       const validation = await checkPassword({ password: pass });
       if (validation.status) {
         setLoading(true);
-       
-        const res = await registerUser({email:email , password:pass});
-        if(res.status){
+
+        const res = await registerUser({ email: email, password: pass });
+        if (res.status) {
           toast.success(res.message);
           return router.push("/Dashboard");
-        }else{
+        } else {
           toast.error(res.message);
         }
         setLoading(false);
-
       } else {
         toast.error(validation.message);
       }
@@ -194,7 +201,6 @@ const Form3 = ({
     <>
       <form action={createUser}>
         <CardContent className="flex flex-col gap-3">
-          
           <Label htmlFor="pass">Password</Label>
           <Input name="pass" id="pass" type="password" />
           <Label htmlFor="confirm">Confirm Password</Label>
@@ -202,7 +208,7 @@ const Form3 = ({
         </CardContent>
         <CardFooter>
           <Button disabled={loading} type="submit" className="w-full">
-          {loading ? (
+            {loading ? (
               <Loader darkOn="bg-black" darkOff="bg-white" />
             ) : (
               "create account"
@@ -213,8 +219,6 @@ const Form3 = ({
     </>
   );
 };
-
-
 
 //svg for google icon
 const GoogleIcon = () => {
