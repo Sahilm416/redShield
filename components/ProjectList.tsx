@@ -4,7 +4,6 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-  CardContent,
   CardFooter,
 } from "./ui/card";
 import { Input } from "./ui/input";
@@ -21,7 +20,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
   return (
     <>
       {projects.length > 0 ? (
-        <main className="flex flex-col w-full min-h-screen p-4 md:gap-8 md:p-10">
+        <main className="flex flex-col w-full p-4 gap-5 md:gap-8 md:p-10 mt-[100px]">
           <div className="max-w-6xl w-full mx-auto flex items-center gap-4">
             <form className="flex-1">
               <Input
@@ -36,7 +35,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
               <Button>Add New Project</Button>
             </Link>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full mx-auto">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {projects.map((project, i) => {
               return (
                 <Card key={i} className=" bg-white dark:bg-black">

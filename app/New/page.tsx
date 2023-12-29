@@ -75,10 +75,10 @@ export default function NewProject() {
       };
     }
 
-    if (description.length > 40) {
+    if (description.length > 100) {
       return {
         status: false,
-        message: "Description should be at most 40 characters",
+        message: "Description should be at most 100 characters",
       };
     }
 
