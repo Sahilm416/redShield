@@ -3,7 +3,8 @@ import { ThemeBtn } from "./ThemeBtn";
 import { MenuBar } from "./Menu";
 import { getUser } from "@/app/actions/auth";
 const Navbar = async () => {
-  const res = await getUser();
+  const res = await getUser() as {status: boolean , message: string , data: {email: string , project_id: string}};
+
   return (
     <div className="nav w-full dark:bg-[rgba(18,18,18,0.85)] bg-[rgba(255,255,255,0.85)] flex justify-center items-center h-[60px] dark:border-slate-900  m-0 p-2 border-b border-slate-200 fixed top-0 right-0 z-50">
       <nav className="flex justify-between items-center w-full min-w-[350px]">
@@ -46,7 +47,7 @@ const Navbar = async () => {
         </div>
         <div className="flex justify-center items-center gap-4 mx-5">
         <ThemeBtn />
-          <MenuBar logged={res.status} />
+          <MenuBar info={res} />
         </div>
       </nav>
     </div>

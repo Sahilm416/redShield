@@ -31,7 +31,7 @@ export const POST = async (request: Request) => {
         email: data.email,
         profile_picture:
           data.profile_picture ||
-          "https://www.pngplay.com/wp-content/uploads/12/User-Avatar-Profile-Transparent-Free-PNG-Clip-Art.png",
+          "https://vercel.com/api/www/avatar/e4HZrj63hu6L3DgyuIE06nf7?&s=64",
         creation_date: new Date(),
       };
 
