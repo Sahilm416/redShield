@@ -15,7 +15,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { checkPassword } from "@/app/actions/RegCheck";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
-import Loader from "./Loader";
+import { Oval } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
 
 export default function RegisterCard() {
@@ -95,7 +95,15 @@ const Form1 = ({
         <CardFooter>
           <Button disabled={loading} type="submit" className="w-full">
             {loading ? (
-              <Loader darkOn="bg-black" darkOff="bg-white" />
+              <Oval
+              visible={true}
+              height="25"
+              width="25"
+              strokeWidth="5"
+              color="white"
+              ariaLabel="oval-loading"
+              secondaryColor="black"
+            />
             ) : (
               "continue"
             )}
@@ -153,7 +161,15 @@ const Form2 = ({
           </Button>
           <Button disabled={loading} type="submit" className="w-[50%]">
             {loading ? (
-              <Loader darkOn="bg-black" darkOff="bg-white" />
+              <Oval
+              visible={true}
+              height="25"
+              width="25"
+              strokeWidth="5"
+              color="white"
+              ariaLabel="oval-loading"
+              secondaryColor="black"
+            />
             ) : (
               "submit"
             )}
@@ -209,7 +225,15 @@ const Form3 = ({ email }: { email: string }) => {
         <CardFooter>
           <Button disabled={loading} type="submit" className="w-full">
             {loading ? (
-              <Loader darkOn="bg-black" darkOff="bg-white" />
+              <Oval
+              visible={true}
+              height="25"
+              width="25"
+              strokeWidth="5"
+              color="white"
+              ariaLabel="oval-loading"
+              secondaryColor="black"
+            />
             ) : (
               "create account"
             )}

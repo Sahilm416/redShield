@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import { createNewProject } from "../actions/project";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
-import Loader from "@/components/Loader";
 export default function NewProject() {
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -130,7 +129,7 @@ export default function NewProject() {
             className="sm:w-[200px] sm:ml-auto w-full"
           >
             {loading ? (
-              <Loader darkOn="bg-black" darkOff="bg-white" />
+             ""
             ) : (
               "create project"
             )}
