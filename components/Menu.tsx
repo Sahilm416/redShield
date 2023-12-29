@@ -1,5 +1,15 @@
 "use client";
-import { LogOut as LogOutIcon, Settings, Menu, MailIcon } from "lucide-react";
+import {
+  LogOut as LogOutIcon,
+  Settings,
+  Menu,
+  MailIcon,
+  LayoutDashboard,
+  Book,
+  Building2,
+  Contact,
+  CircleUser,
+} from "lucide-react";
 import { LogOut } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
 import {
@@ -88,33 +98,51 @@ export function MenuBar({
               <Menu className="w-6 h-6" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 mr-7 mt-4 shadow-lg">
+          <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg">
+            <DropdownMenuLabel className="flex"><MailIcon className="text-slate-300 w-[20px] mr-2" />{info.data.email.split('@')[0]}</DropdownMenuLabel>
             <DropdownMenuGroup>
               <Link href="/Dashboard">
-                <DropdownMenuItem>Dashboard</DropdownMenuItem>
-              </Link>
-              <DropdownMenuItem>
-                <Link href="#">Docs</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="#">About</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="#">Contact</Link>
-              </DropdownMenuItem>
-              {info.status && (
-                <DropdownMenuItem>
-                  <Link href="#">Account</Link>
+                <DropdownMenuItem className="text-lg">
+                  <LayoutDashboard className="text-slate-300 w-[20px] mr-2" />{" "}
+                  Dashboard
                 </DropdownMenuItem>
+              </Link>
+              <Link href="#">
+                <DropdownMenuItem className="text-lg">
+                  <Book className="text-slate-300 w-[20px] mr-2" />
+                  Docs
+                </DropdownMenuItem>
+              </Link>
+              <Link href="#">
+                <DropdownMenuItem className="text-lg">
+                  <Building2 className="text-slate-300 w-[20px] mr-2" /> About
+                </DropdownMenuItem>
+              </Link>
+              <Link href="#">
+                {" "}
+                <DropdownMenuItem className="text-lg">
+                  <Contact className="text-slate-300 w-[20px] mr-2" /> Contact
+                </DropdownMenuItem>
+              </Link>
+              {info.status && (
+                <Link href="#">
+                  <DropdownMenuItem className="text-lg">
+                    <CircleUser className="text-slate-300 w-[20px] mr-2" />{" "}
+                    Account
+                  </DropdownMenuItem>
+                </Link>
               )}
               {info.status && (
                 <DropdownMenuItem
+                  className="text-lg"
                   onClick={async () => {
                     await LogOut();
                     return window.location.reload();
                   }}
                 >
-                  Sign Out
+                  {" "}
+                  <LogOutIcon className="text-slate-300 w-[20px] mr-2" />{" "}
+                 Sign Out
                 </DropdownMenuItem>
               )}
             </DropdownMenuGroup>
