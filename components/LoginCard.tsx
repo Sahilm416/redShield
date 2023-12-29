@@ -39,7 +39,7 @@ export default function LoginCard() {
   };
   return (
     <>
-      <Card className=" dark:bg-black p-2 h-[330px] shadow-lg">
+      <Card className=" dark:bg-gray-900/20 bg-white p-2 h-[330px] shadow-lg">
         <form action={sendData}>
           <CardHeader>
             <CardTitle>
@@ -49,9 +49,9 @@ export default function LoginCard() {
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
             <Label htmlFor="email">Email</Label>
-            <Input autoFocus type="email" name="email" id="email" required />
-            <Label htmlFor="password">Password</Label>
-            <Input type="password" name="password" id="password" required />
+            <Input autoFocus placeholder="enter email" type="email" name="email" id="email" required />
+            <Label  htmlFor="password">Password</Label>
+            <Input placeholder="enter password" type="password" name="password" id="password" required />
           </CardContent>
           <CardFooter>
             <Button disabled={loading} className="w-full" type="submit">

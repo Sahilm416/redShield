@@ -6,7 +6,7 @@ const Navbar = async () => {
   const res = await getUser() as {status: boolean , message: string , data: {email: string , project_id: string}};
 
   return (
-    <div className="nav w-full dark:bg-[rgba(18,18,18,0.85)] bg-[rgba(255,255,255,0.85)] flex justify-center items-center h-[60px] dark:border-slate-900  m-0 p-2 border-b border-slate-200 fixed top-0 right-0 z-50">
+    <div className="nav w-full flex justify-center items-center h-[60px] dark:border-slate-800  m-0 p-2 border-b border-slate-200 fixed top-0 right-0 z-50">
       <nav className="flex justify-between items-center w-full min-w-[350px]">
         <div className="flex justify-center items-center gap-10">
           <Link
@@ -14,7 +14,7 @@ const Navbar = async () => {
             className="text-xl flex justify-center items-center gap-2 select-none cursor-pointer dark:text-slate-200 text-slate-900 font-sans font-bold ml-5 p-1"
           >
             <ShieldIcon />
-            <span className="font-bold text-lg">RedShield</span>
+            <span className="font-semibold text-lg">RedShield</span>
           </Link>
           <span className="sm:inline-block hidden">|</span>
           <div className="justify-center items-center gap-5 text-md sm:flex hidden">

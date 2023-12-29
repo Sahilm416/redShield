@@ -10,7 +10,7 @@ export default async function middleWare(request: NextRequest) {
 
   //if user is not authenticated then redirect to dashboard
   if(url.pathname === "/Auth"){
-    if(checkValidity.status) {
+    if(checkValidity?.status) {
       url.pathname = "/Dashboard"
       return NextResponse.redirect(url);
     }else{
@@ -19,7 +19,7 @@ export default async function middleWare(request: NextRequest) {
   }
   //protect dashboard from unauthorized users
   if(url.pathname === "/Dashboard"){
-    if(checkValidity.status) {
+    if(checkValidity?.status) {
       return NextResponse.next();
     }else{
       url.pathname = "/Auth"
@@ -29,7 +29,7 @@ export default async function middleWare(request: NextRequest) {
   
   //protect new route from unauthorized users
   if(url.pathname === "/New"){
-    if(checkValidity.status) {
+    if(checkValidity?.status) {
       return NextResponse.next();
     }else{
       url.pathname = "/Auth"

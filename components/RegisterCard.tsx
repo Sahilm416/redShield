@@ -23,7 +23,7 @@ export default function RegisterCard() {
 
   return (
     <>
-      <Card className=" dark:bg-black px-2 h-[330px] shadow-lg">
+      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-[330px] shadow-lg">
         <CardHeader>
           <CardTitle>
             Register to <span className="text-red-600">Red</span>shield
@@ -70,7 +70,7 @@ const Form1 = ({
   };
   return (
     <>
-      <Card className="mx-6 h-[40px] mb-2 bg-slate-50 hover:bg-white cursor-pointer flex justify-center items-center gap-2 p-2">
+      <Card className="mx-6 h-[40px] mb-2 bg-slate-50 dark:border-slate-300 hover:bg-white cursor-pointer flex justify-center items-center gap-2 p-2">
         <GoogleIcon /> <p className="dark:text-slate-900">continue with google</p>
       </Card>
       <Label className="grid place-items-center py-3">OR</Label>

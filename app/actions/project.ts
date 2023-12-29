@@ -22,15 +22,12 @@ export const createNewProject = async ({
     const token = getCookie("_auth_token", { cookies });
 
     const data = verify(token, process.env.JWT_SECRET_KEY!) as {
-      username: string;
-    };
-
-    const res = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
-      project_name: string;
+      email: string;
       project_id: string;
     };
+
     const projects = (await db.get(
-      res.project_id + ":" + data.username + ":projects"
+      data.project_id + ":" + data.email + ":projects"
     )) as projectData[];
 
     const checkAlreadyExists = projects.some(
@@ -49,7 +46,7 @@ export const createNewProject = async ({
         key: uuidv4(),
       }
     const newProjects = await db.set(
-      res.project_id + ":" + data.username + ":projects",
+      data.project_id + ":" + data.email + ":projects",
       [
         ...projects,
         projectTobeAdded
@@ -86,18 +83,16 @@ export const createNewProject = async ({
 
 export const getProject = async (data: { id: string }) => {
   try {
-    const token = getCookie("_auth_token", { cookies });
+  const token = getCookie("_auth_token", { cookies });
 
   const user = verify(token, process.env.JWT_SECRET_KEY!) as {
-    username: string;
-  };
-  const res = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
-    project_name: string;
+    email: string;
     project_id: string;
   };
 
+
   const projects = (await db.get(
-    res.project_id + ":" + user.username + ":projects"
+    user.project_id + ":" + user.email + ":projects"
   )) as projectData[];
 
   const project = projects.find((obj) => (obj.id === data.id));

@@ -46,7 +46,7 @@ export function MenuBar({
   }, [info.status]);
 
   const LoadUser = async () => {
-    if (info.status) {
+    if (info?.status) {
       const res = await getUserInfo({
         email: info.data.email,
         project_id: info.data.project_id,

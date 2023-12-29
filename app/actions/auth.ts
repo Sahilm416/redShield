@@ -23,6 +23,9 @@ export const checkToken = async ({token}:{token: string})=>{
     return response;
   } catch (error) {
     console.log("something went wrong",error)
+    return {
+      status:false,
+    }
   }
 }
 
