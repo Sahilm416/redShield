@@ -10,7 +10,7 @@ export default async function ProjectPage({params}:{params:{id:string}}){
     const res = await getProject({id:params.id}) as resData;
     return(
         <div className="mt-[100px] flex justify-center items-center">
-           <ProjectComponent res={res}/>
+           {res && <ProjectComponent res={res}/>}
         </div>
     )
 }

@@ -7,7 +7,7 @@ export default async function middleWare(request: NextRequest) {
   const cookie = getCookie("_auth_token",{cookies}) as string ;
   const url = request.nextUrl.clone();
   const checkValidity = await checkToken({token:cookie});
-
+  console.log("path is",url.pathname)
   //if user is not authenticated then redirect to dashboard
   if(url.pathname === "/Auth"){
     if(checkValidity?.status) {
@@ -19,7 +19,7 @@ export default async function middleWare(request: NextRequest) {
   }
   //protect dashboard from unauthorized users
   if(url.pathname === "/Dashboard"){
-    if(checkValidity?.status) {
+    if(checkValidity.status) {
       return NextResponse.next();
     }else{
       url.pathname = "/Auth"
@@ -29,7 +29,16 @@ export default async function middleWare(request: NextRequest) {
   
   //protect new route from unauthorized users
   if(url.pathname === "/New"){
-    if(checkValidity?.status) {
+    if(checkValidity.status) {
+      return NextResponse.next();
+    }else{
+      url.pathname = "/Auth"
+      return NextResponse.redirect(url);
+    }
+  }
+  //project projec route from unauthorized users
+  if(url.pathname.includes("/Project")){
+    if(checkValidity.status) {
       return NextResponse.next();
     }else{
       url.pathname = "/Auth"
@@ -41,5 +50,5 @@ export default async function middleWare(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/Auth", "/Dashboard","/New"],
+  matcher: ["/Auth", "/Dashboard","/New" ,"/Project/:path*"],
 };

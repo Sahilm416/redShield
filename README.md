@@ -2,7 +2,7 @@
 
 ## ⚡ Turbocharged Authentication - Unleash the Speed!
 
-Welcome to Auth<span style="color: red;">Redis</span>, where authentication meets unprecedented speed and elegance.
+Welcome to Redshield, where authentication meets unprecedented speed and elegance.
 
 🎩 **Coming Soon...** Stay tuned for a revolutionary authentication library powered by <span style="color: red;">Redis</span>.
 
