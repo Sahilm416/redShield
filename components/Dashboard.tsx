@@ -2,7 +2,7 @@
 import { getUserInfo } from "../app/actions/auth";
 import ErrorPage from "./Error";
 import ProjectList from "@/components/ProjectList";
-import NotVerified from "@/components/NotVerifield";
+
 
 type Project = {
   id: string;
