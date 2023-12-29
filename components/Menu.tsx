@@ -99,7 +99,12 @@ export function MenuBar({
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg">
-            <DropdownMenuLabel className="flex"><MailIcon className="text-slate-300 w-[20px] mr-2" />{info.data.email.split('@')[0]}</DropdownMenuLabel>
+            {info.status && (
+              <DropdownMenuLabel className="flex">
+                <MailIcon className="text-slate-300 w-[20px] mr-2" />
+                {info.data.email.split("@")[0]}
+              </DropdownMenuLabel>
+            )}
             <DropdownMenuGroup>
               <Link href="/Dashboard">
                 <DropdownMenuItem className="text-lg">
@@ -141,8 +146,8 @@ export function MenuBar({
                   }}
                 >
                   {" "}
-                  <LogOutIcon className="text-slate-300 w-[20px] mr-2" />{" "}
-                 Sign Out
+                  <LogOutIcon className="text-slate-300 w-[20px] mr-2" /> Sign
+                  Out
                 </DropdownMenuItem>
               )}
             </DropdownMenuGroup>
