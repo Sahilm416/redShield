@@ -3,7 +3,8 @@ import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import { checkToken } from "./app/actions/auth";
 
-export default async function middleWare(request: NextRequest) {
+
+export default async function middleWare(request: NextRequest ,response:NextResponse) {
   const cookie = getCookie("_auth_token",{cookies}) as string ;
   const url = request.nextUrl.clone();
   const checkValidity = await checkToken({token:cookie});

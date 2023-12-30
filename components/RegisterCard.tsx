@@ -17,7 +17,7 @@ import { checkPassword } from "@/app/actions/RegCheck";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
 import { Oval } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
-
+import {signIn} from "next-auth/react"
 export default function RegisterCard() {
   const [formCount, setFormCount] = useState<1 | 2 | 3>(1);
   const [email, setEmail] = useState<string>("");
@@ -51,6 +51,7 @@ const Form1 = ({
   const [loading, setLoading] = useState<boolean>(false);
 
   const signInWithGoogle = async () => {
+    await signIn('google');
     return;
   };
 

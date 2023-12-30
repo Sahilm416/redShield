@@ -38,7 +38,7 @@ export const LoginUser = async (data: { email: string; password: string }) => {
   }
 };
 
-const setJWT = async ({
+export const setJWT = async ({
   email,
   project_id,
 }: {

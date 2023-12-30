@@ -1,36 +1,37 @@
 "use server";
 
+import { db } from "@/utils/database/db";
 import { getCookie, deleteCookie } from "cookies-next";
-
+import { setJWT } from "./login";
 import { cookies } from "next/headers";
+import { registerUser } from "./register";
+import { nanoid } from "nanoid";
 const { verify } = require("jsonwebtoken");
 
-
-export const checkToken = async ({token}:{token: string})=>{
+export const checkToken = async ({ token }: { token: string }) => {
   try {
     const res = await fetch("https://redshield.vercel.app/api/service/verify", {
-      next: {revalidate:0},
+      next: { revalidate: 0 },
       method: "POST",
-      headers:{
-        'Content-Type': 'application/json',
-        'Authorization': process.env.RED_KEY!,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.RED_KEY!,
       },
       body: JSON.stringify({
-        token: token
-      })
+        token: token,
+      }),
     });
     const response = await res.json();
     return response;
   } catch (error) {
-    console.log("something went wrong",error)
+    console.log("something went wrong", error);
     return {
-      status:false,
-    }
+      status: false,
+    };
   }
-}
+};
 
-
-export const ValidateAuthToken = async ({token}:{token:string}) => {
+export const ValidateAuthToken = async ({ token }: { token: string }) => {
   if (!token) {
     return {
       status: false,
@@ -131,12 +132,10 @@ export const getUserInfo = async ({ email }: { email: string }) => {
       }
     );
 
-    const response = await res.json() as userInfoStructure;
+    const response = (await res.json()) as userInfoStructure;
     return {
-
       email: response.user.email,
-      profile_picture:
-        response.user.profile_picture,
+      profile_picture: response.user.profile_picture,
       projects: response.projects,
     };
   } catch (error) {
@@ -144,3 +143,28 @@ export const getUserInfo = async ({ email }: { email: string }) => {
   }
 };
 
+export const checkGoogleUserExists = async ({
+  email,
+  profile_picture,
+}: {
+  email: string;
+  profile_picture: string;
+}) => {
+  try {
+    const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
+      project_id: string;
+    };
+    const checkUser = await db.get(project_id + ":" + email);
+    if (checkUser) {
+      await setJWT({ email: email, project_id: project_id });
+    } else {
+      await registerUser({
+        email: email,
+        password: nanoid(10),
+        profile_picture: profile_picture,
+      });
+    }
+  } catch (error) {
+    console.log("error happened",error)
+  }
+};
