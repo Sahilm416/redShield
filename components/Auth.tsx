@@ -2,7 +2,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LoginCard from "./LoginCard";
 import RegisterCard from "./RegisterCard";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { toast } from "sonner";
 import { useSession } from "next-auth/react";
 import { checkGoogleUserExists } from "@/app/actions/auth";

@@ -1,4 +1,3 @@
-import { Card } from "./ui/card"
 export default function SubHero() {
     return (
     
@@ -11,7 +10,7 @@ export default function SubHero() {
                 Faster{"\n                      "}
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Experience the speed of redis with a extreme low bandwidth support.
+                Experience the speed of redis with a extreme low bandwidth support. 
               </p>
             </div>
           </div>

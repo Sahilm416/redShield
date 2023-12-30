@@ -10,14 +10,13 @@ export default function HomeComponent() {
         <Command />
       </div>
       <SubHero />
-      <ArrowIcon/>
+      <ArrowIcon />
     </div>
   );
 }
 
 function ArrowIcon() {
   return (
-    <div className="scroll-down sm:block hidden border-b-slate-700 border-r-slate-700 dark:border-b-slate-300 dark:border-r-slate-300">
-    </div>
+    <div className="scroll-down sm:block hidden border-b-slate-700 border-r-slate-700 dark:border-b-slate-300 dark:border-r-slate-300"></div>
   );
 }
