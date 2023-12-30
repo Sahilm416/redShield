@@ -13,7 +13,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { createNewProject } from "../actions/project";
 import { toast } from "sonner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Oval } from "react-loader-spinner";
 export default function NewProject() {
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -129,7 +130,15 @@ export default function NewProject() {
             className="sm:w-[200px] sm:ml-auto w-full"
           >
             {loading ? (
-             ""
+             <Oval
+             visible={true}
+             height="25"
+             width="25"
+             strokeWidth="5"
+             color="white"
+             ariaLabel="oval-loading"
+             secondaryColor="black"
+           />
             ) : (
               "create project"
             )}

@@ -31,7 +31,7 @@ export function AuthPage() {
     signGoogleUser();
     return (
       <div className="w-full mt-[100px] grid place-items-center">
-        <p>Redirecting user...</p>
+        <p className="text-3xl text-slate-500">Redirecting user...</p>
       </div>
     );
   } else {
