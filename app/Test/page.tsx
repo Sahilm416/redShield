@@ -1,9 +1,9 @@
 "use client"
-import { useSession } from "next-auth/react";
-const Test = () => {
-const user = useSession();
 
-console.log(user);
+const Test = () => {
+
+
+
   return (
     <div className="w-full h-screen flex justify-center items-center">
         
