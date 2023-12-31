@@ -154,7 +154,7 @@ export const checkGoogleUserExists = async ({
     const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
       project_id: string;
     };
-    const checkUser = await db.get(project_id + ":" + email);
+    const checkUser = await db.get(project_id + ":" + email+":user");
     if (checkUser) {
       await setJWT({ email: email, project_id: project_id });
     } else {

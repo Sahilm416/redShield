@@ -13,7 +13,7 @@ export const POST = async (request: Request) => {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   } else {
     try {
-      const user = await db.get(project_id + ":" + data.email);
+      const user = await db.get(project_id + ":" + data.email+":user");
       const projects = await db.get(
         project_id + ":" + data.email + ":projects"
       );

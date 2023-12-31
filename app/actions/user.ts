@@ -11,7 +11,7 @@ export const getUserInfo = async ({
   project_id: string;
 }) => {
   try {
-    const user = await db.get(project_id + ":" + email) as {email: string , profile_picture: string};
+    const user = await db.get(project_id + ":" + email+":user") as {email: string , profile_picture: string};
 
     return {
         email: user.email,
