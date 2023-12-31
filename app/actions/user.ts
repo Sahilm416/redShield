@@ -29,7 +29,7 @@ export const getUserInfo = async ({
   }
 };
 
-export const getAllUsers = async ({key}:{key:string}) => {
+export const getAllUsers = async ({ key }: { key: string }) => {
   try {
     const res = await fetch(
       "https://redshield.vercel.app/api/service/getAllUsers",
@@ -39,8 +39,13 @@ export const getAllUsers = async ({key}:{key:string}) => {
         },
       }
     );
-    const response = await res.json();
-    return response.users;
+    if (res.status === 200) {
+      const response = await res.json();
+      return response.users;
+    }else{
+      console.log(Response)
+      return [];
+    }
   } catch (error) {
     console.log("error", error);
     return [];

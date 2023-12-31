@@ -1,5 +1,5 @@
 import { getAllUsers } from "@/app/actions/user";
-import Link from "next/link";
+
 import {
   Table,
   TableBody,
@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/table";
 import { Label } from "./ui/label";
 
-export default async function Users({ key }: { key: string }) {
-  const users = (await getAllUsers({ key: key })) as [string];
+export default async function Users({ secret }: { secret: string }) {
+  const users = (await getAllUsers({ key: secret })) as [string];
   return (
     <div className="flex flex-col justify-center sm:items-start gap-5 items-center">
       {users.length < 1 ? (

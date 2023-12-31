@@ -18,7 +18,7 @@ export default async function ProjectPage({
       {res ? (
         <>
           <ProjectComponent res={res} />
-          <Users key={res.key} />
+          <Users secret={res.key} />
         </> 
       ): <p className="text-2xl text-slate-500">Logging Out...</p>}
     
