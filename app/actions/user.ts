@@ -11,25 +11,38 @@ export const getUserInfo = async ({
   project_id: string;
 }) => {
   try {
-    const user = await db.get(project_id + ":" + email+":user") as {email: string , profile_picture: string};
+    const user = (await db.get(project_id + ":" + email + ":user")) as {
+      email: string;
+      profile_picture: string;
+    };
 
     return {
-        email: user.email,
-        profile: user.profile_picture,
-    }
+      email: user.email,
+      profile: user.profile_picture,
+    };
   } catch (error) {
     console.log("something went wrong", error);
     return {
-        email: "ok",
-        profile: "ok",
-    }
+      email: "ok",
+      profile: "ok",
+    };
   }
 };
 
-
-export const getAllUsers = async ()=>{
-    const user = await getUser();
-
-    const allUsers = await db.keys(user.data.project_id+":*:projects");
-    console.log(allUsers)
-}
+export const getAllUsers = async () => {
+  try {
+    const res = await fetch(
+      "https://redshield.vercel.app/api/service/getAllUsers",
+      {
+        headers: {
+          Authorization: process.env.RED_KEY!,
+        },
+      }
+    );
+    const response = await res.json();
+    return response.users;
+  } catch (error) {
+    console.log("error", error);
+    return [""];
+  }
+};

@@ -19,7 +19,7 @@ export default function ProjectComponent({
   const [show, setShow] = useState<boolean>(false);
 
   return (
-    <Card className="w-auto sm:min-w-[500px] min-w-[370px] max-w-[750px] shadow-lg bg-white dark:bg-gray-800/20 select-none">
+    <Card className=" w-[90vw] max-w-[500px] shadow-lg bg-white dark:bg-gray-800/20 select-none">
       <CardHeader>
         <CardTitle>{res?.name}</CardTitle>
         <CardDescription>{res?.description}</CardDescription>
@@ -36,7 +36,7 @@ export default function ProjectComponent({
           />
           <span
             onClick={() => setShow(!show)}
-            className="cursor-pointer h-[40px] border border-l-0 grid place-items-center p-1 bg-white dark:bg-black"
+            className="cursor-pointer h-[40px] border border-l-0 grid place-items-center p-1 bg-white dark:bg-gray-800/20"
           >
             {show ? (
               <Eye />
