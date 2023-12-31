@@ -29,13 +29,13 @@ export const getUserInfo = async ({
   }
 };
 
-export const getAllUsers = async () => {
+export const getAllUsers = async ({key}:{key:string}) => {
   try {
     const res = await fetch(
       "https://redshield.vercel.app/api/service/getAllUsers",
       {
         headers: {
-          Authorization: process.env.RED_KEY!,
+          Authorization: key,
         },
       }
     );
@@ -43,6 +43,6 @@ export const getAllUsers = async () => {
     return response.users;
   } catch (error) {
     console.log("error", error);
-    return [""];
+    return [];
   }
 };
