@@ -1,5 +1,6 @@
 "use server";
 import { db } from "@/utils/database/db";
+import { getUser } from "./auth";
 
 //get the specific user
 export const getUserInfo = async ({
@@ -24,3 +25,11 @@ export const getUserInfo = async ({
     }
   }
 };
+
+
+export const getAllUsers = async ()=>{
+    const user = await getUser();
+
+    const allUsers = await db.keys(user.data.project_id+":*:projects");
+    console.log(allUsers)
+}

@@ -20,7 +20,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
   return (
     <>
       {projects.length > 0 ? (
-        <main className="flex flex-col w-full p-4 gap-5 md:gap-8 md:p-10 mt-[100px]">
+        <main className="flex flex-col w-full p-4 gap-5 md:gap-8 md:p-10">
           <div className="max-w-6xl w-full mx-auto flex items-center gap-4">
             <form className="flex-1">
               <Input

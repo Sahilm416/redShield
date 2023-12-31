@@ -1,8 +1,10 @@
 "use client";
+import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
@@ -17,7 +19,7 @@ export default function ProjectComponent({
   const [show, setShow] = useState<boolean>(false);
 
   return (
-    <Card className="w-auto sm:min-w-[500px] min-w-[370px] max-w-[750px bg-slate-100 dark:bg-black">
+    <Card className="w-auto sm:min-w-[500px] min-w-[370px] max-w-[750px] shadow-lg bg-white dark:bg-gray-800/20 select-none">
       <CardHeader>
         <CardTitle>{res?.name}</CardTitle>
         <CardDescription>{res?.description}</CardDescription>
@@ -27,7 +29,8 @@ export default function ProjectComponent({
 
         <div className="flex justify-center items-center mt-3">
           <Input
-            className=" border-r-0 rounded-none h-[40px] focus:outline-none"
+            disabled={true}
+            className=" border-r-0 rounded-none h-[40px] focus:outline-none disabled:opacity-100 disabled:cursor-pointer"
             type={show ? "text" : "password"}
             value={res?.key}
           />
@@ -43,6 +46,9 @@ export default function ProjectComponent({
           </span>
         </div>
       </CardContent>
+      <CardFooter>
+        <Button variant={'outline'}>copy key</Button>
+      </CardFooter>
     </Card>
   );
 }
