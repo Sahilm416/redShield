@@ -17,6 +17,19 @@ export default function ProjectComponent({
   res: { id: string; name: string; description: string; key: string };
 }) {
   const [show, setShow] = useState<boolean>(false);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard
+      .writeText(res.key)
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 3000);
+      })
+      .catch((error) => {
+        console.error("Unable to copy to clipboard", error);
+      });
+  };
 
   return (
     <Card className=" w-[90vw] max-w-[500px] shadow-lg bg-white dark:bg-gray-800/20 select-none">
@@ -38,16 +51,17 @@ export default function ProjectComponent({
             onClick={() => setShow(!show)}
             className="cursor-pointer h-[40px] border border-l-0 grid place-items-center p-1 bg-white dark:bg-gray-800/20"
           >
-            {show ? (
-              <Eye />
-            ) : (
-              <EyeOff />
-            )}
+            {show ? <Eye /> : <EyeOff />}
           </span>
         </div>
       </CardContent>
       <CardFooter>
-        <Button variant={'outline'}>copy key</Button>
+        <Button onClick={handleCopyToClipboard} variant={"outline"}>
+          copy key
+        </Button>
+        <p className={` ml-5 text-green-500 transition-opacity duration-500 ${isCopied ? 'opacity-100' : 'opacity-0'}`}>
+          key copied
+        </p>
       </CardFooter>
     </Card>
   );

@@ -1,23 +1,39 @@
 import { getAllUsers } from "@/app/actions/user";
 import Link from "next/link";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardTitle, CardHeader } from "./ui/card";
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableFooter,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "@/components/ui/table"
+import { Label } from "./ui/label";
+
 export default async function Users() {
   const users = await getAllUsers() as [string];
   return (
-    <Card className="w-[90vw] max-w-[500px] shadow-lg bg-white dark:bg-gray-800/20">
-      <CardHeader>
-        <CardTitle>Users</CardTitle>
-      </CardHeader>
-      <CardContent>
-        {users.map((user, i) => (
-          <div key={i} className="pb-2">
-            <Link href={"#"}>
-              <span>{i + 1 + "] "}</span><span className="hover:underline">{user}</span>
-            </Link><br />
-          </div>
+    <div className="flex flex-col justify-center sm:items-start gap-5 items-center">
+    <Label className="text-3xl pl-2 sm:text-start text-center">Users ({users.length}) </Label>
+    <Table className="w-[90vw] max-w-[500px] border shadow-xl">
+      <TableHeader>
+        <TableRow>
+        <TableHead className="w-[100px]">No.</TableHead>
+          <TableHead className="w-[100px]">Email</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {users.map((user ,i) => (
+          <TableRow key={i}>
+            <TableCell className="font-medium">{i+1}</TableCell>
+            <TableCell className="font-medium">{user}</TableCell>
+          </TableRow>
         ))}
-      </CardContent>
-    </Card>
+      </TableBody>
+
+    </Table>
+    </div>
   );
 }
