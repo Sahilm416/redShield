@@ -11,7 +11,7 @@ export const sendCode = async ({ email }: { email: string }) => {
   const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
     project_id: string;
   };
-  const checkAlreadyExists = await db.get(project_id+":"+email);
+  const checkAlreadyExists = await db.get(project_id+":"+email+":user");
   if(checkAlreadyExists){
     return { status: false , message:"Email already exists"};
   }

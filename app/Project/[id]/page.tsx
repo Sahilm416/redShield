@@ -14,7 +14,7 @@ export default async function ProjectPage({
 }) {
   const res = (await getProject({ id: params.id })) as resData;
   return (
-    <div className="mt-[100px] flex flex-col sm:items-start gap-5 sm:pl-5 justify-center items-center">
+    <div className="mt-[100px] flex flex-col gap-5 justify-center items-center">
       {res ? (
         <>
           <ProjectComponent res={res} />

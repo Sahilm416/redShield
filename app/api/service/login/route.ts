@@ -14,12 +14,13 @@ export const POST = async (request: Request) => {
     const {project_id} = await db.get("API_KEY:" + key);
 
     if (!project_id) {
+      console.log("unauthorized key")
       return NextResponse.json(
         { message: "Unauthorized key" },
         { status: 401 }
       );
     } else {
-      const searchKey = project_id + ":" + data.email;
+      const searchKey = project_id + ":" + data.email+":user";
       const user = await db.get(searchKey);
      
       if (user) {

@@ -3,17 +3,19 @@ import { getAllUsers } from "@/app/actions/user";
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
 import { Label } from "./ui/label";
+import Link from "next/link";
+import TableComponent from "./Table";
 
 export default async function Users({ secret }: { secret: string }) {
   const users = (await getAllUsers({ key: secret })) as [string];
   return (
-    <div className="flex flex-col justify-center sm:items-start gap-5 items-center">
+    <div className="flex flex-col justify-center gap-5 items-center w-[90vw] max-w-[500px]">
       {users.length < 1 ? (
         <p className="text-center text-slate-500 text-xl p-5 w-[90vw] max-w-[500px] border bg-white dark:bg-gray-800/20 ">
           No Users
@@ -23,22 +25,10 @@ export default async function Users({ secret }: { secret: string }) {
           <Label className="text-3xl pl-2 sm:text-start text-center">
             Users ({users.length}){" "}
           </Label>
-          <Table className="w-[90vw] max-w-[500px] border shadow-xl bg-white dark:bg-gray-800/20">
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[100px]">No.</TableHead>
-                <TableHead className="w-[100px]">Email</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {users.map((user, i) => (
-                <TableRow key={i}>
-                  <TableCell className="font-medium">{i + 1}</TableCell>
-                  <TableCell className="font-medium">{user}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+
+          {users.map((user, i) => (
+            <TableComponent key={i} email={user} i={i} secret={secret} />
+          ))}
         </>
       )}
     </div>

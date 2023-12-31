@@ -1,6 +1,5 @@
 "use server";
 import { db } from "@/utils/database/db";
-import { getUser } from "./auth";
 
 //get the specific user
 export const getUserInfo = async ({
@@ -42,12 +41,30 @@ export const getAllUsers = async ({ key }: { key: string }) => {
     if (res.status === 200) {
       const response = await res.json();
       return response.users;
-    }else{
-      console.log(Response)
+    } else {
       return [];
     }
   } catch (error) {
     console.log("error", error);
     return [];
+  }
+};
+
+export const deleteUser = async ({
+  email,
+  secret,
+}: {
+  email: string;
+  secret: string;
+}) => {
+  const { project_id } = (await db.get("API_KEY:" + secret)) as {
+    project_id: string;
+  };
+
+  const res = await db.del(project_id + ":" + email + ":user");
+  if (res === 1) {
+    return true;
+  } else {
+    return false;
   }
 };

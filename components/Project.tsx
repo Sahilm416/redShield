@@ -32,7 +32,7 @@ export default function ProjectComponent({
   };
 
   return (
-    <Card className=" w-[90vw] max-w-[500px] shadow-lg bg-white dark:bg-gray-800/20 select-none">
+    <Card className=" w-[90vw] max-w-[500px] bg-white dark:bg-gray-800/20 select-none">
       <CardHeader>
         <CardTitle>{res?.name}</CardTitle>
         <CardDescription>{res?.description}</CardDescription>

@@ -137,6 +137,7 @@ export const getUserInfo = async ({ email }: { email: string }) => {
       email: response.user.email,
       profile_picture: response.user.profile_picture,
       projects: response.projects,
+      created_at: response.user.creation_date
     };
   } catch (error) {
     console.log("something went wrong", error);
@@ -168,3 +169,5 @@ export const checkGoogleUserExists = async ({
     console.log("error happened",error)
   }
 };
+
+
