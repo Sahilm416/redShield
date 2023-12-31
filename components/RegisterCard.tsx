@@ -17,14 +17,14 @@ import { checkPassword } from "@/app/actions/RegCheck";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
 import { Oval } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
-import {signIn} from "next-auth/react"
+
 export default function RegisterCard() {
   const [formCount, setFormCount] = useState<1 | 2 | 3>(1);
   const [email, setEmail] = useState<string>("");
 
   return (
     <>
-      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-[350px] shadow-lg">
+      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-auto shadow-lg">
         <CardHeader>
           <CardTitle>Register to Redshield</CardTitle>
           <CardDescription>redis based auth</CardDescription>
@@ -50,10 +50,6 @@ const Form1 = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
-  const signInWithGoogle = async () => {
-    await signIn('google');
-    return;
-  };
 
   const fakeLoad = async () => {
     return;
@@ -74,14 +70,6 @@ const Form1 = ({
   };
   return (
     <>
-      <Card
-        onClick={signInWithGoogle}
-        className="mx-6 h-[40px] mb-2 bg-slate-50 dark:border-slate-300 hover:bg-white cursor-pointer flex justify-center items-center gap-2 p-2"
-      >
-        <GoogleIcon />{" "}
-        <p className="dark:text-slate-900">continue with google</p>
-      </Card>
-      <Label className="grid place-items-center py-3">OR</Label>
       <form action={sendData}>
         <CardContent>
           <Label htmlFor="email">Email</Label>

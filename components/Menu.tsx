@@ -24,7 +24,8 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { getUserInfo } from "@/app/actions/user";
 import { useEffect, useState } from "react";
-import { signOut } from "next-auth/react";
+import { toast } from "sonner";
+
 type user = {
   email: string;
   profile: string;
@@ -79,7 +80,7 @@ export function MenuBar({
               <DropdownMenuItem
                 onClick={async () => {
                   await LogOut();
-                  await signOut();
+                  toast.success("Logged Out")
                   return window.location.reload();
                 }}
                 className="flex"
@@ -143,7 +144,7 @@ export function MenuBar({
                   className="text-lg"
                   onClick={async () => {
                     await LogOut();
-                    await signOut();
+                    toast.success("Logged Out")
                     return window.location.reload();
                   }}
                 >

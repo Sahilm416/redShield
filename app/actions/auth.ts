@@ -144,30 +144,5 @@ export const getUserInfo = async ({ email }: { email: string }) => {
   }
 };
 
-export const checkGoogleUserExists = async ({
-  email,
-  profile_picture,
-}: {
-  email: string;
-  profile_picture: string;
-}) => {
-  try {
-    const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
-      project_id: string;
-    };
-    const checkUser = await db.get(project_id + ":" + email+":user");
-    if (checkUser) {
-      await setJWT({ email: email, project_id: project_id });
-    } else {
-      await registerUser({
-        email: email,
-        password: nanoid(10),
-        profile_picture: profile_picture,
-      });
-    }
-  } catch (error) {
-    console.log("error happened",error)
-  }
-};
 
 

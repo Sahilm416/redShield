@@ -1,9 +1,7 @@
 import { getAllUsers } from "@/app/actions/user";
 
-import { RefreshCw } from "lucide-react";
-
 import { Label } from "./ui/label";
-import Link from "next/link";
+
 import TableComponent from "./Table";
 
 export default async function Users({ secret }: { secret: string }) {
