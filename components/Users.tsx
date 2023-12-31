@@ -1,12 +1,6 @@
 import { getAllUsers } from "@/app/actions/user";
 
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { RefreshCw } from "lucide-react";
 
 import { Label } from "./ui/label";
 import Link from "next/link";

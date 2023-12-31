@@ -61,10 +61,7 @@ export const deleteUser = async ({
     project_id: string;
   };
 
-  const res = await db.del(project_id + ":" + email + ":user");
-  if (res === 1) {
-    return true;
-  } else {
-    return false;
-  }
+await db.del(project_id + ":" + email + ":user");
+await db.del(project_id + ":" + email + ":projects");
+
 };

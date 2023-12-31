@@ -23,9 +23,16 @@ export default async function TableComponent({
   secret: string;
 }) {
   const [loading, setLoading] = useState<boolean>(false);
+
+  const FakeLoad = async ()=>{
+    return;
+  }
   const removeUser = async () => {
+    await FakeLoad();
     setLoading(true);
-    const res = await deleteUser({ email: email, secret: secret });
+    await deleteUser({ email: email, secret: secret });
+    setLoading(false);
+    return window.location.reload();
   };
 
   return (
