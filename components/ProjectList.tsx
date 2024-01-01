@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import {
   Card,
@@ -8,6 +8,14 @@ import {
   CardFooter,
   CardContent,
 } from "./ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { MoreVertical } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import Image from "next/image";
@@ -36,7 +44,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
           <div className="max-w-6xl w-full mx-auto flex items-center gap-4 sticky top-[60px] nav pt-3  p-2">
             <form className="flex-1">
               <Input
-                className="bg-white dark:bg-black outline-0 focus-within:border-none"
+                className="bg-white dark:bg-black rounded-none"
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -46,34 +54,59 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
               </Button>
             </form>
             <Link href={"/New"}>
-              <Button>Add New Project</Button>
+              <Button className=" rounded-none">Add New Project</Button>
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
               return (
-                <Card key={i} className=" bg-white dark:bg-gray-900/20 shadow-md">
-                  <CardHeader className="flex flex-row items-center gap-4 pb-2  ">
-                    <div className="grid gap-1">
-                      <CardTitle>{project.name}</CardTitle>
+                <Card
+                  key={i}
+                  className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none"
+                >
+                  <CardHeader className="gap-4 pb-2  ">
+                    <div className="grid gap-2">
+                      <CardTitle className="flex justify-between items-center">
+                        <p>{project.name}</p>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger className=" focus:outline-none">
+                            <span className=" cursor-pointer">
+                              <MoreVertical />
+                            </span>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuItem className="text-md">
+                              Delete
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-md">
+                              Edit
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </CardTitle>
                       <CardDescription>{project.description}</CardDescription>
                     </div>
                   </CardHeader>
                   <CardContent className="py-2">
                     <div className="w-full h-[150px] overflow-hidden select-none">
-                      <Image
-                        src={imageLinks[i]}
-                        width={400}
-                        height={200}
-                        alt="Picture of the author"
-                      />
+                      <Avatar>
+                        <AvatarImage
+                          src={imageLinks[i]}
+                          width={400}
+                          height={200}
+                          alt="Picture of the author"
+                        />
+                        <AvatarFallback className=" w-full h-full flex justify-center items-center text-slate-300">
+                          Loading...
+                        </AvatarFallback>
+                      </Avatar>
                     </div>
                   </CardContent>
                   <CardFooter>
                     <Link className="w-full" href={`/Project/${project.id}`}>
                       <Button
                         variant={"outline"}
-                        className="w-full"
+                        className="w-full rounded-none"
                       >
                         view
                       </Button>
