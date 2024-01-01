@@ -16,7 +16,7 @@ const Hero = () => {
         </p>
         <div className="max-w-[460px] min-w[300px] flex">
           <Link href={"/Auth"}>
-            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px my-5 rounded-none">
+            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] my-5 rounded-none">
               Start now
             </Button>{" "}
           </Link>
