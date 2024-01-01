@@ -15,20 +15,21 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { MoreVertical } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import Image from "next/image";
 import { imageLinks } from "@/public/images";
 import { useState } from "react";
 
@@ -51,7 +52,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
     <>
       {projects.length > 0 ? (
         <main className="flex flex-col w-full p-4 gap-5 md:gap-8 md:p-10">
-          <div className="max-w-6xl w-full mx-auto flex items-center gap-4 sticky top-[60px] nav pt-3  p-2">
+          <div className="max-w-6xl w-full mx-auto flex items-center gap-4 sticky top-[60px] nav pt-3  p-2 z-[20]">
             <form className="flex-1">
               <Input
                 className="bg-white dark:bg-black rounded-none"
@@ -70,7 +71,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
               return (
-                <Drawer>
+                <AlertDialog>
                   <Card
                     key={i}
                     className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none"
@@ -85,11 +86,11 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                                 <MoreVertical />
                               </span>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent>
+                            <DropdownMenuContent className="">
                               <DropdownMenuItem className="text-md">
-                                <DrawerTrigger className="w-full h-full text-start">
+                                <AlertDialogTrigger className="w-full h-full">
                                   Delete
-                                </DrawerTrigger>
+                                </AlertDialogTrigger>
                               </DropdownMenuItem>
 
                               <DropdownMenuItem className="text-md">
@@ -127,31 +128,23 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       </Link>
                     </CardFooter>
                   </Card>
-                  <DrawerContent className="flex justify-center items-center flex-col h-[40vh] bg-white dark:bg-black">
-                    <DrawerHeader>
-                      <DrawerTitle className=" text-center">
-                        Are tou sure ?
-                      </DrawerTitle>
-                      <DrawerDescription className="text-center">
-                        This action can't be undone.
-                      </DrawerDescription>
-                    </DrawerHeader>
-                    <p className=" dark:text-slate-200 text-slate-500">
-                      Delete project{" "}
-                      <span className="text-slate-600 dark:text-slate-100 font-bold">
-                        {project.name}
-                      </span>
-                    </p>
-                    <div className="flex sm:flex-row gap-8 my-10">
-                      <Button className=" rounded-none" variant={"destructive"}>
-                        Delete
-                      </Button>
-                      <DrawerClose>
-                        <Button className=" rounded-none">Cancel</Button>
-                      </DrawerClose>
-                    </div>
-                  </DrawerContent>
-                </Drawer>
+                  <AlertDialogContent className="bg-white dark:bg-black">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Are you absolutely sure?
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone. This will permanently
+                        delete <span className=" font-bold">{project.name}</span> and remove related data from our
+                        servers.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter className="gap-4">
+                      <AlertDialogCancel className=" rounded-none">Cancel</AlertDialogCancel>
+                      <AlertDialogAction className="bg-red-800 text-white rounded-none">Delete</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               );
             })}
           </div>
