@@ -88,7 +88,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="">
                               <DropdownMenuItem className="text-md">
-                                <AlertDialogTrigger className="w-full h-full">
+                                <AlertDialogTrigger className="w-full h-full text-start">
                                   Delete
                                 </AlertDialogTrigger>
                               </DropdownMenuItem>
@@ -135,13 +135,13 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       </AlertDialogTitle>
                       <AlertDialogDescription>
                         This action cannot be undone. This will permanently
-                        delete <span className=" font-bold">{project.name}</span> and remove related data from our
+                        delete <span className=" font-bold text-slate-800 dark:text-white text-md">{project.name}</span> and remove related data from our
                         servers.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
-                    <AlertDialogFooter className="gap-4">
-                      <AlertDialogCancel className=" rounded-none">Cancel</AlertDialogCancel>
-                      <AlertDialogAction className="bg-red-800 text-white rounded-none">Delete</AlertDialogAction>
+                    <AlertDialogFooter className="gap-4 place-items-center">
+                      <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">Cancel</AlertDialogCancel>
+                      <AlertDialogAction className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto">Delete</AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>
