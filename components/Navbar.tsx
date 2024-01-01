@@ -10,7 +10,7 @@ const Navbar = async () => {
   };
 
   return (
-    <div className="nav w-full flex justify-center items-center h-[60px] dark:border-slate-800 dark:bg-slate-900/40 bg-slate-100/40  m-0 p-2 border-b border-slate-200 fixed top-0 right-0 z-50">
+    <div className="nav w-full flex justify-center items-center h-[60px] dark:border-slate-800  m-0 p-2 fixed top-0 right-0 z-50">
       <nav className="flex justify-between items-center w-full min-w-[350px]">
         <div className="flex justify-center items-center gap-10">
           <Link
