@@ -1,8 +1,8 @@
 import DashboardComponent from "@/components/Dashboard";
-import { getUser } from "../actions/auth";
+import { getSession } from "../actions/auth";
 
 export default async function () {
-  const res = await getUser();
+  const res = await getSession();
   return (
     <>
        {res.status && <DashboardComponent email={res?.data?.email} />}

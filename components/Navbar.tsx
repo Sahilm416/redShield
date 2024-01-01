@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ThemeBtn } from "./ThemeBtn";
 import { MenuBar } from "./Menu";
-import { getUser } from "@/app/actions/auth";
+import { getSession } from "@/app/actions/auth";
 const Navbar = async () => {
-  const res = (await getUser()) as {
+  const res = (await getSession()) as {
     status: boolean;
     message: string;
     data: { email: string; project_id: string };

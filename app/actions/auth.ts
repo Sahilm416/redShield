@@ -66,7 +66,7 @@ export const LogOut = async () => {
 
 //return the details of logged in user
 
-export const getUser = async () => {
+export const getSession = async () => {
   const token = getCookie("_auth_token", { cookies });
   if (!token) {
     return {
@@ -117,32 +117,22 @@ type userInfoStructure = {
 
 export const getUserInfo = async ({ email }: { email: string }) => {
   try {
-    const res = await fetch(
-      "https://redshield.vercel.app/api/service/getUser",
-      {
-        next: { revalidate: 0 },
-        method: "POST",
-        headers: {
-          append: "application/json",
-          Authorization: process.env.RED_KEY!,
-        },
-        body: JSON.stringify({
-          email: email.toLowerCase(),
-        }),
-      }
-    );
+    const session = await getSession();
+    const user = (await db.get(
+      session.data.project_id + ":" + session.data.email + ":user"
+    )) as User;
+    const projects = (await db.get(
+      session.data.project_id + ":" + session.data.email + ":projects"
+    )) as Project[];
 
-    const response = (await res.json()) as userInfoStructure;
+    const response = { user, projects };
     return {
       email: response.user.email,
       profile_picture: response.user.profile_picture,
       projects: response.projects,
-      created_at: response.user.creation_date
+      created_at: response.user.creation_date,
     };
   } catch (error) {
     console.log("something went wrong", error);
   }
 };
-
-
-
