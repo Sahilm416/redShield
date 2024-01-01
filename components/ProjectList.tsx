@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import {
   Card,
@@ -11,6 +12,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { imageLinks } from "@/public/images";
+import { useState } from "react";
 
 type Project = {
   id: string;
@@ -21,6 +23,12 @@ type Project = {
 };
 
 export default function ProjectList({ projects }: { projects: Project[] }) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProjects = projects.filter((project) =>
+    project.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
       {projects.length > 0 ? (
@@ -30,6 +38,8 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
               <Input
                 className="bg-white dark:bg-black"
                 placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
               <Button className="sr-only" type="submit">
                 Submit
@@ -40,7 +50,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
-            {projects.map((project, i) => {
+            {filteredProjects.map((project, i) => {
               return (
                 <Card key={i} className=" bg-white dark:bg-black">
                   <CardHeader className="flex flex-row items-center gap-4 pb-2  ">
