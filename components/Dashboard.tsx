@@ -24,7 +24,7 @@ export default async function DashboardComponent({ email }: { email: string }) {
   const data = await getUserInfo({ email: email });
 
   return (
-    <div className="w-full mt-[100px] flex flex-col gap-5 justify-start items-center">
+    <div className="w-full mt-[40px] flex flex-col gap-5 justify-start items-center">
       {!data ? (
         <ErrorPage />
       ) : (

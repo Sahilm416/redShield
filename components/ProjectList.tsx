@@ -33,10 +33,10 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
     <>
       {projects.length > 0 ? (
         <main className="flex flex-col w-full p-4 gap-5 md:gap-8 md:p-10">
-          <div className="max-w-6xl w-full mx-auto flex items-center gap-4">
+          <div className="max-w-6xl w-full mx-auto flex items-center gap-4 sticky top-[60px] nav p-2">
             <form className="flex-1">
               <Input
-                className="bg-white dark:bg-black"
+                className="bg-white dark:bg-black outline-0 focus-within:border-none"
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -52,7 +52,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
               return (
-                <Card key={i} className=" bg-white dark:bg-black">
+                <Card key={i} className=" bg-white dark:bg-gray-900/20 shadow-md">
                   <CardHeader className="flex flex-row items-center gap-4 pb-2  ">
                     <div className="grid gap-1">
                       <CardTitle>{project.name}</CardTitle>
@@ -73,7 +73,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                     <Link className="w-full" href={`/Project/${project.id}`}>
                       <Button
                         variant={"outline"}
-                        className="w-full bg-green-700 text-white hover:text-slate-100 hover:bg-green-800"
+                        className="w-full"
                       >
                         view
                       </Button>
