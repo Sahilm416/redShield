@@ -40,7 +40,7 @@ export const POST = async (request: Request) => {
         await db.set(searchKey, newUser);
 
         //Initialize empty project list
-      await db.set(res.project_id + ":" + data.email + ":projects", []);
+     
 
       return NextResponse.json({
         status: true,

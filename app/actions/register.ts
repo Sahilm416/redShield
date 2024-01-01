@@ -1,34 +1,36 @@
 "use server";
+const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
 import { db } from "@/utils/database/db";
 import { LoginUser } from "./login";
-
 
 //send th code to email address
 export const sendCode = async ({ email }: { email: string }) => {
   const code = Math.floor(100000 + Math.random() * 900000);
 
-
   const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
     project_id: string;
   };
-  const checkAlreadyExists = await db.get(project_id+":"+email+":user");
-  if(checkAlreadyExists){
-    return { status: false , message:"Email already exists"};
+  const checkAlreadyExists = await db.get(project_id + ":" + email + ":user");
+  if (checkAlreadyExists) {
+    return { status: false, message: "Email already exists" };
   }
   try {
-    await db.set(project_id + ":" + email + ":code", code,{ex:300});
-    const res = await fetch("https://redshield.vercel.app/api/service/sendCode", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: process.env.RED_KEY!,
-      },
-      body: JSON.stringify({
-        email: email,
-        code: code,
-      }),
-    });
-  
+    await db.set(project_id + ":" + email + ":code", code, { ex: 300 });
+    const res = await fetch(
+      "https://redshield.vercel.app/api/service/sendCode",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: process.env.RED_KEY!,
+        },
+        body: JSON.stringify({
+          email: email,
+          code: code,
+        }),
+      }
+    );
 
     return {
       status: true,
@@ -54,7 +56,7 @@ export const verifyCode = async ({
   const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
     project_id: string;
   };
-  const actualCode = await db.get(project_id + ":" + email + ":code" );
+  const actualCode = await db.get(project_id + ":" + email + ":code");
 
   if (actualCode == code) {
     return {
@@ -70,34 +72,37 @@ export const verifyCode = async ({
 };
 
 //register the new user to database
-export const registerUser = async ({email,password,profile_picture}:{email: string , password: string , profile_picture?: string})=>{
-    try {
+export const registerUser = async (data: {
+  email: string;
+  password: string;
+  profile_picture?: string;
+}) => {
+  try {
 
-        const res = await fetch("https://redshield.vercel.app/api/service/register",{
-            next:{revalidate:0},
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': process.env.RED_KEY!
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                profile_picture: profile_picture || undefined
-            })
-        });
+    const {project_id} = await db.get("API_KEY:"+process.env.RED_KEY!) as {project_id:string}
 
-        const response = await res.json();
-
-        if(response.status){
-           await LoginUser({email: email, password: password})
-        }
-        return response;
-    } catch (error) {
-        console.log("error registering", error);
-        return {
-            status: false,
-            message:"something went wrong",
-        }
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+    const newUser = {
+      uid: uuidv4(),
+      password: hashedPassword,
+      email: data.email,
+      profile_picture:
+        data.profile_picture ||
+        "https://vercel.com/api/www/avatar/e4HZrj63hu6L3DgyuIE06nf7?&s=64",
+      creation_date: new Date(),
+    };
+    await db.set(project_id+":"+data.email+":user", newUser);
+    await db.set(project_id + ":" + data.email + ":projects", []);
+    await LoginUser({ email: data.email, password: data.password });
+    return {
+      status:true,
+      message:"Registered successfully"
     }
-}
+  } catch (error) {
+    console.log("error registering", error);
+    return {
+      status: false,
+      message: "something went wrong",
+    };
+  }
+};
