@@ -1,37 +1,48 @@
 "use server";
 const { sign } = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 import { setCookie } from "cookies-next";
 import { cookies } from "next/headers";
+import { db } from "@/utils/database/db";
+
+type User = {
+  email: string,
+  password: string,
+  profile_picture: string
+}
 export const LoginUser = async (data: { email: string; password: string }) => {
-
-
   try {
-    const res = await fetch("https://redshield.vercel.app/api/service/login", {
-      next: { revalidate: 0 },
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': process.env.RED_KEY!,
-      },
-      body: JSON.stringify({
-        email: data.email.toLowerCase(),
-        password: data.password,
-      }),
-    });
-    const response = await res.json();
+   //ger project id
+    const { project_id } = (await db.get(
+      "API_KEY:" + process.env.RED_KEY!
+    )) as { project_id: string };
+  //get user from db
+    const user = await db.get(project_id + ":" + data.email + ":user") as User;
+  //check if user exists
+    if (user) {
+      //check hashed password with bcrypt
+      const isAuth = await bcrypt.compare(data.password, user.password);
 
-    if (response.status) {
-      await setJWT({ email: data.email, project_id: response.project_id });  
- 
+      if (isAuth) {
+        //setJWT token
+        await setJWT({email: user.email, project_id: project_id})
+        return {
+          status: true,
+          message: "Login Success",
+          project_id: project_id,
+        };
+      } else {
+        return {
+          status: false,
+          message: "Invalid credentials",
+        };
+      }
+    } else {
       return {
-        status: true,
-        message: response.message,
+        status: false,
+        message: "Invalid username or password",
       };
     }
-    return {
-      status: false,
-      message: response.message,
-    };
   } catch (error) {
     console.log(error);
     return {
@@ -61,7 +72,6 @@ export const setJWT = async ({
       httpOnly: true,
       sameSite: true,
     });
-
   } catch (error) {
     console.log(error);
   }

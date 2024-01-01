@@ -90,7 +90,6 @@ export const getProject = async (data: { id: string }) => {
     project_id: string;
   };
 
-
   const projects = (await db.get(
     user.project_id + ":" + user.email + ":projects"
   )) as projectData[];

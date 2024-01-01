@@ -1,11 +1,7 @@
 "use server";
-
 import { db } from "@/utils/database/db";
 import { getCookie, deleteCookie } from "cookies-next";
-import { setJWT } from "./login";
 import { cookies } from "next/headers";
-import { registerUser } from "./register";
-import { nanoid } from "nanoid";
 const { verify } = require("jsonwebtoken");
 
 export const checkToken = async ({ token }: { token: string }) => {
@@ -110,17 +106,17 @@ type User = {
   profile_picture?: string;
 };
 
-type userInfoStructure = {
-  user: User;
-  projects: Project[];
-};
+
 
 export const getUserInfo = async ({ email }: { email: string }) => {
   try {
+    //get current session with JWT credentials
     const session = await getSession();
+    //fetch user information
     const user = (await db.get(
       session.data.project_id + ":" + session.data.email + ":user"
     )) as User;
+    //fetch user projects
     const projects = (await db.get(
       session.data.project_id + ":" + session.data.email + ":projects"
     )) as Project[];
