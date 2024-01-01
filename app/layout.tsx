@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-100/40 dark:bg-gray-800/20">
+      <body className="bg-white/60 dark:bg-black/60">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
