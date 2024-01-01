@@ -5,9 +5,11 @@ import {
   CardTitle,
   CardDescription,
   CardFooter,
+  CardContent,
 } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import Image from "next/image";
 type Project = {
   id: string;
   name: string;
@@ -39,17 +41,27 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
             {projects.map((project, i) => {
               return (
                 <Card key={i} className=" bg-white dark:bg-black">
-                  <CardHeader className="flex flex-row items-center gap-4">
+                  <CardHeader className="flex flex-row items-center gap-4 pb-2  ">
                     <div className="grid gap-1">
                       <CardTitle>{project.name}</CardTitle>
                       <CardDescription>{project.description}</CardDescription>
                     </div>
                   </CardHeader>
+                  <CardContent className="py-2">
+                    <div className="w-full h-[150px] overflow-hidden select-none">
+                      <Image
+                        src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        width={400}
+                        height={200}
+                        alt="Picture of the author"
+                      />
+                    </div>
+                  </CardContent>
                   <CardFooter>
                     <Link className="w-full" href={`/Project/${project.id}`}>
                       <Button
                         variant={"outline"}
-                        className="w-full bg-gray-400/20 dark:bg-gray-700/80 dark:hover:bg-slate-700"
+                        className="w-full bg-green-700 text-white hover:text-slate-100 hover:bg-green-800"
                       >
                         view
                       </Button>
@@ -62,8 +74,10 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
         </main>
       ) : (
         <div className="w-full mt-[100px] grid place-items-center gap-4">
-           <p className="text-center text-slate-400 text-xl mt-5">No Projects</p>
-           <Link href={'/New'}><Button className="w-[200px]" >create project</Button></Link>
+          <p className="text-center text-slate-400 text-xl mt-5">No Projects</p>
+          <Link href={"/New"}>
+            <Button className="w-[200px]">create project</Button>
+          </Link>
         </div>
       )}
     </>
