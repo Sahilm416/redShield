@@ -114,7 +114,7 @@ export const deleteProject = async ({
   key: string;
 }) => {
   const session = await getSession();
-  if(session.status){
+  if(!session.status){
     return {
       status:false,
       message:"session invalid",
@@ -153,7 +153,7 @@ export const deleteProject = async ({
 export const updateProject = async ({name,description,projectId}:{name:string ,description:string, projectId: string}) => {
   try {
     const session = await getSession();
-    if(session.status){
+    if(!session.status){
       return {
         status:false,
         message:"session invalid",
