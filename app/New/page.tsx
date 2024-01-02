@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { createNewProject } from "../actions/project";
+import { validateInput } from "../actions/checks";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Oval } from "react-loader-spinner";
@@ -127,28 +128,3 @@ export default function NewProject() {
   );
 }
 
-export const validateInput = (name: string, description: string) => {
-  if (name.length < 3) {
-    return { status: false, message: "Name should be at least 3 characters" };
-  }
-
-  if (name.length > 35) {
-    return { status: false, message: "Name should be at most 35 characters" };
-  }
-
-  if (description.length < 5) {
-    return {
-      status: false,
-      message: "Description should be at least 5 characters",
-    };
-  }
-
-  if (description.length > 100) {
-    return {
-      status: false,
-      message: "Description should be at most 100 characters",
-    };
-  }
-
-  return { status: true, message: "Validation successful" };
-};

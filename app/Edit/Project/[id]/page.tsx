@@ -15,6 +15,6 @@ export default async function ({ params }: { params: { id: string } }) {
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <UpdateProject project={project} />
-    </div>
+    </div> 
   );
 }

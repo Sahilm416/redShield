@@ -25,3 +25,31 @@ export const checkPassword = async (data: { password: string }) => {
   // If all conditions pass, consider the password valid
   return { status: true, message: "Valid password" };
 };
+
+
+//check for project data
+export const validateInput = (name: string, description: string) => {
+  if (name.length < 3) {
+    return { status: false, message: "Name should be at least 3 characters" };
+  }
+
+  if (name.length > 35) {
+    return { status: false, message: "Name should be at most 35 characters" };
+  }
+
+  if (description.length < 5) {
+    return {
+      status: false,
+      message: "Description should be at least 5 characters",
+    };
+  }
+
+  if (description.length > 100) {
+    return {
+      status: false,
+      message: "Description should be at most 100 characters",
+    };
+  }
+
+  return { status: true, message: "Validation successful" };
+};

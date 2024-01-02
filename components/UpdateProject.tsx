@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { updateProject } from "@/app/actions/project";
-import { validateInput } from "@/app/New/page";
+import { validateInput } from "@/app/actions/checks";
 import { toast } from "sonner";
 import { Oval } from "react-loader-spinner";
 

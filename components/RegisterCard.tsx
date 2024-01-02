@@ -13,7 +13,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { toast } from "sonner";
-import { checkPassword } from "@/app/actions/RegCheck";
+import { checkPassword } from "@/app/actions/checks";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
 import { Oval } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
