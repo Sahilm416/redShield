@@ -15,9 +15,10 @@ import { createNewProject } from "../actions/project";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Oval } from "react-loader-spinner";
+import { useRouter } from "next/navigation";
 export default function NewProject() {
   const [loading, setLoading] = useState<boolean>(false);
-
+  const router = useRouter();
   const [data, setData] = useState<{ name: string; description: string }>({
     name: "",
     description: "",
@@ -48,7 +49,8 @@ export default function NewProject() {
 
       if (res.status) {
         toast.success(res.message);
-        window.location.href = "/Dashboard";
+        router.push("/Dashboard");
+        return router.refresh();
       } else {
         toast.error(res.message);
       }

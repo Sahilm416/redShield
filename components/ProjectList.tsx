@@ -38,6 +38,7 @@ import { toast } from "sonner";
 
 type Project = {
   id: string;
+  image: string;
   name: string;
   description: string;
   created_at: string;
@@ -109,7 +110,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       <div className="w-full h-[150px] overflow-hidden select-none">
                         <Avatar>
                           <AvatarImage
-                            src={imageLinks[i]}
+                            src={project.image}
                             width={400}
                             height={200}
                             alt="Picture of the author"

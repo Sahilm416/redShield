@@ -6,8 +6,10 @@ import { cookies } from "next/headers";
 const { verify } = require("jsonwebtoken");
 import { nanoid } from "nanoid";
 import { getSession } from "./auth";
+import { generateUniqueRandomImage } from "@/public/images";
 type projectData = {
   id: string;
+  image: string;
   name: string;
   description: string;
   key: string;
@@ -40,8 +42,12 @@ export const createNewProject = async ({
         message: "Project already exists",
       };
     }
+    //random image for project
+    const imageLink = await generateUniqueRandomImage({ projects: projects });
+
     const projectTobeAdded = {
       id: nanoid(10),
+      image: imageLink,
       name: project_name,
       description: project_description,
       key: uuidv4(),
@@ -100,7 +106,13 @@ export const getProject = async (data: { id: string }) => {
   }
 };
 
-export const deleteProject = async ({ id,key }: { id: string ,key:string }) => {
+export const deleteProject = async ({
+  id,
+  key,
+}: {
+  id: string;
+  key: string;
+}) => {
   const session = await getSession();
 
   // Fetch the projects from the database based on the user's session data
@@ -121,9 +133,7 @@ export const deleteProject = async ({ id,key }: { id: string ,key:string }) => {
       projects
     );
     //also delete the api key of project
-    await db.del(
-      `API_KEY:${key}`,
-    );
+    await db.del(`API_KEY:${key}`);
 
     // Return the updated projects list or any other relevant information
     return projects;

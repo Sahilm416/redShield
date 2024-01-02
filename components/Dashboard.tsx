@@ -6,6 +6,7 @@ import ProjectList from "@/components/ProjectList";
 
 type Project = {
   id: string;
+  image: string;
   name: string;
   description: string;
   created_at: string;
