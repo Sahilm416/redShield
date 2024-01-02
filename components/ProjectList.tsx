@@ -134,7 +134,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                         <AlertDialogTitle>
                           Are you absolutely sure?
                         </AlertDialogTitle>
-                        <AlertDialogDescription>
+                        <AlertDialogDescription className="text-slate-700 dark:text-slate-200">
                           This action cannot be undone. This will permanently
                           delete{" "}
                           <span className=" font-bold text-slate-800 dark:text-white text-md">
