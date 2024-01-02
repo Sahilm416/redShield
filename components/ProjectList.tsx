@@ -128,8 +128,8 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       </Link>
                     </CardFooter>
                   </Card>
-                  <AlertDialogContent className=" flex flex-row justify-center items-center bg-transparent border-none p-3">
-                    <div className="bg-white dark:bg-black border border-slate-400 p-3 flex flex-col gap-3">
+                  <AlertDialogContent className=" bg-transparent border-none p-3">
+                    <div className="bg-white/60 dark:bg-black/60 nav border border-slate-400 p-3 mx-auto flex flex-col gap-3">
                       <AlertDialogHeader className="my-2">
                         <AlertDialogTitle>
                           Are you absolutely sure?
