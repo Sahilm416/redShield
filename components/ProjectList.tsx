@@ -129,7 +129,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                     </CardFooter>
                   </Card>
                   <AlertDialogContent className=" bg-transparent border-none p-3">
-                    <div className="bg-white/60 dark:bg-black/60 nav border border-slate-400 p-3 mx-auto flex flex-col gap-3">
+                    <div className="bg-white/90 dark:bg-black/60 nav border p-3 mx-auto flex flex-col gap-3">
                       <AlertDialogHeader className="my-2">
                         <AlertDialogTitle>
                           Are you absolutely sure?
