@@ -30,7 +30,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { MoreVertical } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { imageLinks } from "@/public/images";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteProject } from "@/app/actions/project";
@@ -69,17 +68,14 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
               </Button>
             </form>
             <Link href={"/New"}>
-              <Button className=" rounded-none">Add New Project</Button>
+              <Button className="rounded-none">Add New Project</Button>
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
               return (
-                <AlertDialog>
-                  <Card
-                    key={i}
-                    className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none"
-                  >
+                <AlertDialog key={i}>
+                  <Card className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none ">
                     <CardHeader className="gap-4 pb-2  ">
                       <div className="grid gap-2">
                         <CardTitle className="flex justify-between items-center">
@@ -98,7 +94,12 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                               </DropdownMenuItem>
 
                               <DropdownMenuItem className="text-md">
-                                Edit
+                                <Link
+                                  className="w-full h-full text-start"
+                                  href={`/Edit/Project/${project.id}`}
+                                >
+                                  Edit
+                                </Link>
                               </DropdownMenuItem>
                             </DropdownMenuContent>
                           </DropdownMenu>
@@ -114,6 +115,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                             width={400}
                             height={200}
                             alt="Picture of the author"
+                            className=" w-full"
                           />
                           <AvatarFallback className=" w-full h-full flex justify-center items-center text-slate-300">
                             Loading...
@@ -151,11 +153,17 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                         <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">
                           Cancel
                         </AlertDialogCancel>
-                        <AlertDialogAction onClick={ async ()=> {
-                         await deleteProject({id:project.id , key:project.key})
-                         toast.success("Project deleted successfully");
-                         return router.refresh();
-                        }} className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto">
+                        <AlertDialogAction
+                          onClick={async () => {
+                            await deleteProject({
+                              id: project.id,
+                              key: project.key,
+                            });
+                            toast.success("Project deleted successfully");
+                            return router.refresh();
+                          }}
+                          className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto"
+                        >
                           Delete
                         </AlertDialogAction>
                       </AlertDialogFooter>

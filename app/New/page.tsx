@@ -61,31 +61,7 @@ export default function NewProject() {
     }
   };
 
-  const validateInput = (name: string, description: string) => {
-    if (name.length < 3) {
-      return { status: false, message: "Name should be at least 3 characters" };
-    }
-
-    if (name.length > 15) {
-      return { status: false, message: "Name should be at most 15 characters" };
-    }
-
-    if (description.length < 5) {
-      return {
-        status: false,
-        message: "Description should be at least 5 characters",
-      };
-    }
-
-    if (description.length > 100) {
-      return {
-        status: false,
-        message: "Description should be at most 100 characters",
-      };
-    }
-
-    return { status: true, message: "Validation successful" };
-  };
+  
 
   return (
     <div className="w-full grid place-items-center mt-[100px] sm:px-2 px-7">
@@ -150,3 +126,29 @@ export default function NewProject() {
     </div>
   );
 }
+
+export const validateInput = (name: string, description: string) => {
+  if (name.length < 3) {
+    return { status: false, message: "Name should be at least 3 characters" };
+  }
+
+  if (name.length > 35) {
+    return { status: false, message: "Name should be at most 35 characters" };
+  }
+
+  if (description.length < 5) {
+    return {
+      status: false,
+      message: "Description should be at least 5 characters",
+    };
+  }
+
+  if (description.length > 100) {
+    return {
+      status: false,
+      message: "Description should be at most 100 characters",
+    };
+  }
+
+  return { status: true, message: "Validation successful" };
+};

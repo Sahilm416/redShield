@@ -59,7 +59,11 @@ export default function ProjectComponent({
         <Button onClick={handleCopyToClipboard} variant={"outline"}>
           copy key
         </Button>
-        <p className={` ml-5 text-green-500 transition-opacity duration-500 ${isCopied ? 'opacity-100' : 'opacity-0'}`}>
+        <p
+          className={` ml-5 text-green-500 transition-opacity duration-500 ${
+            isCopied ? "opacity-100" : "opacity-0"
+          }`}
+        >
           key copied
         </p>
       </CardFooter>

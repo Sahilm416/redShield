@@ -190,7 +190,7 @@ const Form3 = ({ email }: { email: string }) => {
         const res = await registerUser({ email: email, password: pass });
         if (res.status) {
           toast.success(res.message);
-          return router.push("/Dashboard");
+          router.push("/Dashboard");
         } else {
           toast.error(res.message);
         }

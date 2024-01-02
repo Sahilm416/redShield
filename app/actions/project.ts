@@ -142,3 +142,49 @@ export const deleteProject = async ({
     throw new Error(`Project with ID ${id} not found`);
   }
 };
+
+
+export const updateProject = async (formData: FormData, projectId: string) => {
+  try {
+    const session = await getSession();
+    const userProjectId = session.data.project_id;
+
+    // Fetch the existing project list from the database
+    const existingProjectList = await db.get(`${userProjectId}:${session.data.email}:projects`) as projectData[];
+
+    // Find the index of the project with the specified ID in the array
+    const projectIndex = existingProjectList.findIndex((p) => p.id === projectId);
+
+    if (projectIndex !== -1) {
+      // Update project properties with form data
+      const updatedProject: projectData = {
+        ...existingProjectList[projectIndex],
+        name: formData.get('pname')?.toString() || existingProjectList[projectIndex].name,
+        description: formData.get('pdescription')?.toString() || existingProjectList[projectIndex].description,
+        // Update other properties as needed
+      };
+
+      // Update the project in the array
+      existingProjectList[projectIndex] = updatedProject;
+
+      // Save the updated project list back to the database
+      await db.set(`${userProjectId}:${session.data.email}:projects`, existingProjectList);
+
+      return {
+        status: true,
+        message:" Project updated successfully"
+      }
+    } else {
+      return {
+        status: false,
+        message:"project not found"
+      }
+
+    }
+  } catch (error) {
+    return {
+      status: false,
+      message:"error updating project"
+    }
+  }
+};

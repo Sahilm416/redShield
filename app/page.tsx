@@ -1,11 +1,12 @@
-import HomeComponent from "@/components/Home";
+import Home from "@/components/Home";
 
-const Home = () => {
+const HomePage = () => {
   return (
-      <div className="">
-          <HomeComponent/>
-      </div>
-    )
-}
+    <>
+
+      <Home />
+    </>
+  );
+};
 
 export default Home;
