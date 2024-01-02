@@ -32,6 +32,9 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { imageLinks } from "@/public/images";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { deleteProject } from "@/app/actions/project";
+import { toast } from "sonner";
 
 type Project = {
   id: string;
@@ -43,7 +46,7 @@ type Project = {
 
 export default function ProjectList({ projects }: { projects: Project[] }) {
   const [searchTerm, setSearchTerm] = useState("");
-
+  const router = useRouter();
   const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -147,7 +150,11 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                         <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">
                           Cancel
                         </AlertDialogCancel>
-                        <AlertDialogAction className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto">
+                        <AlertDialogAction onClick={ async ()=> {
+                         await deleteProject({id:project.id , key:project.key})
+                         toast.success("Project deleted successfully");
+                         return router.refresh();
+                        }} className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto">
                           Delete
                         </AlertDialogAction>
                       </AlertDialogFooter>
