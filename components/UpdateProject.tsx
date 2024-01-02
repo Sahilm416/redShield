@@ -36,7 +36,11 @@ export default function UpdateProject({ project }: { project: projectData }) {
     if (check.status) {
       await fakeLoad();
       setLoading(true);
-      const res = await updateProject(formData, project.id);
+      const res = await updateProject({
+        name: name,
+        description: description,
+        projectId: project.id,
+      });
       if (res.status) {
         toast.success(res.message);
         router.push("/Dashboard");
@@ -76,7 +80,15 @@ export default function UpdateProject({ project }: { project: projectData }) {
               className=" placeholder:dark:text-slate-100 placeholder:text-slate-800"
             />
           </CardContent>
-          <CardFooter className=" justify-end">
+          <CardFooter className=" justify-between">
+            <Button
+              type="button"
+              onClick={() => router.back()}
+              variant={"outline"}
+              className="w-[150px] rounded-none"
+            >
+              Back
+            </Button>
             <Button
               disabled={loading}
               type="submit"

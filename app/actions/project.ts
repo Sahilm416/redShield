@@ -144,14 +144,22 @@ export const deleteProject = async ({
 };
 
 
-export const updateProject = async (formData: FormData, projectId: string) => {
+export const updateProject = async ({name,description,projectId}:{name:string ,description:string, projectId: string}) => {
   try {
     const session = await getSession();
     const userProjectId = session.data.project_id;
 
     // Fetch the existing project list from the database
     const existingProjectList = await db.get(`${userProjectId}:${session.data.email}:projects`) as projectData[];
-
+    const checkAlreadyExists = existingProjectList.some(
+      (obj) => obj.name === name
+    );
+    if (checkAlreadyExists) {
+      return {
+        status: false,
+        message: "Project already exists",
+      };
+    }
     // Find the index of the project with the specified ID in the array
     const projectIndex = existingProjectList.findIndex((p) => p.id === projectId);
 
@@ -159,9 +167,9 @@ export const updateProject = async (formData: FormData, projectId: string) => {
       // Update project properties with form data
       const updatedProject: projectData = {
         ...existingProjectList[projectIndex],
-        name: formData.get('pname')?.toString() || existingProjectList[projectIndex].name,
-        description: formData.get('pdescription')?.toString() || existingProjectList[projectIndex].description,
-        // Update other properties as needed
+        name: name || existingProjectList[projectIndex].name,
+        description: description || existingProjectList[projectIndex].description,
+
       };
 
       // Update the project in the array
