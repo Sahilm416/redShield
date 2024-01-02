@@ -114,6 +114,12 @@ export const deleteProject = async ({
   key: string;
 }) => {
   const session = await getSession();
+  if(session.status){
+    return {
+      status:false,
+      message:"session invalid",
+    }
+  }
 
   // Fetch the projects from the database based on the user's session data
   const projects = (await db.get(
@@ -147,6 +153,12 @@ export const deleteProject = async ({
 export const updateProject = async ({name,description,projectId}:{name:string ,description:string, projectId: string}) => {
   try {
     const session = await getSession();
+    if(session.status){
+      return {
+        status:false,
+        message:"session invalid",
+      }
+    }
     const userProjectId = session.data.project_id;
 
     // Fetch the existing project list from the database

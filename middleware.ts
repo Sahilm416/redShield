@@ -46,10 +46,20 @@ export default async function middleWare(request: NextRequest ,response:NextResp
       return NextResponse.redirect(url);
     }
   }
+  //protect edit path from unauthorized users
+  if(url.pathname.includes("/Edit")){
+    console.log("request to edit")
+    if(checkValidity.status) {
+      return NextResponse.next();
+    }else{
+      url.pathname = "/Auth"
+      return NextResponse.redirect(url);
+    }
+  }
   
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/Auth", "/Dashboard","/New" ,"/Project/:path*"],
+  matcher: ["/Auth", "/Dashboard","/New" ,"/Project/:path*","/Edit/:path*"],
 };
