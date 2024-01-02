@@ -16,19 +16,19 @@ const Hero = () => {
         </p>
         <div className="max-w-[460px] min-w[300px] flex">
           <Link href={"/Auth"}>
-            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] my-5 rounded-none">
+            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] shadow-lg my-5 rounded-none">
               Start now
             </Button>{" "}
           </Link>
           <a target="blank" href="https://github.com/Sahilm416/redShield">
             <Button
               variant={"outline"}
-              className="mx-4 bg-transparent md:w-[200px] w-[160px] shadow-lg h-[45px] border-[1px] border-slate-300 my-5 rounded-none"
+              className="mx-4 dark:bg-black md:w-[200px] w-[160px] shadow-lg h-[45px] border-[1px] border-slate-300 my-5 rounded-none"
             >
               <p className="dark:text-slate-300 text-slate-700"> github </p>
               <div className="">
                 <svg
-                  className=" w-[40px] dark:fill-slate-100"
+                  className=" w-[40px] h-[40px] dark:fill-slate-100"
                   xmlns="http://www.w3.org/2000/svg"
                   x="0px"
                   y="0px"

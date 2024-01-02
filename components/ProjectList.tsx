@@ -128,21 +128,30 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       </Link>
                     </CardFooter>
                   </Card>
-                  <AlertDialogContent className="bg-white dark:bg-black">
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>
-                        Are you absolutely sure?
-                      </AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This will permanently
-                        delete <span className=" font-bold text-slate-800 dark:text-white text-md">{project.name}</span> and remove related data from our
-                        servers.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter className="gap-4 place-items-center">
-                      <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">Cancel</AlertDialogCancel>
-                      <AlertDialogAction className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto">Delete</AlertDialogAction>
-                    </AlertDialogFooter>
+                  <AlertDialogContent className=" bg-transparent border-none p-3">
+                    <div className="bg-white dark:bg-black border border-slate-400 p-3 flex flex-col gap-3">
+                      <AlertDialogHeader className="my-2">
+                        <AlertDialogTitle>
+                          Are you absolutely sure?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone. This will permanently
+                          delete{" "}
+                          <span className=" font-bold text-slate-800 dark:text-white text-md">
+                            {project.name}
+                          </span>{" "}
+                          and remove related data from our servers.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter className="gap-4 place-items-center">
+                        <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">
+                          Cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto">
+                          Delete
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </div>
                   </AlertDialogContent>
                 </AlertDialog>
               );
