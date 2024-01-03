@@ -74,7 +74,7 @@ export function MenuBar({
                 {info.data.email}
               </DropdownMenuLabel>
               <Link href={`/Edit/Profile`}>
-                <DropdownMenuItem className="flex">
+                <DropdownMenuItem className="flex cursor-pointer">
                   <Settings className="text-slate-300 w-[20px] mx-2" />
                   Account settings
                 </DropdownMenuItem>
@@ -85,7 +85,7 @@ export function MenuBar({
                   toast.success("Logged Out");
                   return window.location.reload();
                 }}
-                className="flex"
+                className="flex cursor-pointer"
               >
                 <LogOutIcon className="text-slate-300 w-[20px] mx-2" />
                 Logout
@@ -110,12 +110,14 @@ export function MenuBar({
               </DropdownMenuLabel>
             )}
             <DropdownMenuGroup>
-              <Link href="/Dashboard">
-                <DropdownMenuItem className="text-lg">
-                  <LayoutDashboard className="text-slate-300 w-[20px] mr-2" />{" "}
-                  Dashboard
-                </DropdownMenuItem>
-              </Link>
+              {info.status && (
+                <Link href="/Dashboard">
+                  <DropdownMenuItem className="text-lg">
+                    <LayoutDashboard className="text-slate-300 w-[20px] mr-2" />
+                    Dashboard
+                  </DropdownMenuItem>
+                </Link>
+              )}
               <Link href="#">
                 <DropdownMenuItem className="text-lg">
                   <Book className="text-slate-300 w-[20px] mr-2" />
@@ -134,10 +136,10 @@ export function MenuBar({
                 </DropdownMenuItem>
               </Link>
               {info.status && (
-                <Link href="#">
+                <Link href={`/Edit/Profile`} className=" cursor-pointer">
                   <DropdownMenuItem className="text-lg">
                     <CircleUser className="text-slate-300 w-[20px] mr-2" />{" "}
-                    Account
+                    Account Settings
                   </DropdownMenuItem>
                 </Link>
               )}

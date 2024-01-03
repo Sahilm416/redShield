@@ -22,12 +22,12 @@ const Navbar = async () => {
           </Link>
           <span className="sm:inline-block hidden">|</span>
           <div className="justify-center items-center gap-5 text-md sm:flex hidden">
-            <Link
+            {res.status && <Link
               className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
               href={"/Dashboard"}
             >
               dashboard
-            </Link>
+            </Link>}
             <Link
               className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
               href={"/Docs"}

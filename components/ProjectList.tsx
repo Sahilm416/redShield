@@ -135,7 +135,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                     </CardFooter>
                   </Card>
                   <AlertDialogContent className=" bg-transparent border-none p-3">
-                    <div className="bg-white/90 dark:bg-black/60 nav border p-3 mx-auto flex flex-col gap-3">
+                    <div className="bg-white/90 dark:bg-black/60 nav border p-4 mx-auto flex flex-col gap-3">
                       <AlertDialogHeader className="my-2">
                         <AlertDialogTitle>
                           Are you absolutely sure?
@@ -162,7 +162,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                             toast.success("Project deleted successfully");
                             return router.refresh();
                           }}
-                          className="bg-red-800 text-white rounded-none w-[70vw] sm:w-auto"
+                          className="bg-red-800 text-white dark:hover:text-black rounded-none w-[70vw] sm:w-auto"
                         >
                           Delete
                         </AlertDialogAction>
