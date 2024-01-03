@@ -81,11 +81,11 @@ export const registerUser = async (data: {
 
     const {project_id} = await db.get("API_KEY:"+process.env.RED_KEY!) as {project_id:string}
 
-    const hashedPassword = await bcrypt.hash(data.password, 10);
+    const hashedPassword = await bcrypt.hash(data.password.trim(), 10);
     const newUser = {
       uid: uuidv4(),
       password: hashedPassword,
-      email: data.email,
+      email: data.email.trim(),
       profile_picture:
         data.profile_picture ||
         "https://vercel.com/api/www/avatar/e4HZrj63hu6L3DgyuIE06nf7?&s=64",

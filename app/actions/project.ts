@@ -34,7 +34,7 @@ export const createNewProject = async ({
     )) as projectData[];
 
     const checkAlreadyExists = projects.some(
-      (obj) => obj.name === project_name
+      (obj) => obj.name === project_name.trim()
     );
     if (checkAlreadyExists) {
       return {
@@ -48,8 +48,8 @@ export const createNewProject = async ({
     const projectTobeAdded = {
       id: nanoid(10),
       image: imageLink,
-      name: project_name,
-      description: project_description,
+      name: project_name.trim(),
+      description: project_description.trim(),
       key: uuidv4(),
     };
     const newProjects = await db.set(

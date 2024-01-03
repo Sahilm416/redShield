@@ -73,14 +73,16 @@ export function MenuBar({
                 <MailIcon className="text-slate-300 w-[20px] mx-2" />
                 {info.data.email}
               </DropdownMenuLabel>
-              <DropdownMenuItem className="flex">
-                <Settings className="text-slate-300 w-[20px] mx-2" />
-                Account settings
-              </DropdownMenuItem>
+              <Link href={`/Edit/Profile`}>
+                <DropdownMenuItem className="flex">
+                  <Settings className="text-slate-300 w-[20px] mx-2" />
+                  Account settings
+                </DropdownMenuItem>
+              </Link>
               <DropdownMenuItem
                 onClick={async () => {
                   await LogOut();
-                  toast.success("Logged Out")
+                  toast.success("Logged Out");
                   return window.location.reload();
                 }}
                 className="flex"
@@ -144,7 +146,7 @@ export function MenuBar({
                   className="text-lg"
                   onClick={async () => {
                     await LogOut();
-                    toast.success("Logged Out")
+                    toast.success("Logged Out");
                     return window.location.reload();
                   }}
                 >

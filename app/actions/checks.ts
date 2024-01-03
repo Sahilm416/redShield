@@ -13,13 +13,13 @@ export const checkPassword = async (data: { password: string }) => {
   }
 
   // Check for minimum length of 8 characters
-  if (data.password.length < 8) {
+  if (data.password.trim().length < 8) {
     return {
       status: false,
       message: "Password must be at least 8 characters long.",
     };
   }
-  if (data.password.length > 20) {
+  if (data.password.trim().length > 20) {
     return { status: false, message: "too long password" };
   }
   // If all conditions pass, consider the password valid
@@ -29,22 +29,22 @@ export const checkPassword = async (data: { password: string }) => {
 
 //check for project data
 export const validateInput = (name: string, description: string) => {
-  if (name.length < 3) {
+  if (name.trim().length < 3) {
     return { status: false, message: "Name should be at least 3 characters" };
   }
 
-  if (name.length > 35) {
+  if (name.trim().length > 35) {
     return { status: false, message: "Name should be at most 35 characters" };
   }
 
-  if (description.length < 5) {
+  if (description.trim().length < 5) {
     return {
       status: false,
       message: "Description should be at least 5 characters",
     };
   }
 
-  if (description.length > 100) {
+  if (description.trim().length > 100) {
     return {
       status: false,
       message: "Description should be at most 100 characters",

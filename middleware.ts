@@ -48,7 +48,6 @@ export default async function middleWare(request: NextRequest ,response:NextResp
   }
   //protect edit path from unauthorized users
   if(url.pathname.includes("/Edit")){
-    console.log("request to edit")
     if(checkValidity.status) {
       return NextResponse.next();
     }else{

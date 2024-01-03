@@ -1,5 +1,6 @@
 "use server";
 import { db } from "@/utils/database/db";
+import { getSession } from "./auth";
 
 //get the specific user
 export const getUserInfo = async ({
@@ -61,9 +62,49 @@ export const deleteUser = async ({
     project_id: string;
   };
 
-await db.del(project_id + ":" + email + ":user");
-await db.del(project_id + ":" + email + ":projects");
-
+  await db.del(project_id + ":" + email + ":user");
+  await db.del(project_id + ":" + email + ":projects");
 };
 
+//update user
 
+type User = {
+  first_name?: string;
+  last_name?: string;
+  creation_date: string;
+  email: string;
+  password: string;
+  uid: string;
+  profile_picture?: string;
+};
+export const updateUser = async ({
+  first_name,
+  last_name,
+}: {
+  first_name: string;
+  last_name: string;
+}) => {
+   try {
+    const session = await getSession();
+
+    const user = await db.get(
+      `${session.data.project_id}:${session.data.email}:user`
+    ) as User;
+    const newUser = {
+      ...user,
+      first_name: first_name.trim(),
+      last_name: last_name.trim()
+    }
+    await db.set(`${session.data.project_id}:${session.data.email}:user`, newUser);
+    return {
+      status:true,
+      message:"settings updated successfully"
+    }
+   } catch (error) {
+    console.log(error)
+    return {
+      status:false,
+      message:"error updating settings"
+    }
+   }
+};

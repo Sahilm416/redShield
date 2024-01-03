@@ -17,7 +17,7 @@ const Hero = () => {
         <div className="max-w-[460px] min-w[300px] flex">
           <Link href={"/Auth"}>
             <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] shadow-lg my-5 rounded-none">
-              Start now
+              Get Started
             </Button>{" "}
           </Link>
           <a target="blank" href="https://github.com/Sahilm416/redShield">

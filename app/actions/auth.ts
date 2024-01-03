@@ -100,6 +100,8 @@ type Project = {
 };
 
 type User = {
+  first_name?: string;
+  last_name?: string;
   creation_date: string;
   email: string;
   password: string;
@@ -124,6 +126,8 @@ export const getUserInfo = async ({ email }: { email: string }) => {
 
     const response = { user, projects };
     return {
+      first_name : response.user?.first_name || "",
+      last_name : response.user?.last_name || "",
       email: response.user.email,
       profile_picture: response.user.profile_picture,
       projects: response.projects,
@@ -131,5 +135,13 @@ export const getUserInfo = async ({ email }: { email: string }) => {
     };
   } catch (error) {
     console.log("something went wrong", error);
+    return {
+      first_name : "",
+      last_name :"",
+      email: "",
+      profile_picture: "",
+      projects: [],
+      created_at: "",
+    };
   }
 };
