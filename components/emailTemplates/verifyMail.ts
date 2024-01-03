@@ -1,4 +1,4 @@
-export const emailTemplate = async ({ code, name, project }: { code: string,name: string, project: string }) => {
+export const verifyMail = async ({ code, name, project }: { code: string,name: string, project: string }) => {
     return `
     <!DOCTYPE html>
     <html lang="en">

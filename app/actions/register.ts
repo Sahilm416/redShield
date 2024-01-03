@@ -5,14 +5,14 @@ import { db } from "@/utils/database/db";
 import { LoginUser } from "./login";
 
 //send th code to email address
-export const sendCode = async ({ email }: { email: string }) => {
+export const sendCode = async ({ email, cause }: { email: string , cause:"register"|"password"}) => {
   const code = Math.floor(100000 + Math.random() * 900000);
 
   const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
     project_id: string;
   };
   const checkAlreadyExists = await db.get(project_id + ":" + email + ":user");
-  if (checkAlreadyExists) {
+  if (checkAlreadyExists && cause === "register") {
     return { status: false, message: "Email already exists" };
   }
   try {
@@ -28,6 +28,7 @@ export const sendCode = async ({ email }: { email: string }) => {
         body: JSON.stringify({
           email: email,
           code: code,
+          cause: cause
         }),
       }
     );

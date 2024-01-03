@@ -138,17 +138,10 @@ export default function UpdateUser({ user }: { user: User }) {
               </div>
             </CardContent>
             <CardFooter className=" flex flex-col gap-5">
-              <Button
-                onClick={async () => {
-                  await sendCode({ email: user.email });
-                  setChangePassRequest(true);
-                }}
-                type="button"
-                variant={"destructive"}
-                className="w-full rounded-none bg-red-700 text-white "
-              >
-                Request Password change
-              </Button>
+              <ChangePassBtn
+                setChangePassRequest={setChangePassRequest}
+                email={user.email}
+              />
               <div className="w-full flex gap-3">
                 <Button
                   onClick={() => router.back()}
@@ -185,6 +178,53 @@ export default function UpdateUser({ user }: { user: User }) {
     </>
   );
 }
+
+const ChangePassBtn = ({
+  email,
+  setChangePassRequest,
+}: {
+  email: string;
+  setChangePassRequest: Dispatch<SetStateAction<boolean>>;
+}) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const fakeLoad = async () => {
+    return;
+  };
+  const send = async () => {
+    await fakeLoad();
+    setLoading(true);
+    const res = await sendCode({ email: email, cause: "password" });
+    if (res.status) {
+      toast.success(res.message);
+      setChangePassRequest(true);
+    } else {
+      toast.error(res.message);
+    }
+    setLoading(false);
+  };
+  return (
+    <Button
+      onClick={send}
+      type="button"
+      variant={"destructive"}
+      className="w-full rounded-none bg-red-700 text-white "
+    >
+      {loading ? (
+        <Oval
+          visible={true}
+          height="25"
+          width="25"
+          strokeWidth="5"
+          color="white"
+          ariaLabel="oval-loading"
+          secondaryColor="black"
+        />
+      ) : (
+        "Request Password change"
+      )}
+    </Button>
+  );
+};
 
 const ChangePass = ({
   email,

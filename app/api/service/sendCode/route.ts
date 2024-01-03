@@ -1,13 +1,15 @@
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const nodemailer = require("nodemailer");
+const { verifyMail } = require("@/components/emailTemplates/verifyMail");
 const {
-  emailTemplate,
-} = require("../../../../components/emailTemplates/verifyMail");
+  passwordChangeTemplate,
+} = require("@/components/emailTemplates/resetPassword");
 
 interface reqBody {
   email: string;
   code: number;
+  cause: string;
 }
 
 export const POST = async (request: Request) => {
@@ -26,16 +28,28 @@ export const POST = async (request: Request) => {
       },
     });
 
-    const mailOptions = {
-      from: `${res.project_name} <redshield.vercel.app@gmail.com>`,
-      to: data.email,
-      subject: `Verify Email for ${res.project_name}`,
-      html: await emailTemplate({
-        name: data.email,
-        code: data.code,
-        project: res.project_name,
-      }),
-    };
+    const mailOptions =
+      data.cause === "register"
+        ? {
+            from: `${res.project_name} <redshield.vercel.app@gmail.com>`,
+            to: data.email,
+            subject: `Verify Email for ${res.project_name}`,
+            html: await verifyMail({
+              name: data.email,
+              code: data.code,
+              project: res.project_name,
+            }),
+          }
+        : {
+            from: `${res.project_name} <redshield.vercel.app@gmail.com>`,
+            to: data.email,
+            subject: `Change password for ${res.project_name}`,
+            html: await passwordChangeTemplate({
+              name: data.email,
+              code: data.code,
+              project: res.project_name,
+            }),
+          };
 
     const info = await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: "sent successfully" }, { status: 200 });

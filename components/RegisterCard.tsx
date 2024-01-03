@@ -58,7 +58,7 @@ const Form1 = ({
     const mail = formData.get("email") as string;
     await fakeLoad();
     setLoading(true);
-    const res = await sendCode({ email: mail });
+    const res = await sendCode({ email: mail ,cause:"register" });
     if (res.status) {
       toast.success(res.message);
       setEmail(mail);
