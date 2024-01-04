@@ -16,7 +16,7 @@ export const sendCode = async ({ email, cause }: { email: string , cause:"regist
     return { status: false, message: "Email already exists" };
   }
   try {
-    await db.set(project_id + ":" + email + ":code", code, { ex: 300 });
+    await db.set(project_id + ":" + email + ":code", code, { ex: 180 });
     const res = await fetch(
       "https://redshield.vercel.app/api/service/sendCode",
       {
@@ -27,7 +27,7 @@ export const sendCode = async ({ email, cause }: { email: string , cause:"regist
         },
         body: JSON.stringify({
           email: email,
-          code: code,
+          code:code,
           cause: cause
         }),
       }
