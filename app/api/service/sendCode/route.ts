@@ -2,9 +2,7 @@ const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const nodemailer = require("nodemailer");
 const { verifyMail } = require("@/components/emailTemplates/verifyMail");
-const {
-  passwordChangeTemplate,
-} = require("@/components/emailTemplates/resetPassword");
+
 
 interface reqBody {
   email: string;
@@ -32,7 +30,7 @@ export const POST = async (request: Request) => {
       to: data.email,
       subject: `Verify Email for ${res.project_name}`,
       html: await verifyMail({
-        name: data.email,
+        email: data.email,
         code: data.code,
         project: res.project_name,
       }),
