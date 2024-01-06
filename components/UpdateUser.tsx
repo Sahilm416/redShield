@@ -55,9 +55,9 @@ export default function UpdateUser({ user }: { user: User }) {
     }
   };
 
-  const resetPassRequest = async ()=>{
-        await sendResetPasswordLink({email:user.email})
-  }
+  const resetPassRequest = async () => {
+    await sendResetPasswordLink({ email: user.email });
+  };
 
   const validateInput = ({
     first_name,
@@ -137,26 +137,25 @@ export default function UpdateUser({ user }: { user: User }) {
         </CardContent>
         <CardFooter className=" flex flex-col gap-5">
           <Button
-          onClick={resetPassRequest}
-          disabled={resetPassLoading}
+            onClick={resetPassRequest}
+            disabled={resetPassLoading}
             type="button"
             variant={"destructive"}
             className="w-full rounded-none bg-red-700 text-white "
           >
             {resetPassLoading ? (
-                <Oval
-                  visible={true}
-                  height="25"
-                  width="25"
-                  strokeWidth="5"
-                  color="white"
-                  ariaLabel="oval-loading"
-                  secondaryColor="black"
-                />
-              ) : (
-                "Request Password change"
-              )}
-            
+              <Oval
+                visible={true}
+                height="25"
+                width="25"
+                strokeWidth="5"
+                color="white"
+                ariaLabel="oval-loading"
+                secondaryColor="black"
+              />
+            ) : (
+              "Request Password change"
+            )}
           </Button>
           <div className="w-full flex gap-3">
             <Button

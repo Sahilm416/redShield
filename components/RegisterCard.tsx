@@ -50,7 +50,6 @@ const Form1 = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
-
   const fakeLoad = async () => {
     return;
   };
@@ -58,7 +57,7 @@ const Form1 = ({
     const mail = formData.get("email") as string;
     await fakeLoad();
     setLoading(true);
-    const res = await sendCode({ email: mail ,cause:"register" });
+    const res = await sendCode({ email: mail });
     if (res.status) {
       toast.success(res.message);
       setEmail(mail);
@@ -85,14 +84,14 @@ const Form1 = ({
           <Button disabled={loading} type="submit" className="w-full">
             {loading ? (
               <Oval
-              visible={true}
-              height="25"
-              width="25"
-              strokeWidth="5"
-              color="white"
-              ariaLabel="oval-loading"
-              secondaryColor="black"
-            />
+                visible={true}
+                height="25"
+                width="25"
+                strokeWidth="5"
+                color="white"
+                ariaLabel="oval-loading"
+                secondaryColor="black"
+              />
             ) : (
               "continue"
             )}
@@ -151,14 +150,14 @@ const Form2 = ({
           <Button disabled={loading} type="submit" className="w-[50%]">
             {loading ? (
               <Oval
-              visible={true}
-              height="25"
-              width="25"
-              strokeWidth="5"
-              color="white"
-              ariaLabel="oval-loading"
-              secondaryColor="black"
-            />
+                visible={true}
+                height="25"
+                width="25"
+                strokeWidth="5"
+                color="white"
+                ariaLabel="oval-loading"
+                secondaryColor="black"
+              />
             ) : (
               "submit"
             )}
@@ -215,14 +214,14 @@ const Form3 = ({ email }: { email: string }) => {
           <Button disabled={loading} type="submit" className="w-full">
             {loading ? (
               <Oval
-              visible={true}
-              height="25"
-              width="25"
-              strokeWidth="5"
-              color="white"
-              ariaLabel="oval-loading"
-              secondaryColor="black"
-            />
+                visible={true}
+                height="25"
+                width="25"
+                strokeWidth="5"
+                color="white"
+                ariaLabel="oval-loading"
+                secondaryColor="black"
+              />
             ) : (
               "create account"
             )}
