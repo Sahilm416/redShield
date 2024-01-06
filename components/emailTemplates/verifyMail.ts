@@ -1,25 +1,37 @@
-export const verifyMail = async ({ code, name, project }: { code: string,name: string, project: string }) => {
-    return `
+export const verifyMail = async ({
+  code,
+  email,
+  project,
+}: {
+  code: string;
+  email: string;
+  project: string;
+}) => {
+  return `
     <!DOCTYPE html>
     <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Email Verification</title>
-      </head>
-      <body style="font-family: 'Arial', sans-serif; padding: 20px;">
-
-        <div style="max-width: 600px; margin: 0 auto; background-color: #f4f4f4; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-          <h2 style="color: #007bff;">Hello ${name},</h2>
-          <p>Thank you for choosing ${project}. Please use the following verification code to confirm your email address:</p>
-           <h2 style="color:gray">code:</h2>
-          <h1 style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">${code}</h1>
-          <p>This code will expire in a limited time, so please verify your email promptly.</p>
-          <p>Thank you for using ${project}!</p>
-        </div>
-
-      </body>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Email Verification</title>
+    </head>
+    <body style="font-family: 'Arial', sans-serif; background-color: #fff;">
+    
+      <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white;">
+        <h2 style="color: #333;">Email Verification</h2>
+        <p>Hello <b>${email}</b>,</p>
+        <p>Thank you for signing up with <b> ${project}</b> . To complete your registration, please use the following verification code:</p>
+        <p style="font-size: 24px; color: #4caf50; padding: 10px; background-color: #f5f5f5; border-radius: 5px; text-align: center; margin: 20px 0;">${code}</p>
+        <p>Please enter this code in the verification page or click on the button below:</p>
+        <p><a href="[VerificationLink]" style="display: inline-block; padding: 10px 20px; background-color: #4caf50; color: #fff; text-decoration: none; border-radius: 0;">Verify Email</a></p>
+        <p>This code will expire in 3 minutes.</p>
+        <p>If you did not sign up for <b> ${project}</b> , please ignore this email.</p>
+        <p>Thank you,</p>
+        <p>${project}</p>
+      </div>
+    
+    </body>
     </html>
+    
     `;
-  };
-  
+};
