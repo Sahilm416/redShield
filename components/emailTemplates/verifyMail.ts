@@ -17,7 +17,7 @@ export const verifyMail = async ({
   </head>
   <body style="font-family: 'Arial', sans-serif; background-color: #fff;">
   
-    <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white;">
+    <div style=" margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: white;">
       <h2 style="color: #333;">Email Verification for ${project}</h2>
       <p>Hello <b>${email}</b>,</p>
       <p>Thank you for signing up with <b> ${project}</b> . To complete your registration, please use the following verification code:</p>
