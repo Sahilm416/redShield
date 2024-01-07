@@ -43,14 +43,14 @@ export const ValidateAuthToken = async ({ token }: { token: string }) => {
     )) as User;
 
 
-
+//check password version of user
     if (user.pwd_version > verifyToken.pwd_version) {
       return {
         status: false,
         message: "invalid token",
       };
     }
-
+//check if token is expired
     if (Date.now() > verifyToken.expires) {
       return {
         status: false,

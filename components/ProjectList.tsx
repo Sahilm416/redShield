@@ -167,7 +167,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                             });
                             toast.success("Project deleted successfully");
 
-                            router.refresh();
+                           return router.refresh();
                           }}
                           className="rounded-none w-[70vw] sm:w-auto  bg-red-700 text-white"
                         >
