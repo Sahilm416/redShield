@@ -93,11 +93,11 @@ export const getSession = async () => {
   }
 
   try {
-    const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+    const res = await ValidateAuthToken({token: token});
     return {
-      status: true,
-      message: "token is valid",
-      data: verifyToken,
+      status: res.status,
+      message: res.message,
+      data: res.data,
     };
   } catch (error) {
     console.log("error verifying token: " + error);
