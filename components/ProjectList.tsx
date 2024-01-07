@@ -178,7 +178,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
         <div className="w-full mt-[100px] grid place-items-center gap-4">
           <p className="text-center text-slate-400 text-xl mt-5">No Projects</p>
           <Link href={"/New"}>
-            <Button className="w-[200px]">create project</Button>
+            <Button className="w-[200px] rounded-none">create project</Button>
           </Link>
         </div>
       )}
