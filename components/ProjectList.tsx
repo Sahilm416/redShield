@@ -34,7 +34,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteProject } from "@/app/actions/project";
 import { toast } from "sonner";
-import { Oval } from "react-loader-spinner";
+
 type Project = {
   id: string;
   image: string;
@@ -46,7 +46,6 @@ type Project = {
 
 export default function ProjectList({ projects }: { projects: Project[] }) {
   const [searchTerm, setSearchTerm] = useState("");
-
   const router = useRouter();
   const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -74,11 +73,9 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
-              const [deleteLoading, setDeleteLoading] = useState<boolean>();
-
               return (
                 <AlertDialog key={i}>
-                  <Card className=" bg-white dark:bg-gray-900/20 shadow-lg rounded-none ">
+                  <Card className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none ">
                     <CardHeader className="gap-4 pb-2  ">
                       <div className="grid gap-2">
                         <CardTitle className="flex justify-between items-center">
@@ -156,37 +153,19 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                         <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">
                           Cancel
                         </AlertDialogCancel>
-
-                        <Button
-                          variant={"destructive"}
-                          disabled={deleteLoading}
+                        <AlertDialogAction
                           onClick={async () => {
-                            await fakeLoad();
-                            setDeleteLoading(true);
                             await deleteProject({
                               id: project.id,
                               key: project.key,
                             });
                             toast.success("Project deleted successfully");
-
                             return router.refresh();
                           }}
-                          className="rounded-none w-[70vw] sm:w-auto  bg-red-700 text-white"
+                          className="bg-red-800 text-white dark:hover:text-black rounded-none w-[70vw] sm:w-auto"
                         >
-                          {deleteLoading ? (
-                            <Oval
-                              visible={true}
-                              height="25"
-                              width="25"
-                              strokeWidth="5"
-                              color="white"
-                              ariaLabel="oval-loading"
-                              secondaryColor="black"
-                            />
-                          ) : (
-                            "Delete"
-                          )}
-                        </Button>
+                          Delete
+                        </AlertDialogAction>
                       </AlertDialogFooter>
                     </div>
                   </AlertDialogContent>
@@ -199,14 +178,10 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
         <div className="w-full mt-[100px] grid place-items-center gap-4">
           <p className="text-center text-slate-400 text-xl mt-5">No Projects</p>
           <Link href={"/New"}>
-            <Button className="w-[200px] rounded-none">create project</Button>
+            <Button className="w-[200px]">create project</Button>
           </Link>
         </div>
       )}
     </>
   );
 }
-
-const fakeLoad = async () => {
-  return;
-};
