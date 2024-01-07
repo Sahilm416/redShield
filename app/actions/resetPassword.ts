@@ -46,7 +46,7 @@ export const sendResetPasswordLink = async ({ email }: { email: string }) => {
         body: JSON.stringify({
           email: email,
           token: generatedToken,
-          endpoint: "http://localhost:3000/ResetPassword",
+          endpoint: "https://redshield.vercel.app/ResetPassword",
         }),
       }
     );
