@@ -56,8 +56,15 @@ export default function UpdateUser({ user }: { user: User }) {
   };
 
   const resetPassRequest = async () => {
+    await fakeLoad();
+    setResetPassLoading(true);
     const res = await sendResetPasswordLink({ email: user.email });
-    console.log(res);
+    if (res.status) {
+      toast.success(res.message);
+    } else {
+      toast.error(res.message);
+    }
+    setResetPassLoading(false);
   };
 
   const validateInput = ({

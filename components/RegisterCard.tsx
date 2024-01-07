@@ -50,9 +50,6 @@ const Form1 = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fakeLoad = async () => {
-    return;
-  };
   const sendData = async (formData: FormData) => {
     const mail = formData.get("email") as string;
     await fakeLoad();
@@ -110,12 +107,10 @@ const Form2 = ({
   email: string;
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const fakeLoade = async () => {
-    return;
-  };
+
   const sendData = async (formData: FormData) => {
     const code = formData.get("code") as string;
-    await fakeLoade();
+    await fakeLoad();
     setLoading(true);
     const res = await verifyCode({ code: code, email: email });
     if (res.status) {
@@ -231,6 +226,10 @@ const Form3 = ({ email }: { email: string }) => {
     </>
   );
 };
+//fake loading
+const fakeLoad = async ()=>{
+  return
+}
 
 //svg for google icon
 const GoogleIcon = () => {
