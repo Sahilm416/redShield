@@ -1,8 +1,7 @@
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
-const nodemailer = require("nodemailer");
+const { transporter } = require("@/utils/nodeMailer/config");
 const { verifyMail } = require("@/components/emailTemplates/verifyMail");
-
 
 interface reqBody {
   email: string;
@@ -17,13 +16,6 @@ export const POST = async (request: Request) => {
   }
   try {
     const data = (await request.json()) as reqBody;
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.MAIL_USER!,
-        pass: process.env.MAIL_PASS!,
-      },
-    });
 
     const mailOptions = {
       from: `${res.project_name} <redshield.vercel.app@gmail.com>`,

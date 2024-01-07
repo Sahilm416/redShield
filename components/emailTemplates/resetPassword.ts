@@ -23,7 +23,7 @@ export const passwordChangeTemplate = async ({
         <p>We received a request to reset your password. If you did not make this request, please ignore this email.</p>
         <p>To reset your password, click on the link below:</p>
         <p><a href=${link} style="display: inline-block; padding: 10px 20px; background-color: #4caf50; color: #fff; text-decoration: none; border-radius: 0;">Reset Password</a></p>
-        <p>this link is valid for only 5 minutes</p>
+        <p>this link is valid for only 3 minutes</p>
         <p>Thank you,</p>
         <p>${project}</p>
       </div>

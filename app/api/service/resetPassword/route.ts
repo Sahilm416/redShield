@@ -1,30 +1,44 @@
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
+const { transporter } = require("@/utils/nodeMailer/config");
+const {
+  passwordChangeTemplate,
+} = require("@/components/emailTemplates/resetPassword");
 
 interface reqBody {
-    username: string;
+  email: string;
+  token: string;
+  endpoint: string;
 }
-export const POST = async (request : Request)=>{
-    
-    const key = request.headers.get("authorization") as string;
-    const res = await db.get("API_KEY:"+key);
-   
 
-    if (!res) {
-      return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
-    } else{
-       try { 
-        const data : reqBody = await request.json();
-        const checkToken = await db.get(`${res.project_id+":Forgot:"+data.username}`)
+export const POST = async (request: Request) => {
+  const key = request.headers.get("authorization") as string;
+  const res = await db.get("API_KEY:" + key);
+  if (!res) {
+    return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
+  }
+  try {
+    const data = (await request.json()) as reqBody;
 
-        if(!checkToken){
-            return NextResponse.json({ success: false}, { status: 401 });
-        }
-        else{
-            return NextResponse.json({ success: true }, { status:200});
-        }
-       } catch (error) {
-           return NextResponse.json({ error: error ,success: false  }, { status:404});
-       }
-    }
-}
+    const link = `${data.endpoint}/${data.token}`;
+    const mailOptions = {
+      from: `${res.project_name} <redshield.vercel.app@gmail.com>`,
+      to: data.email,
+      subject: `Verify Email for ${res.project_name}`,
+      html: await passwordChangeTemplate({
+        email: data.email,
+        link: link,
+        project: res.project_name,
+      }),
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    return NextResponse.json({
+      status: true,
+      message: "link sent successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ status: false, message: "error sending mail" });
+  }
+};

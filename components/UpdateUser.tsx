@@ -56,7 +56,8 @@ export default function UpdateUser({ user }: { user: User }) {
   };
 
   const resetPassRequest = async () => {
-    await sendResetPasswordLink({ email: user.email });
+    const res = await sendResetPasswordLink({ email: user.email });
+    console.log(res);
   };
 
   const validateInput = ({
