@@ -5,7 +5,7 @@ import RegisterCard from "./RegisterCard";
 import React, { useEffect } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { getSession } from "@/app/actions/auth";
+
 
 export function AuthPage({ loginStatus }: { loginStatus: boolean }) {
   const router = useRouter();

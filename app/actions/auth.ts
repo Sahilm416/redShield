@@ -37,6 +37,27 @@ export const ValidateAuthToken = async ({ token }: { token: string }) => {
 
   try {
     const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+
+    const user = (await db.get(
+      `${verifyToken.project_id}:${verifyToken.email}:user`
+    )) as User;
+
+
+
+    if (user.pwd_version > verifyToken.pwd_version) {
+      return {
+        status: false,
+        message: "invalid token",
+      };
+    }
+
+    if (Date.now() > verifyToken.expires) {
+      return {
+        status: false,
+        message: "expired token",
+      };
+    }
+
     return {
       status: true,
       message: "token is valid",
@@ -107,9 +128,8 @@ type User = {
   password: string;
   uid: string;
   profile_picture?: string;
+  pwd_version: number;
 };
-
-
 
 export const getUserInfo = async ({ email }: { email: string }) => {
   try {
@@ -126,8 +146,8 @@ export const getUserInfo = async ({ email }: { email: string }) => {
 
     const response = { user, projects };
     return {
-      first_name : response.user?.first_name || "",
-      last_name : response.user?.last_name || "",
+      first_name: response.user?.first_name || "",
+      last_name: response.user?.last_name || "",
       email: response.user.email,
       profile_picture: response.user.profile_picture,
       projects: response.projects,
@@ -136,8 +156,8 @@ export const getUserInfo = async ({ email }: { email: string }) => {
   } catch (error) {
     console.log("something went wrong", error);
     return {
-      first_name : "",
-      last_name :"",
+      first_name: "",
+      last_name: "",
       email: "",
       profile_picture: "",
       projects: [],

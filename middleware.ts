@@ -55,6 +55,7 @@ export default async function middleWare(request: NextRequest ,response:NextResp
       return NextResponse.redirect(url);
     }
   }
+
   
   return NextResponse.next();
 }

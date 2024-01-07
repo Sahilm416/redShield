@@ -8,7 +8,8 @@ import { db } from "@/utils/database/db";
 type User = {
   email: string,
   password: string,
-  profile_picture: string
+  profile_picture: string,
+  pwd_version: number
 }
 export const LoginUser = async (data: { email: string; password: string }) => {
   try {
@@ -25,7 +26,7 @@ export const LoginUser = async (data: { email: string; password: string }) => {
 
       if (isAuth) {
         //setJWT token
-        await setJWT({email: user.email, project_id: project_id})
+        await setJWT({email: user.email, project_id: project_id , pwd_version: user.pwd_version})
         return {
           status: true,
           message: "Login Success",
@@ -55,17 +56,20 @@ export const LoginUser = async (data: { email: string; password: string }) => {
 export const setJWT = async ({
   email,
   project_id,
+  pwd_version
 }: {
   email: string;
   project_id: string;
+  pwd_version: number;
 }) => {
   try {
-    const JWTtoken = await sign(
-      { email: email, project_id: project_id },
-      process.env.JWT_SECRET_KEY!
-    );
     const date = new Date();
     date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const JWTtoken = await sign(
+      { email: email, project_id: project_id , pwd_version: pwd_version , expires: date.getTime()},
+      process.env.JWT_SECRET_KEY!
+    );
+  
     const cookie = setCookie("_auth_token", JWTtoken, {
       cookies,
       expires: date,

@@ -32,7 +32,7 @@ export default function ProjectComponent({
   };
 
   return (
-    <Card className=" w-[90vw] max-w-[500px] bg-white dark:bg-gray-800/20 select-none">
+    <Card className=" w-[90vw] max-w-[500px] bg-white dark:bg-gray-800/20 select-none rounded-none">
       <CardHeader>
         <CardTitle>{res?.name}</CardTitle>
         <CardDescription>{res?.description}</CardDescription>
@@ -43,7 +43,7 @@ export default function ProjectComponent({
         <div className="flex justify-center items-center mt-3">
           <Input
             disabled={true}
-            className=" border-r-0 rounded-none h-[40px] focus:outline-none disabled:opacity-100 disabled:cursor-pointer"
+            className="border-r-0 rounded-none h-[40px] focus:outline-none disabled:opacity-100 disabled:cursor-pointer"
             type={show ? "text" : "password"}
             value={res?.key}
           />
