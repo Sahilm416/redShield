@@ -46,7 +46,7 @@ type Project = {
 
 export default function ProjectList({ projects }: { projects: Project[] }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [deleteLoading, setDeleteLoading] = useState<boolean>();
+
   const router = useRouter();
   const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -74,6 +74,8 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
+              const [deleteLoading, setDeleteLoading] = useState<boolean>();
+
               return (
                 <AlertDialog key={i}>
                   <Card className=" bg-white dark:bg-gray-900/20 shadow-lg rounded-none ">
@@ -154,7 +156,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                         <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">
                           Cancel
                         </AlertDialogCancel>
-                        
+
                         <Button
                           variant={"destructive"}
                           disabled={deleteLoading}
@@ -167,7 +169,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                             });
                             toast.success("Project deleted successfully");
 
-                           return router.refresh();
+                            return router.refresh();
                           }}
                           className="rounded-none w-[70vw] sm:w-auto  bg-red-700 text-white"
                         >
