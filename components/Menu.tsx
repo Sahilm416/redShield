@@ -118,18 +118,18 @@ export function MenuBar({
                   </DropdownMenuItem>
                 </Link>
               )}
-              <Link href="#">
+              <Link href="/Docs">
                 <DropdownMenuItem className="text-lg">
                   <Book className="text-slate-300 w-[20px] mr-2" />
                   Docs
                 </DropdownMenuItem>
               </Link>
-              <Link href="#">
+              <Link href="/Docs">
                 <DropdownMenuItem className="text-lg">
                   <Building2 className="text-slate-300 w-[20px] mr-2" /> About
                 </DropdownMenuItem>
               </Link>
-              <Link href="#">
+              <Link href="/Contact">
                 {" "}
                 <DropdownMenuItem className="text-lg">
                   <Contact className="text-slate-300 w-[20px] mr-2" /> Contact

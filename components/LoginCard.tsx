@@ -32,6 +32,7 @@ export default function LoginCard() {
     const res = await LoginUser({ email: email, password: password });
     if (res.status) {
       toast.success(res.message);
+      router.refresh();
       router.push("/Dashboard");
     } else {
       toast.error(res.message);
