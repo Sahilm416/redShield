@@ -24,7 +24,7 @@ export default function RegisterCard() {
 
   return (
     <>
-      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-auto shadow-lg">
+      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-auto shadow-lg rounded-none">
         <CardHeader>
           <CardTitle>Register to Redshield</CardTitle>
           <CardDescription>redis based auth</CardDescription>
@@ -70,6 +70,7 @@ const Form1 = ({
         <CardContent>
           <Label htmlFor="email">Email</Label>
           <Input
+          className=" rounded-none"
             required
             id="email"
             name="email"
@@ -78,7 +79,7 @@ const Form1 = ({
           />
         </CardContent>
         <CardFooter>
-          <Button disabled={loading} type="submit" className="w-full">
+          <Button disabled={loading} type="submit" className="w-full rounded-none">
             {loading ? (
               <Oval
                 visible={true}
@@ -131,18 +132,18 @@ const Form2 = ({
               {email}
             </span>{" "}
           </p>
-          <Input name="code" type="text" required placeholder="enter code" />
+          <Input className=" rounded-none" name="code" type="text" required placeholder="enter code" />
         </CardContent>
         <CardFooter className="flex gap-3">
           <Button
             onClick={() => setFormCount(1)}
             type="button"
-            className="w-[50%]"
+            className="w-[50%] rounded-none"
             variant={"outline"}
           >
             back
           </Button>
-          <Button disabled={loading} type="submit" className="w-[50%]">
+          <Button disabled={loading} type="submit" className="w-[50%] rounded-none">
             {loading ? (
               <Oval
                 visible={true}
@@ -201,12 +202,12 @@ const Form3 = ({ email }: { email: string }) => {
       <form action={createUser}>
         <CardContent className="flex flex-col gap-3">
           <Label htmlFor="pass">Password</Label>
-          <Input name="pass" id="pass" type="password" />
+          <Input className=" rounded-none" name="pass" id="pass" type="password" />
           <Label htmlFor="confirm">Confirm Password</Label>
-          <Input name="confirm" id="confirm" type="password" />
+          <Input className=" rounded-none" name="confirm" id="confirm" type="password" />
         </CardContent>
         <CardFooter>
-          <Button disabled={loading} type="submit" className="w-full">
+          <Button disabled={loading} type="submit" className="w-full rounded-none">
             {loading ? (
               <Oval
                 visible={true}

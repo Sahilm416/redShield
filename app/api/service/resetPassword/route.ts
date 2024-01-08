@@ -24,7 +24,7 @@ export const POST = async (request: Request) => {
     const mailOptions = {
       from: `${res.project_name} <redshield.vercel.app@gmail.com>`,
       to: data.email,
-      subject: `Verify Email for ${res.project_name}`,
+      subject: `Reset password for ${res.project_name}`,
       html: await passwordChangeTemplate({
         email: data.email,
         link: link,

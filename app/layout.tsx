@@ -9,6 +9,8 @@ const lato = Lato({
   subsets: ["latin"],
   weight: "700",
 });
+
+
 export const metadata: Metadata = {
   title: "Red Shield",
   description: "Redis authentication library",

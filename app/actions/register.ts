@@ -11,8 +11,14 @@ export const sendCode = async ({ email }: { email: string }) => {
   const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
     project_id: string;
   };
-  const checkAlreadyExists = await db.get(project_id + ":" + email + ":user");
- 
+  const checkAlreadyExists = await db.get(`${project_id}:${email}:user`);
+  if (checkAlreadyExists) {
+    return {
+      status: false,
+      message: " user already exists",
+    };
+  }
+
   try {
     await db.set(project_id + ":" + email + ":code", code, { ex: 180 });
     const res = await fetch(
@@ -21,11 +27,11 @@ export const sendCode = async ({ email }: { email: string }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": process.env.RED_KEY!,
+          Authorization: process.env.RED_KEY!,
         },
         body: JSON.stringify({
           email: email,
-          code:code,
+          code: code,
         }),
       }
     );
@@ -76,8 +82,17 @@ export const registerUser = async (data: {
   profile_picture?: string;
 }) => {
   try {
+    const { project_id } = (await db.get(
+      "API_KEY:" + process.env.RED_KEY!
+    )) as { project_id: string };
 
-    const {project_id} = await db.get("API_KEY:"+process.env.RED_KEY!) as {project_id:string}
+    const checkAlreadyExists = await db.get(`${project_id}:${data.email}:user`);
+    if (checkAlreadyExists) {
+      return {
+        status: false,
+        message: " user already exists",
+      };
+    }
 
     const hashedPassword = await bcrypt.hash(data.password.trim(), 10);
     const newUser = {
@@ -88,15 +103,15 @@ export const registerUser = async (data: {
         data.profile_picture ||
         "https://vercel.com/api/www/avatar/e4HZrj63hu6L3DgyuIE06nf7?&s=64",
       creation_date: new Date(),
-      pwd_version : Date.now()
+      pwd_version: Date.now(),
     };
-    await db.set(project_id+":"+data.email+":user", newUser);
+    await db.set(project_id + ":" + data.email + ":user", newUser);
     await db.set(project_id + ":" + data.email + ":projects", []);
     await LoginUser({ email: data.email, password: data.password });
     return {
-      status:true,
-      message:"Registered successfully"
-    }
+      status: true,
+      message: "Registered successfully",
+    };
   } catch (error) {
     console.log("error registering", error);
     return {

@@ -14,6 +14,14 @@ export const sendResetPasswordLink = async ({ email }: { email: string }) => {
     )) as {
       project_id: string;
     };
+
+    const userExists = await db.get(`${project_id}:${email}:user`);
+    if(!userExists){
+      return {
+        status: false,
+        message:"User not found"
+      }
+    }
     const count: number =
       (await db.get(`${project_id}:${email}:forgotPassAttempts`)) || 0;
     //if too many attempts then halt immediately i.e. 5
@@ -44,7 +52,7 @@ export const sendResetPasswordLink = async ({ email }: { email: string }) => {
           Authorization: process.env.RED_KEY!,
         },
         body: JSON.stringify({
-          email: email,
+          email: email.trim(),
           token: generatedToken,
           endpoint: "https://redshield.vercel.app/ResetPassword",
         }),
