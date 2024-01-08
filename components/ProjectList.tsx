@@ -56,17 +56,12 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
       {projects.length > 0 ? (
         <main className="flex flex-col w-full p-4 gap-5 md:gap-8 md:p-10">
           <div className="max-w-6xl w-full mx-auto flex items-center gap-4 sticky top-[60px] nav pt-3  p-2 z-[20]">
-            <form className="flex-1">
-              <Input
-                className="bg-white dark:bg-black rounded-none"
-                placeholder="Search projects..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <Button className="sr-only" type="submit">
-                Submit
-              </Button>
-            </form>
+            <Input
+              className="bg-white dark:bg-black rounded-none"
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
             <Link href={"/New"}>
               <Button className="rounded-none">Add New Project</Button>
             </Link>
