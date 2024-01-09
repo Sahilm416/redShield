@@ -60,7 +60,7 @@ export const verifyMail = async ({
       <p class="sub">Enter the following verification code when<br/> prompted:</p>
       <h1 class="code">${code}</h1>
       <p class="warning">To protect your account, do not share this code.</p>
-      <p class="footer"><b>Didn't request this?</b><br/>This code was requested from <b>1.1.1.1</b>, <b>Mumbai, IN</b>, at <b>12 August 2023</b>, <b>12:46 UTC</b>. If you didn't make this request, you can safely ignore this email.</p></br>
+      <p class="footer"><b>Didn't request this?</b><br/>This code was requested at <b>${new Date()}</b>. If you didn't make this request, you can safely ignore this email.</p></br>
     </div>
   </body>
   </html>
