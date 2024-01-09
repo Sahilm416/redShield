@@ -18,7 +18,6 @@ export const verifyMail = async ({
     <style>
       body {
           height: 600px;
-         background-color: #0a0a0a;
         display:flex;
         justify-content:start;
         align-items:center;
@@ -34,27 +33,20 @@ export const verifyMail = async ({
           margin: 50px 0px;
       }
       .project {
-        font-size: 35px;
-        color: #e5e5e5;
+        font-size: 30px;
+  
       }
       .header {
-        color:#fafafa;
-        font-size: 45px;
+  
+        font-size: 38px;
       }
   
-      .sub{
-        color:#d4d4d4;
-      }
       .code {
-        color: #e5e5e5;
-       font-size: 45px;
-      }
   
-      .warning{
-  color:#d4d4d4;
+       font-size: 40px;
       }
       .footer {
-        color:#d4d4d4;
+  
         font-size: 12px;
         line-height: 20px;
       }
@@ -69,10 +61,10 @@ export const verifyMail = async ({
       <h1 class="code">${code}</h1>
       <p class="warning">To protect your account, do not share this code.</p>
       <p class="footer"><b>Didn't request this?</b><br/>This code was requested from <b>1.1.1.1</b>, <b>Mumbai, IN</b>, at <b>12 August 2023</b>, <b>12:46 UTC</b>. If you didn't make this request, you can safely ignore this email.</p></br>
-  
     </div>
   </body>
   </html>
+  
   
     `;
 };
