@@ -52,7 +52,7 @@ export const passwordChangeTemplate = async ({
       }
       a {
        padding:10px;
-        width: 200px;
+       font-size:25px;
         text-decoration: none;
         background-color: #16a34a;
         color: white;
