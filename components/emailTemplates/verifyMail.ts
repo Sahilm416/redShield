@@ -22,8 +22,6 @@ export const verifyMail = async ({
       padding: 20px;
       font-family: Sans-serif;
       background-color: #f3f4f6;
-      display:flex;
-      flex-direction: column;
       justify-content:center;
       align-items:start;
       
