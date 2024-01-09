@@ -31,8 +31,7 @@ export const POST = async (request: Request) => {
         project: res.project_name,
       }),
     };
-
-    const info = await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
     return NextResponse.json({
       status: true,
       message: "link sent successfully",

@@ -17,7 +17,7 @@ export default async function ResetPasswordPage({
   }
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-screen flex justify-center mt-[100px]">
       <ResetPassComponent email={res.data} token={params.token} />
     </div>
   );

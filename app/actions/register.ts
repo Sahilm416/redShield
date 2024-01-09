@@ -25,6 +25,7 @@ export const sendCode = async ({ email }: { email: string }) => {
       "https://redshield.vercel.app/api/service/sendCode",
       {
         method: "POST",
+        next: { revalidate: 0 },
         headers: {
           "Content-Type": "application/json",
           Authorization: process.env.RED_KEY!,
