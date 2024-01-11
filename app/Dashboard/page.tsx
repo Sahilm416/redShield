@@ -1,18 +1,16 @@
 import DashboardComponent from "@/components/Dashboard";
 import { getSession } from "../actions/auth";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { AuthPage } from "@/components/Auth";
 export default async function () {
-  const res = await getSession();
-  if (!res.status) {
+  const session = await getSession();
+  if (!session.status) {
     return (
-      <div className=" w-full h-screen flex flex-col gap-3 justify-start items-center mt-[100px]">
-        <p className=" text-lg">Login to access dashboard</p>
-        <Link href={"/Auth"}>
-          <Button className=" rounded-none w-[200px]">login</Button>
-        </Link>
+      <div className="flex justify-center mt-[100px]">
+        <AuthPage loginStatus={false} />
       </div>
     );
   }
-  return <>{res.status && <DashboardComponent email={res?.data?.email} />}</>;
+  return (
+    <>{session.status && <DashboardComponent email={session?.data?.email} />}</>
+  );
 }

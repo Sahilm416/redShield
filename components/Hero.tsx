@@ -1,7 +1,8 @@
 import { Button } from "./ui/button";
 import Link from "next/link";
-
-const Hero = () => {
+import { getSession } from "@/app/actions/auth";
+const Hero = async () => {
+  const session = await getSession();
   return (
     <div className="w-full flex flex-col justify-center items-center sm:p-5 sm:mb-0 px-1 pb-5 mb-5">
       <div className="boxpatternTop sm:w-[400px] w-[300px] h-[20px] border-l border-r border-t"></div>
@@ -16,7 +17,7 @@ const Hero = () => {
           authentication
         </p>
         <div className="max-w-[460px] min-w[300px] flex">
-          <Link href={"/Auth"}>
+          <Link href={session.status ? "/Dashboard" : "/Auth"}>
             <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] shadow-lg my-5 rounded-none">
               Get Started
             </Button>{" "}
