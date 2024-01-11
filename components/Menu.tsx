@@ -124,7 +124,7 @@ export function MenuBar({
                   Docs
                 </DropdownMenuItem>
               </Link>
-              <Link href="/Docs">
+              <Link href="/About">
                 <DropdownMenuItem className="text-lg">
                   <Building2 className="text-slate-300 w-[20px] mr-2" /> About
                 </DropdownMenuItem>
