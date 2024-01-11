@@ -9,7 +9,11 @@ const Hero = () => {
       <div className="boxpatternTop sm:w-[460px] w-[360px] h-[20px] border-l border-r border-t"></div>
       <div className=" sm:w-[500px] w-[90vw] border-t border-b flex border-[1px 1px 1px 1px] flex-col items-center justify-center">
         <p className=" selection:bg-violet-500 selection:text-slate-200 sm:text-7xl text-6xl text-center font-roboto font-normal dark:text-slate-200 text-slate-700 p-3 ">
-          Redis based authentication
+        <span className="tracking-tighter none bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-600">
+            Redis based
+        </span>
+        <br/>
+          authentication
         </p>
         <div className="max-w-[460px] min-w[300px] flex">
           <Link href={"/Auth"}>
