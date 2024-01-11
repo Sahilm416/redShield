@@ -1,6 +1,4 @@
-import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
-
-export default function Component() {
+export default async function Component() {
   return (
     <main className="flex flex-col gap-5 items-center justify-center w-full px-4 py-8 md:px-6 lg:py-16 sm:mt-[30px] mt-[60px]">
       <section className="w-full max-w-6xl space-y-8">
