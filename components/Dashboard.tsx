@@ -1,8 +1,6 @@
-
 import { getUserInfo } from "../app/actions/auth";
 import ErrorPage from "./Error";
 import ProjectList from "@/components/ProjectList";
-
 
 type Project = {
   id: string;
