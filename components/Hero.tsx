@@ -16,7 +16,7 @@ export default function HeroComponent() {
         <div className="w-full flex flex-col gap-5">
           <div className="pt-10 sm:pt-0 w-full inline">
             <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
-               Redis based authentication
+              Redis based authentication
             </span>
           </div>
           <div className="flex flex-col gap-5">
@@ -28,13 +28,14 @@ export default function HeroComponent() {
               <Link className="w-[200px]" href={"/Dashboard"}>
                 <Button className=" rounded-none w-[200px]">Get Started</Button>
               </Link>
-
-              <Button
-                variant={"outline"}
-                className=" rounded-none w-[200px] border-zinc-300"
-              >
-                GitHub <GitHubLogo />
-              </Button>
+              <Link className="w-[200px]" target="blank" href={"https://github.com/sahilm416/redShield"}>
+                <Button
+                  variant={"outline"}
+                  className=" rounded-none w-[200px] border-zinc-300"
+                >
+                  GitHub <GitHubLogo />
+                </Button>
+              </Link>
             </div>
           </div>
           <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-5">
