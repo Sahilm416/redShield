@@ -20,8 +20,8 @@ export default function Component() {
   };
   
   return (
-    <div className="w-full flex justify-center">
-      <Card className="rounded shadow-lg sm:min-w-[550px] min-w-[350px] dark:bg-[rgb(18,18,18)] dark:border-slate-300 bg-[#f8f9fa] p-4">
+    <div className="w-full flex justify-start mt-10 px-2">
+      <Card className="rounded shadow-lg w-[90vw] sm:w-[450px] dark:bg-[rgb(18,18,18)] dark:border-slate-300 bg-[#f8f9fa] p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <TerminalIcon className="w-6 h-6 dark:text-slate-300 text-gray-700" />
