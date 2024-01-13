@@ -37,7 +37,7 @@ export default function HeroComponent() {
               </Button>
             </div>
           </div>
-          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-7">
+          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-5">
             {""}
           </span>
           <div className="flex flex-col gap-5 sm:mt-10">
@@ -49,7 +49,7 @@ export default function HeroComponent() {
             </p>
             <Command />
           </div>
-          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-7">
+          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-5">
             {""}
           </span>
         </div>
