@@ -1,22 +1,31 @@
 export default function SubHero() {
   return (
-  
-      <section className="min-w-[350px] , max-w-[500px] py-12 md:py-24 lg:py-32 xl:py-10 m-4">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h1 className="text-5xl font-normal tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl none bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-600">
-              <span className="line-through dark:text-slate-200 text-slate-500 pr-2">Fast</span>
-              Faster{"\n                      "}
-            </h1>
-            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-              Experience the speed of redis with a extreme low bandwidth support. 
+    <div className="w-full h-[300px] px-2">
+      <div className="w-full h-full flex justify-start gap-5">
+        <div className="h-full flex flex-col justify-center items-center">
+          <span className="w-[20px] h-[20px] bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 rounded-full dark:shadow-[0px_0px_20px_#fafafa]">
+            {" "}
+          </span>
+          <span className="w-[5px] mt-[-5px] h-full bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 dark:shadow-[0px_0px_20px_#fafafa]">
+            {""}
+          </span>
+        </div>
+        <div className="w-full flex flex-col gap-5">
+          <div className="pt-10">
+            <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
+             <del className="line-through dark:text-slate-300 text-slate-500 pr-2>Fast</del">  Fast </del> Faster
+            </span>
+          </div>
+          <div className="flex flex-col gap-5">
+            <p className="text-zinc-400 max-w-[600px]">
+              supersonic speed with extremely low bandwidth support
             </p>
           </div>
+          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-7">
+            {""}
+          </span>
         </div>
       </div>
-    </section>
-
-  )
+    </div>
+  );
 }
-

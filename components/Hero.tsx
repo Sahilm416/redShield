@@ -4,17 +4,19 @@ import Link from "next/link";
 export default function HeroComponent() {
   return (
     <div className="w-full h-full px-2">
-      <div className="w-full h-full flex justify-start gap-5">
+      <div className="w-full h-full flex justify-start sm:items-center gap-5">
         <div className="h-full flex flex-col justify-center items-center">
           <span className="w-[20px] h-[20px] bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 rounded-full dark:shadow-[0px_0px_20px_#fafafa]">
             {" "}
           </span>
-          <span className="w-[5px] mt-[-5px] h-full bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 dark:shadow-[0px_0px_20px_#fafafa]"></span>
+          <span className="w-[5px] mt-[-5px] h-full bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 dark:shadow-[0px_0px_20px_#fafafa]">
+            {""}
+          </span>
         </div>
         <div className="w-full flex flex-col gap-5">
-          <div className="pt-10">
+          <div className="pt-10 sm:pt-0 w-full inline">
             <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
-              Redis based authentication
+               Redis based authentication
             </span>
           </div>
           <div className="flex flex-col gap-5">
@@ -23,8 +25,10 @@ export default function HeroComponent() {
               of Redis with elegance and speed.
             </p>
             <div className="flex sm:flex-row flex-col gap-5">
-              <Link href={'/Dashboard'}><Button className=" rounded-none w-[200px]">Get Started</Button></Link>
-              
+              <Link className="w-[200px]" href={"/Dashboard"}>
+                <Button className=" rounded-none w-[200px]">Get Started</Button>
+              </Link>
+
               <Button
                 variant={"outline"}
                 className=" rounded-none w-[200px] border-zinc-300"
@@ -36,7 +40,7 @@ export default function HeroComponent() {
           <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-7">
             {""}
           </span>
-          <div className="flex flex-col gap-5 mt-10">
+          <div className="flex flex-col gap-5 sm:mt-10">
             <p className="md:text-6xl sm:text-5xl text-4xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white dark:to-black">
               Install SDK
             </p>
@@ -49,7 +53,6 @@ export default function HeroComponent() {
             {""}
           </span>
         </div>
-        <div className=" w-full lg:flex hidden h-full items-center justify-center"></div>
       </div>
     </div>
   );
