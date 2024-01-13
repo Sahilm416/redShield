@@ -27,11 +27,11 @@ export default function Command() {
             <TerminalIcon className="w-6 h-6 text-zinc-100 dark:text-slate-300 " />
             <p className="text-sm dark:text-slate-300 text-zinc-100 font-mono">npm install redshield</p>
           </div>
-          <Button className="p-2" variant="ghost" onClick={handleCopyToClipboard}>
+          <Button className="p-2 rounded-none hover:bg-transparent" variant="ghost" onClick={handleCopyToClipboard}>
             <CopyIcon className="w-4 h-4 dark:text-slate-300 text-zinc-100" />
           </Button>
         </div>
-        <p className={`text-xs h-[5px] text-gray-500 dark:text-slate-300 transition-opacity duration-500 ${isCopied ? 'opacity-100' : 'opacity-0'}`}>
+        <p className={`text-xs h-[5px] text-zinc-300 transition-opacity duration-500 ${isCopied ? 'opacity-100' : 'opacity-0'}`}>
           Command copied
         </p>
       </Card>

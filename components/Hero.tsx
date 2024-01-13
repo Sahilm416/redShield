@@ -1,6 +1,6 @@
 import Command from "./Command";
 import { Button } from "./ui/button";
-
+import Link from "next/link";
 export default function HeroComponent() {
   return (
     <div className="w-full h-full px-2">
@@ -14,7 +14,7 @@ export default function HeroComponent() {
         <div className="w-full flex flex-col gap-5">
           <div className="pt-10">
             <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
-              Redis based <br /> authentication
+              Redis based authentication
             </span>
           </div>
           <div className="flex flex-col gap-5">
@@ -23,16 +23,20 @@ export default function HeroComponent() {
               of Redis with elegance and speed.
             </p>
             <div className="flex sm:flex-row flex-col gap-5">
-              <Button className=" rounded-none w-[200px]">Get Started</Button>
-              <Button variant={"outline"} className=" rounded-none w-[200px] border-zinc-300">
+              <Link href={'/Dashboard'}><Button className=" rounded-none w-[200px]">Get Started</Button></Link>
+              
+              <Button
+                variant={"outline"}
+                className=" rounded-none w-[200px] border-zinc-300"
+              >
                 GitHub <GitHubLogo />
               </Button>
             </div>
           </div>
-          <span className="w-full sm:max-w-[600px] h-2 border-b m-2 border-dashed border-zinc-500">
+          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-7">
             {""}
           </span>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-5 mt-10">
             <p className="md:text-6xl sm:text-5xl text-4xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white dark:to-black">
               Install SDK
             </p>
@@ -41,10 +45,11 @@ export default function HeroComponent() {
             </p>
             <Command />
           </div>
-          <span className="w-full sm:max-w-[600px] h-2 border-b m-2 border-dashed border-zinc-500">
+          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-7">
             {""}
           </span>
         </div>
+        <div className=" w-full lg:flex hidden h-full items-center justify-center"></div>
       </div>
     </div>
   );
