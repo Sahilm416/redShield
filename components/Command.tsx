@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-export default function Component() {
+export default function Command() {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyToClipboard = () => {
@@ -20,15 +20,15 @@ export default function Component() {
   };
   
   return (
-    <div className="w-full flex justify-start mt-10 px-2">
-      <Card className="rounded shadow-lg w-[90vw] sm:w-[450px] dark:bg-[rgb(18,18,18)] dark:border-slate-300 bg-[#f8f9fa] p-4">
+    <div className="w-full flex justify-start">
+      <Card className="rounded shadow-lg w-[80vw] sm:w-[450px] border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <TerminalIcon className="w-6 h-6 dark:text-slate-300 text-gray-700" />
-            <p className="text-sm dark:text-slate-300 text-gray-700 font-mono">npm install redshield</p>
+            <TerminalIcon className="w-6 h-6 text-zinc-100 dark:text-slate-300 " />
+            <p className="text-sm dark:text-slate-300 text-zinc-100 font-mono">npm install redshield</p>
           </div>
           <Button className="p-2" variant="ghost" onClick={handleCopyToClipboard}>
-            <CopyIcon className="w-4 h-4 dark:text-slate-300 text-gray-700" />
+            <CopyIcon className="w-4 h-4 dark:text-slate-300 text-zinc-100" />
           </Button>
         </div>
         <p className={`text-xs h-[5px] text-gray-500 dark:text-slate-300 transition-opacity duration-500 ${isCopied ? 'opacity-100' : 'opacity-0'}`}>
