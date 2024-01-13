@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className="bg-white/60 dark:bg-black/60">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           <Navbar />
