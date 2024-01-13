@@ -1,50 +1,35 @@
 import { Button } from "./ui/button";
-import Link from "next/link";
-import { getSession } from "@/app/actions/auth";
-import Command from "./Command";
-const Hero = async () => {
-  const session = await getSession();
-  return (
-    <div className="w-full h-full flex justify-start items-start gap-0 pt-[100px] px-2">
-      <div className="w-[20px] sm:pl-0 h-full flex flex-col justify-center items-center ">
-        <span className="w-[20px] h-[20px] bg-amber-400 rounded-full shadow-[0_0px_10px_rgb(247,133,49)]"></span>
-        <span className="w-[5px] h-full bg-amber-400 shadow-[0_0px_10px_rgb(247,133,49)] "></span>
-      </div><div className="flex flex-col">
-      
-      <div className="h-full w-auto flex flex-col gap-2 justify-start items-start pt-5">
-        <div className="">
-          <p className=" selection:bg-violet-500 selection:text-slate-200 md:text-6xl sm:text-5xl text-4xl text-start font-roboto font-semibold dark:text-slate-200 text-slate-700 p-3 ">
-            <span className="tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-amber-600 via-orange-400 to-orange-700">
-              Redis based
-            </span>
-            <br />
-            <span className="tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black/80 to-white dark:from-white dark:via-white/80 dark:to-black">
-              authentication
-            </span>
-          </p>
-        </div>
-        <div className="flex flex-col gap-2">
-        <p className="pl-5 w-auto max-w-[600px] text-slate-400">
-            Swift authentication, seamless user management. Harness the power of
-            Redis with elegance and speed.
-          </p>
-          <Link
-            className="w-[200px]"
-            href={session.status ? "/Dashboard" : "/Auth"}
-          >
-            <Button className="mx-4 md:w-[200px] w-[160px] h-[45px] border-none bg-gradient-to-r from-orange-600 via-orange-400 to-amber-400 dark:text-white my-5 rounded-none hover:shadow-[0_0px_20px_rgb(247,133,49)]">
-              Get Started
-            </Button>
-          </Link>
-        </div>
 
-      </div>
+export default function HeroComponent() {
+  return (
+    <div className="w-full h-full px-2">
+      <div className="w-full h-full flex justify-start gap-5">
+        <div className="h-full flex flex-col justify-center items-center">
+          <span className="w-[20px] h-[20px] bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 rounded-full dark:shadow-[0px_0px_20px_#fafafa]">
+            {" "}
+          </span>
+          <span className="w-[5px] mt-[-5px] h-full bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 dark:shadow-[0px_0px_20px_#fafafa]"></span>
+        </div>
+        <div className="flex flex-col gap-5">
+          <div className="pt-10">
+            <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
+              Redis based <br /> authentication
+            </span>
+          </div>
+          <div className="flex flex-col gap-5">
+            <p className="text-zinc-400 max-w-[600px]">Swift authentication, seamless user management. Harness the power of
+            Redis with elegance and speed.</p>
+            <div className="flex sm:flex-row flex-col gap-5">
+             <Button className=" rounded-none w-[200px]">Get Started</Button>
+            <Button variant={'outline'} className=" rounded-none w-[200px]">GitHub <GitHubLogo/></Button>  
+            </div>
+           
+          </div>
+        </div>
       </div>
     </div>
   );
-};
-
-export default Hero;
+}
 
 const GitHubLogo = () => {
   return (
