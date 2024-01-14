@@ -12,7 +12,7 @@ export default function SubHero() {
         </div>
         <div className="w-full flex flex-col gap-5">
           <div className="">
-            <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
+            <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-black/10 dark:from-white dark:via-white/80 dark:to-black">
              <del className="line-through dark:text-slate-300 text-slate-500 pr-2>Fast</del">  Fast </del> Faster
             </span>
           </div>

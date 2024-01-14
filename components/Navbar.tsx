@@ -18,7 +18,6 @@ const Navbar = async () => {
             href={"/"}
             className="text-xl flex justify-center items-center gap-2 select-none cursor-pointer dark:text-slate-200 text-slate-900 font-sans font-bold ml-5 p-1"
           >
-      
             <span className="font-semibold text-lg dark:text-white">
               RedShield
             </span>
@@ -26,14 +25,6 @@ const Navbar = async () => {
           </Link>
           <span className="sm:inline-block hidden">|</span>
           <div className="justify-center items-center gap-5 text-md sm:flex hidden">
-            {res.status && (
-              <Link
-                className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
-                href={"/Dashboard"}
-              >
-                dashboard
-              </Link>
-            )}
             <Link
               className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
               href={"/Docs"}
@@ -55,6 +46,21 @@ const Navbar = async () => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-4 mx-5">
+          {res.status ? (
+            <Link
+              className=" flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
+              href={"/Dashboard"}
+            >
+              dashboard
+            </Link>
+          ) : (
+            <Link
+              className=" flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
+              href={"/Auth"}
+            >
+              login
+            </Link>
+          )}
           <ThemeBtn />
           <MenuBar info={res} />
         </div>

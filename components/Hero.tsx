@@ -15,7 +15,7 @@ export default function HeroComponent() {
         </div>
         <div className="w-full flex flex-col gap-5">
           <div className="pt-10 sm:pt-0 w-full inline">
-            <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
+            <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-black/10  dark:from-white dark:via-white/80 dark:to-black">
               Redis based authentication
             </span>
           </div>
@@ -42,7 +42,7 @@ export default function HeroComponent() {
             {""}
           </span>
           <div className="flex flex-col gap-5 sm:mt-10">
-            <p className="md:text-6xl sm:text-5xl text-4xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white dark:to-black">
+            <p className="md:text-6xl sm:text-5xl text-4xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-black/10 dark:from-white dark:via-white dark:to-black">
               Install SDK
             </p>
             <p className="text-zinc-400">
