@@ -3,7 +3,7 @@ export default async function Component() {
     <main className="flex flex-col gap-5 items-center justify-center w-full px-4 py-8 md:px-6 lg:py-16 sm:mt-[30px] mt-[60px]">
       <section className="w-full max-w-6xl space-y-8">
         <div className="flex flex-col items-center text-center space-y-4">
-          <h1 className="sm:text-5xl text-4xl font-normal font-sans text-gray-800 dark:text-gray-200">
+          <h1 className="md:text-5xl sm:text-4xl text-3xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-white dark:from-white dark:via-white/80 dark:to-black">
             About RedShield
           </h1>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
@@ -12,32 +12,32 @@ export default async function Component() {
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="flex flex-col items-center space-y-2 p-4 border dark:border-slate-500 dark:bg-gray-900/20 bg-white rounded-none shadow-md cursor-default dark:hover:border-white hover:border-black">
-            <CloudLightningIcon className="w-8 h-8 text-gray-800 dark:text-gray-200" />
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+          <div className="flex flex-col items-center space-y-2 p-4 border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black">
+            <CloudLightningIcon className="w-8 h-8 text-gray-200" />
+            <h2 className="text-xl font-semibold text-gray-200">
               Fast Authentication
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-center">
+            <p className="text-gray-300 text-center">
               Leveraging a Redis-based database, RedShield provides
               lightning-fast authentication services.
             </p>
           </div>
-          <div className="flex flex-col items-center space-y-2 p-4 border dark:border-slate-500 dark:bg-gray-900/20 bg-white rounded-none shadow-md cursor-default dark:hover:border-white hover:border-black">
-            <UsersIcon className="w-8 h-8 text-gray-800 dark:text-gray-200" />
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+          <div className="flex flex-col items-center space-y-2 p-4 border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black">
+            <UsersIcon className="w-8 h-8 text-gray-200" />
+            <h2 className="text-xl font-semibold text-gray-200">
               User Management
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-center">
+            <p className="text-gray-300 text-center">
               With robust user management capabilities, RedShield allows
               developers to easily handle user accounts, permissions, and roles.
             </p>
           </div>
-          <div className="flex flex-col items-center space-y-2 p-4 border dark:border-slate-500 dark:bg-gray-900/20 bg-white rounded-none shadow-md cursor-default dark:hover:border-white hover:border-black">
-            <WifiIcon className="w-8 h-8 text-gray-800 dark:text-gray-200" />
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+          <div className="flex flex-col items-center space-y-2 p-4 border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black">
+            <WifiIcon className="w-8 h-8 text-gray-200" />
+            <h2 className="text-xl font-semibold text-gray-200">
               Low Bandwidth Support
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-center ">
+            <p className="text-gray-300 text-center ">
               RedShield is optimized for low bandwidth environments, ensuring a
               smooth experience even in areas with limited internet
               connectivity.
@@ -49,22 +49,22 @@ export default async function Component() {
             Our Technology
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="flex flex-col items-center space-y-2 p-4 dark:bg-gray-900/20 bg-white rounded-none border dark:border-slate-500 shadow-md cursor-default dark:hover:border-white hover:border-black">
-              <DatabaseIcon className="w-8 h-8 text-gray-800 dark:text-gray-200" />
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+            <div className="flex flex-col items-center space-y-2 p-4 dark:bg-gray-900/20 bg-white rounded-none border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black">
+              <DatabaseIcon className="w-8 h-8 text-gray-200" />
+              <h3 className="text-lg font-semibold text-gray-200">
                 Redis Database
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-center">
+              <p className="text-gray-300 text-center">
                 RedShield utilizes a Redis-based database for efficient storage
                 and retrieval of user authentication data.
               </p>
             </div>
-            <div className="flex flex-col items-center space-y-2 p-4  dark:bg-gray-900/20 bg-white rounded-none border dark:border-slate-500 shadow-md cursor-default dark:hover:border-white hover:border-black">
-              <LayoutIcon className="w-8 h-8 text-gray-800 dark:text-gray-200" />
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+            <div className="flex flex-col items-center space-y-2 p-4  dark:bg-gray-900/20 bg-white rounded-none border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black">
+              <LayoutIcon className="w-8 h-8 text-gray-200" />
+              <h3 className="text-lg font-semibold text-gray-200">
                 Tailwind CSS
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-center">
+              <p className="text-gray-300 text-center">
                 RedShield's UI is built using Tailwind CSS, a utility-first CSS
                 framework that enables rapid development and easy customization.
               </p>
