@@ -24,7 +24,7 @@ const Navbar = async () => {
             <Badge>alpha</Badge>
           </Link>
           <span className="sm:inline-block hidden">|</span>
-          <div className="justify-center items-center gap-5 text-md sm:flex hidden">
+          <div className="justify-center items-center gap-5 text-md md:flex hidden">
             <Link
               className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
               href={"/Docs"}
@@ -48,14 +48,14 @@ const Navbar = async () => {
         <div className="flex justify-center items-center gap-4 mx-5">
           {res.status ? (
             <Link
-              className=" flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
+              className=" hidden md:flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
               href={"/Dashboard"}
             >
               dashboard
             </Link>
           ) : (
             <Link
-              className=" flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
+              className=" hidden md:flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
               href={"/Auth"}
             >
               login

@@ -59,7 +59,7 @@ export function MenuBar({
   return (
     <>
       {/*1st */}
-      <div className="sm:flex hidden">
+      <div className="md:flex hidden">
         {info.status && (
           <DropdownMenu>
             <DropdownMenuTrigger className=" cursor-pointer" asChild>
@@ -95,7 +95,7 @@ export function MenuBar({
         )}
       </div>
       {/*2nd */}
-      <div className="sm:hidden">
+      <div className="md:hidden">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className=" rounded-none">
