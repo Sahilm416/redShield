@@ -1,6 +1,7 @@
 import Command from "./Command";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 export default function HeroComponent() {
   return (
     <div className=" w-full h-full flex flex-col md:justify-center justify-start pt-[80px] md:pt-0 items-center">
@@ -40,6 +41,7 @@ export default function HeroComponent() {
                   </Button>
                 </Link>
               </div>
+              <Command/>
             </div>
           </div>
         </div>
