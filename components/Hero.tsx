@@ -17,24 +17,24 @@ export default function HeroComponent() {
         </div>
         <div className="flex flex-col mt-[5vw] mb-[5vw]">
           <div className="h-full w-full border border-[#DCDCDC] dark:border-zinc-700 border-dashed py-5 px-2 flex flex-col items-center gap-5">
-            <p className="text-[max(35px,min(5vw,70px))] font-bold font-sans text-center text-slate-800 dark:text-[#dddddd] p-0 m-0">
+            <p className="text-[min(10vw,74px)] xs:text-white font-bold font-sans text-center text-slate-800 dark:text-[#dddddd] px-2">
               Redis based Authentication
             </p>
             <p className="text-center dark:text-zinc-400 text-zinc-600 p-2">
               Swift authentication, seamless user management. Harness the power
               of Redis with elegance and speed.
             </p>
-            <div className="w-full flex flex-col items-center gap-10 px-3 py-5">
+            <div className="w-full flex flex-col items-center gap-10 py-5">
               <div className="flex gap-5">
                 <Link href={"/Dashboard"}>
-                  <Button className="rounded-none min-w-[100px] md:min-w-[200px] h-[45px]">
+                  <Button className="rounded-none md:w-[200px] w-[35vw] h-[45px]">
                     Get started
                   </Button>
                 </Link>
                 <Link href={"https://github.com/sahilm416"}>
                   <Button
                     variant={"outline"}
-                    className="rounded-none min-w-[100px] md:min-w-[200px] h-[45px] border-2 border-zinc-300 dark:border-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                    className="rounded-none md:w-[200px] w-[35vw]  h-[45px] border-2 border-zinc-300 dark:border-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-900"
                   >
                     Github
                   </Button>
