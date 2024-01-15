@@ -3,8 +3,9 @@ import SubHero from "./SubHero";
 
 export default async function Home() {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full">
       <Hero />
+      <SubHero />
     </div>
   );
 }

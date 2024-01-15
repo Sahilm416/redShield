@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function HeroComponent() {
   return (
-    <div className=" w-full h-full max-h-[900px] flex flex-col md:justify-center justify-start pt-[80px] md:pt-0 items-center transition-opacity duration-1000 opacity-100">
+    <div className=" w-full h-max max-h-[900px] flex flex-col pt-[80px] md:pt-[100px] items-center">
       <div className="flex w-full justify-center max-w-[1200px]">
-        <div className="flex h-full flex-col justify-between ">
+        <div className="flex flex-col justify-between ">
           <div className="h-[5vw] w-[5vw] border-b-2 border-r-2  border-[#A8A8A8] dark:border-[#878787] flex justify-end items-end">
             <div className="w-[5vw] h-[5vw] rounded-full relative top-[2.5vw] left-[2.5vw] border-t-2 border-l-2 border-[#A8A8A8] dark:border-[#878787] border-dashed">
               {" "}
@@ -16,18 +16,18 @@ export default function HeroComponent() {
             {" "}
           </div>
         </div>
-        <div className="flex flex-col mt-[5vw] mb-[5vw]">
+        <div className="w-full flex flex-col mt-[5vw] mb-[5vw]">
           <div className="h-full w-full border-2 border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
             <p className="text-[max(38px,min(5vw,70px))] xs:text-white font-bold font-sans text-center dark:text-[#EDEDED] text-[#171717] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3 selection:bg-violet-700 selection:text-white">
               Redis based authentication
             </p>
             <div className="w-full flex justify-center items-center text-center border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
               <p className=" text-lg font-normal font-sans max-w-[700px] dark:text-[#A1A1A1] text-[#666666] p-2 selection:bg-violet-700 selection:text-white">
-              Swift authentication, seamless user management. Harness the power
-              of Redis with elegance and speed.
-            </p>
+                Swift authentication, seamless user management. Harness the
+                power of Redis with elegance and speed.
+              </p>
             </div>
-            
+
             <div className="w-full flex flex-col items-center">
               <div className="flex gap-5 border-l border-r border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-5">
                 <Link href={"/Dashboard"}>
@@ -40,18 +40,17 @@ export default function HeroComponent() {
                     variant={"outline"}
                     className="rounded-none md:w-[200px] w-[35vw]  h-[45px] border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900"
                   >
-                    Github <GitHubLogo/>
+                    Github <GitHubLogo />
                   </Button>
                 </Link>
               </div>
               <div className="w-full border-t border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
                 <Command />
               </div>
-              
             </div>
           </div>
         </div>
-        <div className="flex flex-col h-full justify-between">
+        <div className="flex flex-col justify-between">
           <div className="h-[5vw] w-[5vw] border-b-2 border-l-2 dark:border-zinc-700">
             {" "}
           </div>
@@ -65,12 +64,6 @@ export default function HeroComponent() {
       </div>
     </div>
   );
-}
-
-{
-  /*<p className="text-[max(40px,min(5vw,70px))] font-bold font-sans text-center text-slate-800 dark:text-[#dddddd] mx-[5vw] border border-dashed p-2">
-          Redis based Authentication
-        </p>*/
 }
 
 const GitHubLogo = () => {
