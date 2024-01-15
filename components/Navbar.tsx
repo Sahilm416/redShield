@@ -3,6 +3,7 @@ import { ThemeBtn } from "./ThemeBtn";
 import { MenuBar } from "./Menu";
 import { getSession } from "@/app/actions/auth";
 import { Badge } from "./ui/badge";
+
 const Navbar = async () => {
   const res = (await getSession()) as {
     status: boolean;
@@ -11,14 +12,14 @@ const Navbar = async () => {
   };
 
   return (
-    <div className="nav w-full flex justify-center items-center h-[60px] dark:border-slate-800  m-0 p-2 bg-white/90 border-b dark:bg-black/80 fixed top-0 right-0 z-50">
+    <div className="nav w-full flex justify-center items-center h-[60px] dark:border-[#1A1A1A] m-0 p-2 bg-white/90 border-b dark:bg-black/80 fixed top-0 right-0 z-50">
       <nav className="flex justify-between items-center w-full">
         <div className="flex justify-center items-center gap-10">
           <Link
             href={"/"}
             className="text-xl flex justify-center items-center gap-2 select-none cursor-pointer dark:text-slate-200 text-slate-900 font-sans font-bold ml-5 p-1"
           >
-            <span className="font-semibold text-lg dark:text-white">
+            <span className="font-semibold font-sans text-lg dark:text-white">
               RedShield
             </span>
             <Badge>alpha</Badge>
@@ -46,19 +47,12 @@ const Navbar = async () => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-4 mx-5">
-          {res.status ? (
+          {res.status && (
             <Link
               className=" hidden md:flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
               href={"/Dashboard"}
             >
               dashboard
-            </Link>
-          ) : (
-            <Link
-              className=" hidden md:flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
-              href={"/Auth"}
-            >
-              login
             </Link>
           )}
           <ThemeBtn />

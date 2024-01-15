@@ -20,8 +20,8 @@ export default function Command() {
   };
   
   return (
-    <div className="w-full flex justify-start">
-      <Card className="rounded shadow-lg w-[80vw] sm:w-[450px] border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black p-4">
+    <div className="w-full flex justify-center">
+      <Card className="rounded-none border-none w-full sm:w-[450px] ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <TerminalIcon className="w-6 h-6 text-zinc-100 dark:text-slate-300 " />

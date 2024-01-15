@@ -3,60 +3,64 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 export default function HeroComponent() {
   return (
-    <div className="w-full h-full px-2">
-      <div className="w-full h-full flex justify-start sm:items-center gap-5">
-        <div className="h-full flex flex-col justify-center items-center">
-          <span className="w-[20px] h-[20px] bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 rounded-full dark:shadow-[0px_0px_20px_#fafafa]">
-            {" "}
-          </span>
-          <span className="w-[5px] mt-[-5px] h-full bg-zinc-800 shadow-[0px_0px_20px_#27272a] dark:bg-zinc-100 dark:shadow-[0px_0px_20px_#fafafa]">
-            {""}
-          </span>
-        </div>
-        <div className="w-full flex flex-col gap-5">
-          <div className="pt-10 sm:pt-0 w-full inline">
-            <span className="md:text-7xl sm:text-6xl text-5xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-black/10  dark:from-white dark:via-white/80 dark:to-black">
-              Redis based authentication
-            </span>
+    <div className=" w-full h-full flex flex-col md:justify-center justify-start pt-[80px] md:pt-0 items-center">
+      <div className="flex w-full justify-center max-w-[1200px]">
+        <div className="flex h-full flex-col justify-between ">
+          <div className="h-[5vw] w-[5vw] border-b border-r dark:border-zinc-700 flex justify-end items-end">
+            <div className="w-[5vw] h-[5vw] rounded-full relative top-[2.5vw] left-[2.5vw] border-t-2 border-l-2 dark:border-zinc-400 border-dashed">
+              {" "}
+            </div>
           </div>
-          <div className="flex flex-col gap-5">
-            <p className="text-zinc-400 max-w-[600px]">
+          <div className="h-[5vw] w-[5vw] border-t border-r dark:border-zinc-700">
+            {" "}
+          </div>
+        </div>
+        <div className="flex flex-col mt-[5vw] mb-[5vw]">
+          <div className="h-full w-full border border-[#DCDCDC] dark:border-zinc-700 border-dashed py-5 px-2 flex flex-col items-center gap-5">
+            <p className="text-[max(35px,min(5vw,70px))] font-bold font-sans text-center text-slate-800 dark:text-[#dddddd] p-0 m-0">
+              Redis based Authentication
+            </p>
+            <p className="text-center dark:text-zinc-400 text-zinc-600 p-2">
               Swift authentication, seamless user management. Harness the power
               of Redis with elegance and speed.
             </p>
-            <div className="flex sm:flex-row flex-col gap-5">
-              <Link className="w-[200px]" href={"/Dashboard"}>
-                <Button className=" rounded-none w-[200px]">Get Started</Button>
-              </Link>
-              <Link className="w-[200px]" target="blank" href={"https://github.com/sahilm416/redShield"}>
-                <Button
-                  variant={"outline"}
-                  className=" rounded-none w-[200px] border-zinc-300"
-                >
-                  GitHub <GitHubLogo />
-                </Button>
-              </Link>
+            <div className="w-full flex flex-col items-center gap-10 px-3 py-5">
+              <div className="flex gap-5">
+                <Link href={"/Dashboard"}>
+                  <Button className="rounded-none min-w-[100px] md:min-w-[200px] h-[45px]">
+                    Get started
+                  </Button>
+                </Link>
+                <Link href={"https://github.com/sahilm416"}>
+                  <Button
+                    variant={"outline"}
+                    className="rounded-none min-w-[100px] md:min-w-[200px] h-[45px] border-2 border-zinc-300 dark:border-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                  >
+                    Github
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
-          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-5">
-            {""}
-          </span>
-          <div className="flex flex-col gap-5 sm:mt-10">
-            <p className="md:text-6xl sm:text-5xl text-4xl font-sans tracking-tighter none bg-clip-text text-transparent bg-gradient-to-b from-black via-black to-black/10 dark:from-white dark:via-white dark:to-black">
-              Install SDK
-            </p>
-            <p className="text-zinc-400">
-              Install all the latest features and services with a single command
-            </p>
-            <Command />
+        </div>
+        <div className="flex flex-col h-full justify-between">
+          <div className="h-[5vw] w-[5vw] border-b border-l dark:border-zinc-700">
+            {" "}
           </div>
-          <span className="w-full sm:hidden h-2 border-b m-2 border-dashed border-zinc-500 my-5">
-            {""}
-          </span>
+
+          <div className="h-[5vw] w-[5vw] border-t border-l dark:border-zinc-700">
+            {" "}
+          </div>
         </div>
       </div>
     </div>
   );
+}
+
+{
+  /*<p className="text-[max(40px,min(5vw,70px))] font-bold font-sans text-center text-slate-800 dark:text-[#dddddd] mx-[5vw] border border-dashed p-2">
+          Redis based Authentication
+        </p>*/
 }
 
 const GitHubLogo = () => {
