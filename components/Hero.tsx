@@ -7,26 +7,29 @@ export default function HeroComponent() {
     <div className=" w-full h-full flex flex-col md:justify-center justify-start pt-[80px] md:pt-0 items-center">
       <div className="flex w-full justify-center max-w-[1200px]">
         <div className="flex h-full flex-col justify-between ">
-          <div className="h-[5vw] w-[5vw] border-b border-r dark:border-zinc-700 flex justify-end items-end">
-            <div className="w-[5vw] h-[5vw] rounded-full relative top-[2.5vw] left-[2.5vw] border-t-2 border-l-2 dark:border-zinc-400 border-dashed">
+          <div className="h-[5vw] w-[5vw] border-b-2 border-r-2  border-[#A8A8A8] dark:border-[#878787] flex justify-end items-end">
+            <div className="w-[5vw] h-[5vw] rounded-full relative top-[2.5vw] left-[2.5vw] border-t-2 border-l-2 border-[#A8A8A8] dark:border-[#878787] border-dashed">
               {" "}
             </div>
           </div>
-          <div className="h-[5vw] w-[5vw] border-t border-r dark:border-zinc-700">
+          <div className="h-[5vw] w-[5vw] border-t-2 border-r-2 dark:border-zinc-700">
             {" "}
           </div>
         </div>
         <div className="flex flex-col mt-[5vw] mb-[5vw]">
-          <div className="h-full w-full border border-[#DCDCDC] dark:border-zinc-700 border-dashed py-5 px-2 flex flex-col items-center gap-5">
-            <p className="text-[min(10vw,74px)] xs:text-white font-bold font-sans text-center text-slate-800 dark:text-[#dddddd] px-2">
-              Redis based Authentication
+          <div className="h-full w-full border-2 border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
+            <p className="text-[max(35px,min(5vw,70px))] xs:text-white font-bold font-sans text-center dark:text-[#EDEDED] text-[#171717] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
+              Redis based authentication
             </p>
-            <p className="text-center dark:text-zinc-400 text-zinc-600 p-2">
+            <div className="w-full flex justify-center items-center text-center border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
+              <p className=" text-xl font-semibold max-w-[700px] dark:text-[#A1A1A1] text-[#666666] p-2 ">
               Swift authentication, seamless user management. Harness the power
               of Redis with elegance and speed.
             </p>
-            <div className="w-full flex flex-col items-center gap-10 py-5">
-              <div className="flex gap-5">
+            </div>
+            
+            <div className="w-full flex flex-col items-center">
+              <div className="flex gap-5 border-l border-r border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-5">
                 <Link href={"/Dashboard"}>
                   <Button className="rounded-none md:w-[200px] w-[35vw] h-[45px]">
                     Get started
@@ -41,17 +44,22 @@ export default function HeroComponent() {
                   </Button>
                 </Link>
               </div>
-              <Command/>
+              <div className="w-full border-t border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
+                <Command />
+              </div>
+              
             </div>
           </div>
         </div>
         <div className="flex flex-col h-full justify-between">
-          <div className="h-[5vw] w-[5vw] border-b border-l dark:border-zinc-700">
+          <div className="h-[5vw] w-[5vw] border-b-2 border-l-2 dark:border-zinc-700">
             {" "}
           </div>
 
-          <div className="h-[5vw] w-[5vw] border-t border-l dark:border-zinc-700">
-            {" "}
+          <div className="h-[5vw] w-[5vw] border-t-2 border-l-2 border-[#A8A8A8] dark:border-[#878787] ">
+            <div className="w-[5vw] h-[5vw] rounded-full relative top-[-2.5vw] left-[-2.5vw] border-b-2 border-r-2 border-[#A8A8A8] dark:border-[#878787] border-dashed">
+              {" "}
+            </div>
           </div>
         </div>
       </div>

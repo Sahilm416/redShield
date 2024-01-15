@@ -98,7 +98,7 @@ export function MenuBar({
       <div className="md:hidden">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className=" rounded-none">
+            <Button variant="outline" className=" w-[40px] h-[40px] p-0 rounded-full">
               <Menu className="w-6 h-6" />
             </Button>
           </DropdownMenuTrigger>

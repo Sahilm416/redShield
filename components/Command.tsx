@@ -35,17 +35,14 @@ export default function Command() {
             variant="ghost"
             onClick={handleCopyToClipboard}
           >
-            <CopyIcon className="w-4 h-4 dark:text-slate-300 text-zinc-800" />
+            {isCopied ? (
+              <TickMark className=" dark:stroke-slate-300 stroke-zinc-800" />
+            ) : (
+              <CopyIcon className="w-[15px] h-[15px] dark:text-slate-300 text-zinc-800" />
+            )}
           </Button>
         </div>
       </Card>
-      <p
-        className={`text-xs text-center mt-2 h-[5px] dark:text-zinc-300 text-zinc-700 transition-opacity duration-500 ${
-          isCopied ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        Command copied
-      </p>
     </div>
   );
 }
@@ -69,6 +66,24 @@ function CopyIcon(props: any) {
   );
 }
 
+function TickMark(props: any) {
+  return (
+    <svg
+      {...props}
+      data-testid="geist-icon"
+      fill="none"
+      height="15"
+      shape-rendering="geometricPrecision"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+      viewBox="0 0 24 24"
+    >
+      <path d="M20 6L9 17l-5-5"></path>
+    </svg>
+  );
+}
 function TerminalIcon(props: any) {
   return (
     <svg
