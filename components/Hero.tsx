@@ -1,10 +1,10 @@
 import Command from "./Command";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+
 export default function HeroComponent() {
   return (
-    <div className=" w-full h-full max-h-[1000px] flex flex-col md:justify-center justify-start pt-[80px] md:pt-0 items-center transition-opacity duration-1000 opacity-100">
+    <div className=" w-full h-full max-h-[900px] flex flex-col md:justify-center justify-start pt-[80px] md:pt-0 items-center transition-opacity duration-1000 opacity-100">
       <div className="flex w-full justify-center max-w-[1200px]">
         <div className="flex h-full flex-col justify-between ">
           <div className="h-[5vw] w-[5vw] border-b-2 border-r-2  border-[#A8A8A8] dark:border-[#878787] flex justify-end items-end">
@@ -35,7 +35,7 @@ export default function HeroComponent() {
                     Get started
                   </Button>
                 </Link>
-                <Link href={"https://github.com/sahilm416"}>
+                <Link target="blanc" href={"https://github.com/sahilm416"}>
                   <Button
                     variant={"outline"}
                     className="rounded-none md:w-[200px] w-[35vw]  h-[45px] border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900"

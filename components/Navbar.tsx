@@ -13,7 +13,7 @@ const Navbar = async () => {
 
   return (
     <div className="nav w-full flex justify-center items-center h-[60px] dark:border-[#1A1A1A] m-0 p-2 bg-white/90 border-b dark:bg-black/80 fixed top-0 right-0 z-50">
-      <nav className="flex justify-between items-center w-full">
+      <nav className="flex justify-between items-center w-full max-w-[1500px]">
         <div className="flex justify-center items-center gap-10">
           <Link
             href={"/"}
@@ -47,14 +47,6 @@ const Navbar = async () => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-4 mx-5">
-          {res.status && (
-            <Link
-              className=" hidden md:flex justify-center items-center rounded-full p-1 w-[150px] h-[40px] text-center text-white border border-zinc-800 dark:border-zinc-500 bg-gradient-to-b from-black/70 dark:from-white/10 via-white-80 to-black"
-              href={"/Dashboard"}
-            >
-              dashboard
-            </Link>
-          )}
           <ThemeBtn />
           <MenuBar info={res} />
         </div>

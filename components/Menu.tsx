@@ -9,6 +9,7 @@ import {
   Building2,
   Contact,
   CircleUser,
+  LayoutDashboardIcon,
 } from "lucide-react";
 import { LogOut } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
@@ -79,6 +80,14 @@ export function MenuBar({
                   Account settings
                 </DropdownMenuItem>
               </Link>
+
+              <Link href={"/Dashboard"}>
+                <DropdownMenuItem className=" cursor-pointer">
+                  <LayoutDashboard className="text-slate-300 w-[20px] mx-2" />
+                  dashboard
+                </DropdownMenuItem>
+              </Link>
+
               <DropdownMenuItem
                 onClick={async () => {
                   await LogOut();
@@ -98,11 +107,14 @@ export function MenuBar({
       <div className="md:hidden">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className=" w-[40px] h-[40px] p-0 rounded-full">
+            <Button
+              variant="outline"
+              className=" w-[45px] h-[45px] p-0 rounded-full"
+            >
               <Menu className="w-6 h-6" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg">
+          <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg dark:bg-black rounded-none">
             {info.status && (
               <DropdownMenuLabel className="flex">
                 <MailIcon className="text-slate-300 w-[20px] mr-2" />
