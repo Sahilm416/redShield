@@ -6,6 +6,7 @@ export default async function Home() {
     <div className="w-full">
       <Hero />
       <SubHero />
+
     </div>
   );
 }

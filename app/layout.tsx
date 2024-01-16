@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-zinc-50/30 dark:bg-black">
+      <body className="bg-zinc-50/30 dark:bg-black selection:bg-violet-700 selection:text-white">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

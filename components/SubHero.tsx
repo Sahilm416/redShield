@@ -1,17 +1,9 @@
-import {
-  CardTitle,
-  CardDescription,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  Card,
-} from "@/components/ui/card";
+import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
+import Screeneffect from "./ScreenEffect";
 export default function SubHero() {
   return (
-    <div className=" w-full h-max max-h-[900px] flex flex-col items-center">
-      <p className="text-[max(30px,min(5vw,40px))] font-sans font-semibold">
-        Why RedShield ?
-      </p>
+    <div className=" w-full h-max flex flex-col items-center">
+          <Screeneffect content="Why RedShield ?" />
       <div className="flex w-full justify-center max-w-[1200px]">
         <div className="flex flex-col justify-between ">
           <div className="h-[5vw] w-[5vw] border-b-2 border-r-2  border-[#A8A8A8] dark:border-[#878787] flex justify-end items-end">

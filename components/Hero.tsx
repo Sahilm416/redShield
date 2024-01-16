@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function HeroComponent() {
   return (
-    <div className=" w-full h-max max-h-[900px] flex flex-col pt-[80px] md:pt-[80px] items-center">
+    <div className=" w-full h-max flex flex-col pt-[80px] md:pt-[80px] items-center">
       <div className="flex w-full justify-center max-w-[1200px]">
         <div className="flex flex-col justify-between ">
           <div className="h-[5vw] w-[5vw] border-b-2 border-r-2  border-[#A8A8A8] dark:border-[#878787] flex justify-end items-end">
@@ -18,11 +18,12 @@ export default function HeroComponent() {
         </div>
         <div className="w-full flex flex-col mt-[5vw] mb-[5vw] bg-white dark:bg-gray-900/20">
           <div className="h-full w-full border-2 border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
-            <p className="text-[max(38px,min(5vw,70px))] w-full xs:text-white font-bold font-sans text-center dark:text-[#EDEDED] text-[#171717] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3 selection:bg-violet-700 selection:text-white">
+            <p className="text-[max(36px,min(5vw,70px))] w-full xs:text-white font-bold font-sans text-center dark:text-[#EDEDED] text-[#171717] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3 selection:bg-violet-700 selection:text-white">
               Redis based authentication
+
             </p>
             <div className="w-full flex justify-center items-center text-center border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
-              <p className=" text-lg font-normal font-sans max-w-[700px] dark:text-[#A1A1A1] text-[#666666] p-2 selection:bg-violet-700 selection:text-white">
+              <p className=" text-lg font-normal font-sans max-w-[700px] dark:text-[#A1A1A1] text-[#666666] p-2 ">
                 Swift authentication, seamless user management. Harness the
                 power of Redis with elegance and speed.
               </p>
