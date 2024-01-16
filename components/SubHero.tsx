@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 export default function SubHero() {
   return (
-    <div className=" w-full h-max max-h-[900px] flex flex-col pt-[20px] md:pt-[100px] items-center">
+    <div className=" w-full h-max max-h-[900px] flex flex-col items-center">
       <p className="text-[max(30px,min(5vw,40px))] font-sans font-semibold">
         Why RedShield ?
       </p>
@@ -23,11 +23,11 @@ export default function SubHero() {
         </div>
         <div className="w-full flex flex-col mt-[5vw] mb-[5vw]">
           <div className="h-full w-full border-2 border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col md:flex-row items-center">
-            <Card className="w-full h-full border-t-0 md:border-b-0 border-l-0 md:border-r border-r-0 border-b border-zinc-700 border-dashed  rounded-none text-center">
+            <Card className="w-full h-full border-t-0 md:border-b-0 border-l-0 md:border-r border-r-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F] border-dashed  rounded-none text-center">
               <CardHeader className="">
-                <CardTitle>Fast auth</CardTitle>
+                <CardTitle>Fast Authentication</CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-400">
+              <CardContent className="dark:text-[#A1A1A1] text-[#666666]">
                 Leveraging a Redis-based database, RedShield provides
                 lightning-fast authentication services.
               </CardContent>
@@ -36,7 +36,7 @@ export default function SubHero() {
               <CardHeader className="">
                 <CardTitle>Low Bandwidth Support</CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-400">
+              <CardContent className="dark:text-[#A1A1A1] text-[#666666]">
                 RedShield is optimized for low bandwidth environments, ensuring
                 a smooth experience.
               </CardContent>
