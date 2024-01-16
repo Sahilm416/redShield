@@ -16,7 +16,7 @@ export default function HeroComponent() {
             {" "}
           </div>
         </div>
-        <div className="w-full flex flex-col mt-[5vw] mb-[5vw]">
+        <div className="w-full flex flex-col mt-[5vw] mb-[5vw] bg-white dark:bg-gray-900/20">
           <div className="h-full w-full border-2 border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
             <p className="text-[max(38px,min(5vw,70px))] w-full xs:text-white font-bold font-sans text-center dark:text-[#EDEDED] text-[#171717] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3 selection:bg-violet-700 selection:text-white">
               Redis based authentication

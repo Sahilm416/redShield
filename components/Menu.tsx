@@ -109,7 +109,7 @@ export function MenuBar({
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
-              className=" w-[45px] h-[45px] p-0 rounded-full"
+              className=" w-[45px] h-[45px] p-0 rounded-full focus:outline-none focus:border-none"
             >
               <Menu className="w-6 h-6" />
             </Button>
