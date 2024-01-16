@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
-import { Lato } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-
-const lato = Lato({
-  subsets: ["latin"],
-  weight: "700",
-});
+import Footer from "@/components/Footer";
 
 
 export const metadata: Metadata = {
@@ -31,6 +26,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
           <Toaster richColors position="bottom-right" />
         </ThemeProvider>
       </body>
