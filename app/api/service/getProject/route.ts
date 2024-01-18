@@ -9,25 +9,19 @@ export const GET = async (request: Request) => {
       message: "provide authorization header",
     });
   }
-  try {
-    const res = (await db.get("API_KEY:" + key)) as {
-      project_id: string;
-      project_name: string;
-    };
-    if (!res) {
-      return NextResponse.json({ status: false, message: "Unauthorized key" });
-    } else {
-      return NextResponse.json({
-        project_id: res.project_id,
-        project_name: res.project_name,
-        status: true,
-      });
-    }
-  } catch (error) {
-    console.log("something went wrong", error);
+
+  const res = (await db.get("API_KEY:" + key)) as {
+    project_id: string;
+    project_name: string;
+  };
+
+  if (!res) {
+    return NextResponse.json({ status: false, message: "Unauthorized key" });
+  } else {
     return NextResponse.json({
-      status: false,
-      message: "database call failed",
+      project_id: res.project_id,
+      project_name: res.project_name,
+      status: true,
     });
   }
 };
