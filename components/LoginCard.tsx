@@ -44,7 +44,7 @@ export default function LoginCard() {
       {forgotPassword ? (
         <ForgotPasswordComponent setForgotPassword={setForgotPassword} />
       ) : (
-        <Card className=" dark:bg-gray-900/20 bg-white p-2 h-[380px] shadow-lg rounded-none">
+        <Card className=" dark:bg-gray-900/20 bg-white p-2 h-[380px] shadow-lg rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
           <form action={sendData}>
             <CardHeader>
               <CardTitle>Login to Redshield</CardTitle>
@@ -53,7 +53,7 @@ export default function LoginCard() {
             <CardContent className="flex flex-col gap-3">
               <Label htmlFor="email">Email</Label>
               <Input
-                className=" rounded-none"
+                className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
                 autoFocus
                 placeholder="enter email"
                 type="email"
@@ -63,7 +63,7 @@ export default function LoginCard() {
               />
               <Label htmlFor="password">Password</Label>
               <Input
-                className=" rounded-none"
+                className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
                 placeholder="enter password"
                 type="password"
                 name="password"

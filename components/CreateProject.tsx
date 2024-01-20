@@ -63,7 +63,7 @@ export default function CreateProject(){
     };
     return (
         <div className="w-full grid place-items-center mt-[100px] sm:px-2 px-7">
-        <Card className="w-full max-w-lg dark:bg-gray-900/20 bg-white rounded-none shadow-lg">
+        <Card className="w-full max-w-lg dark:bg-gray-900/20 bg-white rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] shadow-lg">
           <CardHeader className="flex flex-row items-start">
             <div className="space-y-1.5">
               <CardTitle>Add New Project</CardTitle>
@@ -72,12 +72,12 @@ export default function CreateProject(){
               </CardDescription>
             </div>
           </CardHeader>
-          <CardContent className="border-t pt-4">
+          <CardContent>
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="project-name">Project Name</Label>
                 <Input
-                  className=" rounded-none"
+                  className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
                   onChange={handleChange}
                   value={data.name}
                   name="name"
@@ -92,7 +92,7 @@ export default function CreateProject(){
                   onChange={handleChange}
                   value={data.description}
                   name="description"
-                  className="min-h-[100px] max-h-[300px] rounded-none"
+                  className="min-h-[100px] max-h-[300px] rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
                   id="project-description"
                   placeholder="Describe the project"
                   required
