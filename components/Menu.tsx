@@ -69,7 +69,7 @@ export function MenuBar({
                 <AvatarFallback>{info.data.email[0]}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-auto mr-7 mt-4 dark:bg-black">
+            <DropdownMenuContent className="w-auto mr-7 mt-4 border-[#EBEBEB] dark:border-[#1F1F1F] bg-white dark:bg-black rounded-none">
               <DropdownMenuLabel className="text-sm flex text-slate-500">
                 <MailIcon className="text-slate-300 w-[20px] mx-2" />
                 {info.data.email}

@@ -56,7 +56,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
   return (
     <>
       <form action={update}>
-        <Card className="w-[90vw] sm:max-w-[450px] shadow-lg  bg-white dark:bg-gray-900/20">
+        <Card className="w-[90vw] sm:max-w-[450px] shadow-lg rounded-none bg-white dark:bg-gray-900/20 border-[#EBEBEB] dark:border-[#1F1F1F]">
           <CardHeader>
             <CardTitle>Edit Project</CardTitle>
           </CardHeader>
@@ -68,7 +68,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
               placeholder={project?.name}
               name="pname"
               id="pname"
-              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800"
+              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
             />
             <Label htmlFor="pdescription">Project Description</Label>
             <Input
@@ -77,7 +77,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
               placeholder={project?.description}
               name="pdescription"
               id="pdescription"
-              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800"
+              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
             />
           </CardContent>
           <CardFooter className=" justify-between">
@@ -85,7 +85,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
               type="button"
               onClick={() => router.back()}
               variant={"outline"}
-              className="w-[150px] rounded-none"
+              className="w-[150px] rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
             >
               Back
             </Button>

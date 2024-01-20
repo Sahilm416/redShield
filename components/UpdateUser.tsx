@@ -106,7 +106,7 @@ export default function UpdateUser({ user }: { user: User }) {
   };
   return (
     <form action={update}>
-      <Card className="w-[90vw] sm:max-w-[450px] shadow-lg bg-white dark:bg-gray-800/20">
+      <Card className="w-[90vw] sm:max-w-[450px] shadow-lg bg-white dark:bg-gray-800/20 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none">
         <CardHeader>
           <CardTitle>Account Settings</CardTitle>
         </CardHeader>
@@ -119,6 +119,7 @@ export default function UpdateUser({ user }: { user: User }) {
               type="text"
               placeholder={user?.first_name || "enter your first name"}
               id="first_name"
+              className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
             />
           </div>
           <div className="space-y-2">
@@ -129,6 +130,7 @@ export default function UpdateUser({ user }: { user: User }) {
               type="text"
               placeholder={user?.last_name || "enter your last name"}
               id="last_name"
+              className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
             />
           </div>
           <div className="space-y-2">
@@ -136,7 +138,7 @@ export default function UpdateUser({ user }: { user: User }) {
             <Input
               value={user.email}
               disabled
-              className=" disabled:opacity-100"
+              className=" disabled:opacity-100 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
               id="email"
               placeholder="Enter your email"
               type="email"
@@ -170,7 +172,7 @@ export default function UpdateUser({ user }: { user: User }) {
               onClick={() => router.back()}
               type="button"
               variant={"outline"}
-              className="w-full rounded-none"
+              className="w-full rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
             >
               Back
             </Button>

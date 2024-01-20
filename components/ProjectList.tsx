@@ -59,7 +59,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
             <Input
               className="bg-white dark:bg-black rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
               placeholder="Search projects..."
-              value={searchTerm}
+              value={searchTerm}  
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Link href={"/New"}>
@@ -81,14 +81,14 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                                 <MoreVertical />
                               </span>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent className="">
-                              <DropdownMenuItem className="text-md">
+                            <DropdownMenuContent className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none">
+                              <DropdownMenuItem className="text-md rounded-none">
                                 <AlertDialogTrigger className="w-full h-full text-start">
                                   Delete
                                 </AlertDialogTrigger>
                               </DropdownMenuItem>
 
-                              <DropdownMenuItem className="text-md">
+                              <DropdownMenuItem className="text-md rounded-none">
                                 <Link
                                   className="w-full h-full text-start"
                                   href={`/Edit/Project/${project.id}`}
