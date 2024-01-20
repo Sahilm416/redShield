@@ -57,7 +57,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
         <main className="flex flex-col w-full p-4 gap-5 md:gap-8 md:p-10">
           <div className="max-w-6xl w-full mx-auto flex items-center gap-4 sticky top-[60px] nav pt-3  p-2 z-[20]">
             <Input
-              className="bg-white dark:bg-black rounded-none"
+              className="bg-white dark:bg-black rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -70,7 +70,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
             {filteredProjects.map((project, i) => {
               return (
                 <AlertDialog key={i}>
-                  <Card className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none ">
+                  <Card className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] ">
                     <CardHeader className="gap-4 pb-2  ">
                       <div className="grid gap-2">
                         <CardTitle className="flex justify-between items-center">
@@ -122,7 +122,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       <Link className="w-full" href={`/Project/${project.id}`}>
                         <Button
                           variant={"outline"}
-                          className="w-full rounded-none"
+                          className="w-full rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
                         >
                           view
                         </Button>
