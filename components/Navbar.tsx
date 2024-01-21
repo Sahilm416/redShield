@@ -34,12 +34,6 @@ const Navbar = async () => {
             </Link>
             <Link
               className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
-              href={"/About"}
-            >
-              about
-            </Link>
-            <Link
-              className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
               href={"/Contact"}
             >
               contact

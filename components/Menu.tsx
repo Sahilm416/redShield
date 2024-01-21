@@ -114,7 +114,7 @@ export function MenuBar({
               <Menu className="w-6 h-6" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg dark:bg-black rounded-none">
+          <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg dark:bg-black rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
             {info.status && (
               <DropdownMenuLabel className="flex">
                 <MailIcon className="text-slate-300 w-[20px] mr-2" />
@@ -134,11 +134,6 @@ export function MenuBar({
                 <DropdownMenuItem className="text-lg">
                   <Book className="text-slate-300 w-[20px] mr-2" />
                   Docs
-                </DropdownMenuItem>
-              </Link>
-              <Link href="/About">
-                <DropdownMenuItem className="text-lg">
-                  <Building2 className="text-slate-300 w-[20px] mr-2" /> About
                 </DropdownMenuItem>
               </Link>
               <Link href="/Contact">

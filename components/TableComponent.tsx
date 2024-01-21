@@ -45,7 +45,7 @@ export default async function TableComponent({
             <span>...</span>
           </div>
           <DrawerTrigger>
-            <Button variant={"outline"} className="border-red-700 ">
+            <Button variant={"outline"} className="border-red-700 rounded-none">
               Delete
             </Button>
           </DrawerTrigger>

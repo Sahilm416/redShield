@@ -1,5 +1,5 @@
 import { getProject } from "@/app/actions/project";
-import ProjectComponent from "@/components/Project";
+import ProjectComponent from "@/components/ProjectComponent";
 import Users from "@/components/Users";
 import { getSession } from "@/app/actions/auth";
 import { AuthPage } from "@/components/Auth";
