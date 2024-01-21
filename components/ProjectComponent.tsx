@@ -32,7 +32,7 @@ export default function ProjectComponent({
   };
 
   return (
-    <Card className=" w-[90vw] max-w-[500px] bg-white dark:bg-gray-800/20 select-none rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] shadow-lg">
+    <Card className=" w-[90vw] max-w-[500px] bg-white dark:bg-gray-800/20 select-none rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] shadow-none">
       <CardHeader>
         <CardTitle>{res?.name}</CardTitle>
         <CardDescription>{res?.description}</CardDescription>
@@ -49,7 +49,7 @@ export default function ProjectComponent({
           />
           <span
             onClick={() => setShow(!show)}
-            className="cursor-pointer h-[40px] border border-l-0 grid place-items-center p-1 bg-white dark:bg-gray-800/20"
+            className="cursor-pointer h-[40px] border border-l-0 grid place-items-center p-1 bg-white dark:bg-black border-[#EBEBEB] dark:border-[#1F1F1F]"
           >
             {show ? <Eye /> : <EyeOff />}
           </span>
