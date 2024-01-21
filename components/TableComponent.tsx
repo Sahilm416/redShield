@@ -13,6 +13,7 @@ import { deleteUser } from "@/app/actions/user";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { Oval } from "react-loader-spinner";
+import {MoreHorizontal} from "lucide-react"
 export default async function TableComponent({
   email,
   i,
@@ -38,11 +39,11 @@ export default async function TableComponent({
   return (
     <>
       <Drawer>
-        <div className="flex justify-center items-center w-[90vw] gap-2 max-w-[450px]">
+        <div className="flex justify-center items-center w-[90vw] gap-2 max-w-[500px]">
           <div className="w-full flex justify-between items-center p-2 border border-[#EBEBEB] dark:border-[#1F1F1F] mx-2 cursor-pointer">
             <span className="md:block hidden">{i + 1 + "] "}</span>
             <p className="flex">{mailArr[0]}<span className="md:block hidden">@{mailArr[1]}</span></p>
-            <span className="md:block hidden">...</span>
+            <span className="md:block hidden"><MoreHorizontal /></span>
           </div>
           <DrawerTrigger>
             <Button variant={"outline"} className="border-red-700 rounded-none">
