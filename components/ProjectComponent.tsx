@@ -56,7 +56,11 @@ export default function ProjectComponent({
         </div>
       </CardContent>
       <CardFooter>
-        <Button onClick={handleCopyToClipboard} variant={"outline"} className="border-emerald-600 rounded-none">
+        <Button
+          onClick={handleCopyToClipboard}
+          variant={"outline"}
+          className="border-emerald-600 rounded-none"
+        >
           copy key
         </Button>
         <p
