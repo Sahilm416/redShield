@@ -2,15 +2,18 @@ import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 export default function SubHero() {
   return (
     <div className=" w-full h-max flex flex-col items-center">
-      <p className="text-[max(30px,min(3vw,50px))] dark:text-[#EDEDED] text-[#171717] font-bold pb-5">
+      <p className="text-[max(30px,min(3vw,50px))] dark:text-[#EDEDED] text-[#171717] font-bold">
         Why RedShield ?
       </p>
+      <p className="dark:text-[#A1A1A1] text-[#666666] text-center pb-5">
+        These things makes us stand out
+      </p>
       <div className="flex w-full justify-center max-w-[1200px] px-[5vw] bg-white dark:bg-gray-900/20">
-        <div className="h-full w-full border-2 border-[#EBEBEB] dark:border-[#1F1F1F] grid md:grid-cols-2 grid-cols-1">
+        <div className="h-full w-full border border-[#EBEBEB] dark:border-[#1F1F1F] grid md:grid-cols-2 grid-cols-1">
           <Card className="w-full h-full border-t-0 md:border-b border-l-0 md:border-r border-r-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F]  rounded-none text-center shadow-none">
             <CardHeader className="flex flex-col items-center gap-2">
               <CloudLightningIcon />
-              <CardTitle className=" opacity-90 font-normal">
+              <CardTitle className="font-normal">
                 Fast Authentication
               </CardTitle>
             </CardHeader>
@@ -22,7 +25,7 @@ export default function SubHero() {
           <Card className="w-full rounded-none text-center shadow-none border-t-0 border-r-0 border-l-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F]">
             <CardHeader className="flex flex-col items-center gap-2">
               <UsersIcon />
-              <CardTitle className="opacity-90 font-normal">
+              <CardTitle className="font-normal">
                 User Management
               </CardTitle>
             </CardHeader>
@@ -34,7 +37,7 @@ export default function SubHero() {
           <Card className="w-full rounded-none text-center shadow-none border-t-0 md:border-r border-r-0 border-l-0 md:border-b-0 border-b  border-[#EBEBEB] dark:border-[#1F1F1F] ">
             <CardHeader className="flex flex-col items-center gap-2">
               <WifiIcon />
-              <CardTitle className="opacity-90 font-normal">
+              <CardTitle className="font-normal">
                 Low Bandwidth Support
               </CardTitle>
             </CardHeader>
@@ -46,7 +49,7 @@ export default function SubHero() {
           <Card className="w-full rounded-none text-center shadow-none border-none">
             <CardHeader className="flex flex-col items-center gap-2">
               <LayoutIcon />
-              <CardTitle className="opacity-90 font-normal">
+              <CardTitle className="font-normal">
                 User Interface
               </CardTitle>
             </CardHeader>

@@ -6,7 +6,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function DashImage() {
   return (
-    <div className="w-full max-w-[1200px] px-[5vw] mx-auto mb-10 mt-7">
+    <div className="w-full max-w-[1200px] px-[5vw] mx-auto">
       <p className="text-[max(30px,min(3vw,50px))] font-sans font-bold text-center mb-2 dark:text-[#EDEDED] text-[#171717]">
         It's Simple
       </p>
@@ -19,7 +19,7 @@ export default function DashImage() {
             src={lightDash}
             alt="dashboard image"
             fill
-            className="rounded-md object-cover dark:hidden"
+            className="object-cover dark:hidden"
           />
           <Image
             src={darkDash}
