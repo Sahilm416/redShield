@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Secure from "@/public/static/secure.jpg";
+import Secure from "@/public/static/cube.gif";
 
 import {Fingerprint} from "lucide-react"
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -14,14 +14,12 @@ export default function SecureImage() {
         Securely integrate seamless authentication into your application with the power of JWT
       </p>
       <div className="overflow-hidden border border-[#EBEBEB] dark:border-[#1F1F1F] bg-black">
-        <AspectRatio ratio={16 / 9} className="">
+        <AspectRatio ratio={16 / 6} className="flex justify-center items-center">
           <Image
             src={Secure}
             alt="dashboard image"
-            fill
-            className="object-cover opacity-30"
+            className="object-cover sm:w-60 sm:h-60 w-32 h-32"
           />
-          <Fingerprint className="mx-auto my-auto h-full w-full p-10 opacity-100 stroke-amber-400"/>
         </AspectRatio>
       </div>
     </div>

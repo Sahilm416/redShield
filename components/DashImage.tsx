@@ -19,7 +19,7 @@ export default function DashImage() {
             src={lightDash}
             alt="dashboard image"
             fill
-            className="object-cover dark:hidden"
+            className="rounded-md object-cover dark:hidden"
           />
           <Image
             src={darkDash}
