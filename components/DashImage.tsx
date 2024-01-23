@@ -6,11 +6,11 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function DashImage() {
   return (
-    <div className="w-full max-w-[1200px] px-[5vw] mx-auto mb-10">
+    <div className="w-full max-w-[1200px] px-[5vw] mx-auto mb-10 mt-2">
       <p className="md:text-5xl text-4xl font-semibold font-sans text-center mb-2">
         It's Simple
       </p>
-      <p className="dark:text-[#A1A1A1] text-[#666666] text-xl text-center mb-10">
+      <p className="dark:text-[#A1A1A1] text-[#666666] text-center pb-5">
         manage all projects in one place with user management
       </p>
       <div className="overflow-hidden border border-[#EBEBEB] dark:border-[#1F1F1F] pt-5">
