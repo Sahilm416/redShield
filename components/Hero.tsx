@@ -20,7 +20,6 @@ export default function HeroComponent() {
           <div className="h-full w-full border-2 border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
             <p className="text-[max(36px,min(5vw,70px))] w-full xs:text-white font-bold font-sans text-center dark:text-[#EDEDED] text-[#171717] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3 selection:bg-violet-700 selection:text-white">
               Redis based authentication
-
             </p>
             <div className="w-full flex justify-center items-center text-center border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
               <p className=" text-lg font-normal font-sans max-w-[700px] dark:text-[#A1A1A1] text-[#666666] p-2 ">
