@@ -18,7 +18,7 @@ export default function HeroComponent() {
         </div>
         <div className="w-full flex flex-col mt-[7vw] mb-[7vw] bg-white dark:bg-gray-900/20">
           <div className="h-full w-full border border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
-            <h1 className="text-[max(48px,min(5vw,76px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-[#EDEDED] dark:via-[#EDEDED]/80 dark:to-[#EDEDED]/90 border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] py-5 px-7 leading-tight">
+            <h1 className="text-[max(48px,min(5vw,76px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-[#EDEDED] dark:via-[#EDEDED]/80 dark:to-[#EDEDED]/90 border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-8 leading-none">
               Redis based Auth for Next
             </h1>
 
@@ -30,7 +30,7 @@ export default function HeroComponent() {
             </div>
 
             <div className="w-full flex flex-col items-center">
-              <div className="flex gap-5 border-l border-r border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-5">
+              <div className="flex gap-5 px-5 py-10">
                 <Link href={"/Dashboard"}>
                   <Button className="rounded-none md:w-[200px] w-[35vw] h-[45px]">
                     Get started
@@ -45,7 +45,7 @@ export default function HeroComponent() {
                   </Button>
                 </Link>
               </div>
-              <div className="w-full border-t border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
+              <div className="w-full border-t border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-5">
                 <Command />
               </div>
             </div>

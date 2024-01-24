@@ -6,7 +6,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function DashImage() {
   return (
-    <div className="w-full max-w-[1200px] px-[5vw] mx-auto">
+    <div className="w-full max-w-[1200px] px-[7vw] mx-auto">
       <p className="text-[max(30px,min(3vw,50px))] font-[750] text-center mb-2 dark:text-[#EDEDED] text-[#171717]">
         It's Simple
       </p>

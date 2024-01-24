@@ -8,7 +8,7 @@ export default function SubHero() {
       <p className="dark:text-[#A1A1A1] text-[#666666] text-center pb-5">
         These things makes us stand out
       </p>
-      <div className="flex w-full justify-center max-w-[1200px] px-[5vw] bg-white dark:bg-gray-900/20">
+      <div className="flex w-full justify-center max-w-[1200px] px-[7vw] bg-white dark:bg-gray-900/20">
         <div className="h-full w-full border border-[#EBEBEB] dark:border-[#1F1F1F] grid md:grid-cols-2 grid-cols-1">
           <Card className="w-full h-full border-t-0 md:border-b border-l-0 md:border-r border-r-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F]  rounded-none text-center shadow-none">
             <CardHeader className="flex flex-col items-center gap-2">
