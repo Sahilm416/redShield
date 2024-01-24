@@ -1,10 +1,11 @@
+"use client"
 import Command from "./Command";
 import { Button } from "./ui/button";
 import Link from "next/link";
-
+import {motion} from "framer-motion"
 export default function HeroComponent() {
   return (
-    <div className=" w-full h-max flex flex-col pt-[80px] md:pt-[80px] items-center">
+    <motion.div  initial={{opacity: 0 ,dur: 1 , y:50}} whileInView={{opacity: 1, y:0}} className=" w-full h-max flex flex-col pt-[80px] md:pt-[80px] items-center">
       <div className="flex w-full justify-center max-w-[1500px]">
         <div className="flex flex-col justify-between ">
           <div className="h-[7vw] w-[7vw] border-b border-r border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] flex justify-end items-end">
@@ -63,7 +64,7 @@ export default function HeroComponent() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
