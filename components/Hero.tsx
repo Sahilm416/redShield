@@ -7,22 +7,23 @@ export default function HeroComponent() {
     <div className=" w-full h-max flex flex-col pt-[80px] md:pt-[80px] items-center">
       <div className="flex w-full justify-center max-w-[1200px]">
         <div className="flex flex-col justify-between ">
-          <div className="h-[5vw] w-[5vw] border-b border-r  border-[#A8A8A8] dark:border-[#878787] flex justify-end items-end">
+          <div className="h-[5vw] w-[5vw] border-b border-r border-dashed border-[#A8A8A8] dark:border-[#878787] flex justify-end items-end">
             <div className="w-[5vw] h-[5vw] rounded-full relative top-[2.5vw] left-[2.5vw] border-t border-l border-[#A8A8A8] dark:border-[#878787] border-dashed">
               {" "}
             </div>
           </div>
-          <div className="h-[5vw] w-[5vw] border-t border-r dark:border-zinc-700">
+          <div className="h-[5vw] w-[5vw] border-t border-r border-dashed dark:border-zinc-700">
             {" "}
           </div>
         </div>
         <div className="w-full flex flex-col mt-[5vw] mb-[5vw] bg-white dark:bg-gray-900/20">
-          <div className="h-full w-full border border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
-            <p className="text-[max(36px,min(5vw,70px))] w-full xs:text-white font-bold font-sans text-center dark:text-[#EDEDED] text-[#171717] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3 selection:bg-violet-700 selection:text-white">
-              Redis based authentication
-            </p>
+          <div className="h-full w-full border border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
+            <h1 className="text-[max(48px,min(5vw,76px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-[#EDEDED]/90 dark:via-[#EDEDED] dark:to-[#EDEDED] border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] py-5 leading-tight">
+              The Redis based Auth for Web
+            </h1>
+
             <div className="w-full flex justify-center items-center text-center border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-3">
-              <p className=" text-lg font-normal font-sans max-w-[700px] dark:text-[#A1A1A1] text-[#666666] p-2 ">
+              <p className=" text-lg font-normal max-w-[700px] dark:text-[#A1A1A1] text-[#666666] p-2 ">
                 Swift authentication, seamless user management. Harness the
                 power of Redis with elegance and speed.
               </p>
@@ -51,11 +52,11 @@ export default function HeroComponent() {
           </div>
         </div>
         <div className="flex flex-col justify-between">
-          <div className="h-[5vw] w-[5vw] border-b border-l dark:border-zinc-700">
+          <div className="h-[5vw] w-[5vw] border-b border-l border-dashed dark:border-zinc-700">
             {" "}
           </div>
 
-          <div className="h-[5vw] w-[5vw] border-t border-l border-[#A8A8A8] dark:border-[#878787] ">
+          <div className="h-[5vw] w-[5vw] border-t border-l border-dashed border-[#A8A8A8] dark:border-[#878787] ">
             <div className="w-[5vw] h-[5vw] rounded-full relative top-[-2.5vw] left-[-2.5vw] border-b border-r border-[#A8A8A8] dark:border-[#878787] border-dashed">
               {" "}
             </div>

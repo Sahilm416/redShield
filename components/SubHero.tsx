@@ -2,8 +2,8 @@ import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
 export default function SubHero() {
   return (
     <div className=" w-full h-max flex flex-col items-center">
-      <p className="text-[max(30px,min(3vw,50px))] dark:text-[#EDEDED] text-[#171717] font-bold">
-        Why RedShield ?
+      <p className="text-[max(30px,min(3vw,50px))] dark:text-[#EDEDED] text-[#171717] font-[750] font-[sans-serif]">
+        Why RedShield
       </p>
       <p className="dark:text-[#A1A1A1] text-[#666666] text-center pb-5">
         These things makes us stand out
