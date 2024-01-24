@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function HeroComponent() {
   return (
     <div className=" w-full h-max flex flex-col pt-[80px] md:pt-[80px] items-center">
-      <div className="flex w-full justify-center max-w-[1200px]">
+      <div className="flex w-full justify-center max-w-[1500px]">
         <div className="flex flex-col justify-between ">
           <div className="h-[7vw] w-[7vw] border-b border-r border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] flex justify-end items-end">
             <div className="w-[7vw] h-[7vw] rounded-full relative top-[3.5vw] left-[3.5vw] border-t border-l border-[#EBEBEB] dark:border-[#1F1F1F] border-dashed">
@@ -16,9 +16,9 @@ export default function HeroComponent() {
             {" "}
           </div>
         </div>
-        <div className="w-full flex flex-col mt-[7vw] mb-[7vw] bg-white dark:bg-gray-900/20">
+        <div className="w-full flex flex-col mt-[7vw] mb-[7vw]">
           <div className="h-full w-full border border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
-            <h1 className="text-[max(48px,min(5vw,76px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-[#EDEDED] dark:via-[#EDEDED]/80 dark:to-[#EDEDED]/90 border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-8 leading-none">
+            <h1 className="text-[max(48px,min(5vw,72px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-[#EDEDED] dark:via-[#EDEDED]/80 dark:to-[#EDEDED]/90 border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-8 leading-none">
               Redis based Auth for Next
             </h1>
 
@@ -30,7 +30,7 @@ export default function HeroComponent() {
             </div>
 
             <div className="w-full flex flex-col items-center">
-              <div className="flex gap-5 px-5 py-10">
+              <div className="flex gap-5 px-5 py-10 md:border-x border-dashed border-[#EBEBEB] dark:border-[#1F1F1F]">
                 <Link href={"/Dashboard"}>
                   <Button className="rounded-none md:w-[200px] w-[35vw] h-[45px]">
                     Get started
