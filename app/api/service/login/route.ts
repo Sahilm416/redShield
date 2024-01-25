@@ -1,6 +1,7 @@
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const bcrypt = require("bcrypt");
+const { sign } = require("jsonwebtoken");
 
 interface reqBody {
   email: string;
@@ -23,11 +24,22 @@ export const POST = async (request: Request) => {
       const isAuth = await bcrypt.compare(data.password, user.password);
 
       if (isAuth) {
+        const date = new Date();
+        date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+        const JWTtoken = await sign(
+          {
+            email: user.email,
+            project_id: project_id,
+            pwd_version: user.pwd_version,
+            expires: date.getTime(),
+          },
+          process.env.JWT_SECRET_KEY!
+        );
+
         return NextResponse.json({
           status: true,
           message: "Login Success",
-          project_id: project_id,
-          pwd_version: user.pwd_version
+          token: JWTtoken,
         });
       } else {
         return NextResponse.json({
