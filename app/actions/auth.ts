@@ -4,29 +4,6 @@ import { getCookie, deleteCookie } from "cookies-next";
 import { cookies } from "next/headers";
 const { verify } = require("jsonwebtoken");
 
-export const checkToken = async ({ token }: { token: string }) => {
-  try {
-    const res = await fetch("https://redshield.vercel.app/api/service/verify", {
-      next: { revalidate: 0 },
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: process.env.RED_KEY!,
-      },
-      body: JSON.stringify({
-        token: token,
-      }),
-    });
-    const response = await res.json();
-    return response;
-  } catch (error) {
-    console.log("something went wrong", error);
-    return {
-      status: false,
-    };
-  }
-};
-
 export const ValidateAuthToken = async ({ token }: { token: string }) => {
   if (!token) {
     return {
