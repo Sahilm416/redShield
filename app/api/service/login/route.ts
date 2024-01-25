@@ -27,6 +27,7 @@ export const POST = async (request: Request) => {
           status: true,
           message: "Login Success",
           project_id: project_id,
+          pwd_version: user.pwd_version
         });
       } else {
         return NextResponse.json({
