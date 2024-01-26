@@ -22,7 +22,7 @@ export const POST = async (request: Request) => {
         message: " user already exists",
       });
     }
-
+  
     return NextResponse.json({
       status: true,
       message: "new user",
