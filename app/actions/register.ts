@@ -20,7 +20,6 @@ export const sendCode = async ({ email }: { email: string }) => {
   }
 
   try {
-    await db.set(project_id + ":" + email + ":code", code, { ex: 180 });
     const res = await fetch(
       "https://redshield.vercel.app/api/service/sendCode",
       {

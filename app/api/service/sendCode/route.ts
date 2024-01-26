@@ -10,7 +10,7 @@ interface reqBody {
 
 export const POST = async (request: Request) => {
   const key = request.headers.get("authorization") as string;
-  const res = await db.get("API_KEY:" + key);
+  const res = await db.get("API_KEY:" + key) as {project_id: string ,project_name: string};
   if (!res) {
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   }
@@ -27,7 +27,7 @@ export const POST = async (request: Request) => {
         project: res.project_name,
       }),
     };
-
+    await db.set(res.project_id + ":" + data.email + ":code", data.code, { ex: 180 });
     const info = await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: "sent successfully" }, { status: 200 });
   } catch (error) {
