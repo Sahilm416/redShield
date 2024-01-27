@@ -138,9 +138,14 @@ export const deleteProject = async ({
       `${session.data.project_id}:${session.data.email}:projects`,
       projects
     );
+    
+    //get project id affilated to api key
+    const {project_id} = await db.get(`API_KEY:${key}`) as {project_id: string};
     //also delete the api key of project
     await db.del(`API_KEY:${key}`);
-
+    //also delete all the related users of project
+    const allUsers = (await db.keys(project_id + ":*:user")) as [string];
+    await db.del(...allUsers);
     // Return the updated projects list or any other relevant information
     return projects;
   } else {

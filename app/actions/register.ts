@@ -6,7 +6,7 @@ import { LoginUser } from "./login";
 
 //send th code to email address
 export const sendCode = async ({ email }: { email: string }) => {
-  const code = Math.floor(100000 + Math.random() * 900000);
+
 
   const { project_id } = (await db.get("API_KEY:" + process.env.RED_KEY!)) as {
     project_id: string;
@@ -30,8 +30,7 @@ export const sendCode = async ({ email }: { email: string }) => {
           Authorization: process.env.RED_KEY!,
         },
         body: JSON.stringify({
-          email: email,
-          code: code,
+          email: email
         }),
       }
     );
