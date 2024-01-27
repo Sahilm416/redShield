@@ -5,7 +5,6 @@ const { verifyMail } = require("@/components/emailTemplates/verifyMail");
 
 interface reqBody {
   email: string;
-  code: number;
 }
 
 export const POST = async (request: Request) => {
@@ -16,18 +15,18 @@ export const POST = async (request: Request) => {
   }
   try {
     const data = (await request.json()) as reqBody;
-
+    const code = Math.floor(100000 + Math.random() * 900000);
     const mailOptions = {
       from: `${res.project_name} <redshield.vercel.app@gmail.com>`,
       to: data.email,
       subject: `Verify Email for ${res.project_name}`,
       html: await verifyMail({
         email: data.email,
-        code: data.code,
+        code: code,
         project: res.project_name,
       }),
     };
-    await db.set(res.project_id + ":" + data.email + ":code", data.code, { ex: 180 });
+    await db.set(res.project_id + ":" + data.email + ":code", code, { ex: 180 });
     const info = await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: "sent successfully" }, { status: 200 });
   } catch (error) {
