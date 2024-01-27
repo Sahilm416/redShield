@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 export const sendResetPasswordLink = async ({ email }: { email: string }) => {
   try {
     const res = await fetch(
-      "http://localhost:3001/api/service/resetPassword",
+      "https://redshield.vercel.app/api/service/resetPassword",
       {
         method: "POST",
         next: { revalidate: 0 },
@@ -23,6 +23,7 @@ export const sendResetPasswordLink = async ({ email }: { email: string }) => {
     );
 
     const response = (await res.json()) as { status: boolean; message: string };
+
     return {
       status: response.status,
       message: response.message,
