@@ -50,12 +50,9 @@ export const LoginUser = async (data: { email: string; password: string }) => {
           project_id: project_id,
         };
       } else {
-        const loginFailedCount: number =
-          (await db.get(`${project_id}:${data.email}:loginFailed`)) || 0;
-
         await db.set(
           `${project_id}:${data.email}:loginFailed`,
-          loginFailedCount + 1,
+          loginFailedAttempts + 1,
           { ex: 600 }
         );
         return {

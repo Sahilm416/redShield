@@ -17,6 +17,16 @@ export const POST = async (request: Request) => {
     console.log("unauthorized key");
     return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
   } else {
+    //check if too many failed login attempts
+    const loginFailedAttempts: number =
+      (await db.get(`${project_id}:${data.email}:loginFailed`)) || 0;
+      //check excides failed login attempts
+    if (loginFailedAttempts > 9) {
+      return NextResponse.json({
+        status: false,
+        message: "Too many failed login attempts try after 10 mins",
+      });
+    }
     const searchKey = project_id + ":" + data.email + ":user";
     const user = await db.get(searchKey);
 
@@ -42,6 +52,12 @@ export const POST = async (request: Request) => {
           token: JWTtoken,
         });
       } else {
+        //login fail count 
+        await db.set(
+          `${project_id}:${data.email}:loginFailed`,
+          loginFailedAttempts + 1,
+          { ex: 600 }
+        );
         return NextResponse.json({
           status: false,
           message: "Invalid credentials",
