@@ -10,7 +10,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { checkPassword, validateInput } from "@/app/actions/checks";
+import { checkPassword } from "@/app/actions/checks";
 import { toast } from "sonner";
 import { useState } from "react";
 import { Oval } from "react-loader-spinner";
