@@ -3,7 +3,10 @@ import Command from "./Command";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import {motion} from "framer-motion"
+import { useState } from "react";
+import { Oval } from "react-loader-spinner";
 export default function HeroComponent() {
+  const[loading,setLoading]= useState<boolean>(false)
   return (
     <motion.div  initial={{opacity: 0 ,dur: 1 }} whileInView={{opacity: 1}} className=" w-full h-max flex flex-col pt-[80px] md:pt-[80px] items-center">
       <div className="flex w-full justify-center max-w-[1500px]">
@@ -32,9 +35,21 @@ export default function HeroComponent() {
 
             <div className="w-full flex flex-col items-center">
               <div className="flex gap-5 px-5 py-10 md:border-x border-dashed border-[#EBEBEB] dark:border-[#1F1F1F]">
-                <Link href={"/Dashboard"}>
+                <Link onClick={()=> setLoading(true)} href={"/Dashboard"}>
                   <Button className="rounded-none md:w-[200px] w-[35vw] h-[45px]">
-                    Get started
+                  {loading ? (
+                  <Oval
+                    visible={true}
+                    height="25"
+                    width="25"
+                    strokeWidth="5"
+                    color="white"
+                    ariaLabel="oval-loading"
+                    secondaryColor="black"
+                  />
+                ) : (
+                  "Get Started"
+                )}
                   </Button>
                 </Link>
                 <Link target="blanc" href={"https://github.com/sahilm416"}>
