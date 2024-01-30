@@ -32,6 +32,13 @@ export const createNewProject = async ({
     const projects = (await db.get(
       data.project_id + ":" + data.email + ":projects"
     )) as projectData[];
+   console.log("")
+    if(projects.length === 10){
+        return ({
+          status: false,
+          message:"Max 10 projects are allowed",
+       })
+    }
 
     const checkAlreadyExists = projects.some(
       (obj) => obj.name === project_name.trim()
