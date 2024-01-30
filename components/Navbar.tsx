@@ -3,15 +3,13 @@ import { ThemeBtn } from "./ThemeBtn";
 import { MenuBar } from "./Menu";
 import { getSession } from "@/app/actions/auth";
 import { Badge } from "./ui/badge";
-import latestVersion from 'latest-version';
-
 const Navbar = async () => {
   const res = (await getSession()) as {
     status: boolean;
     message: string;
     data: { email: string; project_id: string };
   };
-  const version = await latestVersion("redshield");
+  
 
   return (
     <div className="nav w-full flex justify-center items-center h-[60px] dark:border-[#1A1A1A] m-0 p-2 bg-white/90 border-b dark:bg-black/80 fixed top-0 right-0 z-50">
@@ -24,7 +22,7 @@ const Navbar = async () => {
             <span className="font-semibold font-sans text-lg dark:text-white">
               RedShield
             </span>
-            <Badge>{version}</Badge>
+            <Badge>alpha</Badge>
           </Link>
           <span className="sm:inline-block hidden">|</span>
           <div className="justify-center items-center gap-5 text-md md:flex hidden">

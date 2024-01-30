@@ -11,7 +11,7 @@ export default function HeroComponent() {
     <motion.div
       initial={{ opacity: 0, dur: 1 }}
       whileInView={{ opacity: 1 }}
-      className=" w-full h-max flex flex-col pt-[80px] md:pt-[80px] items-center"
+      className=" w-full h-max flex flex-col pt-[120px] md:pt-[80px] items-center"
     >
       <div className="flex w-full justify-center max-w-[1500px]">
         <div className="flex flex-col justify-between ">
@@ -24,7 +24,8 @@ export default function HeroComponent() {
             {" "}
           </div>
         </div>
-        <div className="w-full flex flex-col mt-[7vw] mb-[7vw]">
+
+        <div className="w-full flex flex-col justify-end items-center mb-[7vw] mt-[7vw]">
           <div className="h-full w-full border border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
             <h1 className="text-[max(48px,min(5vw,72px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-[#EDEDED] dark:via-[#EDEDED]/80 dark:to-[#EDEDED]/90 border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-8 leading-none">
               Redis based Auth for Next
@@ -36,7 +37,6 @@ export default function HeroComponent() {
                 power of Redis with elegance and speed.
               </p>
             </div>
-
             <div className="w-full flex flex-col items-center">
               <div className="flex gap-5 px-5 py-10 md:border-x border-dashed border-[#EBEBEB] dark:border-[#1F1F1F]">
                 <Link onClick={() => setLoading(true)} href={"/Dashboard"}>
@@ -71,6 +71,7 @@ export default function HeroComponent() {
             </div>
           </div>
         </div>
+
         <div className="flex flex-col justify-between">
           <div className="h-[7vw] w-[7vw] border-b border-l border-dashed border-[#EBEBEB] dark:border-[#1F1F1F]">
             {" "}
