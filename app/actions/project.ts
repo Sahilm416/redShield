@@ -152,7 +152,11 @@ export const deleteProject = async ({
     await db.del(`API_KEY:${key}`);
     //also delete all the related users of project
     const allUsers = (await db.keys(project_id + ":*:user")) as [string];
-    await db.del(...allUsers);
+ 
+    if(allUsers.length > 0){
+      await db.del(...allUsers); 
+    }
+    
     // Return the updated projects list or any other relevant information
     return projects;
   } else {
