@@ -1,7 +1,8 @@
-import latestVersion from "latest-version";
 import Link from "next/link";
 export default async function Ammouncement() {
-  const version = await latestVersion("redshield");
+  const res = await fetch("https://registry.npmjs.org/redshield");
+  const package_info = await res.json();
+  const version = package_info['dist-tags'].latest
   return (
     <div className="h-[7vw] w-full flex justify-center items-center absolute md:top-[70px] top-[100px] right-0 transition-all fade-in-100">
       <Link
