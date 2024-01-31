@@ -130,7 +130,7 @@ export function MenuBar({
                   </DropdownMenuItem>
                 </Link>
               )}
-              <Link href="/Docs">
+              <Link href="/Docs/GetStarted">
                 <DropdownMenuItem className="text-lg">
                   <Book className="text-slate-300 w-[20px] mr-2" />
                   Docs

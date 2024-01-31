@@ -4,7 +4,7 @@ export default async function Ammouncement() {
   const package_info = await res.json();
   const version = package_info['dist-tags'].latest
   return (
-    <div className="h-[7vw] w-full flex justify-center items-center absolute md:top-[70px] top-[100px] right-0 transition-all fade-in-100">
+    <div className="h-[7vw] w-full flex justify-center items-center absolute mt-[20px] right-0 transition-all fade-in-100">
       <Link
         className=""
         target="blanc"

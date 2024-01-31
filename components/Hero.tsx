@@ -8,7 +8,7 @@ export default function HeroComponent() {
   const [loading, setLoading] = useState<boolean>(false);
   return (
     <div
-      className=" w-full h-max flex flex-col pt-[120px] md:pt-[80px] items-center"
+      className=" w-full h-max flex flex-col items-center md:mt-[20px] mt-[40px]"
     >
       <div className="flex w-full justify-center max-w-[1500px]">
         <div className="flex flex-col justify-between ">

@@ -5,7 +5,7 @@ export default async function () {
   const session = await getSession();
   if (!session.status) {
     return (
-      <div className="flex justify-center mt-[100px]">
+      <div className="flex justify-center w-full h-[calc(100vh-100px)] mt-[40px]">
         <AuthPage loginStatus={false} />
       </div>
     );
