@@ -1,9 +1,8 @@
-"use client"
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
+
 export default function SubHero() {
   return (
-    <motion.div initial={{opacity: 0 , dur:1 }} whileInView={{opacity: 1 }} className=" w-full h-max flex flex-col items-center">
+    <div className=" w-full h-max flex flex-col items-center">
       <p className="text-[max(30px,min(3vw,50px))] dark:text-[#EDEDED] text-[#171717] font-[750] font-[sans-serif]">
         Why RedShield
       </p>
@@ -62,7 +61,7 @@ export default function SubHero() {
           </Card>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

@@ -2,12 +2,11 @@
 import Image from "next/image";
 import lightDash from "@/public/static/light_dash.png";
 import darkDash from "@/public/static/dark_dash.png";
-import { motion } from "framer-motion";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function DashImage() {
   return (
-    <motion.div  initial={{opacity: 0 ,dur: 1 }} whileInView={{opacity: 1 }} className="w-full max-w-[1500px] px-[7vw] mx-auto">
+    <div className="w-full max-w-[1500px] px-[7vw] mx-auto">
       <p className="text-[max(30px,min(3vw,50px))] font-[750] text-center mb-2 dark:text-[#EDEDED] text-[#171717]">
         It's Simple
       </p>
@@ -30,6 +29,6 @@ export default function DashImage() {
           />
         </AspectRatio>
       </div>
-    </motion.div>
+    </div>
   );
 }

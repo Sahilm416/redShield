@@ -34,7 +34,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteProject } from "@/app/actions/project";
 import { toast } from "sonner";
-import { motion } from "framer-motion";
+
 type Project = {
   id: string;
   image: string;
@@ -66,7 +66,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
               <Button className="rounded-none">Add New Project</Button>
             </Link>
           </div>
-          <motion.div  initial={{opacity: 0 ,dur: 1}} whileInView={{opacity: 1}} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
               return (
                 <AlertDialog key={i}>
@@ -167,7 +167,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                 </AlertDialog>
               );
             })}
-          </motion.div>
+          </div>
         </main>
       ) : (
         <div className="w-full mt-[100px] grid place-items-center gap-4">
