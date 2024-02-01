@@ -12,7 +12,7 @@ import Command from "@/components/Command";
 
 export default function Installation() {
   return (
-    <div className="max-w-[1500px] min-h-[calc(100vh-60px)] px-2 flex flex-col sm:justify-between">
+    <div className="max-w-[1500px] min-h-[calc(100vh-60px)] px-2 flex flex-col justify-between">
       <Card className="w-[90vw] max-w-[600px] border-none shadow-none">
         <CardHeader>
           <CardTitle className="text-4xl ">Installation</CardTitle>
@@ -58,7 +58,7 @@ export default function Installation() {
           </p>
         </CardFooter>
       </Card>
-      <div className="w-full flex justify-between p-5">
+      <div className="w-full flex justify-between p-5 mb-5">
         <Link href={"/Docs/GetStarted"}>
           <Button variant={'outline'} className="w-[100px] dark:border-[#171717]">Prev</Button>
         </Link>
