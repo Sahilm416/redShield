@@ -12,7 +12,7 @@ const Navbar = async () => {
   
 
   return (
-    <div className="nav w-full flex justify-center items-center h-[60px] dark:border-[#1A1A1A] m-0 p-2 bg-white/90 border-b dark:bg-black/80 sticky top-0 right-0 z-50">
+    <div className="nav w-full flex justify-center items-center h-[60px] dark:border-[#1A1A1A] m-0 p-2 bg-white/90 border-b dark:bg-black/80 sticky top-0 right-0 z-50 overflow-y-hidden">
       <nav className="flex justify-between items-center w-full max-w-[1500px]">
         <div className="flex justify-center items-center gap-10">
           <Link

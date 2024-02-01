@@ -62,7 +62,7 @@ export default function CreateProject(){
       }
     };
     return (
-        <div className="w-full grid place-items-center mt-[100px] sm:px-2 px-7">
+        <div className="w-full grid place-items-center mt-[40px] sm:px-2 px-7">
         <Card className="w-full max-w-lg dark:bg-gray-900/20 bg-white rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] shadow-lg">
           <CardHeader className="flex flex-row items-start">
             <div className="space-y-1.5">

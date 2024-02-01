@@ -5,14 +5,14 @@ export default async function EditProfile() {
   const session = await getSession();
   if (!session.status) {
     return (
-      <div className="flex justify-center mt-[100px] ">
+      <div className="flex justify-center mt-[40px] ">
         <AuthPage loginStatus={false} />
       </div>
     );
   }
   const userData = await getUserInfo({ email: session.data.email });
   return (
-    <div className="mt-[100px] w-full flex justify-center items-center">
+    <div className="mt-[40px] w-full flex justify-center items-center">
       <UpdateUser user={userData} />
     </div>
   );

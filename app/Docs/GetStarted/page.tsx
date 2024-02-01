@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 export default function GettingStarted() {
   return (
     <>
-      <div className="max-w-[700px] mx-[1vw] flex flex-col justify-between m-5">
+      <div className="max-w-[700px] flex flex-col justify-between px-2">
         <div>
           <Card
             id="getting_started"
@@ -75,7 +75,7 @@ export default function GettingStarted() {
         </div>
         <div className="w-full flex justify-end p-5">
           <Link href={"/Docs/Installation"}>
-            <Button className="w-[100px] ">Next</Button>
+            <Button variant={'outline'} className="w-[100px] ">Next</Button>
           </Link>
         </div>
       </div>

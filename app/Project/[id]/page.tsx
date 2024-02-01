@@ -17,14 +17,14 @@ export default async function ProjectPage({
   const session = await getSession();
   if (!session.status) {
     return (
-      <div className="flex justify-center mt-[100px] ">
+      <div className="flex justify-center mt-[40px] ">
         <AuthPage loginStatus={false} />
       </div>
     );
   }
   const res = (await getProject({ id: params.id })) as resData;
   return (
-    <div className="mt-[100px] flex flex-col gap-5 justify-center items-center">
+    <div className="mt-[40px] flex flex-col gap-5 justify-center items-center">
       <ProjectComponent res={res} />
       <Users secret={res.key} />
     </div>
