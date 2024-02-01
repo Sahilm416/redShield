@@ -1,15 +1,22 @@
+import { Zap } from "lucide-react";
+import { Button } from "./ui/button";
 import Link from "next/link";
-import{Zap} from "lucide-react"
-export default function Footer() {
+const Footer = () => {
   return (
-    <div className="w-full h-[100px] bg-white dark:bg-gray-900/20 border-t-2 border-[#EBEBEB] dark:border-[#1F1F1F] mt-5 flex justify-center items-center">
-      <Link
-        target="blanc"
-        href={"https://twitter.com/sahil__501"}
-        className="py-3 px-4 bg-zinc-50 dark:bg-black border hover:border-blue-500 hover:shadow-[0px_0px_5px_skyblue] flex gap-2"
-      >
-        Made by sahil <Zap />
-      </Link>
+    <div className="bg-zinc-50 dark:bg-zinc-900 p-6 w-full flex justify-center items-center">
+      <div className="group/item flex items-center">
+        <Link target="blanc" href={"https://twitter.com/sahil__501"}>
+          <Button
+            className="text-lg group-hover/item:text-blue-700"
+            variant={"link"}
+          >
+            By sahil
+          </Button>
+        </Link>
+        <Zap className="group-hover/item:text-blue-700" />
+      </div>
     </div>
   );
-}
+};
+
+export default Footer;

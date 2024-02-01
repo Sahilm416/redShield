@@ -3,8 +3,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-
-
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Red Shield",
@@ -21,11 +20,12 @@ export default function RootLayout({
       <body className="bg-[#ffffff] dark:bg-black selection:bg-violet-700 selection:text-white font-[sans-serif]">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           disableTransitionOnChange
         >
           <Navbar />
           {children}
+          <Footer />
           <Toaster richColors position="bottom-right" />
         </ThemeProvider>
       </body>

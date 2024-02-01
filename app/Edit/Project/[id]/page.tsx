@@ -13,14 +13,14 @@ export default async function ({ params }: { params: { id: string } }) {
   const session = await getSession();
   if (!session.status) {
     return (
-      <div className="flex justify-center mt-[100px] ">
+      <div className="flex justify-center mt-[40px] min-h-[calc(100vh-100px)] ">
         <AuthPage loginStatus={false} />
       </div>
     );
   }
   const project = (await getProject({ id: params.id })) as projectData;
   return (
-    <div className="w-full sm:h-screen flex justify-center mt-[100px] sm:mt-0 sm:items-center">
+    <div className="w-full flex justify-center mt-[40px] min-h-[calc(100vh-100px)] ">
       {project && <UpdateProject project={project} />}
     </div>
   );

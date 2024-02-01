@@ -35,9 +35,7 @@ export default function GettingStarted() {
               applications with support for all the latest features. <br />
               <br />
               Effortlessly keep track of your users with Redshield's user
-              management feature. By monitoring the signed-in users within your
-              Redshield project, you can easily maintain and manage the
-              authentication process for your projects.
+              management feature.
             </CardContent>
             <CardFooter>
               <p>
@@ -73,9 +71,9 @@ export default function GettingStarted() {
             </CardContent>
           </Card>
         </div>
-        <div className="w-full flex justify-end p-5">
+        <div className="w-full flex justify-end p-5 mb-5">
           <Link href={"/Docs/Installation"}>
-            <Button variant={'outline'} className="w-[100px] ">Next</Button>
+            <Button variant={'outline'} className="w-[100px] dark:border-[#171717]">Next</Button>
           </Link>
         </div>
       </div>
