@@ -12,7 +12,7 @@ import Command from "@/components/Command";
 
 export default function Installation() {
   return (
-    <div className="max-w-[1500px] px-2 flex flex-col justify-between">
+    <div className="max-w-[1500px] min-h-[calc(100vh-60px)] px-2 flex flex-col justify-between">
       <Card className="w-[90vw] max-w-[600px] border-none shadow-none">
         <CardHeader>
           <CardTitle className="text-4xl ">Installation</CardTitle>

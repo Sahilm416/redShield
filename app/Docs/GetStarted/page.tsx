@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 export default function GettingStarted() {
   return (
     <>
-      <div className="max-w-[700px] flex flex-col justify-between px-2">
+      <div className="max-w-[700px] min-h-[calc(100vh-60px)] flex flex-col justify-between px-2">
         <div>
           <Card
             id="getting_started"
