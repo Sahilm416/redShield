@@ -17,7 +17,7 @@ export default async function ProjectPage({
   const session = await getSession();
   if (!session.status) {
     return (
-      <div className="flex justify-center mt-[40px] ">
+      <div className="flex justify-center mt-[40px] min-h-[calc(100vh-100px)] ">
         <AuthPage loginStatus={false} />
       </div>
     );
