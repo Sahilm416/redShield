@@ -21,7 +21,7 @@ export default function Command() {
   };
 
   return (
-    <div className="max-w-[250px]">
+    <div className="max-w-[300px]">
       <Card className="rounded-none border-none shadow-none ">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
