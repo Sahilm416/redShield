@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 export default function GettingStarted() {
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col justify-between px-2">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col  px-2">
         <div>
           <Card
             id="getting_started"
@@ -59,7 +59,7 @@ export default function GettingStarted() {
                 </Link>{" "}
                 home page and click get started to create your redshield
                 acoount.{" "}
-                <span className="text-zinc-500">
+                <span className="text-zinc-600 dark:text-zinc-400">
                   (Kindly skip this step if you have already registered to
                   redshield.)
                 </span>{" "}

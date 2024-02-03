@@ -40,7 +40,7 @@ export default ResetPassword;`
 //ends the reset pass string
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col justify-between px-2">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2">
         <div>
           <Card
             id="getting_started"
@@ -67,7 +67,7 @@ export default ResetPassword;`
                 position of this component according to your need.
               </p>
               <br />
-              <p className="text-sm text-zinc-600">
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
                 Note: follow the folders naming conventions strictly.
               </p>
             </CardFooter>
