@@ -10,18 +10,18 @@ import { Button } from "@/components/ui/button";
 export default function GettingStarted() {
   return (
     <>
-      <div className="max-w-[700px] min-h-[calc(100vh-60px)] flex flex-col justify-between px-2">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col justify-between px-2">
         <div>
           <Card
             id="getting_started"
-            className="w-[90vw] max-w-[600px] border-none shadow-none"
+            className="border-none shadow-none"
           >
             <CardHeader>
               <CardTitle className="text-4xl">
                 Getting Started
               </CardTitle>
             </CardHeader>
-            <CardContent className="max-w-[600px]">
+            <CardContent>
               Redshild is a simple authentication SDK that provides everything
               you need to implement authentication in your app. <br />
               It is built for{" "}
@@ -44,7 +44,7 @@ export default function GettingStarted() {
               </p>
             </CardFooter>
           </Card>
-          <Card className="w-[90vw] max-w-[600px] border-none shadow-none">
+          <Card className=" border-none shadow-none">
             <CardHeader>
               <CardTitle className="text-4xl ">Create Account</CardTitle>
             </CardHeader>

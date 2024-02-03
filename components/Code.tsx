@@ -1,16 +1,19 @@
 "use client";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-
-export default function Command() {
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
+import { irBlack } from "react-syntax-highlighter/dist/esm/styles/hljs";
+export default function Code({
+  codeString,
+  fileName,
+}: {
+  codeString: string;
+  fileName: string;
+}) {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyToClipboard = () => {
-    const commandToCopy = "npm install redshield";
-
     navigator.clipboard
-      .writeText(commandToCopy)
+      .writeText(codeString)
       .then(() => {
         setIsCopied(true);
         setTimeout(() => setIsCopied(false), 3000);
@@ -21,38 +24,34 @@ export default function Command() {
   };
 
   return (
-    <div className="max-w-[250px]">
-      <Card className="rounded-none border-none shadow-none ">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <TerminalIcon className="w-6 h-6 text-zinc-800 dark:text-slate-300 " />
-            <p className="text-sm dark:text-slate-300 text-zinc-800 font-mono">
-              npm install redshield
-            </p>
-          </div>
-          <Button
-            className="px-2 bg-transparent rounded-lg dark:hover:bg-zinc-900"
-            variant="ghost"
-            onClick={handleCopyToClipboard}
-          >
-            {isCopied ? (
-              <TickMark className=" dark:stroke-slate-300 stroke-zinc-800" />
-            ) : (
-              <CopyIcon className="w-[15px] h-[15px] dark:text-slate-300 text-zinc-800" />
-            )}
-          </Button>
+    <div className="flex flex-col w-full">
+      <div className="w-full border-2 border-zinc-200 dark:border-[#171717] p-2 bg-black text-white flex justify-between">
+        <p className="text-zinc-200 text-sm">{fileName}</p>
+        <div className=" cursor-pointer" onClick={handleCopyToClipboard}>
+          {" "}
+          {isCopied ? (
+            <TickMark className="w-[25px] h-[25px] p-1" />
+          ) : (
+            <CopyIcon className="w-[25px] h-[25px] p-1" />
+          )}
         </div>
-      </Card>
+      </div>
+      <SyntaxHighlighter
+        className="border-x-2 border-b-2 border-zinc-200 dark:border-[#171717] w-full"
+        language="javascript"
+        style={irBlack}
+      >
+        {codeString}
+      </SyntaxHighlighter>
     </div>
   );
 }
+
 function CopyIcon(props: any) {
   return (
     <svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

@@ -22,7 +22,14 @@ export default function DocLinks() {
       >
         Installation
       </Link>
-
+      <Link
+        className={`${
+          path === "/Docs/Configure" ? "text-blue-700" : "text-zinc-500"
+        } text-xl hover:underline`}
+        href={"/Docs/Configure"}
+      >
+        Configure
+      </Link>
     </div>
   );
 }

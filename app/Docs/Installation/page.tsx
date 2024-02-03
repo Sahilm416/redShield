@@ -9,61 +9,65 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Command from "@/components/Command";
+import Code from "@/components/Code";
 
 export default function Installation() {
   return (
-    <div className="max-w-[1500px] min-h-[calc(100vh-60px)] px-2 flex flex-col justify-between">
-      <Card className="w-[90vw] max-w-[600px] border-none shadow-none">
+    <div className="w-full min-h-[calc(100vh-60px)] px-2 flex flex-col justify-between">
+      <Card className=" border-none shadow-none">
         <CardHeader>
           <CardTitle className="text-4xl ">Installation</CardTitle>
         </CardHeader>
-        <CardContent className="max-w-[600px]">
+        <CardContent>
           <p>
-            Redshield provides the SDK with our{" "}
-            <Link
-              className="hover:underline text-blue-500"
-              target="blanc"
-              href={"https://npmjs.com"}
-            >
-              npm
-            </Link>{" "}
-            package. That is why you need to install the package in your
-            application.
-            <br />
-            This will install the redshield authentication and related
-            dependencies to your project locally. <br /> <br />
+            Simply copy the following command and head towards your project
+            terminal.
           </p>
-          <p className="">Copy the following command :</p>
+          <div className="py-5">
+            <Command />
+          </div>
+
+          <p>
+            Paste the command and hit{" "}
+            <kbd className="px-2 py-1 bg-zinc-100 rounded-md dark:bg-zinc-900 dark:text-white">
+              enter
+            </kbd>{" "}
+            to install redshield in your application locally. Wait until
+            installation is complete.
+          </p>
           <br />
-          <div className="flex flex-col items-start border dark:border-[#171717]">
-            <div className="border-b dark:border-[#171717] w-full p-3">
-              <p>Terminal</p>
-            </div>
-            <div className="p-3">
-              <Command />
-            </div>
+          <br />
+          <p>
+            Now copy the api key and paste into the env file in below format
+          </p>
+          <br />
+          <div className="max-w-[400px]">
+          <Code fileName="env" codeString="Red_Key=YOUR_REDSHIELD_API_KEY" />
           </div>
         </CardContent>
-        <CardFooter>
-          <p>
-            Run this command in your project terminal then wait until the
-            installation is complete. You can always check the <Link
-              className="hover:underline text-blue-500"
-              target="blanc"
-              href={"https://npmjs.com/redshield"}
-            >
-              npm registry for redshield
-            </Link>{" "} to cross check latest releases. <br /> <br />
-            After successful installation you can follow the instructions to configure the integration.
-          </p>
+        <CardFooter className="flex-col items-start">
+          <p>Keep the api keys confidential and make sure they aren't publically exposed. 
+            Exposing them will give your project access to others.
+          </p> <br />
+          <p>After doing previous steps now your application is ready to configure for authentication</p>
         </CardFooter>
       </Card>
       <div className="w-full flex justify-between p-5 mb-5">
         <Link href={"/Docs/GetStarted"}>
-          <Button variant={'outline'} className="w-[100px] dark:border-[#171717]">Prev</Button>
+          <Button
+            variant={"outline"}
+            className="w-[100px] dark:border-[#171717]"
+          >
+            Prev
+          </Button>
         </Link>
-        <Link href={""}>
-          <Button variant={'outline'} className="w-[100px] dark:border-[#171717]">Next</Button>
+        <Link href={"/Docs/Configure"}>
+          <Button
+            variant={"outline"}
+            className="w-[100px] dark:border-[#171717]"
+          >
+            Next
+          </Button>
         </Link>
       </div>
     </div>

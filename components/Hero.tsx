@@ -62,7 +62,7 @@ export default function HeroComponent() {
                   </Button>
                 </Link>
               </div>
-              <div className="w-full border-t border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-5">
+              <div className="w-full flex justify-center border-t border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-5">
                 <Command />
               </div>
             </div>
