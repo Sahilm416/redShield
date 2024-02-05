@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import {
   Card,
@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Code from "@/components/Code";
-
+import Celebrate from "@/components/Celebrate";
+import { useState } from "react";
 export default function Middleware() {
+  const [isCelebrate, setIsCelebrate] = useState<boolean>(false);
   //code for implementation of middleware
   const middlewareCode = `import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "redshield/actions/auth";
@@ -42,6 +44,13 @@ import { getSession } from "redshield/actions/auth";
   };
   `;
   //end of middleware code
+
+  const handleCelebrate = () => {
+    setIsCelebrate(true);
+    setTimeout(() => {
+      setIsCelebrate(false);
+    }, 1500);
+  };
   return (
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2">
@@ -79,7 +88,11 @@ import { getSession } from "redshield/actions/auth";
               <br />
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center justify-center">
                 <b>Congratulations your app now have authentication.</b>
-                <Button onClick={()=> alert("yayyyyyyy!!!")} className="dark:border-[#171717] w-[100px] rounded-none" variant={"outline"}>
+                <Button
+                  onClick={handleCelebrate}
+                  className="dark:border-[#171717] w-[100px] rounded-none"
+                  variant={"outline"}
+                >
                   Celebrate 🥂
                 </Button>
               </div>
@@ -105,6 +118,7 @@ import { getSession } from "redshield/actions/auth";
           </Link>
         </div>
       </div>
+      {isCelebrate && <Celebrate/>}
     </>
   );
 }
