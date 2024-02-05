@@ -31,7 +31,7 @@ import ResetPassPage from "redshield/components/ResetPassPage";
 const ResetPassword = async ({ params }: { params: { token: string } }) => {
   const res = await checkResetPasswordToken({ token: params.token });
   return (
-    <div className="w-full flex justify-center mt-[80px] mx-auto">
+    <div>
       <ResetPassPage data={res} />
     </div>
   );
@@ -95,7 +95,7 @@ export default ResetPassword;`
               prev
             </Button>
           </Link>
-          <Link href={"#"}>
+          <Link href={"/Docs/Middleware"}>
             <Button
               variant={"outline"}
               className="w-[100px] dark:border-[#171717]"
