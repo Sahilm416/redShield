@@ -5,7 +5,7 @@ export default function DocLinks() {
   const path = usePathname();
 
   return (
-    <div className="flex flex-col gap-5 px-5 w-full mt-[50px]">
+    <div className="flex flex-col gap-5 px-5 w-full mt-[50px] font-sans">
       <Link
         className={`${
           path === "/Docs/GetStarted" ? "text-blue-700" : "text-zinc-500"

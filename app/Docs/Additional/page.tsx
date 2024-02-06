@@ -46,7 +46,7 @@ const Dashboard = () => {
 export default Dashboard;`
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 leading-8 font-sans">
         <div>
           <Card className=" border-none shadow-none">
             <CardHeader>

@@ -14,7 +14,7 @@ import { ArrowRight } from "lucide-react";
 export default function GettingStarted() {
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col  px-2">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col leading-8 font-sans px-2">
         <div>
           <Card id="getting_started" className="border-none shadow-none">
             <CardHeader>
