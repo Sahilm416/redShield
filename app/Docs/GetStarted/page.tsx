@@ -14,7 +14,7 @@ import { ArrowRight } from "lucide-react";
 export default function GettingStarted() {
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col leading-8 font-sans px-2">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col font-sans px-2">
         <div>
           <Card id="getting_started" className="border-none shadow-none">
             <CardHeader>
@@ -23,7 +23,7 @@ export default function GettingStarted() {
                 Implement authentication in minutes.
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className=" text-zinc-600 dark:text-zinc-400">
               <p className="text-3xl">Introduction</p>
               <br />
               <p>
@@ -68,14 +68,14 @@ export default function GettingStarted() {
                 experince.
               </p>
             </CardContent>
-            <CardFooter>
+            <CardFooter className=" text-zinc-600 dark:text-zinc-400">
               <p>
                 Follow below steps to setup redshield authentication in your
                 project{" "}
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none">
+          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
             <CardContent className="max-w-[600px]">
               <p className="text-3xl">Create account</p>
               <br />

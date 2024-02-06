@@ -44,13 +44,13 @@ import { getSession } from "redshield/actions/auth";
 
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 leading-8 font-sans">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
           <Card className=" border-none shadow-none">
             <CardHeader>
               <CardTitle className="text-4xl">Middleware</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className=" text-zinc-600 dark:text-zinc-400">
               <p>
                 Create{" "}
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">

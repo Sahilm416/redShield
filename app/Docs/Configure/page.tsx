@@ -51,7 +51,7 @@ const LogOutComponent = () => {
 export default LogOutComponent;`;
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 leading-8 font-sans">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
           <Card className=" border-none shadow-none">
             <CardHeader>
@@ -60,7 +60,7 @@ export default LogOutComponent;`;
                 Follow each step to make everything work.
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className=" text-zinc-600 dark:text-zinc-400">
               <p className="text-3xl">1. AuthPage</p>
               <br />
               Create{" "}
@@ -85,7 +85,7 @@ export default LogOutComponent;`;
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none">
+          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
             <CardContent>
               <p className="text-3xl">2. LogOutButton</p>
               <br />
@@ -101,7 +101,7 @@ export default LogOutComponent;`;
             </CardContent>
             <CardFooter className="flex-col items-start"></CardFooter>
           </Card>
-          <Card className=" border-none shadow-none">
+          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
             <CardContent>
               <p className="text-3xl">3. ResetPassPage</p><br />
               <p>

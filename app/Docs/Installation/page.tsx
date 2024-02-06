@@ -12,12 +12,12 @@ import Code from "@/components/Code";
 
 export default function Installation() {
   return (
-    <div className="w-full min-h-[calc(100vh-60px)] px-2 flex flex-col leading-8 font-sans">
+    <div className="w-full min-h-[calc(100vh-60px)] px-2 flex flex-col font-sans">
       <Card className=" border-none shadow-none">
         <CardHeader>
           <CardTitle className="text-4xl ">Installation</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className=" text-zinc-600 dark:text-zinc-400">
           <p>
             Simply copy the following command and head towards your project
             terminal.
@@ -44,7 +44,7 @@ export default function Installation() {
           <Code fileName="env" codeString="Red_Key=YOUR_REDSHIELD_API_KEY" />
           </div>
         </CardContent>
-        <CardFooter className="flex-col items-start">
+        <CardFooter className="flex-col items-start  text-zinc-600 dark:text-zinc-400">
           <p>Keep the api keys confidential and make sure they aren't publically exposed. 
             Exposing them will give your project access to others.
           </p> <br />

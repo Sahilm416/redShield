@@ -46,7 +46,7 @@ const Dashboard = () => {
 export default Dashboard;`
   return (
     <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 leading-8 font-sans">
+      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
           <Card className=" border-none shadow-none">
             <CardHeader>
@@ -56,7 +56,7 @@ export default Dashboard;`
                 have a custom logic for your app using these methods.
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className=" text-zinc-600 dark:text-zinc-400">
               <h2 className="text-3xl">1. getSession()</h2>
               <br />
               <p>
@@ -69,7 +69,7 @@ export default Dashboard;`
               <br />
               <Code fileName="Protected/page.tsx" codeString={getSessionCode} />
             </CardContent>
-            <CardFooter className="flex-col items-start">
+            <CardFooter className="flex-col items-start  text-zinc-600 dark:text-zinc-400">
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
                 Note :{" "}
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
@@ -80,7 +80,7 @@ export default Dashboard;`
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none">
+          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
             <CardContent>
               <h2 className="text-3xl">2. LogOut()</h2>
               <br />
