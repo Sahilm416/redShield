@@ -64,7 +64,7 @@ export default function CreateProject() {
     }
   };
   return (
-    <div className="mx-auto flex flex-col w-full items-center mt-[40px] sm:px-2 px-7 min-h-[calc(100vh-60px)]">
+    <div className="mx-auto flex flex-col w-full items-center mt-[40px] sm:px-2 px-7 min-h-[calc(100vh-100px)]">
       <Card className="w-full max-w-lg dark:bg-gray-900/20 bg-white rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] shadow-lg">
         <CardHeader className="flex flex-row items-start">
           <div className="space-y-1.5">

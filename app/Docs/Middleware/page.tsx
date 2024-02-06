@@ -46,7 +46,7 @@ import { getSession } from "redshield/actions/auth";
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2">
         <div>
-          <Card id="getting_started" className=" border-none shadow-none">
+          <Card className=" border-none shadow-none">
             <CardHeader>
               <CardTitle className="text-4xl">Middleware</CardTitle>
             </CardHeader>
@@ -57,7 +57,7 @@ import { getSession } from "redshield/actions/auth";
                   middleware.ts
                 </span>{" "}
                 file in root directory of your app. <br />{" "}
-                <span className="text-sm text-zinc-600">
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">
                   (For example if you are using app router then at same level as
                   app directory , if not then at{" "}
                   <span className="underline">src</span> folder level) <br />{" "}
@@ -90,7 +90,7 @@ import { getSession } from "redshield/actions/auth";
               prev
             </Button>
           </Link>
-          <Link href={"#"}>
+          <Link id="1" href={"/Docs/Additional"}>
             <Button
               variant={"outline"}
               className="w-[100px] dark:border-[#171717]"

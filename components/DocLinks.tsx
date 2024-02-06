@@ -38,6 +38,14 @@ export default function DocLinks() {
       >
         Middleware
       </Link>
+      <Link
+        className={`${
+          path === "/Docs/Additional" ? "text-blue-700" : "text-zinc-500"
+        } text-xl hover:underline`}
+        href={"/Docs/Additional"}
+      >
+        Additional
+      </Link>
     </div>
   );
 }
