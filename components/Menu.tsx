@@ -136,7 +136,7 @@ export function MenuBar({
                   Docs
                 </DropdownMenuItem>
               </Link>
-              <Link href="/Contact">
+              <Link target="blanc" href={"https://twitter.com/sahil__501"}>
                 {" "}
                 <DropdownMenuItem className="text-lg">
                   <Contact className="text-slate-300 w-[20px] mr-2" /> Contact
