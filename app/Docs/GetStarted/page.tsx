@@ -107,7 +107,7 @@ export default function GettingStarted() {
               variant={"outline"}
               className="w-[100px] dark:border-[#171717] group/btn flex gap-2 rounded-none hover:bg-transparent"
             >
-              Next {" "} <ArrowRight className=" relative left-0 group-hover/btn:left-1"/>
+              Next {" "} <ArrowRight className=" relative left-0 group-hover/btn:left-1 transition-all fade-in-100"/>
             </Button>
           </Link>
         </div>
