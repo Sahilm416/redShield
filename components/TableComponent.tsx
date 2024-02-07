@@ -24,7 +24,7 @@ export default async function TableComponent({
   secret: string;
 }) {
   const [loading, setLoading] = useState<boolean>(false);
-  const mailArr = email.split("@");
+  
   const FakeLoad = async ()=>{
     return;
   }
@@ -40,9 +40,9 @@ export default async function TableComponent({
     <>
       <Drawer>
         <div className="flex justify-center items-center w-[90vw] gap-2 max-w-[500px]">
-          <div className="w-full flex justify-between items-center p-2 border border-[#EBEBEB] dark:border-[#1F1F1F] mx-2 cursor-pointer gap-5">
-            <span className="md:block hidden">{i + 1 + "] "}</span>
-            <p className=" w-full flex justify-start">{mailArr[0].slice(0,20)}<span className="md:block hidden">@{mailArr[1]}</span></p>
+          <div className="w-full flex justify-between items-center p-2 border border-[#EBEBEB] dark:border-[#1F1F1F] mx-2 cursor-pointer gap-5 line-clamp-2">
+            <span className="md:block hidden text-zinc-400">{i + 1 + ") "}</span>
+            <p className=" w-full flex justify-start">{email}</p>
             <span className="md:block hidden"><MoreHorizontal /></span>
           </div>
           <DrawerTrigger>
