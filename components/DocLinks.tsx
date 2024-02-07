@@ -8,7 +8,7 @@ export default function DocLinks() {
     <div className="flex flex-col gap-5 px-5 w-full mt-[50px] font-sans">
       <Link
         className={`${
-          path === "/Docs/GetStarted" ? "text-blue-700" : "text-zinc-500"
+          path === "/Docs/GetStarted" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
         } text-xl hover:underline`}
         href={"/Docs/GetStarted"}
       >
@@ -16,7 +16,7 @@ export default function DocLinks() {
       </Link>
       <Link
         className={`${
-          path === "/Docs/Installation" ? "text-blue-700" : "text-zinc-500"
+          path === "/Docs/Installation" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
         } text-xl hover:underline`}
         href={"/Docs/Installation"}
       >
@@ -24,7 +24,7 @@ export default function DocLinks() {
       </Link>
       <Link
         className={`${
-          path === "/Docs/Configure" ? "text-blue-700" : "text-zinc-500"
+          path === "/Docs/Configure" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
         } text-xl hover:underline`}
         href={"/Docs/Configure"}
       >
@@ -32,7 +32,7 @@ export default function DocLinks() {
       </Link>
       <Link
         className={`${
-          path === "/Docs/Middleware" ? "text-blue-700" : "text-zinc-500"
+          path === "/Docs/Middleware" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
         } text-xl hover:underline`}
         href={"/Docs/Middleware"}
       >
@@ -40,7 +40,7 @@ export default function DocLinks() {
       </Link>
       <Link
         className={`${
-          path === "/Docs/Additional" ? "text-blue-700" : "text-zinc-500"
+          path === "/Docs/Additional" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
         } text-xl hover:underline`}
         href={"/Docs/Additional"}
       >
