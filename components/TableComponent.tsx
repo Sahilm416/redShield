@@ -52,7 +52,7 @@ export default async function TableComponent({
           </DrawerTrigger>
         </div>
 
-        <DrawerContent className="flex justify-center items-center h-[40vh] dark:bg-black">
+        <DrawerContent className="flex justify-center items-center h-[40vh] dark:bg-black dark:border-[#171717]">
           <DrawerHeader>
             <DrawerTitle>Are you sure to delete ?</DrawerTitle>
             <DrawerDescription className="text-center">
@@ -61,10 +61,10 @@ export default async function TableComponent({
           </DrawerHeader>
           This will permenently delete the user{" "}
           <span className="font-bold">{email}</span>
-          <DrawerFooter className="flex sm:flex-row flex-col mb-10">
+          <DrawerFooter className="flex sm:flex-row flex-col mb-10 gap-7">
             <Button
               variant={"destructive"}
-              className="w-[200px]"
+              className="w-[200px] rounded-none"
               onClick={removeUser}
             >
               {loading ? (
@@ -82,7 +82,7 @@ export default async function TableComponent({
               )}
             </Button>
             <DrawerClose>
-              <Button variant="outline" className="w-[200px]">
+              <Button variant="outline" className="w-[200px] rounded-none dark:border-[#171717]">
                 Cancel
               </Button>
             </DrawerClose>
