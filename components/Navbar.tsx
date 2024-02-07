@@ -34,7 +34,8 @@ const Navbar = async () => {
             </Link>
             <Link
               className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
-              href={"/Contact"}
+              target="blanc"
+              href={"https://twitter.com/sahil__501"}
             >
               contact
             </Link>
