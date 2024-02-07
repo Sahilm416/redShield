@@ -53,15 +53,15 @@ export default LogOutComponent;`;
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
-          <Card className=" border-none shadow-none">
+          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl">Configure</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-4xl text-black dark:text-white">Configure</CardTitle>
+              <CardDescription className="text-zinc-900 dark:text-zinc-200">
                 Follow each step to make everything work.
               </CardDescription>
             </CardHeader>
-            <CardContent className=" text-zinc-600 dark:text-zinc-400">
-              <p className="text-3xl">1. AuthPage</p>
+            <CardContent>
+              <p className="text-3xl text-black dark:text-white">1. AuthPage</p>
               <br />
               Create{" "}
               <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
@@ -80,14 +80,14 @@ export default LogOutComponent;`;
                 position of this component according to your need.
               </p>
               <br />
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm">
                 Note: follow the folders naming conventions strictly.
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
+          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardContent>
-              <p className="text-3xl">2. LogOutButton</p>
+              <p className="text-3xl text-black dark:text-white">2. LogOutButton</p>
               <br />
               <p>
                 This is inbuilt unstyled logout button from redshield. You can
@@ -101,9 +101,9 @@ export default LogOutComponent;`;
             </CardContent>
             <CardFooter className="flex-col items-start"></CardFooter>
           </Card>
-          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
+          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardContent>
-              <p className="text-3xl">3. ResetPassPage</p><br />
+              <p className="text-3xl text-black dark:text-white">3. ResetPassPage</p><br />
               <p>
                 Now create a{" "}
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
@@ -134,7 +134,7 @@ export default LogOutComponent;`;
           <Link href={"/Docs/Installation"}>
             <Button
               variant={"outline"}
-              className="w-[100px] dark:border-[#171717]"
+              className="w-[100px] dark:border-[#171717] rounded-none"
             >
               prev
             </Button>
@@ -142,7 +142,7 @@ export default LogOutComponent;`;
           <Link href={"/Docs/Middleware/"}>
             <Button
               variant={"outline"}
-              className="w-[100px] dark:border-[#171717]"
+              className="w-[100px] dark:border-[#171717] rounded-none"
             >
               Next
             </Button>

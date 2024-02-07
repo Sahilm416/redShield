@@ -16,15 +16,15 @@ export default function GettingStarted() {
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col font-sans px-2">
         <div>
-          <Card id="getting_started" className="border-none shadow-none">
+          <Card id="getting_started" className="border-none shadow-none text-zinc-900 dark:text-zinc-100 leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl">Getting Started</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-4xl text-black dark:text-white">Getting Started</CardTitle>
+              <CardDescription className="text-zinc-900 dark:text-zinc-100">
                 Implement authentication in minutes.
               </CardDescription>
             </CardHeader>
-            <CardContent className=" text-zinc-600 dark:text-zinc-400">
-              <p className="text-3xl">Introduction</p>
+            <CardContent>
+              <p className="text-3xl text-black dark:text-white">Introduction</p>
               <br />
               <p>
                 Redshild is a simple authentication SDK that provides everything
@@ -68,16 +68,16 @@ export default function GettingStarted() {
                 experince.
               </p>
             </CardContent>
-            <CardFooter className=" text-zinc-600 dark:text-zinc-400">
+            <CardFooter>
               <p>
                 Follow below steps to setup redshield authentication in your
                 project{" "}
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
+          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardContent className="max-w-[600px]">
-              <p className="text-3xl">Create account</p>
+              <p className="text-3xl text-black dark:text-white">Create account</p>
               <br />
               <p>
                 Go to{" "}
@@ -89,7 +89,7 @@ export default function GettingStarted() {
                 </Link>{" "}
                 home page and click get started to create your redshield
                 acoount.{" "}
-                <span className="text-zinc-600 dark:text-zinc-400">
+                <span>
                   (Kindly skip this step if you have already registered to
                   redshield.)
                 </span>{" "}

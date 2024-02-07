@@ -13,11 +13,11 @@ import Code from "@/components/Code";
 export default function Installation() {
   return (
     <div className="w-full min-h-[calc(100vh-60px)] px-2 flex flex-col font-sans">
-      <Card className=" border-none shadow-none">
+      <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
         <CardHeader>
-          <CardTitle className="text-4xl ">Installation</CardTitle>
+          <CardTitle className="text-4xl text-black dark:text-white">Installation</CardTitle>
         </CardHeader>
-        <CardContent className=" text-zinc-600 dark:text-zinc-400">
+        <CardContent>
           <p>
             Simply copy the following command and head towards your project
             terminal.
@@ -44,7 +44,7 @@ export default function Installation() {
           <Code fileName="env" codeString="Red_Key=YOUR_REDSHIELD_API_KEY" />
           </div>
         </CardContent>
-        <CardFooter className="flex-col items-start  text-zinc-600 dark:text-zinc-400">
+        <CardFooter className="flex-col items-start">
           <p>Keep the api keys confidential and make sure they aren't publically exposed. 
             Exposing them will give your project access to others.
           </p> <br />
@@ -55,7 +55,7 @@ export default function Installation() {
         <Link href={"/Docs/GetStarted"}>
           <Button
             variant={"outline"}
-            className="w-[100px] dark:border-[#171717]"
+            className="w-[100px] dark:border-[#171717] rounded-none "
           >
             Prev
           </Button>
@@ -63,7 +63,7 @@ export default function Installation() {
         <Link href={"/Docs/Configure"}>
           <Button
             variant={"outline"}
-            className="w-[100px] dark:border-[#171717]"
+            className="w-[100px] dark:border-[#171717] rounded-none"
           >
             Next
           </Button>

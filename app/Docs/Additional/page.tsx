@@ -48,16 +48,16 @@ export default Dashboard;`
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
-          <Card className=" border-none shadow-none">
+          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl">Additional</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-4xl text-black dark:text-white">Additional</CardTitle>
+              <CardDescription className="text-zinc-900 dark:text-zinc-200">
                 These are underhood methods used in redshield. You can always
                 have a custom logic for your app using these methods.
               </CardDescription>
             </CardHeader>
-            <CardContent className=" text-zinc-600 dark:text-zinc-400">
-              <h2 className="text-3xl">1. getSession()</h2>
+            <CardContent>
+              <h2 className="text-3xl text-black dark:text-white">1. getSession()</h2>
               <br />
               <p>
                 This method returns the object which has information related to
@@ -69,8 +69,8 @@ export default Dashboard;`
               <br />
               <Code fileName="Protected/page.tsx" codeString={getSessionCode} />
             </CardContent>
-            <CardFooter className="flex-col items-start  text-zinc-600 dark:text-zinc-400">
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            <CardFooter className="flex-col items-start">
+              <p className="text-sm">
                 Note :{" "}
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
                   getSession()
@@ -80,9 +80,9 @@ export default Dashboard;`
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none  text-zinc-600 dark:text-zinc-400">
+          <Card className=" border-none shadow-none  text-zinc-900 dark:text-zinc-100">
             <CardContent>
-              <h2 className="text-3xl">2. LogOut()</h2>
+              <h2 className="text-3xl text-black dark:text-white">2. LogOut()</h2>
               <br />
               <p>
                 This function as per the name logs the user out. Usage is simple
@@ -92,7 +92,7 @@ export default Dashboard;`
               <Code fileName="/Dashboard/page.tsx" codeString={logOutCode} />
             </CardContent>
             <CardFooter className="flex-col items-start">
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm">
                 Note :{" "}
                 
                 You can always use the inbuilt <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
