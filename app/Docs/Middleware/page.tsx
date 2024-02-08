@@ -37,7 +37,7 @@ import { getSession } from "redshield/actions/auth";
   }
   export const config = {
       //add routes in matcher array to protect them from unauthenticated users
-    matcher: ["/Protected", "/Auth" ],
+    matcher: ["/", "/Auth" ],
   };
   `;
   //end of middleware code
@@ -77,6 +77,7 @@ import { getSession } from "redshield/actions/auth";
                 according to your need to secure the pages.
               </p>
               <br />
+              <p className="text-sm">Note : Remember to restart the development server after implementing the middleware</p><br />
               <b>Congratulations your app now have authentication.</b>
             </CardFooter>
           </Card>

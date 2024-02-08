@@ -37,8 +37,7 @@ export default function Code({
         </div>
       </div>
       <SyntaxHighlighter
-      showInlineLineNumbers={true}
-        className="border-x-2 border-b-2 border-zinc-500 dark:border-zinc-700 w-full rounded-[0px_0px_5px_5px]"
+        className="border-x-2 border-b-2 border-zinc-500 dark:border-zinc-700 w-full rounded-[0px_0px_5px_5px] leading-6"
         language="javascript"
         style={a11yDark}
       >

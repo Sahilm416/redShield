@@ -30,8 +30,8 @@ const ProtectedPage = async () => {
   )
 }
 export default ProtectedPage;`;
-// logOut example code
-const logOutCode = `import { logOut } from "redshield/actions/auth";
+  // logOut example code
+  const logOutCode = `import { logOut } from "redshield/actions/auth";
 
 const Dashboard = () => {
   const LogOutUser = async () => {
@@ -43,21 +43,25 @@ const Dashboard = () => {
     </div>
   )
 }
-export default Dashboard;`
+export default Dashboard;`;
   return (
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
           <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-white">Additional</CardTitle>
+              <CardTitle className="text-4xl text-black dark:text-white">
+                Additional
+              </CardTitle>
               <CardDescription className="text-zinc-900 dark:text-zinc-200">
                 These are underhood methods used in redshield. You can always
                 have a custom logic for your app using these methods.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <h2 className="text-3xl text-black dark:text-white">1. getSession()</h2>
+              <h2 className="text-3xl text-black dark:text-white">
+                1. getSession()
+              </h2>
               <br />
               <p>
                 This method returns the object which has information related to
@@ -75,29 +79,7 @@ export default Dashboard;`
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
                   getSession()
                 </span>{" "}
-                returns a promise so always remember to use it in async
-                components i.e. server components.
-              </p>
-            </CardFooter>
-          </Card>
-          <Card className=" border-none shadow-none  text-zinc-900 dark:text-zinc-100">
-            <CardContent>
-              <h2 className="text-3xl text-black dark:text-white">2. LogOut()</h2>
-              <br />
-              <p>
-                This function as per the name logs the user out. Usage is simple
-                as all you need is to call this function on onclick event of a
-                button or any element.
-              </p><br />
-              <Code fileName="/Dashboard/page.tsx" codeString={logOutCode} />
-            </CardContent>
-            <CardFooter className="flex-col items-start">
-              <p className="text-sm">
-                Note :{" "}
-                
-                You can always use the inbuilt <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-                LogOutButton 
-                </span>{" "} for that purpose.
+                returns a promise.
               </p>
             </CardFooter>
           </Card>

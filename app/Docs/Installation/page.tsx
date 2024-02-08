@@ -41,7 +41,7 @@ export default function Installation() {
           </p>
           <br />
           <div className="max-w-[400px]">
-          <Code fileName=".env" codeString="Red_Key=YOUR_REDSHIELD_API_KEY" />
+          <Code fileName=".env" codeString="Red_key=YOUR_REDSHIELD_API_KEY" />
           </div>
         </CardContent>
         <CardFooter className="flex-col items-start">

@@ -43,10 +43,11 @@ export default ResetPassword;`;
   //ends the reset pass string
 
   //LogOutButton example code
-  const LogOutButtonCode = `import LogOutButton from "redshield/components/LogOutButton";
+  const LogOutButtonCode = `"use client"
+import LogOutButton from "redshield/components/LogOutButton";
 
 const LogOutComponent = () => {
-    return <LogOutButton/>
+    return <LogOutButton className="" />
   }
 export default LogOutComponent;`;
   return (
@@ -55,7 +56,9 @@ export default LogOutComponent;`;
         <div>
           <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-white">Configure</CardTitle>
+              <CardTitle className="text-4xl text-black dark:text-white">
+                Configure
+              </CardTitle>
               <CardDescription className="text-zinc-900 dark:text-zinc-200">
                 Follow each step to make everything work.
               </CardDescription>
@@ -87,23 +90,37 @@ export default LogOutComponent;`;
           </Card>
           <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardContent>
-              <p className="text-3xl text-black dark:text-white">2. LogOutButton</p>
+              <p className="text-3xl text-black dark:text-white">
+                2. LogOutButton
+              </p>
               <br />
               <p>
                 This is inbuilt unstyled logout button from redshield. You can
                 completely customize this button into your desired style.
                 Following is example code for this component:
-              </p><br />
+              </p>
+              <br />
               <Code
                 fileName="LogOutComponent.tsx"
                 codeString={LogOutButtonCode}
               />
             </CardContent>
-            <CardFooter className="flex-col items-start"></CardFooter>
+            <CardFooter className="flex-col items-start">
+              <p className="text-sm">
+                Note : Always user{" "}
+                <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
+                  LogOutButton
+                </span>{" "}
+                in client component as it isn't supported on SSR
+              </p>
+            </CardFooter>
           </Card>
           <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
             <CardContent>
-              <p className="text-3xl text-black dark:text-white">3. ResetPassPage</p><br />
+              <p className="text-3xl text-black dark:text-white">
+                3. ResetPassPage
+              </p>
+              <br />
               <p>
                 Now create a{" "}
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
