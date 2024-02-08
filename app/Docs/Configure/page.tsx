@@ -13,10 +13,9 @@ import Code from "@/components/Code";
 export default function GettingStarted() {
   //code to show for auth page
   const AuthCode = `import { getProject } from "redshield/actions/auth";
-
 import AuthPage from "redshield/Auth";
-  const Auth = async () => {
-  //method that returns the project info by reading env key
+
+const Auth = async () => {
   const res = await getProject();
   return (
     <div>
