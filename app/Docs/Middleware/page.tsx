@@ -14,7 +14,7 @@ export default function Middleware() {
   const middlewareCode = `import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "redshield/actions/auth";
   
-  export async function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     const session = await getSession();
     //if already authenticated then redirect back to desired page
@@ -34,12 +34,11 @@ import { getSession } from "redshield/actions/auth";
       url.pathname = "/Auth";
       return NextResponse.redirect(url);
     }
-  }
-  export const config = {
+}
+export const config = {
       //add routes in matcher array to protect them from unauthenticated users
     matcher: ["/", "/Auth" ],
-  };
-  `;
+};`;
   //end of middleware code
 
   return (
