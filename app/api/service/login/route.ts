@@ -56,7 +56,6 @@ export const POST = async (request: Request) => {
     );
       setCookie("_auth_token", JWTtoken, {
       cookies,
-      expires: date,
       httpOnly: true,
       sameSite:'Lax'
     });
