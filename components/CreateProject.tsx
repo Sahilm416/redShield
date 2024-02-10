@@ -15,8 +15,8 @@ import { createNewProject } from "@/app/actions/project";
 import { validateInput } from "@/app//actions/checks";
 import { toast } from "sonner";
 import { useState } from "react";
-import { Oval } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 export default function CreateProject() {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
@@ -109,15 +109,7 @@ export default function CreateProject() {
             className="sm:w-[200px] sm:ml-auto w-full rounded-none"
           >
             {loading ? (
-              <Oval
-                visible={true}
-                height="25"
-                width="25"
-                strokeWidth="5"
-                color="white"
-                ariaLabel="oval-loading"
-                secondaryColor="black"
-              />
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
               "create project"
             )}

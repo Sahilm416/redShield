@@ -13,10 +13,10 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Dispatch, SetStateAction, useState } from "react";
-import { Oval } from "react-loader-spinner";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { sendResetPasswordLink } from "@/app/actions/resetPassword";
+import { Loader2 } from "lucide-react";
 export default function LoginCard() {
   const [loading, setLoading] = useState<boolean>(false);
   const [forgotPassword, setForgotPassword] = useState<boolean>(false);
@@ -78,15 +78,7 @@ export default function LoginCard() {
                 type="submit"
               >
                 {loading ? (
-                  <Oval
-                    visible={true}
-                    height="25"
-                    width="25"
-                    strokeWidth="5"
-                    color="white"
-                    ariaLabel="oval-loading"
-                    secondaryColor="black"
-                  />
+                  <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
                 ) : (
                   "login"
                 )}
@@ -141,15 +133,7 @@ function ForgotPasswordComponent({setForgotPassword}:{setForgotPassword:Dispatch
           </Button>
           <Button className=" rounded-none w-full">
             {resetPassLoading ? (
-              <Oval
-                visible={true}
-                height="25"
-                width="25"
-                strokeWidth="5"
-                color="white"
-                ariaLabel="oval-loading"
-                secondaryColor="black"
-              />
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
               "Send link"
             )}

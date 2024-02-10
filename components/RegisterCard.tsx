@@ -15,8 +15,9 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { checkPassword } from "@/app/actions/checks";
 import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
-import { Oval } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+
 
 export default function RegisterCard() {
   const [formCount, setFormCount] = useState<1 | 2 | 3>(1);
@@ -81,15 +82,7 @@ const Form1 = ({
         <CardFooter>
           <Button disabled={loading} type="submit" className="w-full rounded-none">
             {loading ? (
-              <Oval
-                visible={true}
-                height="25"
-                width="25"
-                strokeWidth="5"
-                color="white"
-                ariaLabel="oval-loading"
-                secondaryColor="black"
-              />
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
               "continue"
             )}
@@ -145,15 +138,7 @@ const Form2 = ({
           </Button>
           <Button disabled={loading} type="submit" className="w-[50%] rounded-none">
             {loading ? (
-              <Oval
-                visible={true}
-                height="25"
-                width="25"
-                strokeWidth="5"
-                color="white"
-                ariaLabel="oval-loading"
-                secondaryColor="black"
-              />
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
               "submit"
             )}
@@ -209,15 +194,7 @@ const Form3 = ({ email }: { email: string }) => {
         <CardFooter>
           <Button disabled={loading} type="submit" className="w-full rounded-none">
             {loading ? (
-              <Oval
-                visible={true}
-                height="25"
-                width="25"
-                strokeWidth="5"
-                color="white"
-                ariaLabel="oval-loading"
-                secondaryColor="black"
-              />
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
               "create account"
             )}

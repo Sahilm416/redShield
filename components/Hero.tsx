@@ -1,9 +1,9 @@
 "use client";
 import Command from "./Command";
+import { Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useState } from "react";
-import { Oval } from "react-loader-spinner";
 export default function HeroComponent() {
   const [loading, setLoading] = useState<boolean>(false);
   return (
@@ -39,15 +39,7 @@ export default function HeroComponent() {
                 <Link onClick={() => setLoading(true)} href={"/Dashboard"}>
                   <Button className="rounded-none md:w-[200px] w-[35vw] h-[45px]">
                     {loading ? (
-                      <Oval
-                        visible={true}
-                        height="25"
-                        width="25"
-                        strokeWidth="5"
-                        color="white"
-                        ariaLabel="oval-loading"
-                        secondaryColor="black"
-                      />
+                      <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
                     ) : (
                       "Get Started"
                     )}

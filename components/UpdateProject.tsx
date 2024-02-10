@@ -14,7 +14,8 @@ import { useRouter } from "next/navigation";
 import { updateProject } from "@/app/actions/project";
 import { validateInput } from "@/app/actions/checks";
 import { toast } from "sonner";
-import { Oval } from "react-loader-spinner";
+import { Loader2 } from "lucide-react";
+
 
 type projectData = {
   id: string;
@@ -95,15 +96,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
               className="w-[150px] rounded-none"
             >
               {loading ? (
-                <Oval
-                  visible={true}
-                  height="25"
-                  width="25"
-                  strokeWidth="5"
-                  color="white"
-                  ariaLabel="oval-loading"
-                  secondaryColor="black"
-                />
+                <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
               ) : (
                 "save"
               )}

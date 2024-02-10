@@ -13,8 +13,8 @@ import { updateUser } from "@/app/actions/user";
 import { toast } from "sonner";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Oval } from "react-loader-spinner";
 import { sendResetPasswordLink } from "@/app/actions/resetPassword";
+import { Loader2 } from "lucide-react";
 type User = {
   first_name?: string;
   last_name?: string;
@@ -154,15 +154,7 @@ export default function UpdateUser({ user }: { user: User }) {
             className="w-full rounded-none bg-red-700 text-white "
           >
             {resetPassLoading ? (
-              <Oval
-                visible={true}
-                height="25"
-                width="25"
-                strokeWidth="5"
-                color="white"
-                ariaLabel="oval-loading"
-                secondaryColor="black"
-              />
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
               "Request Password change"
             )}
@@ -182,15 +174,7 @@ export default function UpdateUser({ user }: { user: User }) {
               className="w-full rounded-none"
             >
               {saveLoading ? (
-                <Oval
-                  visible={true}
-                  height="25"
-                  width="25"
-                  strokeWidth="5"
-                  color="white"
-                  ariaLabel="oval-loading"
-                  secondaryColor="black"
-                />
+                <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
               ) : (
                 "save"
               )}

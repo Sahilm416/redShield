@@ -13,9 +13,9 @@ import { Button } from "@/components/ui/button";
 import { checkPassword } from "@/app/actions/checks";
 import { toast } from "sonner";
 import { useState } from "react";
-import { Oval } from "react-loader-spinner";
 import { useRouter } from "next/navigation";
 import { changePassword } from "@/app/actions/resetPassword";
+import { Loader2 } from "lucide-react";
 
 export default function ResetPassComponent({ email , token}: { email: string , token: string}) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -77,15 +77,7 @@ export default function ResetPassComponent({ email , token}: { email: string , t
               className=" w-[150px] rounded-none"
             >
               {loading ? (
-                <Oval
-                  visible={true}
-                  height="25"
-                  width="25"
-                  strokeWidth="5"
-                  color="white"
-                  ariaLabel="oval-loading"
-                  secondaryColor="black"
-                />
+                <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
               ) : (
                 "Save"
               )}

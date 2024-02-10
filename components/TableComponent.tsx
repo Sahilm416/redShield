@@ -12,8 +12,7 @@ import {
 import { deleteUser } from "@/app/actions/user";
 import { Button } from "./ui/button";
 import { useState } from "react";
-import { Oval } from "react-loader-spinner";
-import {MoreHorizontal} from "lucide-react"
+import {Loader2, MoreHorizontal} from "lucide-react"
 export default async function TableComponent({
   email,
   i,
@@ -68,15 +67,7 @@ export default async function TableComponent({
               onClick={removeUser}
             >
               {loading ? (
-                <Oval
-                  visible={true}
-                  height="25"
-                  width="25"
-                  strokeWidth="5"
-                  color="white"
-                  ariaLabel="oval-loading"
-                  secondaryColor="black"
-                />
+                <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
               ) : (
                 "Delete"
               )}
