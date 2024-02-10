@@ -54,7 +54,12 @@ export const POST = async (request: Request) => {
       process.env.JWT_SECRET_KEY!
     );
     const cookieStore = cookies();
-    cookieStore.set("_auth_token", JWTtoken);
+    cookieStore.set("_auth_token", JWTtoken, {
+      expires: date,
+      httpOnly: true,
+      sameSite: true,
+      priority: "high",
+    });
     return NextResponse.json({
       status: true,
       message: "Login success",
