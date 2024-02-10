@@ -7,6 +7,10 @@ interface reqBody {
   email: string;
   password: string;
 }
+//make it run on edge
+export const config = {
+  runtime: 'edge',
+};
 
 export const POST = async (request: Request) => {
   const data: reqBody = await request.json();
