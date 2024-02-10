@@ -2,7 +2,7 @@ const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
-const { setCookie } = require("cookies-next");
+// const { setCookie } = require("cookies-next");
 const { cookies } = require("next/headers");
 
 interface reqBody {
@@ -11,7 +11,7 @@ interface reqBody {
   project_id: string;
 }
 
-export const POST = async (request: Request , response : Response) => {
+export const POST = async (request: Request, response: Response) => {
   const pipeline = db.pipeline();
   const key = request.headers.get("authorization") as string;
   const { email, password, project_id } = (await request.json()) as reqBody;
@@ -54,17 +54,18 @@ export const POST = async (request: Request , response : Response) => {
       },
       process.env.JWT_SECRET_KEY!
     );
-      setCookie("_auth_token", JWTtoken, {
-      cookies,
+    const cookieStore = cookies(request, response);
+
+    cookieStore.set("_auth_token", JWTtoken, {
       httpOnly: true,
-      sameSite: 'None',
+      sameSite: "None",
       secure: true,
-      maxAge: date.getTime()
+      maxAge: date.getTime(),
     });
     return NextResponse.json({
       status: true,
-      message: "login success"
-    })
+      message: "login success",
+    });
   } else {
     const loginFailedAttempts = res[1] || 0;
     await db.set(
