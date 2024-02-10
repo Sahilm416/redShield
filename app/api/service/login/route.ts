@@ -58,6 +58,7 @@ export const POST = async (request: Request , response : Response) => {
       cookies,
       httpOnly: true,
       sameSite: 'None',
+      secure: true,
       maxAge: date.getTime()
     });
     return NextResponse.json({
