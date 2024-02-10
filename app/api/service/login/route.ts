@@ -11,7 +11,7 @@ interface reqBody {
   project_id: string;
 }
 
-export const POST = async (request: Request) => {
+export const POST = async (request: Request , response : Response) => {
   const pipeline = db.pipeline();
   const key = request.headers.get("authorization") as string;
   const { email, password, project_id } = (await request.json()) as reqBody;
@@ -54,11 +54,11 @@ export const POST = async (request: Request) => {
       },
       process.env.JWT_SECRET_KEY!
     );
-      setCookie({NextResponse},"_auth_token", JWTtoken, {
+      setCookie("_auth_token", JWTtoken, {
       cookies,
       httpOnly: true,
-      sameSite:'Lax',
-      expires: date
+      sameSite: 'Lax',
+      maxAge: date.getTime()
     });
     return NextResponse.json({
       status: true,
