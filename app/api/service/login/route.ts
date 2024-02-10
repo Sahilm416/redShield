@@ -54,10 +54,11 @@ export const POST = async (request: Request) => {
       },
       process.env.JWT_SECRET_KEY!
     );
-      setCookie("_auth_token", JWTtoken, {
+      setCookie({NextResponse},"_auth_token", JWTtoken, {
       cookies,
       httpOnly: true,
-      sameSite:'Lax'
+      sameSite:'Lax',
+      expires: date
     });
     return NextResponse.json({
       status: true,
