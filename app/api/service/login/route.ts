@@ -58,6 +58,7 @@ export const POST = async (request: Request) => {
       cookies,
       expires: date,
       httpOnly: true,
+      sameSite:'Lax'
     });
     return NextResponse.json({
       status: true,
