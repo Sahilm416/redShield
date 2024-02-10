@@ -57,7 +57,7 @@ export const POST = async (request: Request , response : Response) => {
       setCookie("_auth_token", JWTtoken, {
       cookies,
       httpOnly: true,
-      sameSite: 'Lax',
+      sameSite: 'None',
       maxAge: date.getTime()
     });
     return NextResponse.json({
