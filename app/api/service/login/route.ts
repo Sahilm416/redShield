@@ -2,7 +2,8 @@ const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
-import { cookies } from "next/headers";
+const { setCookie } = require("cookies-next");
+const { cookies } = require("next/headers");
 
 interface reqBody {
   email: string;
@@ -53,17 +54,16 @@ export const POST = async (request: Request) => {
       },
       process.env.JWT_SECRET_KEY!
     );
-    const cookieStore = cookies();
-    cookieStore.set("_auth_token", JWTtoken, {
+      setCookie("_auth_token", JWTtoken, {
+      cookies,
       expires: date,
       httpOnly: true,
       sameSite: true,
-      priority: "high",
     });
     return NextResponse.json({
       status: true,
-      message: "Login success",
-    });
+      message: "login success"
+    })
   } else {
     const loginFailedAttempts = res[1] || 0;
     await db.set(
