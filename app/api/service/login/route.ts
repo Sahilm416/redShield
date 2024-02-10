@@ -2,74 +2,73 @@ const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
+import { cookies } from "next/headers";
 
 interface reqBody {
   email: string;
   password: string;
+  project_id: string;
 }
-//make it run on edge
-export const runtime = "edge"
 
 export const POST = async (request: Request) => {
-  const data: reqBody = await request.json();
+  const pipeline = db.pipeline();
   const key = request.headers.get("authorization") as string;
-  const { project_id } = await db.get("API_KEY:" + key);
+  const { email, password, project_id } = (await request.json()) as reqBody;
 
-  if (!project_id) {
-    console.log("unauthorized key");
-    return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
+  pipeline.get("API_KEY:" + key);
+  pipeline.get(`${project_id}:${email}:loginFailed`) || 0;
+  pipeline.get(`${project_id}:${email}:user`);
+
+  const res = await pipeline.exec();
+
+  if (!res[0]) {
+    return NextResponse.json({
+      status: false,
+      message: "unauthorized key",
+    });
+  }
+  if (res[1] > 9) {
+    return NextResponse.json({
+      status: false,
+      message: "Too many failed login attempts try after 10 mins",
+    });
+  }
+  if (!res[2]) {
+    return NextResponse.json({
+      status: false,
+      message: "not found",
+    });
+  }
+  const isAuth = await bcrypt.compare(password, res[2].password);
+
+  if (isAuth) {
+    const date = new Date();
+    date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const JWTtoken = await sign(
+      {
+        email: res[2].email,
+        project_id: project_id,
+        pwd_version: res[2].pwd_version,
+        expires: date.getTime(),
+      },
+      process.env.JWT_SECRET_KEY!
+    );
+    const cookieStore = cookies();
+    cookieStore.set("_auth_token", JWTtoken);
+    return NextResponse.json({
+      status: true,
+      message: "Login success",
+    });
   } else {
-    //check if too many failed login attempts
-    const loginFailedAttempts: number =
-      (await db.get(`${project_id}:${data.email}:loginFailed`)) || 0;
-      //check excides failed login attempts
-    if (loginFailedAttempts > 9) {
-      return NextResponse.json({
-        status: false,
-        message: "Too many failed login attempts try after 10 mins",
-      });
-    }
-    const searchKey = project_id + ":" + data.email + ":user";
-    const user = await db.get(searchKey);
-
-    if (user) {
-      const isAuth = await bcrypt.compare(data.password, user.password);
-
-      if (isAuth) {
-        const date = new Date();
-        date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
-        const JWTtoken = await sign(
-          {
-            email: user.email,
-            project_id: project_id,
-            pwd_version: user.pwd_version,
-            expires: date.getTime(),
-          },
-          process.env.JWT_SECRET_KEY!
-        );
-
-        return NextResponse.json({
-          status: true,
-          message: "Login Success",
-          token: JWTtoken,
-        });
-      } else {
-        //login fail count 
-        await db.set(
-          `${project_id}:${data.email}:loginFailed`,
-          loginFailedAttempts + 1,
-          { ex: 600 }
-        );
-        return NextResponse.json({
-          status: false,
-          message: "Invalid credentials",
-        });
-      }
-    } else {
-      return NextResponse.json({
-        status: false,
-        message: "Invalid credentials",
-      });
-    }
+    const loginFailedAttempts = res[1] || 0;
+    await db.set(
+      `${project_id}:${email}:loginFailed`,
+      loginFailedAttempts + 1,
+      { ex: 600 }
+    );
+    return NextResponse.json({
+      status: false,
+      message: "Invalid  credentials",
+    });
   }
 };
