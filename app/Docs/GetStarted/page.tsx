@@ -16,15 +16,15 @@ export default function GettingStarted() {
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col font-sans px-2">
         <div>
-          <Card id="getting_started" className="border-none shadow-none text-zinc-900 dark:text-zinc-100 leading-7">
+          <Card id="getting_started" className="border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-white">Getting Started</CardTitle>
+              <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">Getting Started</CardTitle>
               <CardDescription className="text-zinc-900 dark:text-zinc-100">
                 Implement authentication in minutes.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl text-black dark:text-white">Introduction</p>
+              <p className="text-3xl text-black dark:text-[#FFFFFF]">Introduction</p>
               <br />
               <p>
                 Redshild is a simple authentication SDK that provides everything
@@ -75,9 +75,9 @@ export default function GettingStarted() {
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
+          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
             <CardContent className="max-w-[600px]">
-              <p className="text-3xl text-black dark:text-white">Create account</p>
+              <p className="text-3xl text-black dark:text-[#FFFFFF]">Create account</p>
               <br />
               <p>
                 Go to{" "}

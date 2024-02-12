@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { a11yDark, irBlack } from "react-syntax-highlighter/dist/esm/styles/hljs";
 export default function Code({
   codeString,
   fileName,
@@ -25,7 +25,7 @@ export default function Code({
 
   return (
     <div className="flex flex-col w-full">
-      <div className="w-full border-2 border-zinc-500 dark:border-zinc-700 p-2 bg-[#2B2B2B] text-white flex justify-between rounded-[5px_5px_0px_0px]">
+      <div className="w-full border-2 border-zinc-500 dark:border-zinc-700 p-2 bg-black text-white flex justify-between rounded-[5px_5px_0px_0px]">
         <p className="text-zinc-200 text-sm">{fileName}</p>
         <div className=" cursor-pointer" onClick={handleCopyToClipboard}>
           {" "}
@@ -39,7 +39,7 @@ export default function Code({
       <SyntaxHighlighter
         className="border-x-2 border-b-2 border-zinc-500 dark:border-zinc-700 w-full rounded-[0px_0px_5px_5px] leading-6"
         language="javascript"
-        style={a11yDark}
+        style={irBlack}
       >
         {codeString}
       </SyntaxHighlighter>

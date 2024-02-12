@@ -53,9 +53,9 @@ export default LogOutComponent;`;
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
-          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
+          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-white">
+              <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">
                 Configure
               </CardTitle>
               <CardDescription className="text-zinc-900 dark:text-zinc-200">
@@ -63,7 +63,7 @@ export default LogOutComponent;`;
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl text-black dark:text-white">1. AuthPage</p>
+              <p className="text-3xl text-black dark:text-[#FFFFFF]">1. AuthPage</p>
               <br />
               Create{" "}
               <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
@@ -87,9 +87,9 @@ export default LogOutComponent;`;
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
+          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
             <CardContent>
-              <p className="text-3xl text-black dark:text-white">
+              <p className="text-3xl text-black dark:text-[#FFFFFF]">
                 2. LogOutButton
               </p>
               <br />
@@ -114,9 +114,9 @@ export default LogOutComponent;`;
               </p>
             </CardFooter>
           </Card>
-          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
+          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
             <CardContent>
-              <p className="text-3xl text-black dark:text-white">
+              <p className="text-3xl text-black dark:text-[#FFFFFF]">
                 3. ResetPassPage
               </p>
               <br />

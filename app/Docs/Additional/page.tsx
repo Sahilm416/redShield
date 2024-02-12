@@ -48,9 +48,9 @@ export default Dashboard;`;
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
         <div>
-          <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
+          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
             <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-white">
+              <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">
                 Additional
               </CardTitle>
               <CardDescription className="text-zinc-900 dark:text-zinc-200">

@@ -13,9 +13,9 @@ import Code from "@/components/Code";
 export default function Installation() {
   return (
     <div className="w-full min-h-[calc(100vh-60px)] px-2 flex flex-col font-sans">
-      <Card className=" border-none shadow-none dark:text-zinc-100 leading-7">
+      <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
         <CardHeader>
-          <CardTitle className="text-4xl text-black dark:text-white">Installation</CardTitle>
+          <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">Installation</CardTitle>
         </CardHeader>
         <CardContent>
           <p>
