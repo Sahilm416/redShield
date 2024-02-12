@@ -24,7 +24,7 @@ export default function HeroComponent() {
 
         <div className="w-full flex flex-col justify-end items-center mb-[7vw] mt-[7vw]">
           <div className="h-full w-full border border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] flex flex-col items-center">
-            <h1 className="text-[max(48px,min(5vw,72px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-[#EDEDED] dark:via-[#EDEDED]/80 dark:to-[#EDEDED]/90 border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-8 leading-none">
+            <h1 className="text-[max(48px,min(5vw,72px))] w-full xs:text-white font-[800] text-center bg-clip-text text-transparent bg-gradient-to-b from-[#171717]/70 via-[#171717]/90 to-[#171717] dark:from-white/40 dark:via-white dark:to-white border-b border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-8 leading-none">
               Redis based Auth for Next
             </h1>
 
