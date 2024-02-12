@@ -8,7 +8,6 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 
 export default function GettingStarted() {
@@ -16,15 +15,22 @@ export default function GettingStarted() {
     <>
       <div className="w-full min-h-[calc(100vh-60px)] flex flex-col font-sans px-2">
         <div>
-          <Card id="getting_started" className="border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
+          <Card
+            id="getting_started"
+            className="border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7"
+          >
             <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">Getting Started</CardTitle>
+              <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">
+                Getting Started
+              </CardTitle>
               <CardDescription className="text-zinc-900 dark:text-zinc-100">
                 Implement authentication in minutes.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl text-black dark:text-[#FFFFFF]">Introduction</p>
+              <p className="text-3xl text-black dark:text-[#FFFFFF]">
+                Introduction
+              </p>
               <br />
               <p>
                 Redshild is a simple authentication SDK that provides everything
@@ -51,9 +57,9 @@ export default function GettingStarted() {
                 authentication but we also provide user management for more
                 effortless experience. <br />
                 We are currently at{" "}
-                <Badge className="bg-red-50 text-red-700 border-red-700 hover:bg-red-50">
+                <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
                   alpha
-                </Badge>{" "}
+                </span>{" "}
                 release so using this in large scale production apps is not
                 recommended. Until stable release, you can try redshield and
                 play with it. <br />
@@ -77,7 +83,9 @@ export default function GettingStarted() {
           </Card>
           <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
             <CardContent className="max-w-[600px]">
-              <p className="text-3xl text-black dark:text-[#FFFFFF]">Create account</p>
+              <p className="text-3xl text-black dark:text-[#FFFFFF]">
+                Create account
+              </p>
               <br />
               <p>
                 Go to{" "}
@@ -107,7 +115,8 @@ export default function GettingStarted() {
               variant={"outline"}
               className="w-[100px] dark:border-[#171717] group/btn flex gap-2 rounded-none hover:bg-transparent"
             >
-              Next {" "} <ArrowRight className=" relative left-0 group-hover/btn:left-1 transition-all fade-in-100"/>
+              Next{" "}
+              <ArrowRight className=" relative left-0 group-hover/btn:left-1 transition-all fade-in-100" />
             </Button>
           </Link>
         </div>

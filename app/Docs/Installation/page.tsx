@@ -37,7 +37,9 @@ export default function Installation() {
           <br />
           <br />
           <p>
-            Now copy the api key and paste into the env file in below format
+            Now copy the api key and paste into the <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
+                .env
+              </span>{" "} file in below format
           </p>
           <br />
           <div className="max-w-[400px]">

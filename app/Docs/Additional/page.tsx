@@ -59,7 +59,7 @@ export default Dashboard;`;
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <h2 className="text-3xl text-black dark:text-white">
+              <h2 className="text-3xl text-black dark:text-[#FFFFFF]">
                 1. getSession()
               </h2>
               <br />
