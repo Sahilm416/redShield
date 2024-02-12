@@ -79,7 +79,7 @@ export default Dashboard;`;
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
                   getSession()
                 </span>{" "}
-                returns a promise.
+                always returns a promise.
               </p>
             </CardFooter>
           </Card>

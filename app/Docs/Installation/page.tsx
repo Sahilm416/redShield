@@ -50,7 +50,7 @@ export default function Installation() {
           <p>Keep the api keys confidential and make sure they aren't publically exposed. 
             Exposing them will give your project access to others.
           </p> <br />
-          <p>After doing previous steps now your application is ready to configure for authentication</p>
+          <p>After doing previous steps now your application is ready to configure for authentication.</p>
         </CardFooter>
       </Card>
       <div className="w-full flex justify-between p-5 mb-5">

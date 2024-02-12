@@ -106,11 +106,11 @@ export default LogOutComponent;`;
             </CardContent>
             <CardFooter className="flex-col items-start">
               <p className="text-sm">
-                Note : Always user{" "}
+                Note : Always use{" "}
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
                   LogOutButton
                 </span>{" "}
-                in client component as it isn't supported on SSR
+                in client component as it isn't supported in SSR
               </p>
             </CardFooter>
           </Card>
