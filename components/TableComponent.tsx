@@ -13,6 +13,7 @@ import { deleteUser } from "@/app/actions/user";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import {Loader2, MoreHorizontal} from "lucide-react"
+
 export default async function TableComponent({
   email,
   i,
@@ -38,8 +39,8 @@ export default async function TableComponent({
   return (
     <>
       <Drawer>
-        <div className="flex justify-center items-center w-[90vw] gap-2 max-w-[500px]">
-          <div className="w-full flex justify-between items-center p-2 border border-[#EBEBEB] dark:border-[#1F1F1F] mx-2 cursor-pointer gap-5 line-clamp-2">
+        <div className="flex justify-center items-center w-full gap-2 p-2">
+          <div className="w-full flex justify-between items-center p-2 mx-2 cursor-pointer gap-5 line-clamp-2">
             <span className="md:block hidden text-zinc-400">{i + 1 + ") "}</span>
             <p className=" w-full flex justify-start">{email}</p>
             <span className="md:block hidden"><MoreHorizontal /></span>
