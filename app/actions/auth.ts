@@ -28,12 +28,6 @@ export const ValidateAuthToken = async ({ token }: { token: string }) => {
       };
     }
 //check if token is expired
-    if (Date.now() > verifyToken.expires) {
-      return {
-        status: false,
-        message: "expired token",
-      };
-    }
 
     return {
       status: true,

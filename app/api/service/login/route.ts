@@ -43,13 +43,13 @@ export const POST = async (request: Request, response: Response) => {
 
   if (isAuth) {
     const date = new Date();
-    date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+    date.setTime(date.getTime() + 60*2);
     const JWTtoken = await sign(
       {
         email: res[2].email,
         project_id: project_id,
         pwd_version: res[2].pwd_version,
-        expires: date.getTime(),
+        expiresIn: date.getTime(),
       },
       process.env.JWT_SECRET_KEY!
     );
