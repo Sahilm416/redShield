@@ -3,7 +3,6 @@ const { db } = require("@/utils/database/db");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 
-
 interface reqBody {
   email: string;
   password: string;
@@ -42,22 +41,21 @@ export const POST = async (request: Request, response: Response) => {
   const isAuth = await bcrypt.compare(password, res[2].password);
 
   if (isAuth) {
-    const date = new Date();
-    date.setTime(date.getTime() + 60*2);
     const JWTtoken = await sign(
       {
         email: res[2].email,
         project_id: project_id,
         pwd_version: res[2].pwd_version,
-        expiresIn: date.getTime(),
       },
-      process.env.JWT_SECRET_KEY!
+      process.env.JWT_SECRET_KEY!,
+      {
+        expiresIn: "7 days",
+      }
     );
-  
     return NextResponse.json({
       status: true,
       message: "login success",
-      token: JWTtoken
+      token: JWTtoken,
     });
   } else {
     const loginFailedAttempts = res[1] || 0;

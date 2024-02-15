@@ -19,15 +19,13 @@ export const ValidateAuthToken = async ({ token }: { token: string }) => {
       `${verifyToken.project_id}:${verifyToken.email}:user`
     )) as User;
 
-
-//check password version of user
+    //check password version of user
     if (user.pwd_version > verifyToken.pwd_version) {
       return {
         status: false,
         message: "invalid token",
       };
     }
-//check if token is expired
 
     return {
       status: true,
@@ -64,7 +62,7 @@ export const getSession = async () => {
   }
 
   try {
-    const res = await ValidateAuthToken({token: token});
+    const res = await ValidateAuthToken({ token: token });
     return {
       status: res.status,
       message: res.message,
