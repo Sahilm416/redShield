@@ -26,8 +26,8 @@ export default async function Users({ secret }: { secret: string }) {
         <>
           <Card className="bg-zinc-50 dark:bg-zinc-950 rounded-md w-full border border-[#EBEBEB] dark:border-[#1F1F1F] my-5 ">
             <CardHeader className=" bg-zinc-100 dark:bg-zinc-900">
-              <CardTitle className="text-4xl flex items-center gap-5">
-                Users <Badge className="text-lg px-5">{users.length}</Badge>
+              <CardTitle>
+                Users {" "} <span className="text-lg font-normal">( {users.length} )</span>
               </CardTitle>
               
             </CardHeader>
@@ -43,11 +43,11 @@ export default async function Users({ secret }: { secret: string }) {
                 <TableBody>
                   {users.map((user, i) => (
                     <TableRow key={i} className="border-[#EBEBEB] dark:border-[#1F1F1F]">
-                      <TableCell className="font-medium">
+                      <TableCell>
                         {i + 1}
                       </TableCell>
-                      <TableCell className="font-medium cursor-pointer">{user}</TableCell>
-                      <TableCell className="font-medium cursor-pointer"><MailIcon/></TableCell>
+                      <TableCell className=" cursor-pointer">{user}</TableCell>
+                      <TableCell className=" cursor-pointer"><MailIcon className=" w-5"/></TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

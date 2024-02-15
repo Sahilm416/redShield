@@ -37,7 +37,7 @@ export default function ProjectComponent({
     <div className="w-full max-w-[1500px] px-5 flex sm:flex-row flex-col gap-10 justify-between">
       <Card className=" w-full sm:max-w-[600px] bg-zinc-50 dark:bg-zinc-950 select-none rounded-md border-[#EBEBEB] dark:border-[#1F1F1F] shadow-none">
         <CardHeader>
-          <CardTitle className="text-4xl">{res?.name}</CardTitle>
+          <CardTitle>{res?.name}</CardTitle>
           <CardDescription className="">{res?.description}</CardDescription>
         </CardHeader>
         <CardContent>
@@ -77,7 +77,7 @@ export default function ProjectComponent({
       </Card>
       <Card className="w-full bg-zinc-50 dark:bg-zinc-950 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-md">
         <CardHeader>
-          <CardTitle className="text-4xl">Getting Started</CardTitle>
+          <CardTitle>Getting Started</CardTitle>
           <CardDescription className="">setup auth in minutes</CardDescription>
           <CardContent className="p-0 py-3">
             <p className="leading-7">
