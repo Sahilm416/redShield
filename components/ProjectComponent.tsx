@@ -89,7 +89,7 @@ export default function ProjectComponent({
           </CardContent>
           <CardFooter className="p-0">
             <Link href="/Docs/Installation">
-              <Button className="rounded-none w-[200px]">view docs</Button>
+              <Button className="rounded-none">view docs</Button>
             </Link>
           </CardFooter>
         </CardHeader>
