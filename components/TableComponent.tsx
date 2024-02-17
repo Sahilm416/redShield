@@ -1,86 +1,56 @@
 "use client";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { deleteUser } from "@/app/actions/user";
-import { Button } from "./ui/button";
+import { TableCell, TableRow } from "@/components/ui/table";
+import { MailIcon } from "lucide-react";
 import { useState } from "react";
-import {Loader2, MoreHorizontal} from "lucide-react"
-
-export default async function TableComponent({
-  email,
-  i,
-  secret,
+export default function TableComponent({
+  user,
+  srNo,
 }: {
-  email: string;
-  i: number;
-  secret: string;
-}) {
-  const [loading, setLoading] = useState<boolean>(false);
-  
-  const FakeLoad = async ()=>{
-    return;
-  }
-  const removeUser = async () => {
-    await FakeLoad();
-    setLoading(true);
-    await deleteUser({ email: email, secret: secret });
-    setLoading(false);
-    return window.location.reload();
+  user: {
+    email: string;
+    creation_date: string;
+    uid: string;
+    first_name: string;
+    last_name: string;
+    isAdmin: boolean;
   };
-
+  srNo: number;
+}) {
+  const [showUser, setShowUser] = useState<boolean>(false);
+  const handleClick = (e: any, email: string) => {
+    e.preventDefault();
+    setShowUser(true);
+  };
   return (
     <>
-      <Drawer>
-        <div className="flex justify-center items-center w-full gap-2 p-2">
-          <div className="w-full flex justify-between items-center p-2 mx-2 cursor-pointer gap-5 line-clamp-2">
-            <span className="md:block hidden text-zinc-400">{i + 1 + ") "}</span>
-            <p className=" w-full flex justify-start">{email}</p>
-            <span className="md:block hidden"><MoreHorizontal /></span>
-          </div>
-          <DrawerTrigger>
-            <Button variant={"outline"} className="border-red-700 rounded-none">
-              Delete
-            </Button>
-          </DrawerTrigger>
-        </div>
-
-        <DrawerContent className="flex justify-center items-center h-[40vh] dark:bg-black dark:border-[#171717]">
-          <DrawerHeader>
-            <DrawerTitle>Are you sure to delete ?</DrawerTitle>
-            <DrawerDescription className="text-center">
-              This action cannot be undone.
-            </DrawerDescription>
-          </DrawerHeader>
-          This will permenently delete the user{" "}
-          <span className="font-bold">{email}</span>
-          <DrawerFooter className="flex sm:flex-row flex-col mb-10 gap-7">
-            <Button
-              variant={"destructive"}
-              className="w-[200px] rounded-none"
-              onClick={removeUser}
-            >
-              {loading ? (
-                <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
-              ) : (
-                "Delete"
-              )}
-            </Button>
-            <DrawerClose>
-              <Button variant="outline" className="w-[200px] rounded-none dark:border-[#171717]">
-                Cancel
-              </Button>
-            </DrawerClose>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
+      <TableRow
+        onClick={(e) => handleClick(e, user.email)}
+        className={`${
+          user.isAdmin &&
+          "bg-yellow-500 dark:bg-yellow-700 hover:bg-yellow-400 dark:hover:bg-yellow-600"
+        } border-[#EBEBEB] dark:border-[#1F1F1F]`}
+      >
+        <TableCell>{srNo}</TableCell>
+        <TableCell className=" cursor-pointer">{user.email}</TableCell>
+        <TableCell className=" cursor-pointer">
+          {user.first_name || "NA"}
+        </TableCell>
+        <TableCell className=" cursor-pointer">
+          {user.isAdmin ? (
+            <span className="text-green-700 px-2 py-1 bg-green-100 rounded-2xl border border-green-700">
+              Admin
+            </span>
+          ) : (
+            "User"
+          )}
+        </TableCell>
+        <TableCell className=" cursor-pointer">{user.creation_date}</TableCell>
+        <TableCell className=" cursor-pointer">{user.uid}</TableCell>
+        <TableCell className=" cursor-pointer">
+          <MailIcon className=" w-5" />
+        </TableCell>
+      </TableRow>
+    
     </>
   );
 }
