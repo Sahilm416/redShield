@@ -61,9 +61,24 @@ export const deleteUser = async ({
   const { project_id } = (await db.get("API_KEY:" + secret)) as {
     project_id: string;
   };
+  try {
+    const pipeline = db.pipeline();
 
-  await db.del(project_id + ":" + email + ":user");
-  await db.del(project_id + ":" + email + ":projects");
+    pipeline.del(project_id + ":" + email + ":user");
+    pipeline.del(project_id + ":" + email + ":projects");
+
+    await pipeline.exec();
+    return {
+      status: true,
+      message: "User deleted successfully",
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: false,
+      message: "error deleting user",
+    };
+  }
 };
 
 //update user

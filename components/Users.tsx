@@ -31,11 +31,7 @@ export default async function Users({ secret }: { secret: string }) {
       return 0;
     }
   });
-  //handle right click
-
-  const handleRightClick = () => {
-    console.log("clicked right click");
-  };
+ 
   return (
     <div className="flex flex-col justify-center gap-5 items-center w-full max-w-[1500px] px-5 ">
       {users.length < 1 ? (
