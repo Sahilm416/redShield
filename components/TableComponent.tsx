@@ -78,7 +78,7 @@ export default function TableComponent({
                 </span>
               )}
             </DrawerTrigger>
-            <DrawerContent className="dark:bg-black bg-[#ffffff]">
+            <DrawerContent className="dark:bg-black bg-[#ffffff] border-[#EBEBEB] dark:border-[#1F1F1F]">
               <Card className=" rounded-none shadow-none border-0 min-w-[300px] sm:min-w-[400px] max-w-[500px] mx-auto">
                 <CardHeader>
                   <CardTitle>User Setting</CardTitle>
@@ -96,28 +96,28 @@ export default function TableComponent({
                   <div className="flex items-center gap-3">
                     <p className="font-semibold">Role : </p>
                     <Select>
-                      <SelectTrigger className="w-[180px]">
+                      <SelectTrigger className="w-[180px] border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none">
                         <SelectValue
                           placeholder={user.isAdmin ? "Admin" : "user"}
                         />
                       </SelectTrigger>
                       <SelectContent className="bg-white dark:bg-black">
                         <SelectGroup>
-                          <SelectItem value="apple">Admin</SelectItem>
-                          <SelectItem value="banana">User</SelectItem>
+                          <SelectItem value="Admin">Admin</SelectItem>
+                          <SelectItem value="User">User</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
                   </div>
                 </CardContent>
-                <CardFooter className="flex-col gap-3">
-                  <Button disabled={loading} className="rounded-none w-full">
+                <CardFooter className="flex-col gap-5">
+                  <Button disabled={loading} className="rounded-none w-full border-[#EBEBEB] dark:border-[#1F1F1F]">
                     Save
                   </Button>{" "}
                   <DrawerClose className="w-full">
                     <Button
                       variant={"outline"}
-                      className=" border rounded-none w-full"
+                      className=" border rounded-none w-full border-[#EBEBEB] dark:border-[#1F1F1F]"
                     >
                       Cancel
                     </Button>
@@ -143,7 +143,7 @@ export default function TableComponent({
                 </Button>
               </DrawerTrigger>
             )}
-            <DrawerContent className="dark:bg-black bg-[#ffffff]">
+            <DrawerContent className="dark:bg-black bg-[#ffffff] border-[#EBEBEB] dark:border-[#1F1F1F]">
               <Card className=" rounded-none shadow-none border-0 min-w-[300px] sm:min-w-[400px] max-w-[500px] mx-auto">
                 <CardHeader>
                   <CardTitle>Are you sure ?</CardTitle>
@@ -159,7 +159,7 @@ export default function TableComponent({
                     access your application.
                   </p>
                 </CardContent>
-                <CardFooter className="flex-col gap-3">
+                <CardFooter className="flex-col gap-5">
                   <Button
                     disabled={loading}
                     className="rounded-none w-full bg-red-700 text-white hover:bg-red-500"
@@ -169,7 +169,7 @@ export default function TableComponent({
                   <DrawerClose className="w-full">
                     <Button
                       variant={"outline"}
-                      className=" border rounded-none w-full"
+                      className=" border rounded-none w-full border-[#EBEBEB] dark:border-[#1F1F1F]"
                     >
                       Cancel
                     </Button>
