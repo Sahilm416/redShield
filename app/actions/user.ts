@@ -34,6 +34,7 @@ export const getAllUsers = async ({ key }: { key: string }) => {
     const res = await fetch(
       "https://redshield.vercel.app/api/service/getAllUsers",
       {
+        next: { revalidate: 0 },
         headers: {
           Authorization: key,
         },
@@ -130,18 +131,18 @@ export const changeUserRole = async ({
       ...user,
       isAdmin: role === "Admin",
     };
-  
+
     await db.set(`${project_id}:${email}:user`, newUser);
-  
+
     return {
       status: true,
       message: "user role updated successfully",
     };
   } catch (error) {
-    console.log(error)
-    return{
+    console.log(error);
+    return {
       status: false,
-      message: "error updating user role"
-    }
+      message: "error updating user role",
+    };
   }
 };
