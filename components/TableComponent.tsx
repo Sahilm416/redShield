@@ -3,8 +3,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import {
@@ -12,13 +10,12 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { MailIcon } from "lucide-react";
-import { useState } from "react";
+
 import {
   Card,
   CardContent,
@@ -28,10 +25,14 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
+import { changeUserRole } from "@/app/actions/user";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function TableComponent({
   user,
   srNo,
+  secret,
 }: {
   user: {
     email: string;
@@ -42,15 +43,34 @@ export default function TableComponent({
     isAdmin: boolean;
   };
   srNo: number;
+  secret: string;
 }) {
-  const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
+ 
+  const handleRoleChange = async (role:string) => {
+    toast.loading("Updating user role...");
 
+    const res = await changeUserRole({
+      email: user.email,
+      role: role,
+      secret: secret,
+    });
+    if (res.status) {
+      toast.success(res.message);
+      router.refresh();
+    } else {
+      toast.error(res.message);
+    }
+  };
+
+  const fakeLoad = async () => {
+    return;
+  };
   return (
     <>
       <TableRow
         className={`${
-          user.isAdmin &&
-          "bg-yellow-500 dark:bg-yellow-700 hover:bg-yellow-400 dark:hover:bg-yellow-600"
+          user.isAdmin && "bg-blue-600 hover:bg-blue-700 text-white"
         } border-[#EBEBEB] dark:border-[#1F1F1F]`}
       >
         <TableCell>{srNo}</TableCell>
@@ -59,73 +79,34 @@ export default function TableComponent({
 
         <TableCell>{user.first_name || "NA"}</TableCell>
 
-        <TableCell>
-          <Drawer>
-            <DrawerTrigger>
-              {user.isAdmin ? (
-                <span
-                  title="click to set role"
-                  className="text-blue-700 px-2 py-1 bg-blue-100 rounded-2xl border border-blue-700"
-                >
+        <TableCell className="text-black dark:text-white">
+          <Select
+            name="SelectRole"
+            defaultValue={user?.isAdmin ? "Admin" : "User"}
+            onValueChange={(value) => {
+               handleRoleChange(value);
+            }}
+          >
+            <SelectTrigger
+              className={`${
+                user.isAdmin
+                  ? "border-white"
+                  : "border-[#EBEBEB] dark:border-[#1F1F1F]"
+              } w-[180px] rounded-none`}
+            >
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent className=" rounded-none dark:bg-black">
+              <SelectGroup>
+                <SelectItem value="Admin" className=" cursor-pointer">
                   Admin
-                </span>
-              ) : (
-                <span
-                  title="click to set role"
-                  className="text-blue-700 px-2 py-1 bg-blue-100 rounded-2xl border border-blue-700"
-                >
+                </SelectItem>
+                <SelectItem value="User" className=" cursor-pointer">
                   User
-                </span>
-              )}
-            </DrawerTrigger>
-            <DrawerContent className="dark:bg-black bg-[#ffffff] border-[#EBEBEB] dark:border-[#1F1F1F]">
-              <Card className=" rounded-none shadow-none border-0 min-w-[300px] sm:min-w-[400px] max-w-[500px] mx-auto">
-                <CardHeader>
-                  <CardTitle>User Setting</CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-3">
-                  <p className=" font-semibold">
-                    Email : <span className="font-normal">{user.email}</span>
-                  </p>
-                  <p className="font-semibold">
-                    Name :{" "}
-                    <span className="font-normal">
-                      {user.first_name || "NA"}
-                    </span>
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <p className="font-semibold">Role : </p>
-                    <Select>
-                      <SelectTrigger className="w-[180px] border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none">
-                        <SelectValue
-                          placeholder={user.isAdmin ? "Admin" : "user"}
-                        />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-black">
-                        <SelectGroup>
-                          <SelectItem value="Admin">Admin</SelectItem>
-                          <SelectItem value="User">User</SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </CardContent>
-                <CardFooter className="flex-col gap-5">
-                  <Button disabled={loading} className="rounded-none w-full border-[#EBEBEB] dark:border-[#1F1F1F]">
-                    Save
-                  </Button>{" "}
-                  <DrawerClose className="w-full">
-                    <Button
-                      variant={"outline"}
-                      className=" border rounded-none w-full border-[#EBEBEB] dark:border-[#1F1F1F]"
-                    >
-                      Cancel
-                    </Button>
-                  </DrawerClose>
-                </CardFooter>
-              </Card>
-            </DrawerContent>
-          </Drawer>
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </TableCell>
         <TableCell>{user.creation_date}</TableCell>
         <TableCell>{user.uid}</TableCell>
@@ -138,7 +119,10 @@ export default function TableComponent({
               "NA"
             ) : (
               <DrawerTrigger>
-                <Button className="bg-red-700 hover:bg-red-500 text-white rounded-none">
+                <Button
+                  variant={"outline"}
+                  className="border-red-700 hover:bg-transparent rounded-none"
+                >
                   Delete
                 </Button>
               </DrawerTrigger>
@@ -160,10 +144,7 @@ export default function TableComponent({
                   </p>
                 </CardContent>
                 <CardFooter className="flex-col gap-5">
-                  <Button
-                    disabled={loading}
-                    className="rounded-none w-full bg-red-700 text-white hover:bg-red-500"
-                  >
+                  <Button className="rounded-none w-full bg-red-700 text-white hover:bg-red-500">
                     delete
                   </Button>{" "}
                   <DrawerClose className="w-full">

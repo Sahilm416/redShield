@@ -4,12 +4,11 @@ import TableComponent from "./TableComponent";
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { MailIcon } from "lucide-react";
+
 
 export default async function Users({ secret }: { secret: string }) {
   const users = (await getAllUsers({ key: secret })) as [
@@ -68,7 +67,7 @@ export default async function Users({ secret }: { secret: string }) {
                 </TableHeader>
                 <TableBody>
                   {users.map((user, i) => (
-                    <TableComponent key={i} srNo={i+1} user={user}/>
+                    <TableComponent key={i} srNo={i+1} user={user} secret={secret}/>
                   ))}
                 </TableBody>
               </Table>
