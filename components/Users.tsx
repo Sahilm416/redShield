@@ -63,6 +63,7 @@ export default async function Users({ secret }: { secret: string }) {
                     <TableHead className="">Created at</TableHead>
                     <TableHead className="">Uid</TableHead>
                     <TableHead className="">Method</TableHead>
+                    <TableHead className="">Action</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
