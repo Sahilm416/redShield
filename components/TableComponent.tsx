@@ -57,7 +57,7 @@ export default function TableComponent({
     });
     if (res.status) {
       toast.success(res.message);
-      router.refresh();
+      window.location.reload();
     } else {
       toast.error(res.message);
     }
