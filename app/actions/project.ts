@@ -51,9 +51,9 @@ export const createNewProject = async ({
     }
     //random image for project
     const imageLink = await generateUniqueRandomImage({ projects: projects });
-
+    const id = nanoid(10)
     const projectTobeAdded = {
-      id: nanoid(10),
+      id: id,
       image: imageLink,
       name: project_name.trim(),
       description: project_description.trim(),
@@ -73,6 +73,7 @@ export const createNewProject = async ({
       return {
         status: true,
         message: "Project created successfully",
+        id: id
       };
     } else {
       return {

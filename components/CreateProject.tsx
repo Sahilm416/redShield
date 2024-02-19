@@ -52,7 +52,7 @@ export default function CreateProject() {
 
       if (res.status) {
         toast.success(res.message);
-        router.push("/Docs/Installation");
+        router.push(`/Project/${res.id}`);
         return router.refresh();
       } else {
         toast.error(res.message);
