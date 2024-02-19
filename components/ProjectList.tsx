@@ -46,10 +46,30 @@ type Project = {
 
 export default function ProjectList({ projects }: { projects: Project[] }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [disableDelete, setDisableDelete] = useState<boolean>(true);
   const router = useRouter();
   const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleDeleteproject = async ({
+    project,
+  }: {
+    project: { id: string; key: string };
+  }) => {
+    toast.loading("Deleteting project...");
+    const res = await deleteProject({
+      id: project.id,
+      key: project.key,
+    });
+
+    if (res.status) {
+      toast.success(res.message);
+    } else {
+      toast.error(res.message);
+    }
+    return router.refresh();
+  };
 
   return (
     <>
@@ -59,7 +79,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
             <Input
               className="bg-white dark:bg-black rounded-none border border-[#EBEBEB] dark:border-[#1F1F1F]"
               placeholder="Search projects..."
-              value={searchTerm}  
+              value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Link href={"/New"}>
@@ -129,40 +149,56 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       </Link>
                     </CardFooter>
                   </Card>
-                  <AlertDialogContent className=" bg-transparent border-none p-3">
-                    <div className="bg-white/90 dark:bg-black/60 nav border p-4 mx-auto flex flex-col gap-3">
-                      <AlertDialogHeader className="my-2">
-                        <AlertDialogTitle>
-                          Are you absolutely sure?
-                        </AlertDialogTitle>
-                        <AlertDialogDescription className="text-slate-700 dark:text-slate-200">
-                          This action cannot be undone. This will permanently
-                          delete{" "}
-                          <span className=" font-bold text-slate-800 dark:text-white text-md">
-                            {project.name}
-                          </span>{" "}
-                          and remove related data from our servers.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter className="gap-4 place-items-center">
-                        <AlertDialogCancel className=" rounded-none w-[70vw] sm:w-auto">
-                          Cancel
-                        </AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={async () => {
-                            await deleteProject({
-                              id: project.id,
-                              key: project.key,
-                            });
-                            toast.success("Project deleted successfully");
-                            return router.refresh();
-                          }}
-                          className="bg-red-800 text-white dark:hover:text-black rounded-none w-[70vw] sm:w-auto"
-                        >
-                          Delete
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </div>
+                  <AlertDialogContent className="bg-[#ffffff] dark:bg-black border-[#EBEBEB] dark:border-[#1F1F1F]">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Are you absolutely sure?
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <p className=" leading-7">
+                      This will permanently delete project{" "}
+                      <span className="font-semibold text-red-700">
+                        {project.name}
+                      </span>{" "}
+                      and also the related data such as users related to it.{" "}
+                      <br />
+                      Type{" "}
+                      <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
+                        delete project {project.name}
+                      </span>{" "}
+                      <br />
+                      <Input
+                        onPaste={(e) => e.preventDefault()}
+                        onChange={(e) => {
+                          setDisableDelete(
+                            !(
+                              e.target.value ===
+                              `delete project ${project.name}`
+                            )
+                          );
+                          console.log(disableDelete);
+                        }}
+                        name="delete_project"
+                        className="rounded-none mt-3 border-[#EBEBEB] dark:border-[#1F1F1F]"
+                      />
+                    </p>
+                    <AlertDialogFooter className="gap-3">
+                      <AlertDialogCancel className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
+                        Cancel
+                      </AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() =>
+                          handleDeleteproject({ project: project })
+                        }
+                        disabled={disableDelete}
+                        className=" rounded-none bg-red-700 hover:bg-red-600 text-white"
+                      >
+                        delete
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>
               );

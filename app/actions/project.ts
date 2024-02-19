@@ -32,12 +32,12 @@ export const createNewProject = async ({
     const projects = (await db.get(
       data.project_id + ":" + data.email + ":projects"
     )) as projectData[];
-   console.log("")
-    if(projects.length === 10){
-        return ({
-          status: false,
-          message:"Max 10 projects are allowed",
-       })
+    console.log("");
+    if (projects.length === 10) {
+      return {
+        status: false,
+        message: "Max 10 projects are allowed",
+      };
     }
 
     const checkAlreadyExists = projects.some(
@@ -51,7 +51,7 @@ export const createNewProject = async ({
     }
     //random image for project
     const imageLink = await generateUniqueRandomImage({ projects: projects });
-    const id = nanoid(10)
+    const id = nanoid(10);
     const projectTobeAdded = {
       id: id,
       image: imageLink,
@@ -73,7 +73,7 @@ export const createNewProject = async ({
       return {
         status: true,
         message: "Project created successfully",
-        id: id
+        id: id,
       };
     } else {
       return {
@@ -122,11 +122,11 @@ export const deleteProject = async ({
   key: string;
 }) => {
   const session = await getSession();
-  if(!session.status){
+  if (!session.status) {
     return {
-      status:false,
-      message:"session invalid",
-    }
+      status: false,
+      message: "session invalid",
+    };
   }
 
   // Fetch the projects from the database based on the user's session data
@@ -146,40 +146,57 @@ export const deleteProject = async ({
       `${session.data.project_id}:${session.data.email}:projects`,
       projects
     );
-    
+
     //get project id affilated to api key
-    const {project_id} = await db.get(`API_KEY:${key}`) as {project_id: string};
+    const { project_id } = (await db.get(`API_KEY:${key}`)) as {
+      project_id: string;
+    };
     //also delete the api key of project
     await db.del(`API_KEY:${key}`);
     //also delete all the related users of project
     const allUsers = (await db.keys(project_id + ":*:user")) as [string];
- 
-    if(allUsers.length > 0){
-      await db.del(...allUsers); 
+
+    if (allUsers.length > 0) {
+      await db.del(...allUsers);
     }
-    
+
     // Return the updated projects list or any other relevant information
-    return projects;
+    return {
+      status: true,
+      message: "Project deleted successfully",
+    };
   } else {
     // If the project with the given id is not found, you can throw an error or handle it as needed
-    throw new Error(`Project with ID ${id} not found`);
+    return {
+      status: false,
+      message: " Failed to delete project",
+    };
   }
 };
 
-
-export const updateProject = async ({name,description,projectId}:{name:string ,description:string, projectId: string}) => {
+export const updateProject = async ({
+  name,
+  description,
+  projectId,
+}: {
+  name: string;
+  description: string;
+  projectId: string;
+}) => {
   try {
     const session = await getSession();
-    if(!session.status){
+    if (!session.status) {
       return {
-        status:false,
-        message:"session invalid",
-      }
+        status: false,
+        message: "session invalid",
+      };
     }
     const userProjectId = session.data.project_id;
 
     // Fetch the existing project list from the database
-    const existingProjectList = await db.get(`${userProjectId}:${session.data.email}:projects`) as projectData[];
+    const existingProjectList = (await db.get(
+      `${userProjectId}:${session.data.email}:projects`
+    )) as projectData[];
     const checkAlreadyExists = existingProjectList.some(
       (obj) => obj.name === name
     );
@@ -190,38 +207,42 @@ export const updateProject = async ({name,description,projectId}:{name:string ,d
       };
     }
     // Find the index of the project with the specified ID in the array
-    const projectIndex = existingProjectList.findIndex((p) => p.id === projectId);
+    const projectIndex = existingProjectList.findIndex(
+      (p) => p.id === projectId
+    );
 
     if (projectIndex !== -1) {
       // Update project properties with form data
       const updatedProject: projectData = {
         ...existingProjectList[projectIndex],
         name: name || existingProjectList[projectIndex].name,
-        description: description || existingProjectList[projectIndex].description,
-
+        description:
+          description || existingProjectList[projectIndex].description,
       };
 
       // Update the project in the array
       existingProjectList[projectIndex] = updatedProject;
 
       // Save the updated project list back to the database
-      await db.set(`${userProjectId}:${session.data.email}:projects`, existingProjectList);
+      await db.set(
+        `${userProjectId}:${session.data.email}:projects`,
+        existingProjectList
+      );
 
       return {
         status: true,
-        message:" Project updated successfully"
-      }
+        message: " Project updated successfully",
+      };
     } else {
       return {
         status: false,
-        message:"project not found"
-      }
-
+        message: "project not found",
+      };
     }
   } catch (error) {
     return {
       status: false,
-      message:"error updating project"
-    }
+      message: "error updating project",
+    };
   }
 };
