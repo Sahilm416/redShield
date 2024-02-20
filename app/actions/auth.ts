@@ -134,3 +134,24 @@ export const getUserInfo = async ({ email }: { email: string }) => {
     };
   }
 };
+
+export const getProject = async () => {
+  try {
+    const project = (await db.get(`API_KEY:${process.env.RED_KEY!}`)) as {
+      project_id: string;
+      project_name: string;
+    };
+
+    return {
+      status: true,
+      project_id: project.project_id,
+      project_name: project.project_name,
+    };
+  } catch (error) {
+    return {
+      status: false,
+      project_id: "",
+      project_name: "",
+    };
+  }
+};

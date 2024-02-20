@@ -17,7 +17,11 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { sendResetPasswordLink } from "@/app/actions/resetPassword";
 import { Loader2 } from "lucide-react";
-export default function LoginCard() {
+export default function LoginCard({
+  project,
+}: {
+  project: { project_id: string; project_name: string };
+}) {
   const [loading, setLoading] = useState<boolean>(false);
   const [forgotPassword, setForgotPassword] = useState<boolean>(false);
   const router = useRouter();
@@ -29,7 +33,11 @@ export default function LoginCard() {
     const password = formData.get("password") as string;
     await fakeLoad();
     setLoading(true);
-    const res = await LoginUser({ email: email, password: password });
+    const res = await LoginUser({
+      email: email,
+      password: password,
+      project_id: project.project_id,
+    });
     if (res.status) {
       toast.success(res.message);
       router.refresh();
@@ -78,7 +86,7 @@ export default function LoginCard() {
                 type="submit"
               >
                 {loading ? (
-                  <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
+                  <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]" />
                 ) : (
                   "login"
                 )}
@@ -94,7 +102,11 @@ export default function LoginCard() {
   );
 }
 
-function ForgotPasswordComponent({setForgotPassword}:{setForgotPassword:Dispatch<SetStateAction<boolean>>}) {
+function ForgotPasswordComponent({
+  setForgotPassword,
+}: {
+  setForgotPassword: Dispatch<SetStateAction<boolean>>;
+}) {
   const [resetPassLoading, setResetPassLoading] = useState<boolean>(false);
   const resetPassRequest = async (formData: FormData) => {
     const email = formData.get("email") as string;
@@ -128,12 +140,16 @@ function ForgotPasswordComponent({setForgotPassword}:{setForgotPassword:Dispatch
           />
         </CardContent>
         <CardFooter className="gap-3">
-          <Button onClick={()=> setForgotPassword(false)} variant={'outline'} className="w-full rounded-none">
+          <Button
+            onClick={() => setForgotPassword(false)}
+            variant={"outline"}
+            className="w-full rounded-none"
+          >
             Back
           </Button>
           <Button className=" rounded-none w-full">
             {resetPassLoading ? (
-              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]" />
             ) : (
               "Send link"
             )}

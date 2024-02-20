@@ -2,6 +2,8 @@
 import { setCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import { db } from "@/utils/database/db";
+const bcrypt = require("bcrypt");
+const { sign } = require("jsonwebtoken");
 
 type User = {
   email: string;
@@ -9,38 +11,67 @@ type User = {
   profile_picture: string;
   pwd_version: number;
 };
-export const LoginUser = async (data: { email: string; password: string }) => {
+export const LoginUser = async (data: {
+  email: string;
+  password: string;
+  project_id: string;
+}) => {
   try {
-    //ger project id
-    const { project_id } = (await db.get(
-      "API_KEY:" + process.env.RED_KEY!
-    )) as { project_id: string };
+    const pipeline = db.pipeline();
 
-    //api for login user
-    const res = await fetch("https://redshield.vercel.app/api/service/login",{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": process.env.RED_KEY!
-      },
-      body: JSON.stringify({
-        email : data.email,
-        password: data.password,
-        project_id: project_id,
-      })
-    });
+    pipeline.get(`${data.project_id}:${data.email}:loginFailed`) || 0;
+    pipeline.get(`${data.project_id}:${data.email}:user`);
 
-    const response = await res.json() as { status: boolean, message: string , token: string};
-    if(response.status){
-         setJWT({token: response.token})
+    const res = (await pipeline.exec()) as [
+      number,
+      { email: string; password: string; pwd_version: string }
+    ];
+    if (res[0] > 9) {
+      return {
+        status: false,
+        message: "Too many failed login attempts try after 10 mins",
+      };
+    }
+    if (!res[1]) {
+      return {
+        status: false,
+        message: "not found",
+      };
     }
 
-    return {
-      status: response.status || false,
-      message: response.message || "something went wrong",
-    }
+    const isAuth = await bcrypt.compare(data.password, res[1].password);
 
-    //check if too many failed login attempts
+    if (isAuth) {
+      const JWTtoken = await sign(
+        {
+          email: res[1].email,
+          project_id: data.project_id,
+          pwd_version: res[1].pwd_version,
+        },
+        process.env.JWT_SECRET_KEY!,
+        {
+          expiresIn: "7 days",
+        }
+      );
+
+      setJWT({ token: JWTtoken });
+
+      return {
+        status: true,
+        message: "login success",
+      };
+    } else {
+      const loginFailedAttempts = res[0] || 0;
+      await db.set(
+        `${data.project_id}:${data.email}:loginFailed`,
+        loginFailedAttempts + 1,
+        { ex: 600 }
+      );
+      return {
+        status: false,
+        message: "Invalid  credentials",
+      };
+    }
   } catch (error) {
     console.log(error);
     return {
