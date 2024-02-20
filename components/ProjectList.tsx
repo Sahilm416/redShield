@@ -57,17 +57,19 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
   }: {
     project: { id: string; key: string };
   }) => {
-    toast.loading("Deleteting project...");
-    const res = await deleteProject({
-      id: project.id,
-      key: project.key,
-    });
-
-    if (res.status) {
-      toast.success(res.message);
-    } else {
-      toast.error(res.message);
-    }
+    toast.promise(
+      deleteProject({
+        id: project.id,
+        key: project.key,
+      }),
+      {
+        loading: "deleting project...",
+        success: (data) => {
+          return `successfully deleted project`;
+        },
+        error: "Error",
+      }
+    );
     return router.refresh();
   };
 
