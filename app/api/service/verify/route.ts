@@ -1,25 +1,41 @@
-import { ValidateAuthToken } from "@/app/actions/auth";
+const { verify } = require("jsonwebtoken");
 const { db } = require("@/utils/database/db");
 const { NextResponse } = require("next/server");
 
 export const POST = async (request: Request) => {
-  const key = request.headers.get("authorization") as string;
-  const isValidKey = await db.get("API_KEY:" + key);
-
-  if (!isValidKey) {
-    console.log("unauthorized key");
-    return NextResponse.json({ message: "Unauthorized key" }, { status: 401 });
-  }
-
-  const data: { token: string } = await request.json();
   try {
-    const res = await ValidateAuthToken({ token: data.token });
-    return NextResponse.json(res);
+    const { token } = await request.json();
+
+    if (!token) {
+      return NextResponse.json({
+        status: false,
+        message: "token not found",
+      });
+    }
+    const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+    //get user from database
+    const user = await db.get(
+      `${verifyToken.project_id}:${verifyToken.email}:user`
+    );
+    //check password version
+    if (user.pwd_version > verifyToken.pwd_version) {
+      return NextResponse.json({
+        status: false,
+        message: "invalid token",
+      });
+    }
+
+    return NextResponse.json({
+      status: true,
+      message: "token is valid",
+      data: verifyToken,
+    });
   } catch (error) {
     console.log(error);
     return NextResponse.json({
       status: false,
-      message: "some error occurred",
+      message: "error verifying token",
+      error: error,
     });
   }
 };
