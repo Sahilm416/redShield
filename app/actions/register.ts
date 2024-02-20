@@ -106,7 +106,7 @@ export const registerUser = async (data: {
     };
     await db.set(project_id + ":" + data.email + ":user", newUser);
     await db.set(project_id + ":" + data.email + ":projects", []);
-    await LoginUser({ email: data.email, password: data.password });
+    await LoginUser({ email: data.email, password: data.password , project_id: project_id});
     return {
       status: true,
       message: "Registered successfully",
