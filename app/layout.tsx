@@ -26,7 +26,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         
-          <Toaster richColors position="bottom-right" />
+          <Toaster position="bottom-right" />
         </ThemeProvider>
       </body>
     </html>
