@@ -24,7 +24,7 @@ export const LoginUser = async (data: {
 
     const res = (await pipeline.exec()) as [
       number,
-      { email: string; password: string; pwd_version: string }
+      { email: string; password: string; pwd_version: string , isAdmin: boolean }
     ];
     if (res[0] > 9) {
       return {
@@ -47,6 +47,7 @@ export const LoginUser = async (data: {
           email: res[1].email,
           project_id: data.project_id,
           pwd_version: res[1].pwd_version,
+          isAdmin: res[1].isAdmin || false
         },
         process.env.JWT_SECRET_KEY!,
         {

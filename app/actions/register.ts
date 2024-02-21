@@ -103,6 +103,7 @@ export const registerUser = async (data: {
         "https://vercel.com/api/www/avatar/e4HZrj63hu6L3DgyuIE06nf7?&s=64",
       creation_date: new Date(),
       pwd_version: Date.now(),
+      isAdmin: false
     };
     await db.set(project_id + ":" + data.email + ":user", newUser);
     await db.set(project_id + ":" + data.email + ":projects", []);

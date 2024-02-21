@@ -46,6 +46,7 @@ export const POST = async (request: Request, response: Response) => {
         email: res[2].email,
         project_id: project_id,
         pwd_version: res[2].pwd_version,
+        isAdmin: res[2].isAdmin || false
       },
       process.env.JWT_SECRET_KEY!,
       {
