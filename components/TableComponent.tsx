@@ -60,14 +60,15 @@ export default function TableComponent({
   };
 
   const hadleDeleteUser = async (email: string) => {
-    toast.loading("Deleting user...");
-    const res = await deleteUser({ email: email, secret: secret });
-    if (res.status) {
-      toast.success(res.message);
-      router.refresh();
-    } else {
-      toast.error(res.message);
-    }
+    toast.promise(deleteUser({ email: email, secret: secret }), {
+      loading: "deleting user...",
+      success: (data) => {
+        return `successfully deleted user`;
+      },
+      error: "Error deleting user",
+    });
+
+    return router.refresh();
   };
   return (
     <>
@@ -145,12 +146,13 @@ export default function TableComponent({
             be able to access your application.
           </p>
           <AlertDialogFooter className="gap-5">
-            <AlertDialogCancel
-              className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
-            >
+            <AlertDialogCancel className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction  onClick={() => hadleDeleteUser(user.email)} className=" rounded-none bg-red-700 hover:bg-red-600 text-white">
+            <AlertDialogAction
+              onClick={() => hadleDeleteUser(user.email)}
+              className=" rounded-none bg-red-700 hover:bg-red-600 text-white"
+            >
               Continue
             </AlertDialogAction>
           </AlertDialogFooter>

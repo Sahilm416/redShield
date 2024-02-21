@@ -65,9 +65,38 @@ export const deleteUser = async ({
     const pipeline = db.pipeline();
 
     pipeline.del(project_id + ":" + email + ":user");
+    pipeline.get(project_id + ":" + email + ":projects");
     pipeline.del(project_id + ":" + email + ":projects");
+    const res = (await pipeline.exec()) as [number, [{ key: string }], number];
+    if (!res[1]) {
+      return {
+        status: true,
+        message: "User deleted successfully",
+      };
+    }
+    const keysArray = [];
+    //find all the keys of the projects of user
+    for (let i in res[1]) {
+      let info = (await db.get(`API_KEY:${res[1][i].key}`)) as {
+        project_id: string;
+        project_name: string;
+      };
+      keysArray.push({ id: info.project_id, key: res[1][i].key });
+    }
+    //delete each user of each key
+    for (let i in keysArray) {
+      let users = (await getAllUsers({ key: keysArray[i].key })) as [
+        { email: string }
+      ];
+      if (users.length > 0) {
+        for (let j in users) {
+          await db.del(`${keysArray[i].id}:${users[j].email}:user`);
+        }
+      }
 
-    await pipeline.exec();
+      await db.del(`API_KEY:${keysArray[i].key}`);
+    }
+
     return {
       status: true,
       message: "User deleted successfully",
