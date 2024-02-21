@@ -170,6 +170,12 @@ export const changeUserRole = async ({
       project_id: string;
     };
     const user = (await db.get(`${project_id}:${email}:user`)) as {};
+    if (!user) {
+      return {
+        status: false,
+        message: "user not found",
+      };
+    }
     const newUser = {
       ...user,
       isAdmin: role === "Admin",
