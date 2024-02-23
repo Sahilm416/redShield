@@ -9,7 +9,6 @@ import {
   Building2,
   Contact,
   CircleUser,
-  LayoutDashboardIcon,
 } from "lucide-react";
 import { LogOut } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
@@ -160,8 +159,8 @@ export function MenuBar({
                   }}
                 >
                   {" "}
-                  <LogOutIcon className="text-slate-300 w-[20px] mr-2" /> Sign
-                  Out
+                  <LogOutIcon className="text-slate-300 w-[20px] mr-2" />
+                  Logout
                 </DropdownMenuItem>
               )}
             </DropdownMenuGroup>
