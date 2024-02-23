@@ -100,7 +100,7 @@ type User = {
   pwd_version: number;
 };
 
-export const getUserInfo = async ({ email }: { email: string }) => {
+export const getUserInfo = async () => {
   try {
     //get current session with JWT credentials
     const session = await getSession();
@@ -119,7 +119,7 @@ export const getUserInfo = async ({ email }: { email: string }) => {
       last_name: response.user?.last_name || "",
       email: response.user.email,
       profile_picture: response.user.profile_picture,
-      projects: response.projects,
+      projects: response.projects || [],
       created_at: response.user.creation_date,
     };
   } catch (error) {

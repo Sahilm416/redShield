@@ -20,7 +20,8 @@ type userData = {
 };
 
 export default async function DashboardComponent({ email }: { email: string }) {
-  const data = await getUserInfo({ email: email });
+  const data = await getUserInfo();
+  console.log(data)
 
   return (
     <div className="w-full min-h-[calc(100vh-60px)] flex flex-col gap-5 justify-start items-center">
