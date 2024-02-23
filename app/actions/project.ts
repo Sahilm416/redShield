@@ -228,6 +228,14 @@ export const updateProject = async ({
         `${userProjectId}:${session.data.email}:projects`,
         existingProjectList
       );
+      //also change the api project name
+      const apiInfo = (await db.get(
+        `API_KEY:${existingProjectList[projectIndex].key}`
+      )) as { project_id: string; project_name: string };
+      await db.set(`API_KEY:${existingProjectList[projectIndex].key}`, {
+        ...apiInfo,
+        project_name: name || existingProjectList[projectIndex].name,
+      });
 
       return {
         status: true,
