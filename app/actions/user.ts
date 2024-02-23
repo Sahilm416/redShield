@@ -3,7 +3,7 @@ import { db } from "@/utils/database/db";
 import { getSession } from "./auth";
 
 //get the specific user
-export const getUserInfo = async ({
+export const getSpecificUser = async ({
   email,
   project_id,
 }: {

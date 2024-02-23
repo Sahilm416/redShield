@@ -22,9 +22,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { getUserInfo } from "@/app/actions/user";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { getSpecificUser } from "@/app/actions/user";
 
 type user = {
   email: string;
@@ -48,7 +48,7 @@ export function MenuBar({
 
   const LoadUser = async () => {
     if (info?.status) {
-      const res = await getUserInfo({
+      const res = await getSpecificUser({
         email: info.data.email,
         project_id: info.data.project_id,
       });
