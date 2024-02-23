@@ -10,7 +10,7 @@ export default async function EditProfile() {
       </div>
     );
   }
-  const userData = await getUserInfo({ email: session.data.email });
+  const userData = await getUserInfo();
   return (
     <div className="mt-[40px] min-h-[calc(100vh-100px)] w-full flex justify-center">
       <UpdateUser user={userData} />
