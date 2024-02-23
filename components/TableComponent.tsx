@@ -62,7 +62,7 @@ export default function TableComponent({
   const hadleDeleteUser = async (email: string) => {
     toast.promise(deleteUser({ email: email, secret: secret }), {
       loading: "deleting user...",
-      success: (data) => {
+      success: () => {
         return `successfully deleted user`;
       },
       error: "Error deleting user",
@@ -99,7 +99,7 @@ export default function TableComponent({
                     : "border-[#EBEBEB] dark:border-[#1F1F1F]"
                 } w-[180px] rounded-none`}
               >
-                <SelectValue placeholder="Select a fruit" />
+                <SelectValue />
               </SelectTrigger>
               <SelectContent className=" rounded-none dark:bg-black">
                 <SelectGroup>

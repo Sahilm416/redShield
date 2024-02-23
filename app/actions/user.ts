@@ -34,6 +34,7 @@ export const getAllUsers = async ({ key }: { key: string }) => {
     const res = await fetch(
       "https://redshield.vercel.app/api/service/getAllUsers",
       {
+        next:{revalidate: 0},
         headers: {
           Authorization: key,
         },
