@@ -1,11 +1,19 @@
 const { NextResponse } = require("next/server");
 const { db } = require("@/utils/database/db");
-const { transporter } = require("@/utils/nodeMailer/config");
 const {
   passwordChangeTemplate,
 } = require("@/components/emailTemplates/resetPassword");
 import { nanoid } from "nanoid";
+const nodemailer = require("nodemailer");
 
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.MAIL_USER!,
+      pass: process.env.MAIL_PASS!,
+    },
+  });
+  
 interface reqBody {
   email: string;
   endpoint: string;
