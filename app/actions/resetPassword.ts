@@ -1,5 +1,4 @@
 "use server";
-import { nanoid } from "nanoid";
 import { db } from "@/utils/database/db";
 import { LogOut } from "./auth";
 const bcrypt = require("bcrypt");
