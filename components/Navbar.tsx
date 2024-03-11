@@ -7,9 +7,9 @@ const Navbar = async () => {
   const res = (await getSession()) as {
     status: boolean;
     message: string;
-    data: { email: string; project_id: string };
+    data: { email: string; project_id: string; isAdmin: boolean };
   };
-  
+
 
   return (
     <div className="nav w-full flex justify-center items-center h-[60px] dark:border-[#1A1A1A] m-0 p-2 bg-white/90 border-b dark:bg-black/80 sticky top-0 right-0 z-50 overflow-y-hidden">
@@ -34,6 +34,12 @@ const Navbar = async () => {
             </Link>
             <Link
               className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
+              href={"/Blogs"}
+            >
+              blogs
+            </Link>
+            <Link
+              className="dark:text-slate-300 text-slate-600 hover:text-slate-900 dark:hover:text-slate-100"
               target="blanc"
               href={"https://twitter.com/sahil__501"}
             >
@@ -42,8 +48,16 @@ const Navbar = async () => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-4 mx-5">
+          {res?.data?.isAdmin && (
+            <Link
+              className="bg-blue-700 text-white px-5 py-1 rounded-sm md:block hidden"
+              href={"/Admin"}
+            >
+              admin
+            </Link>
+          )}
           <ThemeBtn />
-          <MenuBar info={res} />
+          <MenuBar session={res} />
         </div>
       </nav>
     </div>

@@ -6,7 +6,7 @@ import {
   MailIcon,
   LayoutDashboard,
   Book,
-  Building2,
+  UserRound,
   Contact,
   CircleUser,
 } from "lucide-react";
@@ -32,25 +32,25 @@ type user = {
 };
 
 export function MenuBar({
-  info,
+  session,
 }: {
-  info: {
+  session: {
     status: boolean;
     message: string;
-    data: { email: string; project_id: string };
+    data: { email: string; project_id: string; isAdmin: boolean };
   };
 }) {
   const [user, setUser] = useState<user>({ email: "", profile: "" });
 
   useEffect(() => {
     LoadUser();
-  }, [info.status]);
+  }, [session.status]);
 
   const LoadUser = async () => {
-    if (info?.status) {
+    if (session?.status) {
       const res = await getSpecificUser({
-        email: info.data.email,
-        project_id: info.data.project_id,
+        email: session.data.email,
+        project_id: session.data.project_id,
       });
       setUser(res);
     }
@@ -60,18 +60,18 @@ export function MenuBar({
     <>
       {/*1st */}
       <div className="md:flex hidden">
-        {info.status && (
+        {session.status && (
           <DropdownMenu>
             <DropdownMenuTrigger className=" cursor-pointer" asChild>
               <Avatar className="w-[35px] h-[35px]">
                 <AvatarImage width={10} height={10} src={user.profile} />
-                <AvatarFallback>{info.data.email[0]}</AvatarFallback>
+                <AvatarFallback>{session.data.email[0]}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-auto mr-7 mt-4 border-[#EBEBEB] dark:border-[#1F1F1F] bg-white dark:bg-black rounded-none">
               <DropdownMenuLabel className="text-sm flex text-slate-500">
                 <MailIcon className="text-slate-300 w-[20px] mx-2" />
-                {info.data.email}
+                {session.data.email}
               </DropdownMenuLabel>
               <Link href={`/Edit/Profile`}>
                 <DropdownMenuItem className="flex cursor-pointer">
@@ -114,14 +114,20 @@ export function MenuBar({
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg dark:bg-black rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
-            {info.status && (
+            {session.status && (
               <DropdownMenuLabel className="flex">
                 <MailIcon className="text-slate-300 w-[20px] mr-2" />
-                {info.data.email.split("@")[0]}
+                {session.data.email.split("@")[0]}
+              </DropdownMenuLabel>
+            )}
+            {session?.data?.isAdmin && (
+              <DropdownMenuLabel className="flex items-center">
+                <UserRound className="text-slate-300 w-[20px] mr-2" />
+                Admin
               </DropdownMenuLabel>
             )}
             <DropdownMenuGroup>
-              {info.status && (
+              {session.status && (
                 <Link href="/Dashboard">
                   <DropdownMenuItem className="text-lg">
                     <LayoutDashboard className="text-slate-300 w-[20px] mr-2" />
@@ -141,7 +147,7 @@ export function MenuBar({
                   <Contact className="text-slate-300 w-[20px] mr-2" /> Contact
                 </DropdownMenuItem>
               </Link>
-              {info.status && (
+              {session.status && (
                 <Link href={`/Edit/Profile`} className=" cursor-pointer">
                   <DropdownMenuItem className="text-lg">
                     <CircleUser className="text-slate-300 w-[20px] mr-2" />{" "}
@@ -149,7 +155,7 @@ export function MenuBar({
                   </DropdownMenuItem>
                 </Link>
               )}
-              {info.status && (
+              {session.status && (
                 <DropdownMenuItem
                   className="text-lg"
                   onClick={async () => {
