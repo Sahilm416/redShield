@@ -25,10 +25,10 @@ export default function AdminPanel() {
     const blog_title = formData.get("blog_title") as string;
     const blog_content = formData.get("blog_content") as string;
 
-    if (blog_title.length < 5) {
+    if (blog_title.length < 10) {
       return toast.warning("blog title is too short");
     }
-    if (blog_content.length < 10) {
+    if (blog_content.length < 20) {
       return toast.warning("blog content too short");
     }
     await fakeLoad();
@@ -39,7 +39,8 @@ export default function AdminPanel() {
     });
     if (res.status) {
       toast.success(res.message);
-      router.push("/Blogs")
+      router.push("/Blogs");
+      router.refresh();
     } else {
       toast.error(res.message);
     }
@@ -49,17 +50,18 @@ export default function AdminPanel() {
     <div className="w-full flex justify-center">
       <div className="flex flex-col w-full items-center max-w-[1500px]">
         <div className="w-full p-5">
-          <h1 className="text-4xl text-center font-sans">Welcome Admin</h1>
+          <h1 className="text-4xl text-center font-mono">Welcome Admin</h1>
         </div>
         <div className="w-full max-w-[500px] p-5 pt-0">
           <form action={createBlogPost}>
-            <Card>
+            <Card className=" rounded-none dark:border-[#222222]">
               <CardHeader>
                 <CardTitle>Create new blog post</CardTitle>
               </CardHeader>
               <CardContent>
                 <Label htmlFor="blog_title">Title of blog</Label>
                 <Input
+                  className=" rounded-none dark:border-[#222222]"
                   required
                   id="blog_title"
                   name="blog_title"
@@ -69,6 +71,7 @@ export default function AdminPanel() {
                 <br />
                 <Label htmlFor="blog_content">Blog Content</Label>
                 <Textarea
+                  className=" rounded-none dark:border-[#222222]"
                   required
                   id="blog_content"
                   name="blog_content"
@@ -77,7 +80,7 @@ export default function AdminPanel() {
                 <br />
               </CardContent>
               <CardFooter className=" justify-end">
-                <Button className="w-[100px]" disabled={loading} type="submit">
+                <Button className="w-[100px] rounded-none" disabled={loading} type="submit">
                   {loading ? (
                     <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]" />
                   ) : (

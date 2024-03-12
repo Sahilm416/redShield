@@ -61,3 +61,16 @@ export const fetchBlog = async (title: string) => {
     blogs: blog,
   };
 };
+
+export const deleteBlog = async (title: string) => {
+  const blogs = (await db.get("blogs")) as { title: string }[];
+
+  const updatedBlogs = blogs.filter((blog) => blog.title !== title);
+
+  await db.set("blogs", updatedBlogs);
+
+  return {
+    status: true,
+    message: "Blog deleted successfully",
+  };
+};
