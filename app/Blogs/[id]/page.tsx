@@ -29,7 +29,13 @@ export default async function Blog({ params }: { params: { id: string } }) {
             {res?.blogs?.title.replaceAll("_", " ")}
           </CardTitle>
         </CardHeader>
-        <CardContent>{res?.blogs?.content}</CardContent>
+        <CardContent>
+          {res?.blogs?.content.split("\n").map((paragraph, index) => (
+            <div className="my-3" key={index}>
+              <p className=" leading-7">{paragraph}</p>
+            </div>
+          ))}
+        </CardContent>
       </Card>
       {session?.data?.isAdmin && (
         <div className="w-full max-w-[700px] my-5 flex justify-end">
