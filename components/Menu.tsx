@@ -120,13 +120,15 @@ export function MenuBar({
                 {session.data.email.split("@")[0]}
               </DropdownMenuLabel>
             )}
-            {session?.data?.isAdmin && (
-              <DropdownMenuLabel className="flex items-center">
-                <UserRound className="text-slate-300 w-[20px] mr-2" />
-                Admin
-              </DropdownMenuLabel>
-            )}
             <DropdownMenuGroup>
+            {session?.data?.isAdmin && (
+                <Link href="/Admin">
+                  <DropdownMenuItem className="text-lg">
+                    <UserRound className="text-slate-300 w-[20px] mr-2" />
+                    Admin
+                  </DropdownMenuItem>
+                </Link>
+              )}
               {session.status && (
                 <Link href="/Dashboard">
                   <DropdownMenuItem className="text-lg">
