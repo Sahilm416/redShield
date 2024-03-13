@@ -9,6 +9,7 @@ import {
   UserRound,
   Contact,
   CircleUser,
+  StickyNote
 } from "lucide-react";
 import { LogOut } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
@@ -141,6 +142,12 @@ export function MenuBar({
                 <DropdownMenuItem className="text-lg">
                   <Book className="text-slate-300 w-[20px] mr-2" />
                   Docs
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/Blogs">
+                <DropdownMenuItem className="text-lg">
+                  <StickyNote className="text-slate-300 w-[20px] mr-2" />
+                  Blogs
                 </DropdownMenuItem>
               </Link>
               <Link target="blanc" href={"https://twitter.com/sahil__501"}>

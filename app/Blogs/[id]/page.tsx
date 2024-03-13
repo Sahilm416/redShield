@@ -22,7 +22,7 @@ export default async function Blog({ params }: { params: { id: string } }) {
 
   const session = await getSession();
   return (
-    <div className="w-full h-[calc(100vh-60px)] flex flex-col items-center justify-start pt-14">
+    <div className="w-full h-[calc(100vh-60px)] flex flex-col items-center justify-start pt-14 px-3">
       <Card className="w-full max-w-[700px] rounded-none dark:border-[#222222]">
         <CardHeader>
           <CardTitle className="text-black dark:text-[#ffffff] text-4xl">
