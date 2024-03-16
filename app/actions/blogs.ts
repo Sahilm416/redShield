@@ -33,8 +33,8 @@ export const createNewBlog = async ({
 };
 
 export const getBlogs = async () => {
-  const blogs = (await db.get("blogs")) as [{ title: string; content: string }];
-  return {
+  const blogs = (await db.get("blogs")) as [{ title: string; content: string , created:string }];
+   return {
     status: true,
     message: "blogs fetched successfully!",
     blogs: blogs,

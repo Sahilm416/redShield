@@ -11,7 +11,7 @@ import {
 export default function BlogComponent({
   blogs,
 }: {
-  blogs: [{ title: string; content: string }];
+  blogs: [{ title: string; content: string , created: string }];
 }) {
 
   if(blogs.length < 1){
@@ -35,13 +35,16 @@ export default function BlogComponent({
               </CardTitle>
               <CardDescription>{blog.content.slice(0, 50)+"..."}</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex items-center justify-between flex-row">
               <Link
                 className="hover:text-blue-700 hover:underline"
                 href={`/Blogs/${blog.title}`}
               >
                 Read more ...
               </Link>
+              <div className="px-2 text-sm py-1 rounded-full bg-green-100/10 border border-green-600/40 opacity-90 text-green-600">
+                  {blog.created.substring(0, 21)}
+              </div>
             </CardContent>
           </Card>
         );
