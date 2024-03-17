@@ -48,7 +48,7 @@ export default function ResetPassComponent({ email , token}: { email: string , t
   return (
     <>
       <form action={sendData}>
-        <Card className="w-[90vw] max-w-[450px] shadow-lg rounded-none bg-white dark:bg-gray-900/20">
+        <Card className="w-[90vw] max-w-[450px] shadow-lg rounded-sm bg-white dark:bg-gray-900/20">
           <CardHeader>
             <CardTitle>Change Password</CardTitle>
           </CardHeader>
@@ -59,7 +59,7 @@ export default function ResetPassComponent({ email , token}: { email: string , t
               name="reset_pass"
               id="resetpass"
               type="password"
-              className=" rounded-none"
+              className=" rounded-sm"
             />
             <Label htmlFor="confirmresetpass">Confirm Password</Label>
             <Input
@@ -67,14 +67,14 @@ export default function ResetPassComponent({ email , token}: { email: string , t
               name="confirm_reset_pass"
               id="confirmresetpass"
               type="password"
-              className=" rounded-none"
+              className=" rounded-sm"
             />
           </CardContent>
           <CardFooter className=" justify-end">
             <Button
               disabled={loading}
               type="submit"
-              className=" w-[150px] rounded-none"
+              className=" w-[150px] rounded-sm"
             >
               {loading ? (
                 <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>

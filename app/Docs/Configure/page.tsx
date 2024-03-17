@@ -150,7 +150,7 @@ export default LogOutComponent;`;
           <Link href={"/Docs/Installation"}>
             <Button
               variant={"outline"}
-              className="w-[100px] dark:border-[#171717] rounded-none"
+              className="w-[100px] dark:border-[#171717] rounded-sm"
             >
               prev
             </Button>
@@ -158,7 +158,7 @@ export default LogOutComponent;`;
           <Link href={"/Docs/Middleware/"}>
             <Button
               variant={"outline"}
-              className="w-[100px] dark:border-[#171717] rounded-none"
+              className="w-[100px] dark:border-[#171717] rounded-sm"
             >
               Next
             </Button>

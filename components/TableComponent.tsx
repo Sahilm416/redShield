@@ -97,11 +97,11 @@ export default function TableComponent({
                   user.isAdmin
                     ? "border-white"
                     : "border-[#EBEBEB] dark:border-[#1F1F1F]"
-                } w-[180px] rounded-none`}
+                } w-[180px] rounded-sm`}
               >
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className=" rounded-none dark:bg-black">
+              <SelectContent className=" rounded-sm dark:bg-black">
                 <SelectGroup>
                   <SelectItem value="Admin" className=" cursor-pointer">
                     Admin
@@ -125,7 +125,7 @@ export default function TableComponent({
               <AlertDialogTrigger>
                 <Button
                   variant={"outline"}
-                  className="border-red-700 hover:bg-transparent rounded-none"
+                  className="border-red-700 hover:bg-transparent rounded-sm"
                 >
                   Delete
                 </Button>
@@ -146,12 +146,12 @@ export default function TableComponent({
             be able to access your application.
           </p>
           <AlertDialogFooter className="gap-5">
-            <AlertDialogCancel className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
+            <AlertDialogCancel className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={() => hadleDeleteUser(user.email)}
-              className=" rounded-none bg-red-700 hover:bg-red-600 text-white"
+              className=" rounded-sm bg-red-700 hover:bg-red-600 text-white"
             >
               Continue
             </AlertDialogAction>

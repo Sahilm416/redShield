@@ -106,7 +106,7 @@ export default function UpdateUser({ user }: { user: User }) {
   };
   return (
     <form action={update}>
-      <Card className="w-[90vw] sm:max-w-[450px] shadow-lg bg-white dark:bg-gray-800/20 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none">
+      <Card className="w-[90vw] sm:max-w-[450px] shadow-lg bg-white dark:bg-gray-800/20 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-sm">
         <CardHeader>
           <CardTitle>Account Settings</CardTitle>
         </CardHeader>
@@ -119,7 +119,7 @@ export default function UpdateUser({ user }: { user: User }) {
               type="text"
               placeholder={user?.first_name || "enter your first name"}
               id="first_name"
-              className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
+              className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-sm"
             />
           </div>
           <div className="space-y-2">
@@ -130,7 +130,7 @@ export default function UpdateUser({ user }: { user: User }) {
               type="text"
               placeholder={user?.last_name || "enter your last name"}
               id="last_name"
-              className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
+              className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-sm"
             />
           </div>
           <div className="space-y-2">
@@ -138,7 +138,7 @@ export default function UpdateUser({ user }: { user: User }) {
             <Input
               value={user.email}
               disabled
-              className=" disabled:opacity-100 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
+              className=" disabled:opacity-100 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-sm"
               id="email"
               placeholder="Enter your email"
               type="email"
@@ -151,7 +151,7 @@ export default function UpdateUser({ user }: { user: User }) {
             disabled={resetPassLoading}
             type="button"
             variant={"destructive"}
-            className="w-full rounded-none bg-red-700 text-white "
+            className="w-full rounded-sm bg-red-700 text-white "
           >
             {resetPassLoading ? (
               <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
@@ -164,14 +164,14 @@ export default function UpdateUser({ user }: { user: User }) {
               onClick={() => router.back()}
               type="button"
               variant={"outline"}
-              className="w-full rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
+              className="w-full rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
             >
               Back
             </Button>
             <Button
               disabled={saveLoading}
               type="submit"
-              className="w-full rounded-none"
+              className="w-full rounded-sm"
             >
               {saveLoading ? (
                 <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>

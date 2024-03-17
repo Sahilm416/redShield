@@ -37,7 +37,7 @@ export default function HeroComponent() {
             <div className="w-full flex flex-col items-center">
               <div className="flex gap-5 px-5 py-10 md:border-x border-dashed border-[#EBEBEB] dark:border-[#1F1F1F]">
                 <Link onClick={() => setLoading(true)} href={"/Dashboard"}>
-                  <Button className="rounded-none md:w-[200px] w-[35vw] h-[45px]">
+                  <Button className="rounded-sm md:w-[200px] w-[35vw] h-[45px]">
                     {loading ? (
                       <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
                     ) : (
@@ -48,7 +48,7 @@ export default function HeroComponent() {
                 <Link target="blanc" href={"https://github.com/sahilm416"}>
                   <Button
                     variant={"outline"}
-                    className="rounded-none md:w-[200px] w-[35vw]  h-[45px] dark:border-zinc-700 border-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                    className="rounded-sm md:w-[200px] w-[35vw]  h-[45px] dark:border-zinc-700 border-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900"
                   >
                     Github <GitHubLogo />
                   </Button>

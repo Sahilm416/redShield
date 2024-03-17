@@ -57,7 +57,7 @@ export default function Installation() {
         <Link href={"/Docs/GetStarted"}>
           <Button
             variant={"outline"}
-            className="w-[100px] dark:border-[#171717] rounded-none "
+            className="w-[100px] dark:border-[#171717] rounded-sm "
           >
             Prev
           </Button>
@@ -65,7 +65,7 @@ export default function Installation() {
         <Link href={"/Docs/Configure"}>
           <Button
             variant={"outline"}
-            className="w-[100px] dark:border-[#171717] rounded-none"
+            className="w-[100px] dark:border-[#171717] rounded-sm"
           >
             Next
           </Button>

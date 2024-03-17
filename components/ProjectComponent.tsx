@@ -46,7 +46,7 @@ export default function ProjectComponent({
           <div className="flex justify-center items-center mt-3">
             <Input
               disabled={true}
-              className="border-r-0 rounded-none h-[40px] focus:outline-none disabled:opacity-100 disabled:cursor-pointer bg-zinc-50 dark:bg-zinc-950 border-[#EBEBEB] dark:border-[#1F1F1F]"
+              className="border-r-0 rounded-sm h-[40px] focus:outline-none disabled:opacity-100 disabled:cursor-pointer bg-zinc-50 dark:bg-zinc-950 border-[#EBEBEB] dark:border-[#1F1F1F]"
               type={show ? "text" : "password"}
               value={res?.key}
             />
@@ -62,7 +62,7 @@ export default function ProjectComponent({
           <Button
             onClick={handleCopyToClipboard}
             variant={"outline"}
-            className="border-emerald-600 rounded-none"
+            className="border-emerald-600 rounded-sm"
           >
             copy key
           </Button>
@@ -89,7 +89,7 @@ export default function ProjectComponent({
           </CardContent>
           <CardFooter className="p-0">
             <Link href="/Docs/Installation">
-              <Button className="rounded-none">view docs</Button>
+              <Button className="rounded-sm">view docs</Button>
             </Link>
           </CardFooter>
         </CardHeader>

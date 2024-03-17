@@ -54,14 +54,14 @@ export default function AdminPanel() {
         </div>
         <div className="w-full max-w-[500px] p-5 pt-0">
           <form action={createBlogPost}>
-            <Card className=" rounded-none dark:border-[#222222]">
+            <Card className=" rounded-sm dark:border-[#222222]">
               <CardHeader>
                 <CardTitle>Create new blog post</CardTitle>
               </CardHeader>
               <CardContent>
                 <Label htmlFor="blog_title">Title of blog</Label>
                 <Input
-                  className=" rounded-none dark:border-[#222222]"
+                  className=" rounded-sm dark:border-[#222222]"
                   required
                   id="blog_title"
                   name="blog_title"
@@ -71,7 +71,7 @@ export default function AdminPanel() {
                 <br />
                 <Label htmlFor="blog_content">Blog Content</Label>
                 <Textarea
-                  className=" rounded-none dark:border-[#222222]"
+                  className=" rounded-sm dark:border-[#222222]"
                   required
                   id="blog_content"
                   name="blog_content"
@@ -80,7 +80,7 @@ export default function AdminPanel() {
                 <br />
               </CardContent>
               <CardFooter className=" justify-end">
-                <Button className="w-[100px] rounded-none" disabled={loading} type="submit">
+                <Button className="w-[100px] rounded-sm" disabled={loading} type="submit">
                   {loading ? (
                     <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]" />
                   ) : (

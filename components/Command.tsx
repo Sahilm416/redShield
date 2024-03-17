@@ -22,7 +22,7 @@ export default function Command() {
 
   return (
     <div className="max-w-[300px]">
-      <Card className="rounded-none border-none shadow-none ">
+      <Card className="rounded-sm border-none shadow-none ">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <TerminalIcon className="w-6 h-6 text-zinc-800 dark:text-slate-300 " />

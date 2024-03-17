@@ -69,7 +69,7 @@ export function MenuBar({
                 <AvatarFallback>{session.data.email[0]}</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-auto mr-7 mt-4 border-[#EBEBEB] dark:border-[#1F1F1F] bg-white dark:bg-black rounded-none">
+            <DropdownMenuContent className="w-auto mr-7 mt-4 border-[#EBEBEB] dark:border-[#1F1F1F] bg-white dark:bg-black rounded-sm">
               <DropdownMenuLabel className="text-sm flex text-slate-500">
                 <MailIcon className="text-slate-300 w-[20px] mx-2" />
                 {session.data.email}
@@ -114,7 +114,7 @@ export function MenuBar({
               <Menu className="w-6 h-6" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg dark:bg-black rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
+          <DropdownMenuContent className="w-auto mr-7 mt-4 shadow-lg dark:bg-black rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]">
             {session.status && (
               <DropdownMenuLabel className="flex">
                 <MailIcon className="text-slate-300 w-[20px] mr-2" />

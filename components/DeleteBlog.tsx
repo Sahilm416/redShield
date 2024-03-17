@@ -20,7 +20,7 @@ export default function Delteblog({ title }: { title: string }) {
     <div>
       <AlertDialog>
         <AlertDialogTrigger>
-          <Button className=" rounded-none" variant={"destructive"}>
+          <Button className=" rounded-sm" variant={"destructive"}>
             delete this blog
           </Button>
         </AlertDialogTrigger>
@@ -35,7 +35,7 @@ export default function Delteblog({ title }: { title: string }) {
           </AlertDialogHeader>
           <p>This will permanently delete the blog post</p>
           <AlertDialogFooter className="gap-5">
-            <AlertDialogCancel className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
+            <AlertDialogCancel className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction
@@ -49,7 +49,7 @@ export default function Delteblog({ title }: { title: string }) {
                   toast.error(res.message);
                 }
               }}
-              className=" rounded-none bg-red-700 hover:bg-red-600 text-white"
+              className=" rounded-sm bg-red-700 hover:bg-red-600 text-white"
             >
               Continue
             </AlertDialogAction>

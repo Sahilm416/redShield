@@ -27,7 +27,7 @@ export default function BlogComponent({
         return (
           <Card
             key={blog.title + 1}
-            className="w-full max-w-[700px] border-0 border-b dark:border-[#222222] rounded-none mx-auto shadow-none dark:text-[#D4D4D4] text-[#444444]"
+            className="w-full max-w-[700px] border-0 border-b dark:border-[#222222] rounded-sm mx-auto shadow-none dark:text-[#D4D4D4] text-[#444444]"
           >
             <CardHeader>
               <CardTitle className="text-black dark:text-[#ffffff] text-4xl">

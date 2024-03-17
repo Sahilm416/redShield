@@ -79,20 +79,20 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
         <main className="flex flex-col w-full px-4 gap-5 md:gap-8 md:px-10 mb-5">
           <div className="max-w-6xl w-full mx-auto flex items-center gap-4 sticky top-[60px] nav pt-3  py-2 z-[20]">
             <Input
-              className="bg-white dark:bg-black rounded-none border border-[#EBEBEB] dark:border-[#1F1F1F]"
+              className="bg-white dark:bg-black rounded-sm border border-[#EBEBEB] dark:border-[#1F1F1F]"
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Link href={"/New"}>
-              <Button className="rounded-none">Add New Project</Button>
+              <Button className="rounded-sm">Add New Project</Button>
             </Link>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 sm:max-w-6xl max-w-[450px] w-full mx-auto">
             {filteredProjects.map((project, i) => {
               return (
                 <AlertDialog key={i}>
-                  <Card className=" bg-white dark:bg-gray-900/20 shadow-md rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] ">
+                  <Card className=" bg-white dark:bg-gray-900/20 shadow-md rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F] ">
                     <CardHeader className="gap-4 pb-2  ">
                       <div className="grid gap-2">
                         <CardTitle className="flex justify-between items-center">
@@ -103,14 +103,14 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                                 <MoreVertical />
                               </span>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none">
-                              <DropdownMenuItem className="text-md rounded-none">
+                            <DropdownMenuContent className="border-[#EBEBEB] dark:border-[#1F1F1F] rounded-sm">
+                              <DropdownMenuItem className="text-md rounded-sm">
                                 <AlertDialogTrigger className="w-full h-full text-start">
                                   Delete
                                 </AlertDialogTrigger>
                               </DropdownMenuItem>
 
-                              <DropdownMenuItem className="text-md rounded-none">
+                              <DropdownMenuItem className="text-md rounded-sm">
                                 <Link
                                   className="w-full h-full text-start"
                                   href={`/Edit/Project/${project.id}`}
@@ -131,7 +131,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                             src={project.image}
                             width={400}
                             height={200}
-                            alt="Picture of the author"
+                            alt="random image"
                             className=" w-full"
                           />
                           <AvatarFallback className=" w-full h-full flex justify-center items-center text-slate-300">
@@ -144,7 +144,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                       <Link className="w-full" href={`/Project/${project.id}`}>
                         <Button
                           variant={"outline"}
-                          className="w-full rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
+                          className="w-full rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
                         >
                           view
                         </Button>
@@ -184,11 +184,11 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                           console.log(disableDelete);
                         }}
                         name="delete_project"
-                        className="rounded-none mt-3 border-[#EBEBEB] dark:border-[#1F1F1F]"
+                        className="rounded-sm mt-3 border-[#EBEBEB] dark:border-[#1F1F1F]"
                       />
                     </p>
                     <AlertDialogFooter className="gap-3">
-                      <AlertDialogCancel className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
+                      <AlertDialogCancel className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]">
                         Cancel
                       </AlertDialogCancel>
                       <AlertDialogAction
@@ -196,7 +196,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                           handleDeleteproject({ project: project })
                         }
                         disabled={disableDelete}
-                        className=" rounded-none bg-red-700 hover:bg-red-600 text-white"
+                        className=" rounded-sm bg-red-700 hover:bg-red-600 text-white"
                       >
                         delete
                       </AlertDialogAction>
@@ -211,7 +211,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
         <div className="w-full mt-[40px] min-h-[calc(100vh-100px)] flex flex-col items-center gap-5">
           <p className="text-center text-slate-400 text-xl mt-5">No Projects</p>
           <Link href={"/New"}>
-            <Button className="w-[200px] rounded-none">create project</Button>
+            <Button className="w-[200px] rounded-sm">create project</Button>
           </Link>
         </div>
       )}

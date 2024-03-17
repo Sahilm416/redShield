@@ -50,7 +50,7 @@ const Navbar = async () => {
         <div className="flex justify-center items-center gap-4 mx-5">
           {res?.data?.isAdmin && (
             <Link
-              className="bg-blue-700 text-white px-5 py-1 rounded-none md:block hidden"
+              className="bg-blue-700 text-white px-5 py-1 rounded-sm md:block hidden"
               href={"/Admin"}
             >
               admin

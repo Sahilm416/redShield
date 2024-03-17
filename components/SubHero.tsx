@@ -11,7 +11,7 @@ export default function SubHero() {
       </p>
       <div className="flex w-full justify-center max-w-[1500px] px-[7vw]">
         <div className="h-full w-full border border-[#EBEBEB] dark:border-[#1F1F1F] grid md:grid-cols-2 grid-cols-1 bg-white dark:bg-gray-900/20">
-          <Card className="w-full h-full border-t-0 md:border-b border-l-0 md:border-r border-r-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F]  rounded-none text-center shadow-none">
+          <Card className="w-full h-full border-t-0 md:border-b border-l-0 md:border-r border-r-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F]  rounded-sm text-center shadow-none">
             <CardHeader className="flex flex-col items-center gap-2">
               <CloudLightningIcon />
               <CardTitle className="font-normal">
@@ -23,7 +23,7 @@ export default function SubHero() {
               lightning-fast authentication services.
             </CardContent>
           </Card>
-          <Card className="w-full rounded-none text-center shadow-none border-t-0 border-r-0 border-l-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F]">
+          <Card className="w-full rounded-sm text-center shadow-none border-t-0 border-r-0 border-l-0 border-b border-[#EBEBEB] dark:border-[#1F1F1F]">
             <CardHeader className="flex flex-col items-center gap-2">
               <UsersIcon />
               <CardTitle className="font-normal">
@@ -35,7 +35,7 @@ export default function SubHero() {
               developers to easily handle user accounts, permissions, and roles.
             </CardContent>
           </Card>
-          <Card className="w-full rounded-none text-center shadow-none border-t-0 md:border-r border-r-0 border-l-0 md:border-b-0 border-b  border-[#EBEBEB] dark:border-[#1F1F1F] ">
+          <Card className="w-full rounded-sm text-center shadow-none border-t-0 md:border-r border-r-0 border-l-0 md:border-b-0 border-b  border-[#EBEBEB] dark:border-[#1F1F1F] ">
             <CardHeader className="flex flex-col items-center gap-2">
               <WifiIcon />
               <CardTitle className="font-normal">
@@ -47,7 +47,7 @@ export default function SubHero() {
               smooth experience.
             </CardContent>
           </Card>
-          <Card className="w-full rounded-none text-center shadow-none border-none">
+          <Card className="w-full rounded-sm text-center shadow-none border-none">
             <CardHeader className="flex flex-col items-center gap-2">
               <LayoutIcon />
               <CardTitle className="font-normal">

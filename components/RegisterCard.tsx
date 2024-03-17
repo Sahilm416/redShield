@@ -25,7 +25,7 @@ export default function RegisterCard() {
 
   return (
     <>
-      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-auto shadow-lg rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]">
+      <Card className=" dark:bg-gray-900/20 bg-white px-2 h-auto shadow-lg rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]">
         <CardHeader>
           <CardTitle>Register to Redshield</CardTitle>
           <CardDescription>redis based auth</CardDescription>
@@ -71,7 +71,7 @@ const Form1 = ({
         <CardContent>
           <Label htmlFor="email">Email</Label>
           <Input
-          className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
+          className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
             required
             id="email"
             name="email"
@@ -80,7 +80,7 @@ const Form1 = ({
           />
         </CardContent>
         <CardFooter>
-          <Button disabled={loading} type="submit" className="w-full rounded-none">
+          <Button disabled={loading} type="submit" className="w-full rounded-sm">
             {loading ? (
               <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
@@ -125,18 +125,18 @@ const Form2 = ({
               {email}
             </span>{" "}
           </p>
-          <Input className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]" name="code" type="text" required placeholder="enter code" />
+          <Input className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]" name="code" type="text" required placeholder="enter code" />
         </CardContent>
         <CardFooter className="flex gap-3">
           <Button
             onClick={() => setFormCount(1)}
             type="button"
-            className="w-[50%] rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
+            className="w-[50%] rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
             variant={"outline"}
           >
             back
           </Button>
-          <Button disabled={loading} type="submit" className="w-[50%] rounded-none">
+          <Button disabled={loading} type="submit" className="w-[50%] rounded-sm">
             {loading ? (
               <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (
@@ -187,12 +187,12 @@ const Form3 = ({ email }: { email: string }) => {
       <form action={createUser}>
         <CardContent className="flex flex-col gap-3">
           <Label htmlFor="pass">Password</Label>
-          <Input className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] " name="pass" id="pass" type="password" />
+          <Input className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F] " name="pass" id="pass" type="password" />
           <Label htmlFor="confirm">Confirm Password</Label>
-          <Input className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]" name="confirm" id="confirm" type="password" />
+          <Input className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]" name="confirm" id="confirm" type="password" />
         </CardContent>
         <CardFooter>
-          <Button disabled={loading} type="submit" className="w-full rounded-none">
+          <Button disabled={loading} type="submit" className="w-full rounded-sm">
             {loading ? (
               <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
             ) : (

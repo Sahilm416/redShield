@@ -65,7 +65,7 @@ export default function CreateProject() {
   };
   return (
     <div className="mx-auto flex flex-col w-full items-center mt-[40px] sm:px-2 px-7 min-h-[calc(100vh-100px)]">
-      <Card className="w-full max-w-lg dark:bg-gray-900/20 bg-white rounded-none border-[#EBEBEB] dark:border-[#1F1F1F] shadow-lg">
+      <Card className="w-full max-w-lg dark:bg-gray-900/20 bg-white rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F] shadow-lg">
         <CardHeader className="flex flex-row items-start">
           <div className="space-y-1.5">
             <CardTitle>Add New Project</CardTitle>
@@ -79,7 +79,7 @@ export default function CreateProject() {
             <div className="space-y-2">
               <Label htmlFor="project-name">Project Name</Label>
               <Input
-                className=" rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
+                className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
                 onChange={handleChange}
                 value={data.name}
                 name="name"
@@ -94,7 +94,7 @@ export default function CreateProject() {
                 onChange={handleChange}
                 value={data.description}
                 name="description"
-                className="min-h-[100px] max-h-[300px] rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
+                className="min-h-[100px] max-h-[300px] rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
                 id="project-description"
                 placeholder="Describe the project"
                 required
@@ -106,7 +106,7 @@ export default function CreateProject() {
           <Button
             onClick={createProject}
             disabled={loading}
-            className="sm:w-[200px] sm:ml-auto w-full rounded-none"
+            className="sm:w-[200px] sm:ml-auto w-full rounded-sm"
           >
             {loading ? (
               <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>

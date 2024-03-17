@@ -57,7 +57,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
   return (
     <>
       <form action={update}>
-        <Card className="w-[90vw] sm:max-w-[450px] shadow-lg rounded-none bg-white dark:bg-gray-900/20 border-[#EBEBEB] dark:border-[#1F1F1F]">
+        <Card className="w-[90vw] sm:max-w-[450px] shadow-lg rounded-sm bg-white dark:bg-gray-900/20 border-[#EBEBEB] dark:border-[#1F1F1F]">
           <CardHeader>
             <CardTitle>Edit Project</CardTitle>
           </CardHeader>
@@ -69,7 +69,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
               placeholder={project?.name}
               name="pname"
               id="pname"
-              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
+              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-sm"
             />
             <Label htmlFor="pdescription">Project Description</Label>
             <Input
@@ -78,7 +78,7 @@ export default function UpdateProject({ project }: { project: projectData }) {
               placeholder={project?.description}
               name="pdescription"
               id="pdescription"
-              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-none"
+              className=" placeholder:dark:text-slate-100 placeholder:text-slate-800 border-[#EBEBEB] dark:border-[#1F1F1F] rounded-sm"
             />
           </CardContent>
           <CardFooter className=" justify-between">
@@ -86,14 +86,14 @@ export default function UpdateProject({ project }: { project: projectData }) {
               type="button"
               onClick={() => router.back()}
               variant={"outline"}
-              className="w-[150px] rounded-none border-[#EBEBEB] dark:border-[#1F1F1F]"
+              className="w-[150px] rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
             >
               Back
             </Button>
             <Button
               disabled={loading}
               type="submit"
-              className="w-[150px] rounded-none"
+              className="w-[150px] rounded-sm"
             >
               {loading ? (
                 <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
