@@ -76,7 +76,7 @@ export const config = {
                 according to your need to secure the pages.
               </p>
               <br />
-              <p className="text-sm">Note : Remember to restart the development server after implementing the middleware</p><br />
+              <p className="text-sm">Note : Remember to restart the development server after implementing the middleware.</p><br />
               <b>Congratulations your app now have authentication.</b>
             </CardFooter>
           </Card>

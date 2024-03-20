@@ -12,14 +12,13 @@ import Code from "@/components/Code";
 
 export default function GettingStarted() {
   //code to show for auth page
-  const AuthCode = `import { getProject } from "redshield/actions/auth";
-import AuthPage from "redshield/Auth";
+  const AuthCode = `//this should be a server component
+import { AuthPage } from "redshield/ui";
 
-const Auth = async () => {
-  const res = await getProject();
+const Auth = () => {
   return (
     <div>
-       <AuthPage project={res} />
+       <AuthPage />
     </div>
   );
 };
@@ -27,14 +26,12 @@ export default Auth;`;
   //ends the Auth string
 
   //code for ResetPassword page
-  const resetPassCode = `import { checkResetPasswordToken } from "redshield/actions/forgotPassword";
-import ResetPassPage from "redshield/components/ResetPassPage";
+  const resetPassCode = `import { ResetPassPage } from "redshield/ui";
 
-const ResetPassword = async ({ params }: { params: { token: string } }) => {
-  const res = await checkResetPasswordToken({ token: params.token });
+const ResetPassword = ({ params }: { params: { token: string } }) => {
   return (
     <div>
-      <ResetPassPage data={res} />
+      <ResetPassPage token={params.token} />
     </div>
   );
 };
@@ -42,12 +39,11 @@ export default ResetPassword;`;
   //ends the reset pass string
 
   //LogOutButton example code
-  const LogOutButtonCode = `"use client"
-import LogOutButton from "redshield/components/LogOutButton";
+  const LogOutButtonCode = `import { LogOutButton } from "redshield/ui";
 
 const LogOutComponent = () => {
     return <LogOutButton className="" />
-  }
+}
 export default LogOutComponent;`;
   return (
     <>
@@ -78,7 +74,7 @@ export default LogOutComponent;`;
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
                   AuthPage
                 </span>{" "}
-                returns the ui for authentication. You can fully customize the
+                returns the UI for authentication. You can fully customize the
                 position of this component according to your need.
               </p>
               <br />
@@ -106,11 +102,11 @@ export default LogOutComponent;`;
             </CardContent>
             <CardFooter className="flex-col items-start">
               <p className="text-sm">
-                Note : Always use{" "}
+                Note : This {" "}
                 <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
                   LogOutButton
                 </span>{" "}
-                in client component as it isn't supported in SSR
+                is a client component but you can always wrap it in a server component.
               </p>
             </CardFooter>
           </Card>

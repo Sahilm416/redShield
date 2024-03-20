@@ -55,7 +55,7 @@ export default function HeroComponent() {
                 </Link>
               </div>
               <div className="w-full flex justify-center border-t border-dashed border-[#EBEBEB] dark:border-[#1F1F1F] p-5">
-                <Command />
+                <Command text="npm install redshield" />
               </div>
             </div>
           </div>

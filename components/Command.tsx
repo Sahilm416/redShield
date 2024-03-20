@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-export default function Command() {
+export default function Command({text , className}:{text:string , className?: string}) {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyToClipboard = () => {
-    const commandToCopy = "npm install redshield";
+    const commandToCopy = text;
 
     navigator.clipboard
       .writeText(commandToCopy)
@@ -22,12 +22,12 @@ export default function Command() {
 
   return (
     <div className="max-w-[300px]">
-      <Card className="rounded-sm border-none shadow-none ">
-        <div className="flex items-center justify-between gap-3">
+      <Card className={`rounded-sm border-none shadow-none ${className}`}>
+        <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <TerminalIcon className="w-6 h-6 text-zinc-800 dark:text-slate-300 " />
             <p className="text-sm dark:text-slate-300 text-zinc-800 font-mono">
-              npm install redshield
+              {text}
             </p>
           </div>
           <Button
