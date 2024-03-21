@@ -13,7 +13,7 @@ export const ValidateAuthToken = async ({ token }: { token: string }) => {
   }
 
   try {
-    const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+    const verifyToken = verify(token, process.env.JWT_SECRET!);
 
     const user = (await db.get(
       `${verifyToken.project_id}:${verifyToken.email}:user`

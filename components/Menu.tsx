@@ -9,9 +9,9 @@ import {
   UserRound,
   Contact,
   CircleUser,
-  StickyNote
+  StickyNote,
 } from "lucide-react";
-import { LogOut } from "@/app/actions/auth";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -24,7 +24,7 @@ import {
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { LogOutButton } from "redshield/ui";
 import { getSpecificUser } from "@/app/actions/user";
 
 type user = {
@@ -88,16 +88,9 @@ export function MenuBar({
                 </DropdownMenuItem>
               </Link>
 
-              <DropdownMenuItem
-                onClick={async () => {
-                  await LogOut();
-                  toast.success("Logged Out");
-                  return window.location.reload();
-                }}
-                className="flex cursor-pointer"
-              >
+              <DropdownMenuItem>
                 <LogOutIcon className="text-slate-300 w-[20px] mx-2" />
-                Logout
+                <LogOutButton/>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -122,7 +115,7 @@ export function MenuBar({
               </DropdownMenuLabel>
             )}
             <DropdownMenuGroup>
-            {session?.data?.isAdmin && (
+              {session?.data?.isAdmin && (
                 <Link href="/Admin">
                   <DropdownMenuItem className="text-lg">
                     <UserRound className="text-slate-300 w-[20px] mr-2" />
@@ -165,17 +158,10 @@ export function MenuBar({
                 </Link>
               )}
               {session.status && (
-                <DropdownMenuItem
-                  className="text-lg"
-                  onClick={async () => {
-                    await LogOut();
-                    toast.success("Logged Out");
-                    return window.location.reload();
-                  }}
-                >
+                <DropdownMenuItem className="text-lg">
                   {" "}
                   <LogOutIcon className="text-slate-300 w-[20px] mr-2" />
-                  Logout
+                  <LogOutButton/>
                 </DropdownMenuItem>
               )}
             </DropdownMenuGroup>

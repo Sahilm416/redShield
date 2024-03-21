@@ -1,10 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LoginCard from "./LoginCard";
 import RegisterCard from "./RegisterCard";
-import { getProject } from "@/app/actions/auth";
 
-export async function AuthPage({ loginStatus }: { loginStatus: boolean }) {
-  const project = await getProject();
+export function AuthPage() {
   return (
     <Tabs className=" w-[90vw] max-w-[400px]" defaultValue="login">
       <TabsList className="grid dark:bg-slate-900 w-full grid-cols-2 rounded-sm">
@@ -12,7 +10,7 @@ export async function AuthPage({ loginStatus }: { loginStatus: boolean }) {
         <TabsTrigger className=" rounded-sm" value="register">Register</TabsTrigger>
       </TabsList>
       <TabsContent value="login">
-        <LoginCard project={project} />
+        <LoginCard />
       </TabsContent>
       <TabsContent value="register">
         <RegisterCard />

@@ -6,7 +6,10 @@ export default async function ResetPasswordPage({
 }: {
   params: { token: string };
 }) {
-  const res = await checkResetPasswordToken({ token: params.token }) as {status: boolean , data: string};
+  const res = (await checkResetPasswordToken({ token: params.token })) as {
+    status: boolean;
+    data: string;
+  };
 
   if (!res.status) {
     return (

@@ -14,10 +14,13 @@ import { Label } from "./ui/label";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { checkPassword } from "@/app/actions/checks";
-import { registerUser, sendCode, verifyCode } from "@/app/actions/register";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-
+import {
+  register,
+  sendEmailVerificationCode,
+  verifyVerificationCode,
+} from "redshield";
 
 export default function RegisterCard() {
   const [formCount, setFormCount] = useState<1 | 2 | 3>(1);
@@ -55,7 +58,7 @@ const Form1 = ({
     const mail = formData.get("email") as string;
     await fakeLoad();
     setLoading(true);
-    const res = await sendCode({ email: mail });
+    const res = await sendEmailVerificationCode({ email: mail });
     if (res.status) {
       toast.success(res.message);
       setEmail(mail);
@@ -71,7 +74,7 @@ const Form1 = ({
         <CardContent>
           <Label htmlFor="email">Email</Label>
           <Input
-          className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
+            className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
             required
             id="email"
             name="email"
@@ -80,9 +83,13 @@ const Form1 = ({
           />
         </CardContent>
         <CardFooter>
-          <Button disabled={loading} type="submit" className="w-full rounded-sm">
+          <Button
+            disabled={loading}
+            type="submit"
+            className="w-full rounded-sm"
+          >
             {loading ? (
-              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]" />
             ) : (
               "continue"
             )}
@@ -106,7 +113,7 @@ const Form2 = ({
     const code = formData.get("code") as string;
     await fakeLoad();
     setLoading(true);
-    const res = await verifyCode({ code: code, email: email });
+    const res = await verifyVerificationCode({ code: code, email: email });
     if (res.status) {
       toast.success(res.message);
       setFormCount(3);
@@ -125,7 +132,13 @@ const Form2 = ({
               {email}
             </span>{" "}
           </p>
-          <Input className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]" name="code" type="text" required placeholder="enter code" />
+          <Input
+            className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
+            name="code"
+            type="text"
+            required
+            placeholder="enter code"
+          />
         </CardContent>
         <CardFooter className="flex gap-3">
           <Button
@@ -136,9 +149,13 @@ const Form2 = ({
           >
             back
           </Button>
-          <Button disabled={loading} type="submit" className="w-[50%] rounded-sm">
+          <Button
+            disabled={loading}
+            type="submit"
+            className="w-[50%] rounded-sm"
+          >
             {loading ? (
-              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]" />
             ) : (
               "submit"
             )}
@@ -167,7 +184,7 @@ const Form3 = ({ email }: { email: string }) => {
       if (validation.status) {
         setLoading(true);
 
-        const res = await registerUser({ email: email, password: pass });
+        const res = await register({ email: email, password: pass });
         if (res.status) {
           toast.success(res.message);
           router.push("/Dashboard");
@@ -187,14 +204,28 @@ const Form3 = ({ email }: { email: string }) => {
       <form action={createUser}>
         <CardContent className="flex flex-col gap-3">
           <Label htmlFor="pass">Password</Label>
-          <Input className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F] " name="pass" id="pass" type="password" />
+          <Input
+            className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F] "
+            name="pass"
+            id="pass"
+            type="password"
+          />
           <Label htmlFor="confirm">Confirm Password</Label>
-          <Input className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]" name="confirm" id="confirm" type="password" />
+          <Input
+            className=" rounded-sm border-[#EBEBEB] dark:border-[#1F1F1F]"
+            name="confirm"
+            id="confirm"
+            type="password"
+          />
         </CardContent>
         <CardFooter>
-          <Button disabled={loading} type="submit" className="w-full rounded-sm">
+          <Button
+            disabled={loading}
+            type="submit"
+            className="w-full rounded-sm"
+          >
             {loading ? (
-              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]"/>
+              <Loader2 className="animate-[spin_0.4s_linear_infinite] w-[27px] h-[27px]" />
             ) : (
               "create account"
             )}
@@ -205,8 +236,6 @@ const Form3 = ({ email }: { email: string }) => {
   );
 };
 //fake loading
-const fakeLoad = async ()=>{
-  return
-}
-
-
+const fakeLoad = async () => {
+  return;
+};

@@ -1,5 +1,5 @@
 "use client";
-import { LoginUser } from "@/app/actions/login";
+import { login } from "redshield";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -17,11 +17,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { sendResetPasswordLink } from "@/app/actions/resetPassword";
 import { Loader2 } from "lucide-react";
-export default function LoginCard({
-  project,
-}: {
-  project: { project_id: string; project_name: string };
-}) {
+export default function LoginCard() {
   const [loading, setLoading] = useState<boolean>(false);
   const [forgotPassword, setForgotPassword] = useState<boolean>(false);
   const router = useRouter();
@@ -33,13 +29,10 @@ export default function LoginCard({
     const password = formData.get("password") as string;
     await fakeLoad();
     setLoading(true);
-    const res = await LoginUser({
-      email: email,
-      password: password,
-      project_id: project.project_id,
-    });
+    const res = await login({email: email, password: password})
     if (res.status) {
       toast.success(res.message);
+      formData.delete("email")
       router.refresh();
       router.push("/Dashboard");
     } else {

@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 import { cookies } from "next/headers";
 const { verify } = require("jsonwebtoken");
 import { nanoid } from "nanoid";
-import { getSession } from "./auth";
+import { getSession } from "redshield";
 import { generateUniqueRandomImage } from "@/public/images";
 type projectData = {
   id: string;
@@ -22,12 +22,7 @@ export const createNewProject = async ({
   project_description: string;
 }) => {
   try {
-    const token = getCookie("_auth_token", { cookies });
-
-    const data = verify(token, process.env.JWT_SECRET_KEY!) as {
-      email: string;
-      project_id: string;
-    };
+    const { data } = await getSession();
 
     const projects = (await db.get(
       data.project_id + ":" + data.email + ":projects"
@@ -96,13 +91,10 @@ export const getProject = async (data: { id: string }) => {
   try {
     const token = getCookie("_auth_token", { cookies });
 
-    const user = verify(token, process.env.JWT_SECRET_KEY!) as {
-      email: string;
-      project_id: string;
-    };
+    const session = await getSession();
 
     const projects = (await db.get(
-      user.project_id + ":" + user.email + ":projects"
+      session.data.project_id + ":" + session.data.email + ":projects"
     )) as projectData[];
 
     const project = projects.find((obj) => obj.id === data.id);
