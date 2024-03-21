@@ -4,7 +4,7 @@ const { NextResponse } = require("next/server");
 
 export const POST = async (request: Request) => {
   try {
-    const { token } = await request.json();
+    const { token , jwt_secret } = await request.json();
 
     if (!token) {
       return NextResponse.json({
@@ -12,7 +12,7 @@ export const POST = async (request: Request) => {
         message: "token not found",
       });
     }
-    const verifyToken = verify(token, process.env.JWT_SECRET_KEY!);
+    const verifyToken = verify(token, jwt_secret);
     //get user from database
     const user = await db.get(
       `${verifyToken.project_id}:${verifyToken.email}:user`

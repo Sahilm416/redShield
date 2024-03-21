@@ -7,12 +7,14 @@ interface reqBody {
   email: string;
   password: string;
   project_id: string;
+  jwt_secret: string;
 }
 
 export const POST = async (request: Request, response: Response) => {
   const pipeline = db.pipeline();
   const key = request.headers.get("authorization") as string;
-  const { email, password, project_id } = (await request.json()) as reqBody;
+  const { email, password, project_id, jwt_secret } =
+    (await request.json()) as reqBody;
 
   pipeline.get("API_KEY:" + key);
   pipeline.get(`${project_id}:${email}:loginFailed`) || 0;
@@ -38,6 +40,14 @@ export const POST = async (request: Request, response: Response) => {
       message: "not found",
     });
   }
+
+  if (!jwt_secret) {
+    return NextResponse.json({
+      status: false,
+      message: "Please provide JWT SECRET in environment variables",
+    });
+  }
+
   const isAuth = await bcrypt.compare(password, res[2].password);
 
   if (isAuth) {
@@ -46,9 +56,9 @@ export const POST = async (request: Request, response: Response) => {
         email: res[2].email,
         project_id: project_id,
         pwd_version: res[2].pwd_version,
-        isAdmin: res[2].isAdmin || false
+        isAdmin: res[2].isAdmin || false,
       },
-      process.env.JWT_SECRET_KEY!,
+      jwt_secret,
       {
         expiresIn: "7 days",
       }
