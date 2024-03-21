@@ -24,7 +24,7 @@ import {
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useEffect, useState } from "react";
-import { LogOutButton } from "redshield/ui";
+import { logout } from "redshield";
 import { getSpecificUser } from "@/app/actions/user";
 
 type user = {
@@ -88,9 +88,13 @@ export function MenuBar({
                 </DropdownMenuItem>
               </Link>
 
-              <DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={async () => {
+                  await logout();
+                }}
+              >
                 <LogOutIcon className="text-slate-300 w-[20px] mx-2" />
-                <LogOutButton/>
+                log out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -158,10 +162,15 @@ export function MenuBar({
                 </Link>
               )}
               {session.status && (
-                <DropdownMenuItem className="text-lg">
+                <DropdownMenuItem
+                  onClick={async () => {
+                    await logout();
+                  }}
+                  className="text-lg"
+                >
                   {" "}
                   <LogOutIcon className="text-slate-300 w-[20px] mr-2" />
-                  <LogOutButton/>
+                  log out
                 </DropdownMenuItem>
               )}
             </DropdownMenuGroup>
