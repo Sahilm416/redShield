@@ -30,7 +30,9 @@ JWT_SECRET=your_own_jwt_secret`;
         <Command text="npm install redshield" /> <br />
         After successfully installing it go to{" "}
         <span className=" font-mono p-1">package.json</span> file and look for
-        redshield in dependencies to esnure the installation. <br />
+        redshield in dependencies to esnure the installation. <br /> <br />
+
+        <h2 className="text-3xl">Add environment variables</h2> <br />
         Now you have to add your API key and JWT secret to your project
         environment variables. Create a{" "}
         <span className=" font-mono p-1">.env.local</span> file in your project

@@ -51,7 +51,7 @@ export const config = {
         application. <br /> <br />
         <Code fileName="middleware.ts" codeString={middlewareCode} /> <br />
         <h3 className="font-semibold">
-          Congratulations! Your app now have authentication implemented
+          Congratulations! Your app now have authentication.
         </h3>
       </div>
       <br />
