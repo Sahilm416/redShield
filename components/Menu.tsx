@@ -91,7 +91,9 @@ export function MenuBar({
               <DropdownMenuItem
                 onClick={async () => {
                   await logout();
+                  window.location.reload();
                 }}
+                className=" cursor-pointer"
               >
                 <LogOutIcon className="text-slate-300 w-[20px] mx-2" />
                 log out
