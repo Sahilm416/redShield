@@ -1,111 +1,76 @@
 import Link from "next/link";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
+
 import { Button } from "@/components/ui/button";
 import Command from "@/components/Command";
 import Code from "@/components/Code";
-import { AlertTriangle } from "lucide-react";
 
 export default function Installation() {
+  const envCode = `RED_KEY=your_project_api_key
+JWT_SECRET=your_own_jwt_secret`;
   return (
-    <div className="w-full min-h-[calc(100vh-60px)] px-2 flex flex-col font-sans">
-      <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
-        <CardHeader>
-          <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">
-            Installation
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex mb-5 gap-2 justify-start border border-yellow-400 px-2 py-3 rounded-md bg-yellow-200/20 dark:bg-yellow-400/10 text-black dark:text-white">
-            <div className="flex h-full items-center gap-5">
-              <AlertTriangle className="text-yellow-400 mt-1" />
-            </div>
-            <div className="flex flex-col gap-3">
-              <p>
-                redshield is only supported in next js version{" "}
-                <span className="font-semibold">14.1.0</span> or above! , if you
-                have lower version of next js installed please update it to
-                latest by running following command in your project terminal.
-              </p>
-              <Command
-                className="bg-transparent text-sm"
-                text="npm install next@latest"
-              />
-            </div>
-          </div>
-          <p>
-            Simply copy the following command and head towards your project
-            terminal.
-          </p>
-          <div className="py-5">
-            <Command text="npm install redshield" />
-          </div>
-
-          <p>
-            Paste the command and hit{" "}
-            <kbd className="px-2 py-1 bg-zinc-100 rounded-md dark:bg-zinc-900 dark:text-white">
-              enter
-            </kbd>{" "}
-            to install redshield in your application locally. Wait until
-            installation is complete.
-          </p>
-          <br />
-          <br />
-          <p>
-            Now copy the api key and paste into the{" "}
-            <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-              .env.local
-            </span>{" "}
-            file in below format
-          </p>
-          <br />
-          <div className="max-w-[400px]">
-            <Code
-              fileName=".env.local"
-              codeString="RED_KEY=YOUR_REDSHIELD_API_KEY"
-            />
-          </div>
-        </CardContent>
-        <CardFooter className="flex-col items-start">
-          <p className="text-red-600 p-3 bg-red-600/10 border border-red-600 rounded-md ">
-            Keep the api keys confidential and make sure they aren't publically
-            exposed. Exposing them will give your project access to others. 
-            <Link
-              className="underline ml-2"
-              target="blanc"
-              href={"https://vercel.com/docs/projects/environment-variables"}
-            >
-              learn more
-            </Link>{" "}
-          </p>{" "}
-          <br />
-          <p>
-            After successfully installing redshield in your project and adding
-            your api keys in specified format , Now your application is ready to
-            configure authentication.
-          </p>
-        </CardFooter>
-      </Card>
-      <div className="w-full flex justify-between p-5 mb-5">
+    <div className="w-full space-y-5 leading-7">
+      <div>
+        <h1 className="text-4xl font-semibold">Installation</h1>
+      </div>
+      <div>
+        To add redshield's methods and UI to your app you need to install npm
+        package that'll add the redshield locally to your project. Before
+        installing redshield make sure that{" "}
+        <span className="p-1 font-mono">next@14.1.0</span> or greater is
+        installed in your project. If not simply run following command in your
+        project terminal.
+        <Command text="npm install next@latest" /> <br />
+        <div className="bg-yellow-500/10 rounded-md border border-yellow-500 p-3 text-yellow-500">
+          Important note : Redshield won't work on older version of next.
+          minimum requirement is 14.1.0
+        </div>{" "}
+        <br />
+        Now install the redshield npm package by running the following command
+        in your project terminal
+        <Command text="npm install redshield" /> <br />
+        After successfully installing it go to{" "}
+        <span className=" font-mono p-1">package.json</span> file and look for
+        redshield in dependencies to esnure the installation. <br />
+        Now you have to add your API key and JWT secret to your project
+        environment variables. Create a{" "}
+        <span className=" font-mono p-1">.env.local</span> file in your project
+        root directory and add the following keys as specified below <br />{" "}
+        <br />
+        <Code fileName=".env.local" codeString={envCode} /> <br />
+        <span className=" font-mono p-1">RED_KEY</span> is the project api key in your redshield project and <span className=" font-mono p-1">JWT_SECRET</span>
+        is the secret used to encode and decode the JWT tokens so it's
+        completely your choice to add whatever seems secure to your project. Its
+        reccomended to use the combinations of letters and numbers for
+        <span className="font-mono p-1">JWT_SECRET</span>. <br /> <br />
+        <div className="bg-red-500/10 rounded-md border border-red-500 p-3 text-red-500">
+          Important note : keep the api key and jwt secret confidential.{" "}
+          <a
+            className="underline"
+            href="https://vercel.com/docs/projects/environment-variables"
+          >
+            learn more
+          </a>
+        </div>{" "}
+        <br />
+        <p className="text-sm">
+          Note : do not change the naming of environment variables specified.{" "}
+        </p>
+      </div>
+      <div className="w-full flex justify-between">
         <Link href={"/Docs/GetStarted"}>
           <Button
+            className="dark:border-[#171717] w-[120px]"
             variant={"outline"}
-            className="w-[100px] dark:border-[#171717] rounded-sm "
           >
-            Prev
+            prev
           </Button>
         </Link>
         <Link href={"/Docs/Configure"}>
           <Button
+            className="dark:border-[#171717] w-[120px]"
             variant={"outline"}
-            className="w-[100px] dark:border-[#171717] rounded-sm"
           >
-            Next
+            next
           </Button>
         </Link>
       </div>

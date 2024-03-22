@@ -1,12 +1,4 @@
 import Link from "next/link";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-  CardDescription,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Code from "@/components/Code";
 
@@ -46,121 +38,98 @@ const LogOutComponent = () => {
 }
 export default LogOutComponent;`;
   return (
-    <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
-        <div>
-          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
-            <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-[#FFFFFF]">
-                Configure
-              </CardTitle>
-              <CardDescription className="text-zinc-900 dark:text-zinc-200">
-                Follow each step to make everything work.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-3xl text-black dark:text-[#FFFFFF]">1. AuthPage</p>
-              <br />
-              Create{" "}
-              <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-                /Auth
-              </span>{" "}
-              route and paste following code in <b>page.tsx</b>. <br />
-              <br />
-              <Code codeString={AuthCode} fileName={"/Auth/page.tsx"} />
-            </CardContent>
-            <CardFooter className="flex-col items-start">
-              <p>
-                <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-                  AuthPage
-                </span>{" "}
-                returns the UI for authentication. You can fully customize the
-                position of this component according to your need.
-              </p>
-              <br />
-              <p className="text-sm">
-                Note: follow the folders naming conventions strictly.
-              </p>
-            </CardFooter>
-          </Card>
-          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
-            <CardContent>
-              <p className="text-3xl text-black dark:text-[#FFFFFF]">
-                2. LogOutButton
-              </p>
-              <br />
-              <p>
-                This is inbuilt unstyled logout button from redshield. You can
-                completely customize this button into your desired style.
-                Following is example code for this component:
-              </p>
-              <br />
-              <Code
-                fileName="LogOutComponent.tsx"
-                codeString={LogOutButtonCode}
-              />
-            </CardContent>
-            <CardFooter className="flex-col items-start">
-              <p className="text-sm">
-                Note : This {" "}
-                <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-                  LogOutButton
-                </span>{" "}
-                is a client component but you can always wrap it in a server component.
-              </p>
-            </CardFooter>
-          </Card>
-          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
-            <CardContent>
-              <p className="text-3xl text-black dark:text-[#FFFFFF]">
-                3. ResetPassPage
-              </p>
-              <br />
-              <p>
-                Now create a{" "}
-                <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-                  /ResetPassword
-                </span>{" "}
-                route to perform forgot password action. Inside it create a
-                folder named{" "}
-                <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-                  [token]
-                </span>{" "}
-                to catch the url token as parameter. Now paste the following
-                code inside the <b>page.tsx</b> i.e. within [token] folder.
-              </p>
-              <br />
-              <Code
-                fileName="/ResetPassword/[token]/page.tsx"
-                codeString={resetPassCode}
-              />
-            </CardContent>
-            <CardFooter>
-              <p>
-                Now you're all set to implement middleware in your next app.
-              </p>
-            </CardFooter>
-          </Card>
-        </div>
-        <div className="w-full flex justify-between p-5 mb-5">
-          <Link href={"/Docs/Installation"}>
-            <Button
-              variant={"outline"}
-              className="w-[100px] dark:border-[#171717] rounded-sm"
-            >
-              prev
-            </Button>
-          </Link>
-          <Link href={"/Docs/Middleware/"}>
-            <Button
-              variant={"outline"}
-              className="w-[100px] dark:border-[#171717] rounded-sm"
-            >
-              Next
-            </Button>
-          </Link>
-        </div>
+    <div className="w-full space-y-5 leading-7">
+      <div>
+        <h1 className="text-4xl font-semibold">Configure</h1>
       </div>
-    </>
+      <div>
+        This configuration provides guide to add the redshield's default UI for
+        authentication. If you want to add authentication with custom UI you can
+        skip the{" "}
+        <Link
+          className="text-blue-600 hover:underline"
+          href={"/Docs/Additional"}
+        >
+          additional methods
+        </Link>{" "}
+        part. Remember to follow the naming conventions as provided , modifying
+        them will break the authentication. <br /> <br /> <hr /> <br />
+        <div className="space-y-3">
+          <div>
+            <h2 className="text-3xl">1. AuthPage</h2>
+          </div>
+          <div>
+            This component returns the login and register UI. To add it create a
+            route for authentication as{" "}
+            <span className="p-1 font-mono">/Auth</span> in your application.
+            Now add the following code to the{" "}
+            <span className="p-1 font-mono">page.tsx</span>
+          </div>
+          <Code fileName="/Auth/page.tsx" codeString={AuthCode} />
+          <p className="text-sm">Note : This has to be a server component.</p>
+        </div>{" "}
+        <br />
+        <hr />
+        <br />
+        <div className="space-y-3">
+          <div>
+            <h2 className="text-3xl">2. LogOutButton</h2>
+          </div>
+          <div>
+            This returns the button to perform logout action. To use this add
+            following code to your application. <br /> <br />
+            <Code
+              fileName="LogOutButtonComponent.tsx"
+              codeString={LogOutButtonCode}
+            />
+          </div>
+        </div>{" "}
+        <br />
+        <hr />
+        <br />
+        <div className="space-y-3">
+          <div>
+            <h2 className="text-3xl">3. ResetPassPage</h2>
+          </div>
+          <div>
+            Now create a <span className="p-1 font-mono">/ResetPassword</span>{" "}
+            route to perform forgot password action. Inside it create a folder
+            named <span className="p-1 font-mono">[token]</span> to catch the
+            url token as parameter. Now paste the following code inside the{" "}
+            <span className="p-1 font-mono">page.tsx</span> i.e. within{" "}
+            <span className="p-1 font-mono">[token]</span> folder.
+          </div>
+          <Code
+            fileName="/ResetPassword/[token]/page.tsx"
+            codeString={resetPassCode}
+          />{" "}
+          <p className="text-sm">Note : This is a server component.</p>
+        </div>{" "}
+        <br />
+        <div>
+          <h3 className=" font-semibold">
+            Now your application is ready for the middleware implementaion. 🥂
+          </h3>
+        </div>
+      </div>{" "}
+      <div className="w-full flex justify-between">
+        <Link href={"/Docs/Installation"}>
+          <Button
+            className="dark:border-[#171717] w-[120px]"
+            variant={"outline"}
+          >
+            prev
+          </Button>
+        </Link>
+        <Link href={"/Docs/Middleware"}>
+          <Button
+            className="dark:border-[#171717] w-[120px]"
+            variant={"outline"}
+          >
+            next
+          </Button>
+        </Link>
+      </div>
+    </div>
   );
 }

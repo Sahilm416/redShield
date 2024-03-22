@@ -17,7 +17,7 @@ export default function RootLayout({
           <div className="bg-zinc-50/30 dark:bg-zinc-900/20 w-[250px] h-full border-r dark:border-[#171717] sticky top-[60px] lg:block hidden">
             <DocLinks />
           </div>
-          <div className="w-full sm:overflow-y-scroll">{children}</div>
+          <div className="w-full sm:overflow-y-scroll p-7">{children}</div>
         </div>
       </div>
     </div>

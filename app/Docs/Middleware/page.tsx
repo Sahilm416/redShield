@@ -1,11 +1,4 @@
 import Link from "next/link";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Code from "@/components/Code";
 
@@ -42,64 +35,44 @@ export const config = {
   //end of middleware code
 
   return (
-    <>
-      <div className="w-full min-h-[calc(100vh-60px)] flex flex-col px-2 font-sans">
-        <div>
-          <Card className=" border-none shadow-none dark:text-[#D4D4D4] text-[#444444] leading-7">
-            <CardHeader>
-              <CardTitle className="text-4xl text-black dark:text-white">Middleware</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>
-                Create{" "}
-                <span className="py-1 px-2 dark:bg-zinc-900 bg-zinc-100 rounded-lg">
-                  middleware.ts
-                </span>{" "}
-                file in root directory of your app. <br />{" "}
-                <span className="text-sm text-zinc-600 dark:text-zinc-400">
-                  (For example if you are using app router then at same level as
-                  app directory , if not then at{" "}
-                  <span className="underline">src</span> folder level) <br />{" "}
-                </span>{" "}
-                <br />
-                <br />
-                Now copy the following code to secure the desired routes in your
-                application.
-              </p>
-              <br />
-              <Code fileName="middleware.ts" codeString={middlewareCode} />
-            </CardContent>
-            <CardFooter className="flex-col items-start">
-              <p>
-                This will prevent the unauthorized users from accessing the
-                secured routes. Now all you need is to edit the middleware file
-                according to your need to secure the pages.
-              </p>
-              <br />
-              <p className="text-sm">Note : Remember to restart the development server after implementing the middleware.</p><br />
-              <b>Congratulations your app now have authentication.</b>
-            </CardFooter>
-          </Card>
-        </div>
-        <div className="w-full flex justify-between p-5 mb-5">
-          <Link href={"/Docs/Configure"}>
-            <Button
-              variant={"outline"}
-              className="w-[100px] dark:border-[#171717]"
-            >
-              prev
-            </Button>
-          </Link>
-          <Link id="1" href={"/Docs/Additional"}>
-            <Button
-              variant={"outline"}
-              className="w-[100px] dark:border-[#171717]"
-            >
-              Next
-            </Button>
-          </Link>
-        </div>
+    <div className="w-full space-y-5 leading-7">
+      <div>
+        <h1 className="text-4xl font-semibold">Middleware</h1>
       </div>
-    </>
+      <div>
+        Create <span className="p-1 font-mono">middleware.ts</span> file in root
+        directory of your app. <br />
+        <span className="text-sm">
+          (For example if you are using app router then at same level as app
+          directory , if not then at src folder level)
+        </span>{" "}
+        <br />
+        Now copy the following code to secure the desired routes in your
+        application. <br /> <br />
+        <Code fileName="middleware.ts" codeString={middlewareCode} /> <br />
+        <h3 className="font-semibold">
+          Congratulations! Your app now have authentication implemented
+        </h3>
+      </div>
+      <br />
+      <div className="w-full flex justify-between">
+        <Link href={"/Docs/Configure"}>
+          <Button
+            className="dark:border-[#171717] w-[120px]"
+            variant={"outline"}
+          >
+            prev
+          </Button>
+        </Link>
+        <Link href={"/Docs/Additional"}>
+          <Button
+            className="dark:border-[#171717] w-[120px]"
+            variant={"outline"}
+          >
+            next
+          </Button>
+        </Link>
+      </div>
+    </div>
   );
 }
