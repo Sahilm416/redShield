@@ -5,7 +5,7 @@ import Code from "@/components/Code";
 export default function Middleware() {
   //code for implementation of middleware
   const middlewareCode = `import { NextRequest, NextResponse } from "next/server";
-import { getSession } from "redshield/actions/auth";
+import { getSession } from "redshield";
   
 export async function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
