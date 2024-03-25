@@ -5,11 +5,11 @@ export default function DocLinks() {
   const path = usePathname();
 
   return (
-    <div className="flex flex-col gap-5 px-5 w-full mt-[50px] font-sans">
+    <div className="flex flex-col gap-5 px-5 w-full mt-[50px]">
       <Link
         className={`${
           path === "/Docs/GetStarted" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
-        } text-xl hover:underline`}
+        } text-lg hover:underline`}
         href={"/Docs/GetStarted"}
       >
         Get Started
@@ -17,7 +17,7 @@ export default function DocLinks() {
       <Link
         className={`${
           path === "/Docs/Installation" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
-        } text-xl hover:underline`}
+        } text-lg hover:underline`}
         href={"/Docs/Installation"}
       >
         Installation
@@ -25,7 +25,7 @@ export default function DocLinks() {
       <Link
         className={`${
           path === "/Docs/Configure" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
-        } text-xl hover:underline`}
+        } text-lg hover:underline`}
         href={"/Docs/Configure"}
       >
         Configure
@@ -33,7 +33,7 @@ export default function DocLinks() {
       <Link
         className={`${
           path === "/Docs/Middleware" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
-        } text-xl hover:underline`}
+        } text-lg hover:underline`}
         href={"/Docs/Middleware"}
       >
         Middleware
@@ -41,7 +41,7 @@ export default function DocLinks() {
       <Link
         className={`${
           path === "/Docs/Additional" ? "text-blue-700" : "text-zinc-900 dark:text-zinc-100"
-        } text-xl hover:underline`}
+        } text-lg hover:underline`}
         href={"/Docs/Additional"}
       >
         Additional
