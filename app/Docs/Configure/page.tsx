@@ -45,7 +45,7 @@ export default LogOutComponent;`;
       <div>
         This configuration provides guide to add the redshield's default UI for
         authentication. If you want to add authentication with custom UI you can
-        skip the{" "}
+        skip to the{" "}
         <Link
           className="text-blue-600 hover:underline"
           href={"/Docs/Additional"}

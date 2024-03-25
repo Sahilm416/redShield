@@ -44,7 +44,7 @@ export default function GettingStarted() {
         spend time on building your own authentication from scratch. With all
         these options there exist a problem that you don't have a low level
         control to the auth being Implemented. Clerk do provides some low level
-        some addons for such purposes but they're too complex to understand.
+        addons for such purposes but they're too complex to understand.
         Also these providers mostly focus on providing effortless social logins
         with options like
         <span className=" italic">
