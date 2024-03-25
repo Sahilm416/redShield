@@ -1,6 +1,6 @@
 import Link from "next/link";
 export default async function Ammouncement() {
-  const res = await fetch("https://registry.npmjs.org/redshield",{next:{revalidate:0}});
+  const res = await fetch("https://registry.npmjs.org/redshield",{next:{revalidate: 100}});
   const package_info = await res.json();
   const version = package_info['dist-tags'].latest
   return (
