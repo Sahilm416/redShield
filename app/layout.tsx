@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-import AiChat from "@/components/AiChat";
+import {ChatBox} from "find-x-ai";
 
 export const metadata: Metadata = {
   title: "Red Shield",
@@ -27,7 +27,7 @@ export default function RootLayout({
           {children}
         
           <Toaster position="bottom-right" />
-           <AiChat/>
+           <ChatBox/>
         </ThemeProvider>
       </body>
     </html>
