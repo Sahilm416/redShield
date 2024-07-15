@@ -24,10 +24,11 @@ export const createNewProject = async ({
   try {
     const { data } = await getSession();
 
-    const projects = (await db.get(
-      data.project_id + ":" + data.email + ":projects"
-    )) as projectData[];
-    console.log("");
+    const projects =
+      ((await db.get(
+        data.project_id + ":" + data.email + ":projects"
+      )) as projectData[]) || [];
+
     if (projects.length === 10) {
       return {
         status: false,
@@ -36,7 +37,7 @@ export const createNewProject = async ({
     }
 
     const checkAlreadyExists = projects.some(
-      (obj) => obj.name === project_name.trim()
+      (obj) => obj?.name === project_name.trim()
     );
     if (checkAlreadyExists) {
       return {
@@ -47,6 +48,7 @@ export const createNewProject = async ({
     //random image for project
     const imageLink = await generateUniqueRandomImage({ projects: projects });
     const id = nanoid(10);
+
     const projectTobeAdded = {
       id: id,
       image: imageLink,
