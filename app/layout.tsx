@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-import {ChatBox} from "find-x-ai";
+import { ChatBox } from "find-x-ai";
 
 export const metadata: Metadata = {
   title: "Red Shield",
@@ -25,9 +25,9 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
-        
+
           <Toaster position="bottom-right" />
-           <ChatBox/>
+          <ChatBox findx_key={process.env.NEXT_PUBLIC_FINDX_KEY!} />
         </ThemeProvider>
       </body>
     </html>
