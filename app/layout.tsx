@@ -27,7 +27,12 @@ export default function RootLayout({
           {children}
 
           <Toaster position="bottom-right" />
-          <ChatBox findx_key={process.env.NEXT_PUBLIC_FINDX_KEY!} />
+          <ChatBox
+            config={{
+              findx_key: process.env.NEXT_PUBLIC_FINDX_KEY!,
+              theme: "dark",
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>
