@@ -8,6 +8,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getSession } from "@/app/actions/auth";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+};
 
 export default async function Blog({ params }: { params: { id: string } }) {
   const res = await fetchBlog(params.id);
