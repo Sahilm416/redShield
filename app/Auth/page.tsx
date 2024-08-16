@@ -1,5 +1,10 @@
 //this should be a server component
 import { AuthPage } from "@/components/Auth";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Auth Page",
+};
 
 const Auth = () => {
   return (

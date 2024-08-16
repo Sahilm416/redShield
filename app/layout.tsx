@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ChatBox } from "find-x-ai";
 
 export const metadata: Metadata = {
-  title: "Red Shield",
-  description: "Redis authentication library",
+  title: "RedShield",
+  description: "Redis based authentication library",
 };
 
 export default function RootLayout({

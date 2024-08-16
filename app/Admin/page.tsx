@@ -1,5 +1,10 @@
 import AdminPanel from "@/components/AdminPanel";
 import { getSession } from "../actions/auth";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin Panel",
+};
 
 export default async function Admin() {
   const session = await getSession();

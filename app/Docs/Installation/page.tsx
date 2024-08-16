@@ -3,6 +3,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Command from "@/components/Command";
 import Code from "@/components/Code";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Installation",
+};
 
 export default function Installation() {
   const envCode = `RED_KEY=your_project_api_key

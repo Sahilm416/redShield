@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Code from "@/components/Code";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Configure",
+};
 
 export default function GettingStarted() {
   //code to show for auth page

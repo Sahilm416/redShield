@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import DocLinks from "@/components/DocLinks";
 export const metadata: Metadata = {
-  title: "Red Shield",
-  description: "Documentation",
+  title: "Documentation",
 };
 
 export default function RootLayout({
