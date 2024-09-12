@@ -31,6 +31,7 @@ export default function RootLayout({
             config={{
               findx_key: process.env.NEXT_PUBLIC_FINDX_KEY!,
               theme: "dark",
+              default: true,
             }}
           />
         </ThemeProvider>
