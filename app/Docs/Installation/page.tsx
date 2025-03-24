@@ -24,10 +24,10 @@ JWT_SECRET=your_own_jwt_secret`;
         <span className="p-1 font-mono">next@14.1.0</span> or greater is
         installed in your project. If not simply run following command in your
         project terminal.
-        <Command text="npm install next@latest" /> <br />
+        <Command text="npm install next@14.1.0" /> <br />
         <div className="bg-yellow-500/10 rounded-md border border-yellow-500 p-3 text-yellow-500">
           Important note : Redshield won't work on older version of next.
-          minimum requirement is 14.1.0
+          minimum requirement is 14.1.0 (Next 15 is not supported!)
         </div>{" "}
         <br />
         Now install the redshield npm package by running the following command
